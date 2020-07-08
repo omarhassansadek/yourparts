@@ -1,0 +1,54 @@
+/* 
+  Localizable.strings
+  yourparts
+
+  Created by iMac1 on 6/24/20.
+  Copyright © 2020 yourparts. All rights reserved.
+*/
+"welcome" = "مرحبا";
+
+"Yourparts" = "يوربارتس";
+
+"Main Information" = "بياناتي الأساسية";
+
+"Edit your profile" = "عدل بينات حسابك";
+
+"Favourite Cars" = "سياراتي المضافة";
+
+"Add car now" = "أضف سيارة الأن";
+
+"Your Addresses" = "عناوين التوصيل المضافة";
+
+"Add address now" = "لا توجد عناوين مضافة بعد .. أضف عنوان الأن";
+
+"Favourite" = "المفضلة";
+
+"x items in favourite" = " قطعة في المفضلة";
+
+"Cart" = "عربة التسوق";
+
+"Add items to cart" = "عربة التسوق فارغة .. أضف قطع جديدة";
+
+"Requested items" = "قطعك المطلوبة" ;
+
+"Check your requested items" = "شاهد القطع التي تم طلبها" ;
+
+"Home" = "المنزل" ;
+
+"Make it primary address" = "أجعله عنوانك المفضل" ;
+
+"Enter address .." = "ادخل العنوان .." ;
+
+"Car Name" = "اسم السيارة";
+
+"Spare Parts" = "قطع غيار";
+
+"Inner Parts" = "أجزاء داخلية و خارجية";
+
+"Tires" = "كاوتش و جنوط";
+
+"Fluids & Oil" = "زيوت و سوائل";
+
+"Foreign Parts" = "قطع غيار استيراد";
+
+"Make favorite car" = "أجعلها سيارتك المفضلة";
