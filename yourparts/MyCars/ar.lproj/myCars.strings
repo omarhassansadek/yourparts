@@ -1,0 +1,12 @@
+
+/* Class = "UIButton"; normalTitle = "Add"; ObjectID = "36r-WG-jyt"; */
+"36r-WG-jyt.normalTitle" = "اصف";
+
+/* Class = "UILabel"; text = "You have x cars"; ObjectID = "BoB-z8-XRX"; */
+"BoB-z8-XRX.text" = "لديك عدد سيارات";
+
+/* Class = "UILabel"; text = "Add Car"; ObjectID = "JIX-uu-BFH"; */
+"JIX-uu-BFH.text" = "اضف سيارة";
+
+/* Class = "UILabel"; text = "My Cars"; ObjectID = "Ly1-zg-rQu"; */
+"Ly1-zg-rQu.text" = "سياراتي";

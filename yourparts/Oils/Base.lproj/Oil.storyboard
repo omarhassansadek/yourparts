@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Ane-yN-K2h">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Oil View Controller-->
+        <scene sceneID="U3K-3O-eCY">
+            <objects>
+                <viewController storyboardIdentifier="firstOil" id="Ane-yN-K2h" customClass="oilViewController" customModule="yourparts" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="YeT-db-arB">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Oil and Fluids" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eEQ-Dj-I8Y">
+                                <rect key="frame" x="20" y="35" width="335" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="ZQJ-Cx-hTT"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="RMe-nX-SoQ">
+                                <rect key="frame" x="0.0" y="71" width="375" height="596"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="RMe-nX-SoQ" firstAttribute="top" secondItem="eEQ-Dj-I8Y" secondAttribute="bottom" constant="15" id="09z-Qz-Pn4"/>
+                            <constraint firstItem="PSj-dc-SXq" firstAttribute="trailing" secondItem="eEQ-Dj-I8Y" secondAttribute="trailing" constant="20" id="aHD-9T-rem"/>
+                            <constraint firstItem="PSj-dc-SXq" firstAttribute="trailing" secondItem="RMe-nX-SoQ" secondAttribute="trailing" id="fUf-0q-fui"/>
+                            <constraint firstItem="PSj-dc-SXq" firstAttribute="bottom" secondItem="RMe-nX-SoQ" secondAttribute="bottom" id="ns2-tP-oZA"/>
+                            <constraint firstItem="eEQ-Dj-I8Y" firstAttribute="top" secondItem="PSj-dc-SXq" secondAttribute="top" constant="15" id="s6M-hV-VGG"/>
+                            <constraint firstItem="RMe-nX-SoQ" firstAttribute="leading" secondItem="PSj-dc-SXq" secondAttribute="leading" id="tRc-iz-wr2"/>
+                            <constraint firstItem="eEQ-Dj-I8Y" firstAttribute="leading" secondItem="PSj-dc-SXq" secondAttribute="leading" constant="20" id="uzL-E5-9zW"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="PSj-dc-SXq"/>
+                    </view>
+                    <connections>
+                        <outlet property="oilTableView" destination="RMe-nX-SoQ" id="HQV-zD-PDP"/>
+                        <outlet property="vcLabel" destination="eEQ-Dj-I8Y" id="AQa-Xb-vIY"/>
+                        <segue destination="0yb-lL-veC" kind="show" identifier="gotoDetailOil" id="lwb-Si-idY"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GeY-B8-Ij5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="78" y="134"/>
+        </scene>
+        <!--Detail Oil View Controller-->
+        <scene sceneID="TVV-Wf-Y9J">
+            <objects>
+                <viewController storyboardIdentifier="SecondOil" id="0yb-lL-veC" customClass="detailOilViewController" customModule="yourparts" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ifP-R3-wKz">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Engine Oils" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6e3-dH-0gY">
+                                <rect key="frame" x="20" y="35" width="335" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="rcf-qt-v4t"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="wlT-54-Hgh">
+                                <rect key="frame" x="0.0" y="71" width="375" height="596"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="wlT-54-Hgh" firstAttribute="leading" secondItem="IpA-By-XoA" secondAttribute="leading" id="5hd-4X-nQG"/>
+                            <constraint firstItem="IpA-By-XoA" firstAttribute="trailing" secondItem="6e3-dH-0gY" secondAttribute="trailing" constant="20" id="SdW-kS-LTe"/>
+                            <constraint firstItem="wlT-54-Hgh" firstAttribute="top" secondItem="6e3-dH-0gY" secondAttribute="bottom" constant="15" id="VZH-dE-EQJ"/>
+                            <constraint firstItem="wlT-54-Hgh" firstAttribute="bottom" secondItem="IpA-By-XoA" secondAttribute="bottom" id="c3d-HI-NAE"/>
+                            <constraint firstItem="6e3-dH-0gY" firstAttribute="top" secondItem="IpA-By-XoA" secondAttribute="top" constant="15" id="iWR-dH-MKh"/>
+                            <constraint firstItem="6e3-dH-0gY" firstAttribute="leading" secondItem="IpA-By-XoA" secondAttribute="leading" constant="20" id="sYr-4b-Tkf"/>
+                            <constraint firstItem="wlT-54-Hgh" firstAttribute="trailing" secondItem="IpA-By-XoA" secondAttribute="trailing" id="tRZ-dd-2EV"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="IpA-By-XoA"/>
+                    </view>
+                    <connections>
+                        <outlet property="detailOilTableView" destination="wlT-54-Hgh" id="LXm-f4-JMN"/>
+                        <outlet property="vcTitle" destination="6e3-dH-0gY" id="jUP-Kf-oTR"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RZ5-IH-Ysx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="878" y="134"/>
+        </scene>
+    </scenes>
+</document>

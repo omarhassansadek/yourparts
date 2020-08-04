@@ -53,7 +53,8 @@ class myCarsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         if indexPath.row == 2{
             let cell = tableView.dequeueReusableCell(withIdentifier: "addBtnCell") as! addTableViewCell
             cell.addAddress = {
-                AlertViewer().showAlertView(withMessage: "This feauture isn't available right now", onController: self)
+                self.performSegue(withIdentifier: "gotoAddCarVC", sender: self)
+               // AlertViewer().showAlertView(withMessage: "This feauture isn't available right now", onController: self)
             }
             return cell
         }else{

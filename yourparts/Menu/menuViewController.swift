@@ -135,6 +135,19 @@ class menuViewController: UIViewController , UITableViewDelegate, UITableViewDat
         }
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        switch indexPath.row {
+        case 2:
+            self.performSegue(withIdentifier: "gotoItems", sender: self)
+        case 3:
+            self.performSegue(withIdentifier: "gotoTires", sender: self)
+        case 5:
+            self.performSegue(withIdentifier: "gotoOils", sender: self)
+        default:
+            break
+        }
+    }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
         switch indexPath.row {

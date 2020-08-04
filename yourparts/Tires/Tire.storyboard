@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Tcs-gM-vYI">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Tires View Controller-->
+        <scene sceneID="9l8-3t-aUx">
+            <objects>
+                <viewController storyboardIdentifier="firstTire" id="Tcs-gM-vYI" customClass="tiresViewController" customModule="yourparts" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="j1l-qa-KbF">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="PoH-H2-uwK">
+                                <rect key="frame" x="0.0" y="71" width="375" height="596"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tires" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6tp-GX-dBI">
+                                <rect key="frame" x="20" y="35" width="335" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="LTe-kx-eRm"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="PoH-H2-uwK" firstAttribute="leading" secondItem="lr9-nn-mqT" secondAttribute="leading" id="MHK-ib-Wvq"/>
+                            <constraint firstItem="PoH-H2-uwK" firstAttribute="trailing" secondItem="lr9-nn-mqT" secondAttribute="trailing" id="MbT-Be-UBD"/>
+                            <constraint firstItem="6tp-GX-dBI" firstAttribute="top" secondItem="lr9-nn-mqT" secondAttribute="top" constant="15" id="SzC-sF-rDN"/>
+                            <constraint firstItem="6tp-GX-dBI" firstAttribute="leading" secondItem="lr9-nn-mqT" secondAttribute="leading" constant="20" id="bcP-SH-Xzo"/>
+                            <constraint firstItem="lr9-nn-mqT" firstAttribute="trailing" secondItem="6tp-GX-dBI" secondAttribute="trailing" constant="20" id="jhW-rO-ScL"/>
+                            <constraint firstItem="PoH-H2-uwK" firstAttribute="top" secondItem="6tp-GX-dBI" secondAttribute="bottom" constant="15" id="mdY-Nl-anm"/>
+                            <constraint firstItem="PoH-H2-uwK" firstAttribute="bottom" secondItem="lr9-nn-mqT" secondAttribute="bottom" id="mj4-Hn-nzc"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="lr9-nn-mqT"/>
+                    </view>
+                    <connections>
+                        <outlet property="tiresTableView" destination="PoH-H2-uwK" id="7Ex-B7-7HF"/>
+                        <outlet property="vcTitle" destination="6tp-GX-dBI" id="bU4-nY-UEH"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aeh-9P-CMs" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="92" y="149"/>
+        </scene>
+    </scenes>
+</document>

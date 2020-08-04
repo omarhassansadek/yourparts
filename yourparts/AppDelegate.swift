@@ -18,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MOLHResetable {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        
+
         
         //MOLHLanguage.setDefaultLanguage("ar")
         MOLH.setLanguageTo("ar")
@@ -36,8 +36,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MOLHResetable {
     
     func reset() {
         let rootViewController: UIWindow = ((UIApplication.shared.delegate?.window)!)!
+        //main for main
         let story = UIStoryboard(name: "Main", bundle: nil)
+        //rootViewController.rootViewController = story.instantiateViewController(withIdentifier: "tabx")
         rootViewController.rootViewController = story.instantiateViewController(withIdentifier: "tabx")
+
     }
     
     func applicationWillResignActive(_ application: UIApplication) {

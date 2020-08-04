@@ -52,12 +52,39 @@
                     <connections>
                         <outlet property="meneuTableView" destination="KlC-ze-KCb" id="5Xf-0O-MPc"/>
                         <outlet property="menuVM" destination="taR-7z-6T6" id="5HE-7a-tJ5"/>
+                        <segue destination="I4L-l3-3fl" kind="show" identifier="gotoItems" id="zRr-aj-2X8"/>
+                        <segue destination="z0C-lM-gbF" kind="show" identifier="gotoTires" id="cB1-9o-Guq"/>
+                        <segue destination="t7g-i1-eVu" kind="show" identifier="gotoOils" id="rgZ-NT-87M"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xew-Ve-Dbr" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <customObject id="taR-7z-6T6" customClass="menuViewModel" customModule="yourparts" customModuleProvider="target"/>
             </objects>
             <point key="canvasLocation" x="-4101.6000000000004" y="1849.5073891625616"/>
+        </scene>
+        <!--firstItem-->
+        <scene sceneID="yeD-fF-5dj">
+            <objects>
+                <viewControllerPlaceholder storyboardName="IntAndExt" referencedIdentifier="firstItem" id="I4L-l3-3fl" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wKF-AD-Y4j" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2970" y="1559"/>
+        </scene>
+        <!--firstTire-->
+        <scene sceneID="bCU-J8-waD">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Tire" referencedIdentifier="firstTire" id="z0C-lM-gbF" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="awl-PX-MJf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2971" y="1850"/>
+        </scene>
+        <!--firstOil-->
+        <scene sceneID="4Ux-rY-fca">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Oil" referencedIdentifier="firstOil" id="t7g-i1-eVu" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gum-rW-3Dw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2971" y="2116"/>
         </scene>
         <!--Shopping-->
         <scene sceneID="QVD-ME-VYT">
@@ -67,15 +94,22 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="welcome" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="haN-Bd-M1T">
-                                <rect key="frame" x="153" y="149" width="69" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Yourparts" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="haN-Bd-M1T">
+                                <rect key="frame" x="150" y="149" width="75" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="75" id="m4F-6b-su3"/>
+                                    <constraint firstAttribute="height" constant="21" id="v1j-qw-JPG"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="haN-Bd-M1T" firstAttribute="centerX" secondItem="LiU-CF-cLV" secondAttribute="centerX" id="350-YT-Fpm"/>
+                            <constraint firstItem="haN-Bd-M1T" firstAttribute="top" secondItem="JNW-oc-MG0" secondAttribute="top" constant="105" id="yRU-7G-BWx"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="JNW-oc-MG0"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Shopping" image="homeTabico" id="ySF-vB-SIp"/>
@@ -90,25 +124,17 @@
         <!--View Controller-->
         <scene sceneID="CXx-sC-ZLH">
             <objects>
-                <viewController id="uYW-nA-eJg" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="signup" id="uYW-nA-eJg" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="K76-rm-MZp">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="signup_bg" translatesAutoresizingMaskIntoConstraints="NO" id="Uys-gh-QYT">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SignUpDummy" translatesAutoresizingMaskIntoConstraints="NO" id="Uys-gh-QYT">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                             </imageView>
-                            <view alpha="0.69999999999999996" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IPB-fg-a77">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
-                                <color key="backgroundColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="IPB-fg-a77" firstAttribute="leading" secondItem="td6-pI-nf5" secondAttribute="leading" id="Ckg-WZ-zVo"/>
-                            <constraint firstItem="IPB-fg-a77" firstAttribute="top" secondItem="K76-rm-MZp" secondAttribute="top" id="EA3-fR-EPj"/>
-                            <constraint firstAttribute="bottom" secondItem="IPB-fg-a77" secondAttribute="bottom" id="F4v-jz-MHZ"/>
-                            <constraint firstItem="IPB-fg-a77" firstAttribute="trailing" secondItem="td6-pI-nf5" secondAttribute="trailing" id="I4a-5w-mz2"/>
                             <constraint firstItem="Uys-gh-QYT" firstAttribute="leading" secondItem="td6-pI-nf5" secondAttribute="leading" id="P1h-0h-ty9"/>
                             <constraint firstItem="Uys-gh-QYT" firstAttribute="top" secondItem="K76-rm-MZp" secondAttribute="top" id="VEv-rm-RcU"/>
                             <constraint firstItem="Uys-gh-QYT" firstAttribute="bottom" secondItem="td6-pI-nf5" secondAttribute="bottom" constant="34" id="q8V-QV-18W"/>
@@ -198,7 +224,7 @@
         <!--myCarsVC-->
         <scene sceneID="VBT-au-8Fv">
             <objects>
-                <viewControllerPlaceholder storyboardIdentifier="myCarsVC" storyboardName="profile" referencedIdentifier="myCarsVC" id="ZLg-IN-lVO" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardIdentifier="myCarsVC" storyboardName="myCars" referencedIdentifier="myCarsVC" id="ZLg-IN-lVO" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="C5f-Hb-zL4"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ltv-SF-tZ7" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -226,11 +252,11 @@
         </scene>
     </scenes>
     <resources>
+        <image name="SignUpDummy" width="375" height="812"/>
         <image name="carTabico" width="20" height="16"/>
         <image name="cartTabico" width="23" height="18"/>
         <image name="homeTabico" width="20" height="20"/>
         <image name="menuTabico" width="21" height="21"/>
         <image name="profileTabico" width="18" height="21"/>
-        <image name="signup_bg" width="375" height="812"/>
     </resources>
 </document>

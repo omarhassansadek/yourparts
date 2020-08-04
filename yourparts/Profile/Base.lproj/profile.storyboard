@@ -38,7 +38,7 @@
                         <outlet property="profileVM" destination="3A9-6Q-P3v" id="hDC-JG-Pgk"/>
                         <segue destination="ndX-CJ-vbF" kind="show" identifier="gotoFavAddresses" id="8H3-11-a2E"/>
                         <segue destination="E5I-rZ-JBw" kind="show" identifier="gotoProfileinfo" id="X7R-rO-qr9"/>
-                        <segue destination="6gg-ui-DlI" kind="show" identifier="gotoMyCarsVC" id="69j-Rl-o2I"/>
+                        <segue destination="lZR-N0-BRV" kind="show" identifier="gotoMyCarsVC" id="bgh-g3-tkW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Z6b-in-YOp" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -46,82 +46,13 @@
             </objects>
             <point key="canvasLocation" x="1116" y="131.78410794602701"/>
         </scene>
-        <!--My Cars View Controller-->
-        <scene sceneID="HeW-5S-Waj">
+        <!--myCarsVC-->
+        <scene sceneID="TEU-79-Xbe">
             <objects>
-                <viewController storyboardIdentifier="myCarsVC" id="6gg-ui-DlI" customClass="myCarsViewController" customModule="yourparts" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="xeS-0R-lq2">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lGp-EZ-ah4">
-                                <rect key="frame" x="20" y="55" width="335" height="50"/>
-                                <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="myCarico" translatesAutoresizingMaskIntoConstraints="NO" id="3H8-bu-g2j">
-                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="9Rg-h6-ajK"/>
-                                            <constraint firstAttribute="width" constant="50" id="uhZ-Ot-wVH"/>
-                                        </constraints>
-                                    </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My Cars" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nb3-Un-8Qn">
-                                        <rect key="frame" x="65" y="0.0" width="255" height="24"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="24" id="jqR-Yl-jSu"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You have x cars" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tN0-R5-Lwz">
-                                        <rect key="frame" x="65" y="29" width="270" height="21"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="21" id="y6G-Gp-tbd"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" red="0.0" green="0.80000000000000004" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="tN0-R5-Lwz" secondAttribute="bottom" id="F7C-9t-8QJ"/>
-                                    <constraint firstAttribute="trailing" secondItem="nb3-Un-8Qn" secondAttribute="trailing" constant="15" id="LgX-eG-fvp"/>
-                                    <constraint firstItem="3H8-bu-g2j" firstAttribute="leading" secondItem="lGp-EZ-ah4" secondAttribute="leading" id="MNh-hP-H9V"/>
-                                    <constraint firstItem="nb3-Un-8Qn" firstAttribute="leading" secondItem="3H8-bu-g2j" secondAttribute="trailing" constant="15" id="Pw7-ab-RdA"/>
-                                    <constraint firstItem="3H8-bu-g2j" firstAttribute="top" secondItem="lGp-EZ-ah4" secondAttribute="top" id="XQp-Lm-atL"/>
-                                    <constraint firstItem="nb3-Un-8Qn" firstAttribute="top" secondItem="lGp-EZ-ah4" secondAttribute="top" id="cNy-7q-LUq"/>
-                                    <constraint firstAttribute="trailing" secondItem="tN0-R5-Lwz" secondAttribute="trailing" id="dbK-NA-r54"/>
-                                    <constraint firstItem="tN0-R5-Lwz" firstAttribute="leading" secondItem="3H8-bu-g2j" secondAttribute="trailing" constant="15" id="kRz-sq-4yL"/>
-                                    <constraint firstAttribute="height" constant="50" id="kaD-qY-L4H"/>
-                                </constraints>
-                            </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="He3-2Q-YS5">
-                                <rect key="frame" x="0.0" y="115" width="375" height="552"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </tableView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="He3-2Q-YS5" firstAttribute="top" secondItem="lGp-EZ-ah4" secondAttribute="bottom" constant="10" id="4WR-9a-dwP"/>
-                            <constraint firstItem="lGp-EZ-ah4" firstAttribute="top" secondItem="51v-pX-hRt" secondAttribute="top" constant="35" id="Kwh-Og-f1a"/>
-                            <constraint firstItem="51v-pX-hRt" firstAttribute="bottom" secondItem="He3-2Q-YS5" secondAttribute="bottom" id="W49-xx-PZ2"/>
-                            <constraint firstItem="51v-pX-hRt" firstAttribute="trailing" secondItem="He3-2Q-YS5" secondAttribute="trailing" id="g3W-YI-4Pa"/>
-                            <constraint firstItem="51v-pX-hRt" firstAttribute="trailing" secondItem="lGp-EZ-ah4" secondAttribute="trailing" constant="20" id="h0N-eY-7MX"/>
-                            <constraint firstItem="He3-2Q-YS5" firstAttribute="leading" secondItem="51v-pX-hRt" secondAttribute="leading" id="jYE-wP-cPE"/>
-                            <constraint firstItem="lGp-EZ-ah4" firstAttribute="leading" secondItem="51v-pX-hRt" secondAttribute="leading" constant="20" id="k8U-pj-vHQ"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="51v-pX-hRt"/>
-                    </view>
-                    <connections>
-                        <outlet property="carsTableView" destination="He3-2Q-YS5" id="TTt-1g-F2P"/>
-                        <outlet property="detailTitle" destination="tN0-R5-Lwz" id="Sy1-ax-VXN"/>
-                        <outlet property="mainTitle" destination="nb3-Un-8Qn" id="2Sg-N0-65O"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="cvp-Oo-wex" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewControllerPlaceholder storyboardName="myCars" referencedIdentifier="myCarsVC" id="lZR-N0-BRV" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7Ex-gm-JuY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2014" y="388"/>
+            <point key="canvasLocation" x="2014" y="230"/>
         </scene>
         <!--Info Profile View Controller-->
         <scene sceneID="AQG-2G-4q4">
@@ -436,6 +367,5 @@
     </scenes>
     <resources>
         <image name="addressico" width="40" height="40"/>
-        <image name="myCarico" width="40" height="40"/>
     </resources>
 </document>

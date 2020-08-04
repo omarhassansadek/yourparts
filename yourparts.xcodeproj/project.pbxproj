@@ -12,6 +12,10 @@
 		3912EC8724A9D0B80024C4B8 /* menuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3912EC8624A9D0B80024C4B8 /* menuViewModel.swift */; };
 		3912EC8A24A9D2700024C4B8 /* menuTitleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3912EC8824A9D2700024C4B8 /* menuTitleTableViewCell.swift */; };
 		3912EC8B24A9D2700024C4B8 /* menuTitleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3912EC8924A9D2700024C4B8 /* menuTitleTableViewCell.xib */; };
+		3915F94524D0827D00BF6157 /* searchDetailsTireTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3915F94324D0827D00BF6157 /* searchDetailsTireTableViewCell.swift */; };
+		3915F94624D0827D00BF6157 /* searchDetailsTireTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3915F94424D0827D00BF6157 /* searchDetailsTireTableViewCell.xib */; };
+		391910DD24D09D5C00F45FB4 /* IntAndExt.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 391910DC24D09D5C00F45FB4 /* IntAndExt.storyboard */; };
+		39327C6E24D034C40050E3EE /* Oil.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 39327C7024D034C40050E3EE /* Oil.storyboard */; };
 		393BC01824A7C28700CAB4BE /* favAddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 393BC01724A7C28700CAB4BE /* favAddressViewController.swift */; };
 		393BC01B24A7C3CF00CAB4BE /* addTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 393BC01924A7C3CF00CAB4BE /* addTableViewCell.swift */; };
 		393BC01C24A7C3CF00CAB4BE /* addTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 393BC01A24A7C3CF00CAB4BE /* addTableViewCell.xib */; };
@@ -25,13 +29,28 @@
 		3972554B24A3B09D0092D1B5 /* profileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3972554A24A3B09D0092D1B5 /* profileViewController.swift */; };
 		3972555124A3BC4F0092D1B5 /* the_mix_arab_regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3972554F24A3BC4F0092D1B5 /* the_mix_arab_regular.ttf */; };
 		3972555324A3BD530092D1B5 /* the_mix_arab_bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3972555224A3BD530092D1B5 /* the_mix_arab_bold.ttf */; };
+		397B745524CF9C3800B74BEC /* oilTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 397B745324CF9C3800B74BEC /* oilTableViewCell.swift */; };
+		397B745624CF9C3800B74BEC /* oilTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 397B745424CF9C3800B74BEC /* oilTableViewCell.xib */; };
+		397B745A24CFA98B00B74BEC /* Cairo-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 397B745724CFA98B00B74BEC /* Cairo-SemiBold.ttf */; };
+		397B745B24CFA98B00B74BEC /* Cairo-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 397B745824CFA98B00B74BEC /* Cairo-Bold.ttf */; };
+		397B745C24CFA98B00B74BEC /* Cairo-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 397B745924CFA98B00B74BEC /* Cairo-Regular.ttf */; };
+		397B745E24CFDE3900B74BEC /* oilViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 397B745D24CFDE3900B74BEC /* oilViewController.swift */; };
 		397E8B8824A5CEDB00780312 /* profileInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 397E8B8624A5CEDB00780312 /* profileInfoTableViewCell.swift */; };
 		397E8B8924A5CEDB00780312 /* profileInfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 397E8B8724A5CEDB00780312 /* profileInfoTableViewCell.xib */; };
 		397E8B8B24A5D53800780312 /* profileMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 397E8B8A24A5D53800780312 /* profileMenu.swift */; };
 		397E8B9024A5D63200780312 /* profileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 397E8B8F24A5D63200780312 /* profileViewModel.swift */; };
+		398FF34C24D028B90001F8C1 /* detailOilTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 398FF34A24D028B90001F8C1 /* detailOilTableViewCell.swift */; };
+		398FF34D24D028B90001F8C1 /* detailOilTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 398FF34B24D028B90001F8C1 /* detailOilTableViewCell.xib */; };
+		398FF34F24D02E3E0001F8C1 /* detailOilViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 398FF34E24D02E3E0001F8C1 /* detailOilViewController.swift */; };
 		399592A724A3D5F500D092AB /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 399592A924A3D5F500D092AB /* Localizable.strings */; };
+		39AA658A24B5B333005AC3CD /* addCarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39AA658924B5B333005AC3CD /* addCarViewController.swift */; };
+		39AA658B24B5B942005AC3CD /* myCars.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 39AA658D24B5B942005AC3CD /* myCars.storyboard */; };
 		39E05F4724A80E8D00F2C025 /* infoProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39E05F4624A80E8D00F2C025 /* infoProfileViewController.swift */; };
 		39E05F4824A815B400F2C025 /* profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 39E05F4A24A815B400F2C025 /* profile.storyboard */; };
+		39E4223224D07CED00524591 /* tiresViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39E4223124D07CED00524591 /* tiresViewController.swift */; };
+		39E4223424D07D0800524591 /* Tire.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 39E4223324D07D0800524591 /* Tire.storyboard */; };
+		39E4223724D07DF400524591 /* searchtiresTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39E4223524D07DF400524591 /* searchtiresTableViewCell.swift */; };
+		39E4223824D07DF400524591 /* searchtiresTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 39E4223624D07DF400524591 /* searchtiresTableViewCell.xib */; };
 		39EC50632497A8FE00ABAF05 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39EC50622497A8FE00ABAF05 /* AppDelegate.swift */; };
 		39EC50652497A8FE00ABAF05 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39EC50642497A8FE00ABAF05 /* ViewController.swift */; };
 		39EC50682497A8FE00ABAF05 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 39EC50662497A8FE00ABAF05 /* Main.storyboard */; };
@@ -41,6 +60,10 @@
 		39F0590024A928B100CA348F /* myCarsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39F058FF24A928B100CA348F /* myCarsViewController.swift */; };
 		39F0590324A92D6600CA348F /* carTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39F0590124A92D6600CA348F /* carTableViewCell.swift */; };
 		39F0590424A92D6600CA348F /* carTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 39F0590224A92D6600CA348F /* carTableViewCell.xib */; };
+		39FFAF9624D09EF300532C7F /* intAndExtViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FFAF9524D09EF300532C7F /* intAndExtViewController.swift */; };
+		39FFAF9924D0A02100532C7F /* filterItemsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FFAF9724D0A02100532C7F /* filterItemsTableViewCell.swift */; };
+		39FFAF9A24D0A02100532C7F /* filterItemsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 39FFAF9824D0A02100532C7F /* filterItemsTableViewCell.xib */; };
+		39FFAF9C24D0A0F700532C7F /* detailItemsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FFAF9B24D0A0F700532C7F /* detailItemsViewController.swift */; };
 		7092C8337CE1672AD78CE1C3 /* Pods_yourparts_yourpartsUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B4CF54C46C4F931C6019BAB /* Pods_yourparts_yourpartsUITests.framework */; };
 		9385A9B4EE526D625941A223 /* Pods_yourparts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 940A27142C7F6DDFAA03FE61 /* Pods_yourparts.framework */; };
 		EAB99BF968D91E964F0C3769 /* Pods_yourpartsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A27275A0816E2BB87996054 /* Pods_yourpartsTests.framework */; };
@@ -70,6 +93,12 @@
 		3912EC8624A9D0B80024C4B8 /* menuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = menuViewModel.swift; sourceTree = "<group>"; };
 		3912EC8824A9D2700024C4B8 /* menuTitleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = menuTitleTableViewCell.swift; sourceTree = "<group>"; };
 		3912EC8924A9D2700024C4B8 /* menuTitleTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = menuTitleTableViewCell.xib; sourceTree = "<group>"; };
+		3915F94324D0827D00BF6157 /* searchDetailsTireTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = searchDetailsTireTableViewCell.swift; sourceTree = "<group>"; };
+		3915F94424D0827D00BF6157 /* searchDetailsTireTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = searchDetailsTireTableViewCell.xib; sourceTree = "<group>"; };
+		391910DC24D09D5C00F45FB4 /* IntAndExt.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = IntAndExt.storyboard; sourceTree = "<group>"; };
+		39327C6F24D034C40050E3EE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Oil.storyboard; sourceTree = "<group>"; };
+		39327C7224D034D00050E3EE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Oil.strings; sourceTree = "<group>"; };
+		39327C7324D034D60050E3EE /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/Oil.strings; sourceTree = "<group>"; };
 		393BC01724A7C28700CAB4BE /* favAddressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = favAddressViewController.swift; sourceTree = "<group>"; };
 		393BC01924A7C3CF00CAB4BE /* addTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addTableViewCell.swift; sourceTree = "<group>"; };
 		393BC01A24A7C3CF00CAB4BE /* addTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = addTableViewCell.xib; sourceTree = "<group>"; };
@@ -86,16 +115,33 @@
 		3972555224A3BD530092D1B5 /* the_mix_arab_bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = the_mix_arab_bold.ttf; sourceTree = "<group>"; };
 		3972555424A3C4840092D1B5 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/Main.strings; sourceTree = "<group>"; };
 		3972555524A3C4850092D1B5 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		397B745324CF9C3800B74BEC /* oilTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = oilTableViewCell.swift; sourceTree = "<group>"; };
+		397B745424CF9C3800B74BEC /* oilTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = oilTableViewCell.xib; sourceTree = "<group>"; };
+		397B745724CFA98B00B74BEC /* Cairo-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cairo-SemiBold.ttf"; sourceTree = "<group>"; };
+		397B745824CFA98B00B74BEC /* Cairo-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cairo-Bold.ttf"; sourceTree = "<group>"; };
+		397B745924CFA98B00B74BEC /* Cairo-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cairo-Regular.ttf"; sourceTree = "<group>"; };
+		397B745D24CFDE3900B74BEC /* oilViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = oilViewController.swift; sourceTree = "<group>"; };
 		397E8B8624A5CEDB00780312 /* profileInfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = profileInfoTableViewCell.swift; sourceTree = "<group>"; };
 		397E8B8724A5CEDB00780312 /* profileInfoTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = profileInfoTableViewCell.xib; sourceTree = "<group>"; };
 		397E8B8A24A5D53800780312 /* profileMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = profileMenu.swift; sourceTree = "<group>"; };
 		397E8B8F24A5D63200780312 /* profileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = profileViewModel.swift; sourceTree = "<group>"; };
+		398FF34A24D028B90001F8C1 /* detailOilTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = detailOilTableViewCell.swift; sourceTree = "<group>"; };
+		398FF34B24D028B90001F8C1 /* detailOilTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = detailOilTableViewCell.xib; sourceTree = "<group>"; };
+		398FF34E24D02E3E0001F8C1 /* detailOilViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = detailOilViewController.swift; sourceTree = "<group>"; };
 		399592A824A3D5F500D092AB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		399592AA24A3D5F900D092AB /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/Localizable.strings; sourceTree = "<group>"; };
+		39AA658924B5B333005AC3CD /* addCarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addCarViewController.swift; sourceTree = "<group>"; };
+		39AA658C24B5B942005AC3CD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/myCars.storyboard; sourceTree = "<group>"; };
+		39AA658F24B5B945005AC3CD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/myCars.strings; sourceTree = "<group>"; };
+		39AA659124B5B949005AC3CD /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/myCars.strings; sourceTree = "<group>"; };
 		39E05F4624A80E8D00F2C025 /* infoProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = infoProfileViewController.swift; sourceTree = "<group>"; };
 		39E05F4924A815B400F2C025 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/profile.storyboard; sourceTree = "<group>"; };
 		39E05F4C24A815BC00F2C025 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/profile.strings; sourceTree = "<group>"; };
 		39E05F4E24A815BE00F2C025 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/profile.strings; sourceTree = "<group>"; };
+		39E4223124D07CED00524591 /* tiresViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tiresViewController.swift; sourceTree = "<group>"; };
+		39E4223324D07D0800524591 /* Tire.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Tire.storyboard; sourceTree = "<group>"; };
+		39E4223524D07DF400524591 /* searchtiresTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = searchtiresTableViewCell.swift; sourceTree = "<group>"; };
+		39E4223624D07DF400524591 /* searchtiresTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = searchtiresTableViewCell.xib; sourceTree = "<group>"; };
 		39EC505F2497A8FE00ABAF05 /* yourparts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = yourparts.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		39EC50622497A8FE00ABAF05 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		39EC50642497A8FE00ABAF05 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -111,6 +157,10 @@
 		39F058FF24A928B100CA348F /* myCarsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = myCarsViewController.swift; sourceTree = "<group>"; };
 		39F0590124A92D6600CA348F /* carTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = carTableViewCell.swift; sourceTree = "<group>"; };
 		39F0590224A92D6600CA348F /* carTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = carTableViewCell.xib; sourceTree = "<group>"; };
+		39FFAF9524D09EF300532C7F /* intAndExtViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = intAndExtViewController.swift; sourceTree = "<group>"; };
+		39FFAF9724D0A02100532C7F /* filterItemsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = filterItemsTableViewCell.swift; sourceTree = "<group>"; };
+		39FFAF9824D0A02100532C7F /* filterItemsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = filterItemsTableViewCell.xib; sourceTree = "<group>"; };
+		39FFAF9B24D0A0F700532C7F /* detailItemsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = detailItemsViewController.swift; sourceTree = "<group>"; };
 		3F626031724FE72C11AE91BB /* Pods-yourpartsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-yourpartsTests.release.xcconfig"; path = "Target Support Files/Pods-yourpartsTests/Pods-yourpartsTests.release.xcconfig"; sourceTree = "<group>"; };
 		638D89BE7E8956E423ECC6EB /* Pods-yourparts.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-yourparts.release.xcconfig"; path = "Target Support Files/Pods-yourparts/Pods-yourparts.release.xcconfig"; sourceTree = "<group>"; };
 		940A27142C7F6DDFAA03FE61 /* Pods_yourparts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_yourparts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -200,6 +250,26 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
+		391910D924D09D2B00F45FB4 /* Int&Ext */ = {
+			isa = PBXGroup;
+			children = (
+				391910DA24D09D3900F45FB4 /* Cells */,
+				391910DC24D09D5C00F45FB4 /* IntAndExt.storyboard */,
+				39FFAF9524D09EF300532C7F /* intAndExtViewController.swift */,
+				39FFAF9B24D0A0F700532C7F /* detailItemsViewController.swift */,
+			);
+			path = "Int&Ext";
+			sourceTree = "<group>";
+		};
+		391910DA24D09D3900F45FB4 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				39FFAF9724D0A02100532C7F /* filterItemsTableViewCell.swift */,
+				39FFAF9824D0A02100532C7F /* filterItemsTableViewCell.xib */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		394306CF24A42B3B00B9580C /* Menu */ = {
 			isa = PBXGroup;
 			children = (
@@ -213,6 +283,10 @@
 		394747BD24B589D600253236 /* MyCars */ = {
 			isa = PBXGroup;
 			children = (
+				39AA658824B5B13E005AC3CD /* Cells */,
+				39AA658D24B5B942005AC3CD /* myCars.storyboard */,
+				39F058FF24A928B100CA348F /* myCarsViewController.swift */,
+				39AA658924B5B333005AC3CD /* addCarViewController.swift */,
 			);
 			path = MyCars;
 			sourceTree = "<group>";
@@ -220,6 +294,9 @@
 		3972554424A3ABD00092D1B5 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				397B745824CFA98B00B74BEC /* Cairo-Bold.ttf */,
+				397B745924CFA98B00B74BEC /* Cairo-Regular.ttf */,
+				397B745724CFA98B00B74BEC /* Cairo-SemiBold.ttf */,
 				3972555224A3BD530092D1B5 /* the_mix_arab_bold.ttf */,
 				3972554F24A3BC4F0092D1B5 /* the_mix_arab_regular.ttf */,
 			);
@@ -235,10 +312,31 @@
 				3972554A24A3B09D0092D1B5 /* profileViewController.swift */,
 				39E05F4624A80E8D00F2C025 /* infoProfileViewController.swift */,
 				393BC01724A7C28700CAB4BE /* favAddressViewController.swift */,
-				39F058FF24A928B100CA348F /* myCarsViewController.swift */,
 				39E05F4A24A815B400F2C025 /* profile.storyboard */,
 			);
 			path = Profile;
+			sourceTree = "<group>";
+		};
+		397B744F24CF9ADE00B74BEC /* Oils */ = {
+			isa = PBXGroup;
+			children = (
+				397B745224CF9C2000B74BEC /* Cells */,
+				39327C7024D034C40050E3EE /* Oil.storyboard */,
+				397B745D24CFDE3900B74BEC /* oilViewController.swift */,
+				398FF34E24D02E3E0001F8C1 /* detailOilViewController.swift */,
+			);
+			path = Oils;
+			sourceTree = "<group>";
+		};
+		397B745224CF9C2000B74BEC /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				397B745324CF9C3800B74BEC /* oilTableViewCell.swift */,
+				397B745424CF9C3800B74BEC /* oilTableViewCell.xib */,
+				398FF34A24D028B90001F8C1 /* detailOilTableViewCell.swift */,
+				398FF34B24D028B90001F8C1 /* detailOilTableViewCell.xib */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		397E8B8C24A5D53B00780312 /* Model */ = {
@@ -258,8 +356,6 @@
 				393BC01A24A7C3CF00CAB4BE /* addTableViewCell.xib */,
 				393BC02324A7DB9500CAB4BE /* addressTableViewCell.swift */,
 				393BC02424A7DB9500CAB4BE /* addressTableViewCell.xib */,
-				39F0590124A92D6600CA348F /* carTableViewCell.swift */,
-				39F0590224A92D6600CA348F /* carTableViewCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -271,6 +367,36 @@
 				393BC01F24A7C7F900CAB4BE /* favAddressViewModel.swift */,
 			);
 			path = viewModel;
+			sourceTree = "<group>";
+		};
+		39AA658824B5B13E005AC3CD /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				39F0590124A92D6600CA348F /* carTableViewCell.swift */,
+				39F0590224A92D6600CA348F /* carTableViewCell.xib */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		39E4222F24D07CC700524591 /* Tires */ = {
+			isa = PBXGroup;
+			children = (
+				39E4223024D07CCD00524591 /* Cells */,
+				39E4223324D07D0800524591 /* Tire.storyboard */,
+				39E4223124D07CED00524591 /* tiresViewController.swift */,
+			);
+			path = Tires;
+			sourceTree = "<group>";
+		};
+		39E4223024D07CCD00524591 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				39E4223524D07DF400524591 /* searchtiresTableViewCell.swift */,
+				39E4223624D07DF400524591 /* searchtiresTableViewCell.xib */,
+				3915F94324D0827D00BF6157 /* searchDetailsTireTableViewCell.swift */,
+				3915F94424D0827D00BF6157 /* searchDetailsTireTableViewCell.xib */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		39EC50562497A8FE00ABAF05 = {
@@ -298,6 +424,9 @@
 		39EC50612497A8FE00ABAF05 /* yourparts */ = {
 			isa = PBXGroup;
 			children = (
+				391910D924D09D2B00F45FB4 /* Int&Ext */,
+				39E4222F24D07CC700524591 /* Tires */,
+				397B744F24CF9ADE00B74BEC /* Oils */,
 				394747BD24B589D600253236 /* MyCars */,
 				394306CF24A42B3B00B9580C /* Menu */,
 				3972554924A3B07A0092D1B5 /* Profile */,
@@ -444,18 +573,30 @@
 			buildActionMask = 2147483647;
 			files = (
 				39F0590424A92D6600CA348F /* carTableViewCell.xib in Resources */,
+				39AA658B24B5B942005AC3CD /* myCars.storyboard in Resources */,
+				397B745C24CFA98B00B74BEC /* Cairo-Regular.ttf in Resources */,
 				393BC01C24A7C3CF00CAB4BE /* addTableViewCell.xib in Resources */,
 				39E05F4824A815B400F2C025 /* profile.storyboard in Resources */,
+				3915F94624D0827D00BF6157 /* searchDetailsTireTableViewCell.xib in Resources */,
+				397B745A24CFA98B00B74BEC /* Cairo-SemiBold.ttf in Resources */,
 				39EC506D2497A90500ABAF05 /* LaunchScreen.storyboard in Resources */,
 				394B035A24A9E67A001E8C23 /* plainTableViewCell.xib in Resources */,
 				3972555124A3BC4F0092D1B5 /* the_mix_arab_regular.ttf in Resources */,
+				391910DD24D09D5C00F45FB4 /* IntAndExt.storyboard in Resources */,
+				39327C6E24D034C40050E3EE /* Oil.storyboard in Resources */,
+				39FFAF9A24D0A02100532C7F /* filterItemsTableViewCell.xib in Resources */,
 				393BC02624A7DB9500CAB4BE /* addressTableViewCell.xib in Resources */,
 				399592A724A3D5F500D092AB /* Localizable.strings in Resources */,
 				397E8B8924A5CEDB00780312 /* profileInfoTableViewCell.xib in Resources */,
 				3972555324A3BD530092D1B5 /* the_mix_arab_bold.ttf in Resources */,
+				39E4223424D07D0800524591 /* Tire.storyboard in Resources */,
+				397B745624CF9C3800B74BEC /* oilTableViewCell.xib in Resources */,
 				3912EC8B24A9D2700024C4B8 /* menuTitleTableViewCell.xib in Resources */,
 				393BC02224A7D96E00CAB4BE /* Assets.xcassets in Resources */,
+				398FF34D24D028B90001F8C1 /* detailOilTableViewCell.xib in Resources */,
+				397B745B24CFA98B00B74BEC /* Cairo-Bold.ttf in Resources */,
 				39EC50682497A8FE00ABAF05 /* Main.storyboard in Resources */,
+				39E4223824D07DF400524591 /* searchtiresTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -587,20 +728,31 @@
 				39F0590024A928B100CA348F /* myCarsViewController.swift in Sources */,
 				3912EC8724A9D0B80024C4B8 /* menuViewModel.swift in Sources */,
 				394B035924A9E67A001E8C23 /* plainTableViewCell.swift in Sources */,
+				397B745524CF9C3800B74BEC /* oilTableViewCell.swift in Sources */,
 				39EC50632497A8FE00ABAF05 /* AppDelegate.swift in Sources */,
+				39E4223224D07CED00524591 /* tiresViewController.swift in Sources */,
 				39F0590324A92D6600CA348F /* carTableViewCell.swift in Sources */,
+				39FFAF9924D0A02100532C7F /* filterItemsTableViewCell.swift in Sources */,
 				393BC02524A7DB9500CAB4BE /* addressTableViewCell.swift in Sources */,
+				39E4223724D07DF400524591 /* searchtiresTableViewCell.swift in Sources */,
+				39AA658A24B5B333005AC3CD /* addCarViewController.swift in Sources */,
+				397B745E24CFDE3900B74BEC /* oilViewController.swift in Sources */,
 				3972554B24A3B09D0092D1B5 /* profileViewController.swift in Sources */,
+				3915F94524D0827D00BF6157 /* searchDetailsTireTableViewCell.swift in Sources */,
+				398FF34C24D028B90001F8C1 /* detailOilTableViewCell.swift in Sources */,
 				3912EC8424A9C2ED0024C4B8 /* AlertViewer.swift in Sources */,
 				393BC01B24A7C3CF00CAB4BE /* addTableViewCell.swift in Sources */,
+				39FFAF9C24D0A0F700532C7F /* detailItemsViewController.swift in Sources */,
 				390FFD4024A288F9008BD0B0 /* constants.swift in Sources */,
 				39E05F4724A80E8D00F2C025 /* infoProfileViewController.swift in Sources */,
 				397E8B8B24A5D53800780312 /* profileMenu.swift in Sources */,
 				394306D124A42B5300B9580C /* menuViewController.swift in Sources */,
 				393BC01824A7C28700CAB4BE /* favAddressViewController.swift in Sources */,
+				39FFAF9624D09EF300532C7F /* intAndExtViewController.swift in Sources */,
 				397E8B9024A5D63200780312 /* profileViewModel.swift in Sources */,
 				3912EC8A24A9D2700024C4B8 /* menuTitleTableViewCell.swift in Sources */,
 				393BC02024A7C7F900CAB4BE /* favAddressViewModel.swift in Sources */,
+				398FF34F24D02E3E0001F8C1 /* detailOilViewController.swift in Sources */,
 				397E8B8824A5CEDB00780312 /* profileInfoTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -637,6 +789,16 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		39327C7024D034C40050E3EE /* Oil.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				39327C6F24D034C40050E3EE /* Base */,
+				39327C7224D034D00050E3EE /* en */,
+				39327C7324D034D60050E3EE /* ar */,
+			);
+			name = Oil.storyboard;
+			sourceTree = "<group>";
+		};
 		399592A924A3D5F500D092AB /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -644,6 +806,16 @@
 				399592AA24A3D5F900D092AB /* ar */,
 			);
 			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		39AA658D24B5B942005AC3CD /* myCars.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				39AA658C24B5B942005AC3CD /* Base */,
+				39AA658F24B5B945005AC3CD /* en */,
+				39AA659124B5B949005AC3CD /* ar */,
+			);
+			name = myCars.storyboard;
 			sourceTree = "<group>";
 		};
 		39E05F4A24A815B400F2C025 /* profile.storyboard */ = {
