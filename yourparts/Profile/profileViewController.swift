@@ -109,6 +109,12 @@ class profileViewController: UIViewController, UITableViewDataSource, UITableVie
         case 3:
             self.performSegue(withIdentifier: "gotoFavAddresses", sender: self)
             
+        case 5:
+            self.performSegue(withIdentifier: "gotoCart", sender: self)
+            
+        case 4:
+            self.performSegue(withIdentifier: "gotoFavorites", sender: self)
+            
         case 1:
             //gotoProfileinfo
             self.performSegue(withIdentifier: "gotoProfileinfo", sender: self)

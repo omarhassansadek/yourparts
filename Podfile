@@ -10,7 +10,10 @@ target 'yourparts' do
   pod 'MOLH'
   pod 'BEMCheckBox'
   pod 'IQKeyboardManagerSwift’ , '~> 6.2.0'
-
+  pod 'Alamofire', '~> 4.4'
+  pod 'SwiftyJSON'
+  pod 'NVActivityIndicatorView'
+  pod 'SDWebImage', '~> 4.0'
 	
   target 'yourpartsTests' do
     inherit! :search_paths

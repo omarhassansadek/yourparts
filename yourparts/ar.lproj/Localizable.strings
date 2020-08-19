@@ -5,6 +5,13 @@
   Created by iMac1 on 6/24/20.
   Copyright © 2020 yourparts. All rights reserved.
 */
+
+"Name" = "الأسم" ;
+
+"Email" = "البريد الاليكتروني" ;
+
+"Password" = "كلمة السر" ;
+
 "welcome" = "مرحبا";
 
 "Yourparts" = "يوربارتس";
@@ -106,3 +113,49 @@
 "Choose Sub Dep." = "أختر القسم الفرعي" ;
 
 "Choose Home Country" = "أختر بلد المنشأ" ;
+
+"Add to Cart" = "إضافة الى عربة التسوق" ;
+
+"Add to Favorites" = "إضافة الى المفضلة" ;
+
+"Product Details" = "تفاصيل المنتج";
+
+"Size" = "حجم";
+
+"Stock" = "المخزون";
+
+"Supplier" = "التاجر";
+
+"Details" = "تفاصيل المنتج";
+
+"Reviews" = "تقييمات المستخدمين";
+
+"View all Reviews" = "شاهد كل التقييمات (٢٣)" ;
+
+"Rate Product" = "قم بالتقييم" ;
+
+"Similar Products" = "قطع مشابهة" ;
+
+"See All Products" = "شاهد كل القطع" ;
+
+"Show Offer" = "شاهد العرض";
+
+"Discount 30%" = "خصم ٣٠٪" ;
+
+"Check Parts" = "شاهد قطع الغيار" ;
+
+"What is yourparts" = "ما هو موقع يوربارتس؟";
+
+"All Spare Parts" = "جميع أقسام قطع الغيار" ;
+
+"Search with part name" = "إبحث بأسم القسم";
+
+"Create New Account" = "أنشاء حساب جديد";
+
+"Welcome to Your Parts" = "أهلا بك في يوربارتس" ;
+
+"Sign up to explore a world of car parts" = "خطوات بسيطة و تتمع بعالم متكامل من قطع الغيار" ;
+
+"Sign in" = "تسجيل دخول";
+
+"Don't have an account? Sign up" = "ليس لديك حساب؟ اشترك " ;

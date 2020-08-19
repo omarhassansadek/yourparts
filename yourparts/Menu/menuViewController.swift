@@ -137,6 +137,8 @@ class menuViewController: UIViewController , UITableViewDelegate, UITableViewDat
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.row {
+        case 1:
+            self.performSegue(withIdentifier: "gotoSparts", sender: self)
         case 2:
             self.performSegue(withIdentifier: "gotoItems", sender: self)
         case 3:

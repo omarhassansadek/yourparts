@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="productCollection" id="gTV-IL-0wX" customClass="productCollectionViewCell" customModule="yourparts" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qd3-VZ-BLC">
+                        <rect key="frame" x="7.5" y="10" width="185" height="180"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uiy-Qt-T1t">
+                                <rect key="frame" x="0.0" y="0.0" width="185" height="120"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="goodTire" translatesAutoresizingMaskIntoConstraints="NO" id="64I-KU-0KK">
+                                        <rect key="frame" x="0.0" y="15" width="185" height="105"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="64I-KU-0KK" secondAttribute="trailing" id="Kda-J8-sCQ"/>
+                                    <constraint firstItem="64I-KU-0KK" firstAttribute="leading" secondItem="uiy-Qt-T1t" secondAttribute="leading" id="Ql1-AN-46c"/>
+                                    <constraint firstAttribute="bottom" secondItem="64I-KU-0KK" secondAttribute="bottom" id="glv-Wl-7Ki"/>
+                                    <constraint firstItem="64I-KU-0KK" firstAttribute="top" secondItem="uiy-Qt-T1t" secondAttribute="top" constant="15" id="tdB-R7-joh"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bmf-eC-lOg">
+                                <rect key="frame" x="16" y="151.5" width="153" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="ANZ-Pl-b9m"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="bmf-eC-lOg" secondAttribute="trailing" constant="16" id="JlF-yk-JTJ"/>
+                            <constraint firstAttribute="bottom" secondItem="bmf-eC-lOg" secondAttribute="bottom" constant="7.5" id="OPG-wy-PdF"/>
+                            <constraint firstItem="bmf-eC-lOg" firstAttribute="leading" secondItem="Qd3-VZ-BLC" secondAttribute="leading" constant="16" id="OQq-Zu-cOV"/>
+                            <constraint firstItem="uiy-Qt-T1t" firstAttribute="height" secondItem="Qd3-VZ-BLC" secondAttribute="height" multiplier="2:3" id="V9a-67-Msu"/>
+                            <constraint firstItem="uiy-Qt-T1t" firstAttribute="top" secondItem="Qd3-VZ-BLC" secondAttribute="top" id="pQK-pL-LcS"/>
+                            <constraint firstAttribute="trailing" secondItem="uiy-Qt-T1t" secondAttribute="trailing" id="u22-XD-ClR"/>
+                            <constraint firstItem="uiy-Qt-T1t" firstAttribute="leading" secondItem="Qd3-VZ-BLC" secondAttribute="leading" id="w3K-CL-A0A"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="Qd3-VZ-BLC" secondAttribute="trailing" constant="7.5" id="8cS-gc-OhF"/>
+                <constraint firstItem="Qd3-VZ-BLC" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="10" id="CW4-Ti-bwa"/>
+                <constraint firstAttribute="bottom" secondItem="Qd3-VZ-BLC" secondAttribute="bottom" constant="10" id="PWU-DQ-e66"/>
+                <constraint firstItem="Qd3-VZ-BLC" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="7.5" id="rAJ-9N-OqQ"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <size key="customSize" width="184" height="186"/>
+            <connections>
+                <outlet property="borderView" destination="Qd3-VZ-BLC" id="9GD-7a-irD"/>
+                <outlet property="productName" destination="bmf-eC-lOg" id="fek-Bm-QNo"/>
+                <outlet property="productimg" destination="64I-KU-0KK" id="aMA-ui-hlL"/>
+            </connections>
+            <point key="canvasLocation" x="233.59999999999999" y="246.9265367316342"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="goodTire" width="74" height="74"/>
+    </resources>
+</document>

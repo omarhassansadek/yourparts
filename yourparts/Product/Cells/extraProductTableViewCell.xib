@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="extraProductCell" rowHeight="90" id="KGk-i7-Jjw" customClass="extraProductTableViewCell" customModule="yourparts" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="90"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="89.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6NL-Ml-wdm" customClass="BEMCheckBox">
+                        <rect key="frame" x="15" y="35" width="20" height="20"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="20" id="2iP-dv-fWg"/>
+                            <constraint firstAttribute="width" constant="20" id="ORf-cO-Nt7"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="onTintColor">
+                                <color key="value" red="0.93725490199999995" green="0.23921568630000001" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="onFillColor">
+                                <color key="value" red="0.0" green="0.80000000000000004" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="offFillColor">
+                                <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="tintColor">
+                                <color key="value" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qwm-Du-lPP">
+                        <rect key="frame" x="50" y="20" width="50" height="50"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="50" id="9Ue-kD-W11"/>
+                            <constraint firstAttribute="height" constant="50" id="EwE-yt-30T"/>
+                        </constraints>
+                    </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h3a-8e-VtL">
+                        <rect key="frame" x="115" y="34.5" width="190" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="IZ0-Es-PzB"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="h3a-8e-VtL" secondAttribute="trailing" constant="15" id="Btf-se-pGw"/>
+                    <constraint firstItem="h3a-8e-VtL" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="PIW-iY-xMH"/>
+                    <constraint firstItem="6NL-Ml-wdm" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="aGb-CX-rhF"/>
+                    <constraint firstItem="Qwm-Du-lPP" firstAttribute="leading" secondItem="6NL-Ml-wdm" secondAttribute="trailing" constant="15" id="elO-HC-8XS"/>
+                    <constraint firstItem="h3a-8e-VtL" firstAttribute="leading" secondItem="Qwm-Du-lPP" secondAttribute="trailing" constant="15" id="feM-Qt-M5Q"/>
+                    <constraint firstItem="Qwm-Du-lPP" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="jvA-Zj-QkD"/>
+                    <constraint firstItem="6NL-Ml-wdm" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="nOm-Kl-GKo"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="extraProductTitle" destination="h3a-8e-VtL" id="bEN-wg-jTl"/>
+                <outlet property="productView" destination="Qwm-Du-lPP" id="hEX-3u-qtE"/>
+            </connections>
+            <point key="canvasLocation" x="136" y="217.69115442278863"/>
+        </tableViewCell>
+    </objects>
+</document>

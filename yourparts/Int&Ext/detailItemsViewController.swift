@@ -77,11 +77,17 @@ class detailItemsViewController: UIViewController, UITableViewDelegate, UITableV
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //self.performSegue(withIdentifier: "gotoDetailOil", sender: self)
+        
         if self.tableArr[indexPath.row] == "1"{
             self.tableArr[indexPath.row] = "2"
-        }else{
+        }else if self.tableArr[indexPath.row] == "2"{
             self.tableArr[indexPath.row] = "1"
+        }else{
+            self.performSegue(withIdentifier: "gotoPartProduct", sender: self)
         }
+        
+
+       
         
         self.detailItemsTableView.reloadData()
     }

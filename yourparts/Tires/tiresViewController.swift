@@ -73,8 +73,10 @@ class tiresViewController: UIViewController, UITableViewDelegate, UITableViewDat
         //self.performSegue(withIdentifier: "gotoDetailOil", sender: self)
         if self.tableArr[indexPath.row] == "1"{
             self.tableArr[indexPath.row] = "2"
-        }else{
+        }else if self.tableArr[indexPath.row] == "2"{
             self.tableArr[indexPath.row] = "1"
+        }else{
+            self.performSegue(withIdentifier: "gotoTireProduct", sender: self)
         }
         
         self.tiresTableView.reloadData()

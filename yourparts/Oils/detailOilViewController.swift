@@ -38,6 +38,7 @@ class detailOilViewController: UIViewController, UITableViewDataSource, UITableV
         return 10
     }
     
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "detailOilCell") as! detailOilTableViewCell
         return cell
@@ -47,6 +48,9 @@ class detailOilViewController: UIViewController, UITableViewDataSource, UITableV
         return 110.0
     }
 
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.performSegue(withIdentifier: "gotoProductDetails", sender: self)
+    }
     /*
     // MARK: - Navigation
 

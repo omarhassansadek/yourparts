@@ -47,11 +47,20 @@
                     <connections>
                         <outlet property="tiresTableView" destination="PoH-H2-uwK" id="7Ex-B7-7HF"/>
                         <outlet property="vcTitle" destination="6tp-GX-dBI" id="bU4-nY-UEH"/>
+                        <segue destination="wlR-0I-TE4" kind="show" identifier="gotoTireProduct" id="YF7-aY-ZlP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aeh-9P-CMs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="92" y="149"/>
+        </scene>
+        <!--firstProduct-->
+        <scene sceneID="ISa-UR-WuQ">
+            <objects>
+                <viewControllerPlaceholder storyboardName="product" referencedIdentifier="firstProduct" id="wlR-0I-TE4" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="R4k-aw-Ddh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="733" y="148"/>
         </scene>
     </scenes>
 </document>

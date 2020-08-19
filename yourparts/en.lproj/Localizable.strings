@@ -5,6 +5,11 @@
   Created by iMac1 on 6/24/20.
   Copyright © 2020 yourparts. All rights reserved.
 */
+"Name" = "Name" ;
+
+"Email" = "Email" ;
+
+"Password" = "Password" ;
 
 "welcome" = "welcome";
 
@@ -80,7 +85,9 @@
 
 "Model" = "Model";
 
-"Tire Type" = "Tire Type";
+"Size" = "Size";
+
+"Stock" = "Stock";
 
 "Tire Type" = "Tire Type";
 
@@ -109,3 +116,45 @@
 "Choose Sub Dep." = "Choose Sub Dep." ;
 
 "Choose Home Country" = "Choose Home Country" ;
+
+"Add to Cart" = "Add to Cart" ;
+
+"Add to Favorites" = "Add to Favorites" ;
+
+"Product Details" = "Product Details";
+
+"Supplier" = "Supplier";
+
+"Details" = "Details";
+
+"Reviews" = "Reviews";
+
+"View all Reviews" = "View all Reviews" ;
+
+"Rate Product" = "Rate Product" ;
+
+"Similar Products" = "Similar Products" ;
+
+"See All Products" = "See All Products" ;
+
+"Show Offer" = "Show Offer";
+
+"Discount 30%" = "Discount 30%" ;
+
+"Check Parts" = "Check Parts" ;
+
+"What is yourparts" = "What is yourparts";
+
+"All Spare Parts" = "All Spare Parts" ;
+
+"Search with part name" = "Search with part name";
+
+"Create New Account" = "Create New Account";
+
+"Welcome to Your Parts" = "Welcome to Your Parts";
+
+"Sign up to explore a world of car parts" = "Sign up to explore a world of car parts";
+
+"Sign in" = "Sign in";
+
+"Don't have an account? Sign up" = "Don't have an account? Sign up" ;

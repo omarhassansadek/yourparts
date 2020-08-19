@@ -37,9 +37,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MOLHResetable {
     func reset() {
         let rootViewController: UIWindow = ((UIApplication.shared.delegate?.window)!)!
         //main for main
-        let story = UIStoryboard(name: "Main", bundle: nil)
+        let story = UIStoryboard(name: "Auth", bundle: nil)
         //rootViewController.rootViewController = story.instantiateViewController(withIdentifier: "tabx")
-        rootViewController.rootViewController = story.instantiateViewController(withIdentifier: "tabx")
+        rootViewController.rootViewController = story.instantiateViewController(withIdentifier: "signupVC")
 
     }
     
