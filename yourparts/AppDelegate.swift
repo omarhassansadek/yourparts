@@ -39,7 +39,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MOLHResetable {
         //main for main
         let story = UIStoryboard(name: "Auth", bundle: nil)
         //rootViewController.rootViewController = story.instantiateViewController(withIdentifier: "tabx")
-        rootViewController.rootViewController = story.instantiateViewController(withIdentifier: "signupVC")
+        rootViewController.rootViewController = story.instantiateViewController(withIdentifier: "loginScreen")
 
     }
     

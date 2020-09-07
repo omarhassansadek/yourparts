@@ -377,7 +377,6 @@
                                                                     </label>
                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UNZ-9d-nW3">
                                                                         <rect key="frame" x="0.0" y="0.0" width="187.33333333333334" height="187.66666666666666"/>
-                                                                        <state key="normal" title="Button"/>
                                                                         <connections>
                                                                             <action selector="gotoAfshaBtn:" destination="m48-xV-sR0" eventType="touchUpInside" id="PfH-e6-V9e"/>
                                                                         </connections>
@@ -451,7 +450,6 @@
                                                                     </label>
                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v6K-DX-qLV">
                                                                         <rect key="frame" x="0.0" y="0.0" width="187.66666666666666" height="187.33333333333334"/>
-                                                                        <state key="normal" title="Button"/>
                                                                         <connections>
                                                                             <action selector="gotoMotorBtn:" destination="m48-xV-sR0" eventType="touchUpInside" id="4j8-G5-ehv"/>
                                                                         </connections>

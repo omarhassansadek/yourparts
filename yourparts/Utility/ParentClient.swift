@@ -29,7 +29,7 @@ class ParentClient: NSObject {
         }
         
         let env = Bundle.main.infoDictionary!
-        self.isSend = env["DevOrProduction"] as! String
+        //self.isSend = env["DevOrProduction"] as! String
 
         
         
@@ -49,7 +49,7 @@ class ParentClient: NSObject {
         ]
     }
     
-    func communicateWithApi(url: String?, pagingUrl:String?, method: HTTPMethod, parameters: [String:String]?, onSuccess: @escaping (JSON) -> Void, onFailure: @escaping (JSON) -> Void) {
+    func communicateWithApi(url: String?, pagingUrl:String?, method: HTTPMethod, parameters: [String:Any]?, onSuccess: @escaping (JSON) -> Void, onFailure: @escaping (JSON) -> Void) {
         
         var apiURL: URL?
         if url != nil {

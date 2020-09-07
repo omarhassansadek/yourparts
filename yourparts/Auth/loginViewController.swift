@@ -18,7 +18,8 @@ class loginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+        self.setNeedsStatusBarAppearanceUpdate()
+
         self.signinLbl.text = "Sign in".localized
         self.signinLbl.font = UIFont(name: "Cairo-Bold", size: 17)
         
@@ -42,6 +43,25 @@ class loginViewController: UIViewController {
 
 
         // Do any additional setup after loading the view.
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+    
+    
+    func loginUser(){
+        
+        if self.emailTf.text == nil || self.passwordTf.text == nil || self.emailTf.text == "" || self.passwordTf.text == ""{
+            AlertViewer().showAlertView(withMessage: "Email and Password are required", onController: self)
+        }else{
+            
+            if Connectivity.isConnectedToInternet(){
+                
+            }
+             //   loginClientViewModel.loginUser(email: emailTf.text!, pass: passTf.text!, onSuccess: { responseString in
+               //     if responseString {
+        }
     }
     
 

@@ -81,6 +81,10 @@
 		39AEFF1524E1088500AE0552 /* homeSliderCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39AEFF1324E1088500AE0552 /* homeSliderCollectionViewCell.swift */; };
 		39AEFF1624E1088500AE0552 /* homeSliderCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 39AEFF1424E1088500AE0552 /* homeSliderCollectionViewCell.xib */; };
 		39AEFF1824E10C0700AE0552 /* homeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39AEFF1724E10C0700AE0552 /* homeViewController.swift */; };
+		39CA5CF72505E74A002F6E91 /* EmptyFieldValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39CA5CF62505E74A002F6E91 /* EmptyFieldValidator.swift */; };
+		39CA5CF92505ED40002F6E91 /* Connectivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39CA5CF82505ED40002F6E91 /* Connectivity.swift */; };
+		39CA5CFB2505EE46002F6E91 /* loginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39CA5CFA2505EE46002F6E91 /* loginViewModel.swift */; };
+		39CA5CFD2505EE78002F6E91 /* loginClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39CA5CFC2505EE78002F6E91 /* loginClient.swift */; };
 		39E05F4724A80E8D00F2C025 /* infoProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39E05F4624A80E8D00F2C025 /* infoProfileViewController.swift */; };
 		39E05F4824A815B400F2C025 /* profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 39E05F4A24A815B400F2C025 /* profile.storyboard */; };
 		39E3B5C424E1941B0042BCAF /* cartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39E3B5C324E1941B0042BCAF /* cartViewController.swift */; };
@@ -208,6 +212,10 @@
 		39AEFF1324E1088500AE0552 /* homeSliderCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = homeSliderCollectionViewCell.swift; sourceTree = "<group>"; };
 		39AEFF1424E1088500AE0552 /* homeSliderCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = homeSliderCollectionViewCell.xib; sourceTree = "<group>"; };
 		39AEFF1724E10C0700AE0552 /* homeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = homeViewController.swift; sourceTree = "<group>"; };
+		39CA5CF62505E74A002F6E91 /* EmptyFieldValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyFieldValidator.swift; sourceTree = "<group>"; };
+		39CA5CF82505ED40002F6E91 /* Connectivity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Connectivity.swift; sourceTree = "<group>"; };
+		39CA5CFA2505EE46002F6E91 /* loginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loginViewModel.swift; sourceTree = "<group>"; };
+		39CA5CFC2505EE78002F6E91 /* loginClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loginClient.swift; sourceTree = "<group>"; };
 		39E05F4624A80E8D00F2C025 /* infoProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = infoProfileViewController.swift; sourceTree = "<group>"; };
 		39E05F4924A815B400F2C025 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/profile.storyboard; sourceTree = "<group>"; };
 		39E05F4C24A815BC00F2C025 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/profile.strings; sourceTree = "<group>"; };
@@ -301,6 +309,8 @@
 		390FFD3E24A288E0008BD0B0 /* Utility */ = {
 			isa = PBXGroup;
 			children = (
+				39CA5CF82505ED40002F6E91 /* Connectivity.swift */,
+				39CA5CF62505E74A002F6E91 /* EmptyFieldValidator.swift */,
 				398D311024ED75250035A00E /* ParentClient.swift */,
 				3912EC8324A9C2ED0024C4B8 /* AlertViewer.swift */,
 				390FFD3F24A288F9008BD0B0 /* constants.swift */,
@@ -490,6 +500,7 @@
 			isa = PBXGroup;
 			children = (
 				398D311324ED76110035A00E /* signupViewModel.swift */,
+				39CA5CFA2505EE46002F6E91 /* loginViewModel.swift */,
 			);
 			path = viewModels;
 			sourceTree = "<group>";
@@ -498,6 +509,7 @@
 			isa = PBXGroup;
 			children = (
 				398D311624ED762F0035A00E /* signupClient.swift */,
+				39CA5CFC2505EE78002F6E91 /* loginClient.swift */,
 			);
 			path = clients;
 			sourceTree = "<group>";
@@ -944,6 +956,8 @@
 				3989841A24E56BA700A7188C /* SparePartCategoryTableViewCell.swift in Sources */,
 				398D311924ED77340035A00E /* URLConstants.swift in Sources */,
 				3990DE3D24E906E600ED3F49 /* addToCartBtnTableViewCell.swift in Sources */,
+				39CA5CFD2505EE78002F6E91 /* loginClient.swift in Sources */,
+				39CA5CF92505ED40002F6E91 /* Connectivity.swift in Sources */,
 				398FF34C24D028B90001F8C1 /* detailOilTableViewCell.swift in Sources */,
 				3912EC8424A9C2ED0024C4B8 /* AlertViewer.swift in Sources */,
 				393BC01B24A7C3CF00CAB4BE /* addTableViewCell.swift in Sources */,
@@ -958,6 +972,7 @@
 				394306D124A42B5300B9580C /* menuViewController.swift in Sources */,
 				393BC01824A7C28700CAB4BE /* favAddressViewController.swift in Sources */,
 				3972FC8B24DBABC100841739 /* userReviewCollectionViewCell.swift in Sources */,
+				39CA5CFB2505EE46002F6E91 /* loginViewModel.swift in Sources */,
 				398D311424ED76110035A00E /* signupViewModel.swift in Sources */,
 				398D311124ED75260035A00E /* ParentClient.swift in Sources */,
 				3989841124E564D800A7188C /* sparePartsViewController.swift in Sources */,
@@ -965,6 +980,7 @@
 				3999F16F24D9FBEF00EAEC56 /* productViewController.swift in Sources */,
 				3990DE4224E907B800ED3F49 /* chooseAdrressTitleTableViewCell.swift in Sources */,
 				39FFAF9624D09EF300532C7F /* intAndExtViewController.swift in Sources */,
+				39CA5CF72505E74A002F6E91 /* EmptyFieldValidator.swift in Sources */,
 				397E8B9024A5D63200780312 /* profileViewModel.swift in Sources */,
 				3989841524E565AC00A7188C /* headerTableViewCell.swift in Sources */,
 				3912EC8A24A9D2700024C4B8 /* menuTitleTableViewCell.swift in Sources */,

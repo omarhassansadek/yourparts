@@ -2,7 +2,7 @@
 //  AlertViewer.swift
 //  phLog
 //
-//  Created by Mina Yousry on 9/23/18.
+//  Created by iMac1 on 9/23/18.
 //  Copyright © 2018 Softmills. All rights reserved.
 //
 
