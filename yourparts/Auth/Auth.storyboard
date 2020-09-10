@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina5_9" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -14,14 +13,14 @@
             <objects>
                 <viewController storyboardIdentifier="signupVC" id="2b6-YN-GH9" customClass="signupViewController" customModule="yourparts" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="cyR-lH-Dkg">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="758"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="authBg" translatesAutoresizingMaskIntoConstraints="NO" id="xIZ-WN-UqG">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="758"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VFW-Fe-w0U">
-                                <rect key="frame" x="20" y="218.66666666666663" width="335" height="375"/>
+                                <rect key="frame" x="20" y="191.66666666666663" width="335" height="375"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DYr-HU-i7q">
                                         <rect key="frame" x="0.0" y="0.0" width="335" height="21"/>
@@ -42,7 +41,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="80K-jO-DJB">
-                                        <rect key="frame" x="0.0" y="58.000000000000028" width="335" height="21"/>
+                                        <rect key="frame" x="0.0" y="58" width="335" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="21" id="d8s-w3-JXI"/>
                                         </constraints>
@@ -55,7 +54,6 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="dtE-rC-n6Y"/>
                                         </constraints>
-                                        <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
@@ -64,7 +62,6 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="dcm-aj-HDs"/>
                                         </constraints>
-                                        <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
@@ -73,7 +70,6 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="EYe-zH-j3F"/>
                                         </constraints>
-                                        <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                     </textField>
@@ -186,7 +182,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nYb-PE-Fol">
-                                <rect key="frame" x="340" y="64" width="15" height="15"/>
+                                <rect key="frame" x="340" y="20" width="15" height="15"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="close" translatesAutoresizingMaskIntoConstraints="NO" id="zck-dM-oWE">
                                         <rect key="frame" x="0.0" y="0.0" width="15" height="15"/>
@@ -277,7 +273,6 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="rh7-cm-6UJ"/>
                                         </constraints>
-                                        <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
@@ -286,7 +281,6 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="tv9-iX-Paz"/>
                                         </constraints>
-                                        <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                     </textField>
@@ -299,7 +293,7 @@
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
-                                                    <segue destination="KEG-3c-sZb" kind="presentation" modalTransitionStyle="flipHorizontal" id="efD-sX-1yC"/>
+                                                    <action selector="loginUser" destination="iIR-pJ-skI" eventType="touchUpInside" id="lhQ-SQ-lFQ"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -364,6 +358,7 @@
                         <outlet property="signinBtn" destination="OFF-c4-4fF" id="fls-7h-Okg"/>
                         <outlet property="signinLbl" destination="tMv-Qj-7rd" id="dyU-8q-JT4"/>
                         <outlet property="signupBtn" destination="2OL-12-6EH" id="koa-UX-zvO"/>
+                        <segue destination="KEG-3c-sZb" kind="presentation" identifier="gotoHomeFromLogin" modalPresentationStyle="fullScreen" modalTransitionStyle="flipHorizontal" id="mlD-Qt-lwR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="APZ-tN-98e" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -379,13 +374,13 @@
             <point key="canvasLocation" x="653" y="844"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="mlD-Qt-lwR"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="authBg" width="375" height="812"/>
         <image name="close" width="256" height="256"/>
         <image name="createAccBtn" width="374" height="60"/>
         <image name="signinFbBtn" width="374" height="63"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="98t-8o-tzj"/>
-    </inferredMetricsTieBreakers>
 </document>
