@@ -7,9 +7,12 @@
 //
 
 import UIKit
+import  NVActivityIndicatorView
+
 
 class loginViewController: UIViewController {
     
+    @IBOutlet weak var activityindicator: NVActivityIndicatorView!
     @IBOutlet weak var signupBtn: UIButton!
     @IBOutlet weak var signinBtn: UIButton!
     @IBOutlet weak var passwordTf: UITextField!
@@ -53,20 +56,36 @@ class loginViewController: UIViewController {
     
     @IBAction func loginUser(){
         
+        self.signinBtn.setTitle("", for: .normal)
+        self.activityindicator.startAnimating()
+        
         if self.emailTf.text == nil || self.passwordTf.text == nil || self.emailTf.text == "" || self.passwordTf.text == ""{
+            
+            self.activityindicator.stopAnimating()
+            self.signinBtn.setTitle( "Sign in".localized, for: .normal)
+
             AlertViewer().showAlertView(withMessage: "Email and Password are required", onController: self)
+            
+            
         }else{
             
             if Connectivity.isConnectedToInternet(){
+                
                 let apiParameters = ["email" : self.emailTf.text! , "password" : self.passwordTf.text!]
                 self.loginVM.loginUsr(apiParameters: apiParameters, onSuccess: { (isSuccess) in
                     //
                     if isSuccess{
+                        self.activityindicator.stopAnimating()
+                        self.signinBtn.setTitle( "Sign in".localized, for: .normal)
+
                         self.performSegue(withIdentifier: "gotoHomeFromLogin", sender: self)
                     }
                     
                 }) { (errMsg) in
                     //
+                    self.activityindicator.stopAnimating()
+                    self.signinBtn.setTitle( "Sign in".localized, for: .normal)
+
                     AlertViewer().showAlertView(withMessage: errMsg, onController: self)
                 }
             }

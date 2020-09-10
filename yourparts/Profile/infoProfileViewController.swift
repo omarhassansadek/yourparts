@@ -10,12 +10,22 @@ import UIKit
 
 class infoProfileViewController: UIViewController {
 
+    @IBOutlet weak var nameTf: UITextField!
+    
+    @IBOutlet weak var mobileTf: UITextField!
+    
+    @IBOutlet weak var emailTf: UITextField!
+    
+    @IBOutlet weak var jobTf: UITextField!
+    
     @IBOutlet weak var profileimg: UIImageView!
    
     @IBOutlet weak var editBtn: UIButton!
   
     @IBOutlet var labelsArr: [UILabel]!
- 
+
+    @IBOutlet var infoprofileVM : infoProfileViewModel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -30,7 +40,16 @@ class infoProfileViewController: UIViewController {
             topItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         }
         
-        
+        self.infoprofileVM.getUserProfile( onSuccess: { (isSuccess) in
+            //
+            self.nameTf.text = self.infoprofileVM.userProfile.firstname! ?? "" + " " + self.infoprofileVM.userProfile.lastname! ?? ""
+            self.mobileTf.text = self.infoprofileVM.userProfile.phone_number ?? ""
+            self.emailTf.text = self.infoprofileVM.userProfile.email ?? ""
+
+           // self.jobTf.text = self.infoprofileVM.userProfile.
+        }) { (errormsg) in
+            //
+        }
         self.navigationController?.navigationBar.tintColor = primaryColor
         for lbl in labelsArr{
             lbl.font = UIFont(name: "TheMixArab", size: 13)

@@ -14,8 +14,12 @@ class myCarsViewController: UIViewController, UITableViewDelegate, UITableViewDa
     @IBOutlet weak var detailTitle: UILabel!
     @IBOutlet weak var carsTableView: UITableView!
     
+    @IBOutlet weak var myCarsVM: myCarsViewModel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.fetchCars()
 
         //setting the back button style and navigation controller
         if let topItem = self.navigationController?.navigationBar.topItem {
@@ -45,7 +49,7 @@ class myCarsViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return self.myCarsVM.myCars.count
         
     }
     
@@ -73,6 +77,14 @@ class myCarsViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
 
+    func fetchCars(){
+        self.myCarsVM.getMyVehicles(onSuccess: { (isSuccess) in
+            //
+            self.carsTableView.reloadData()
+        }) { (errMsg) in
+            //
+        }
+    }
     /*
     // MARK: - Navigation
 

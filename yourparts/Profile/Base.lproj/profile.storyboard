@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="OvI-Zz-P5C">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="OvI-Zz-P5C">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -18,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Okm-vG-2aK">
-                                <rect key="frame" x="0.0" y="55" width="375" height="612"/>
+                                <rect key="frame" x="0.0" y="35" width="375" height="632"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
                         </subviews>
@@ -60,11 +59,11 @@
             <objects>
                 <viewController id="YCt-t2-osj" customClass="cartViewController" customModule="yourparts" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="GJ0-7w-X1O">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ogL-Ka-bmh">
-                                <rect key="frame" x="20" y="40" width="335" height="50"/>
+                                <rect key="frame" x="20" y="20" width="335" height="50"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cartico" translatesAutoresizingMaskIntoConstraints="NO" id="Js3-xW-vJK">
                                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
@@ -128,11 +127,11 @@
             <objects>
                 <viewController id="PZZ-sH-hv3" customClass="favViewController" customModule="yourparts" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="IhR-YK-Lr0">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7fL-vc-irs">
-                                <rect key="frame" x="20" y="40" width="335" height="50"/>
+                                <rect key="frame" x="20" y="20" width="335" height="50"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="favBtn" translatesAutoresizingMaskIntoConstraints="NO" id="CRt-Gg-5Ks">
                                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
@@ -194,7 +193,7 @@
         <!--Info Profile View Controller-->
         <scene sceneID="AQG-2G-4q4">
             <objects>
-                <viewController id="E5I-rZ-JBw" customClass="infoProfileViewController" customModule="yourparts" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="E5I-rZ-JBw" customClass="infoProfileViewController" customModule="yourparts" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="KoJ-wI-7Vf">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -239,7 +238,6 @@
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="35" id="yy1-aG-xKJ"/>
                                                         </constraints>
-                                                        <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits"/>
                                                     </textField>
@@ -272,7 +270,6 @@
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="35" id="wp0-nb-yl0"/>
                                                         </constraints>
-                                                        <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits"/>
                                                     </textField>
@@ -305,7 +302,6 @@
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="35" id="Q1X-od-rK4"/>
                                                         </constraints>
-                                                        <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits"/>
                                                     </textField>
@@ -338,7 +334,6 @@
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="35" id="oFl-gQ-sfh"/>
                                                         </constraints>
-                                                        <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits"/>
                                                     </textField>
@@ -411,6 +406,11 @@
                     </view>
                     <connections>
                         <outlet property="editBtn" destination="6Iv-Ox-AVA" id="0qq-Ov-FDO"/>
+                        <outlet property="emailTf" destination="XVV-oz-2RW" id="tf0-eJ-Yb6"/>
+                        <outlet property="infoprofileVM" destination="p6J-DB-lzd" id="WGN-Ss-4jn"/>
+                        <outlet property="jobTf" destination="Y8i-dT-6mF" id="HLT-fd-Efi"/>
+                        <outlet property="mobileTf" destination="xra-QX-Q8f" id="Ws4-Xf-QYd"/>
+                        <outlet property="nameTf" destination="Afy-sx-1Th" id="szq-aE-JVy"/>
                         <outlet property="profileimg" destination="woq-2h-Uba" id="lb5-5f-YBu"/>
                         <outletCollection property="labelsArr" destination="gmQ-Ae-Zrf" collectionClass="NSMutableArray" id="q5e-aN-906"/>
                         <outletCollection property="labelsArr" destination="ch6-Zb-QCq" collectionClass="NSMutableArray" id="x3d-z0-058"/>
@@ -419,6 +419,12 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2pa-ON-koO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <customObject id="p6J-DB-lzd" customClass="infoProfileViewModel" customModule="yourparts" customModuleProvider="target">
+                    <connections>
+                        <outlet property="infoprofileC" destination="8bY-IO-fAG" id="WVJ-bt-een"/>
+                    </connections>
+                </customObject>
+                <customObject id="8bY-IO-fAG" customClass="infoProfileClient" customModule="yourparts" customModuleProvider="target"/>
             </objects>
             <point key="canvasLocation" x="2013.5999999999999" y="-1077.2113943028487"/>
         </scene>
@@ -427,11 +433,11 @@
             <objects>
                 <viewController id="ndX-CJ-vbF" customClass="favAddressViewController" customModule="yourparts" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="YtZ-ol-iSc">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JXe-Hd-cmL">
-                                <rect key="frame" x="20" y="55" width="335" height="50"/>
+                                <rect key="frame" x="20" y="35" width="335" height="50"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="addressico" translatesAutoresizingMaskIntoConstraints="NO" id="15b-Y8-YhM">
                                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
@@ -473,7 +479,7 @@
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="YtY-Oi-U4a">
-                                <rect key="frame" x="0.0" y="115" width="375" height="552"/>
+                                <rect key="frame" x="0.0" y="95" width="375" height="552"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
                         </subviews>

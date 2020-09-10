@@ -29,7 +29,7 @@
 		<string>Cairo-Bold.ttf</string>
 	</array>
 	<key>UILaunchStoryboardName</key>
-	<string>LaunchScreen</string>
+	<string>myCars</string>
 	<key>UIMainStoryboardFile</key>
 	<string>Oil</string>
 	<key>UIRequiredDeviceCapabilities</key>

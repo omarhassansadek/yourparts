@@ -9,8 +9,12 @@
 import Foundation
 
 
-var baseUrl = "http://yourparts-958937517.eu-central-1.elb.amazonaws.com/"
+var baseUrl = "https://new-api.yourparts.com/"
 
-var signupUrl = "shop/auth/register/"
+var signupUrl = "yourparts/api/register/"
 
-var loginUrl = "https://new-api.yourparts.com/yourparts/api/login/"
+var loginUrl = "yourparts/api/login/"
+
+var profileUrl = "yourparts/api/customer"
+
+var myVehiclesUrl = "yourparts/api/customer/vehicles"

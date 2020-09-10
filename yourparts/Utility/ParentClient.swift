@@ -12,7 +12,7 @@ import SwiftyJSON
 
 class ParentClient: NSObject {
     
-    //let storedToken = UserDefaults.standard.string(forKey: PHOTOGRAPHER_TOKEN)
+    let storedToken = UserDefaults.standard.string(forKey: "token")
     //let storedToken = Optional("3475c5b5e69807e37c56f40636a1ce95")
     
     let headers: HTTPHeaders?
@@ -36,7 +36,7 @@ class ParentClient: NSObject {
         self.headers = [
             "Content-Type" : "application/json",
             //"x-lang-code" : langCode,
-            //"x-auth-token" :   self.storedToken ?? "",
+            //"Authorization" :   "Token \(self.storedToken ?? "")",
             //"x-auth-token" : "xxxxxxxxx",
             //"X-user-type" : "0"
         ]
@@ -49,7 +49,7 @@ class ParentClient: NSObject {
         ]
     }
     
-    func communicateWithApi(url: String?, pagingUrl:String?, method: HTTPMethod, parameters: [String:Any]?, onSuccess: @escaping (JSON) -> Void, onFailure: @escaping (JSON) -> Void) {
+    func communicateWithApi(url: String?, pagingUrl:String?, method: HTTPMethod, parameters: [String:Any]?,headers: [String: String]? , onSuccess: @escaping (JSON) -> Void, onFailure: @escaping (JSON) -> Void) {
         
         var apiURL: URL?
         if url != nil {
@@ -60,10 +60,12 @@ class ParentClient: NSObject {
         
         //print(self.headers as Any)
         //print(parameters as Any)
-        Alamofire.request(apiURL!, method: method, parameters: parameters, encoding: JSONEncoding.default, headers: self.headers).responseJSON { (response) in
+        
+        Alamofire.request(apiURL!, method: method, parameters: parameters, encoding: JSONEncoding.default, headers: headers).responseJSON { (response) in
             
             
             print("Request: \(String(describing: response.request))")
+            print("Request: \(String(describing: response.request?.allHTTPHeaderFields))")
             print("Response: \(String(describing: response.response))")
             print("Result: \(response.result)")
             
@@ -71,11 +73,13 @@ class ParentClient: NSObject {
             if response.response?.statusCode == 200 {
                 
                 do{
-                    let responseJson = try JSON(data: response.data!)
-                    //print(responseJson)
+                    //let responseJson = try JSON(data: response.data!)
+                    let responseJson = try JSON(data: response.data!, options: .allowFragments)
+
+                    print(responseJson)
                     onSuccess(responseJson)
-                }catch _{
-                    //print(error)
+                }catch let error{
+                    print(error)
                     onSuccess(JSON.null)
                 }
                 

@@ -20,7 +20,7 @@ class loginViewModel: NSObject {
     func loginUsr(apiParameters: [String:String], onSuccess: @escaping(Bool)-> () , onFailure: @escaping(String)-> ()){
         
         
-        self.loginC.requestLoginUser(url: loginUrl, apiMethod: .post, parametersOfCall: apiParameters, apiEncoding: JSONEncoding.default, completionSuccess: { (responseSuccess) in
+        self.loginC.requestLoginUser(url: baseUrl+loginUrl, apiMethod: .post, parametersOfCall: apiParameters, apiEncoding: JSONEncoding.default, completionSuccess: { (responseSuccess) in
             //
             print(responseSuccess)
             

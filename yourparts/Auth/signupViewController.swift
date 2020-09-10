@@ -7,9 +7,11 @@
 //
 
 import UIKit
+import NVActivityIndicatorView
 
 class signupViewController: UIViewController {
     
+    @IBOutlet weak var createAccImg: UIImageView!
     @IBOutlet weak var title3Lbl: UILabel!
     @IBOutlet weak var title2Lbl: UILabel!
     @IBOutlet weak var title1Lbl: UILabel!
@@ -17,6 +19,8 @@ class signupViewController: UIViewController {
     @IBOutlet weak var nameTf: UITextField!
     @IBOutlet weak var emailTf: UITextField!
     @IBOutlet weak var passwordTf: UITextField!
+
+    @IBOutlet weak var activityindicatorView: NVActivityIndicatorView!
     
     var isEmailFilled = false
     var isPasswordFilled = false
@@ -75,8 +79,9 @@ class signupViewController: UIViewController {
         return emailTest.evaluate(with: testStr)
     }
     
-    func signUserUp(){
-        
+    @IBAction func signUserUp(){
+        self.createAccImg.isHidden = true
+        self.activityindicatorView.startAnimating()
         var email: String?
         if EmptyFieldValidator.isFieldEmpty(field: self.emailTf){
             email = String((self.emailTf.text)!)
@@ -96,16 +101,30 @@ class signupViewController: UIViewController {
                 
                 self.signupVM.registerUser(apiParameters: userParameters, onSuccess: { (isSuccess) in
                     //gotoHomePage
+                    self.activityindicatorView.stopAnimating()
+                    self.createAccImg.isHidden = false
+
+
                     self.performSegue(withIdentifier: "gotoHome", sender: self)
                 }) { (errorMsg) in
                     //
+                    self.createAccImg.isHidden = false
+
+                    self.activityindicatorView.stopAnimating()
+
                 }
                 
                 
             }else{
+                self.activityindicatorView.stopAnimating()
+                self.createAccImg.isHidden = false
+
                 AlertViewer().showAlertView(withMessage: "Password must be at least 6 characters", onController: self)
             }
         }else{
+            self.activityindicatorView.stopAnimating()
+            self.createAccImg.isHidden = false
+
             AlertViewer().showAlertView(withMessage: "Invalid email format", onController: self)
         }
         

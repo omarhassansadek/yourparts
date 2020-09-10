@@ -16,7 +16,7 @@ class signupViewModel: NSObject {
     @IBOutlet weak var signupC: signupClient!
 
     func registerUser(apiParameters: [String:String], onSuccess: @escaping(Bool)-> () , onFailure: @escaping(String)-> ()){
-        self.signupC.requestRegisterUser(url: signupUrl, apiMethod: .post, parametersOfCall: apiParameters, apiEncoding: JSONEncoding.default, completionSuccess: { (responseSuccess) in
+        self.signupC.requestRegisterUser(url: baseUrl+signupUrl, apiMethod: .post, parametersOfCall: apiParameters, apiEncoding: JSONEncoding.default, completionSuccess: { (responseSuccess) in
             //
             
             onSuccess(true)

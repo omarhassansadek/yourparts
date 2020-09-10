@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y0D-Od-3Gj">
-    <device id="retina5_9" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y0D-Od-3Gj">
+    <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -161,7 +160,6 @@
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="35" id="5CD-dJ-nTo"/>
                                                         </constraints>
-                                                        <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits"/>
                                                     </textField>
@@ -171,7 +169,6 @@
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="35" id="CAI-si-bJG"/>
                                                         </constraints>
-                                                        <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits"/>
                                                     </textField>
@@ -181,7 +178,6 @@
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="35" id="CDZ-yt-SXz"/>
                                                         </constraints>
-                                                        <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits"/>
                                                     </textField>
@@ -191,7 +187,6 @@
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="35" id="QZg-9Z-aFE"/>
                                                         </constraints>
-                                                        <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits"/>
                                                     </textField>
@@ -782,16 +777,16 @@
     <resources>
         <image name="carTabico" width="20" height="16"/>
         <image name="cartTabico" width="23" height="18"/>
-        <image name="endHomeSec" width="354" height="159"/>
+        <image name="endHomeSec" width="354" height="159.66667175292969"/>
         <image name="grp1" width="188" height="188"/>
         <image name="grp2" width="187" height="188"/>
         <image name="grp3" width="188" height="188"/>
         <image name="grp4" width="187" height="188"/>
         <image name="grpGradient" width="188" height="66"/>
         <image name="homeTabico" width="20" height="20"/>
-        <image name="logo2" width="195" height="30"/>
-        <image name="menuTabico" width="21" height="21"/>
-        <image name="profileTabico" width="18" height="21"/>
+        <image name="logo2" width="195" height="30.666666030883789"/>
+        <image name="menuTabico" width="21.333333969116211" height="21.333333969116211"/>
+        <image name="profileTabico" width="18" height="21.333333969116211"/>
         <image name="sectionBg" width="375" height="496"/>
     </resources>
 </document>
