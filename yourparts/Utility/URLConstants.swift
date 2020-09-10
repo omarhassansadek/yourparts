@@ -11,5 +11,6 @@ import Foundation
 
 var baseUrl = "http://yourparts-958937517.eu-central-1.elb.amazonaws.com/"
 
-
 var signupUrl = "shop/auth/register/"
+
+var loginUrl = "https://new-api.yourparts.com/yourparts/api/login/"

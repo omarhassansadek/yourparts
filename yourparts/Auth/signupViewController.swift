@@ -9,7 +9,7 @@
 import UIKit
 
 class signupViewController: UIViewController {
-
+    
     @IBOutlet weak var title3Lbl: UILabel!
     @IBOutlet weak var title2Lbl: UILabel!
     @IBOutlet weak var title1Lbl: UILabel!
@@ -20,7 +20,7 @@ class signupViewController: UIViewController {
     
     var isEmailFilled = false
     var isPasswordFilled = false
-
+    
     @IBOutlet weak var signupVM: signupViewModel!
     
     @IBOutlet weak var checkboxLbl: UILabel!
@@ -28,40 +28,37 @@ class signupViewController: UIViewController {
         super.viewDidLoad()
         
         self.setNeedsStatusBarAppearanceUpdate()
-
+        
         self.nameTf.attributedPlaceholder = NSAttributedString(string: "Name".localized , attributes: [
             .foregroundColor: UIColor.darkGray,
             .font: UIFont(name: "Cairo-Regular", size: 12 )!
-            ])
+        ])
         
         self.emailTf.attributedPlaceholder = NSAttributedString(string: "Email".localized , attributes: [
             .foregroundColor: UIColor.darkGray,
             .font: UIFont(name: "Cairo-Regular", size: 12 )!
-            ])
+        ])
         
         self.passwordTf.attributedPlaceholder = NSAttributedString(string: "Password".localized , attributes: [
             .foregroundColor: UIColor.darkGray,
             .font: UIFont(name: "Cairo-Regular", size: 12 )!
-            ])
+        ])
         
         
-
+        
         self.title1Lbl.text = "Create New Account".localized
         self.title1Lbl.font = UIFont(name: "Cairo-Bold", size: 18)
-
+        
         self.title2Lbl.text = "Welcome to Your Parts".localized
         self.title2Lbl.font = UIFont(name: "Cairo-SemiBold", size: 14)
-
+        
         
         self.title3Lbl.text = "Sign up to explore a world of car parts".localized
         self.title3Lbl.font = UIFont(name: "Cairo-Regular", size: 14)
         
         self.checkboxLbl.text = "أوافق على الشروط و الأحكام".localized
         self.checkboxLbl.font = UIFont(name: "Cairo-Regular", size: 11)
-
         
-
-        // Do any additional setup after loading the view.
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -95,16 +92,16 @@ class signupViewController: UIViewController {
         if isValidEmail(testStr: email!){
             if (self.passwordTf.text?.count ?? 0 >= 6) {
                 
-                var userParameters: [String: String] = ["email": self.emailTf.text! , "password1" : self.passwordTf.text! , "password2" : self.passwordTf.text!]
-
+                let userParameters: [String: String] = ["email": self.emailTf.text! , "password1" : self.passwordTf.text! , "password2" : self.passwordTf.text!]
+                
                 self.signupVM.registerUser(apiParameters: userParameters, onSuccess: { (isSuccess) in
                     //gotoHomePage
                     self.performSegue(withIdentifier: "gotoHome", sender: self)
                 }) { (errorMsg) in
                     //
                 }
-
-    
+                
+                
             }else{
                 AlertViewer().showAlertView(withMessage: "Password must be at least 6 characters", onController: self)
             }
@@ -114,14 +111,5 @@ class signupViewController: UIViewController {
         
         
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+    
 }

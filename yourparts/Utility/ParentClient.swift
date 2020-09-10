@@ -30,7 +30,7 @@ class ParentClient: NSObject {
         
         let env = Bundle.main.infoDictionary!
         //self.isSend = env["DevOrProduction"] as! String
-
+        
         
         
         self.headers = [
@@ -80,6 +80,15 @@ class ParentClient: NSObject {
                 }
                 
             }else if response.response?.statusCode == 400{
+                do{
+                    let responseJsonFailure = try JSON(data: response.data!)
+                    //print(responseJson)
+                    onFailure(responseJsonFailure)
+                }catch _{
+                    //print(error)
+                    onFailure(JSON.null)
+                }
+                
                 //ErrorHandler.sharedInstance().handleClientError(response: response, onFailure: onFailure)
             }else{
                 
@@ -92,3 +101,4 @@ class ParentClient: NSObject {
     
     
 }
+

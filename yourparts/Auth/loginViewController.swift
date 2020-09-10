@@ -9,17 +9,20 @@
 import UIKit
 
 class loginViewController: UIViewController {
-
+    
     @IBOutlet weak var signupBtn: UIButton!
     @IBOutlet weak var signinBtn: UIButton!
     @IBOutlet weak var passwordTf: UITextField!
     @IBOutlet weak var emailTf: UITextField!
     @IBOutlet weak var signinLbl: UILabel!
+    
+    @IBOutlet weak var loginVM: loginViewModel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.setNeedsStatusBarAppearanceUpdate()
-
+        
         self.signinLbl.text = "Sign in".localized
         self.signinLbl.font = UIFont(name: "Cairo-Bold", size: 17)
         
@@ -27,22 +30,20 @@ class loginViewController: UIViewController {
         self.emailTf.attributedPlaceholder = NSAttributedString(string: "Email".localized , attributes: [
             .foregroundColor: UIColor.darkGray,
             .font: UIFont(name: "Cairo-Semibold", size: 12 )!
-            ])
+        ])
         
         self.passwordTf.attributedPlaceholder = NSAttributedString(string: "Password".localized , attributes: [
             .foregroundColor: UIColor.darkGray,
             .font: UIFont(name: "Cairo-Semibold", size: 12 )!
-            ])
+        ])
         
         self.signinBtn.layer.cornerRadius = 10.0
         self.signinBtn.setTitle("Sign in".localized, for: .normal)
         self.signinBtn.titleLabel?.font = UIFont(name: "Cairo-SemiBold", size: 14 )
-
+        
         self.signupBtn.setTitle("Don't have an account? Sign up".localized, for: .normal)
         self.signupBtn.titleLabel?.font = UIFont(name: "Cairo-SemiBold", size: 14 )
-
-
-        // Do any additional setup after loading the view.
+        
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -50,29 +51,27 @@ class loginViewController: UIViewController {
     }
     
     
-    func loginUser(){
+    @IBAction func loginUser(){
         
         if self.emailTf.text == nil || self.passwordTf.text == nil || self.emailTf.text == "" || self.passwordTf.text == ""{
             AlertViewer().showAlertView(withMessage: "Email and Password are required", onController: self)
         }else{
             
             if Connectivity.isConnectedToInternet(){
-                
+                let apiParameters = ["email" : self.emailTf.text! , "password" : self.passwordTf.text!]
+                self.loginVM.loginUsr(apiParameters: apiParameters, onSuccess: { (isSuccess) in
+                    //
+                    if isSuccess{
+                        self.performSegue(withIdentifier: "gotoHomeFromLogin", sender: self)
+                    }
+                    
+                }) { (errMsg) in
+                    //
+                    AlertViewer().showAlertView(withMessage: errMsg, onController: self)
+                }
             }
-             //   loginClientViewModel.loginUser(email: emailTf.text!, pass: passTf.text!, onSuccess: { responseString in
-               //     if responseString {
+            
         }
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
