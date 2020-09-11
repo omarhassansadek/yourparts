@@ -49,6 +49,35 @@ class ParentClient: NSObject {
         ]
     }
     
+    func communicateWithApiSetHeaders(url: String?, method: HTTPMethod, parameters: [String:Any]?,headers: [String: String]?, onSuccess: @escaping (JSON) -> Void, onFailure: @escaping (JSON) -> Void){
+        
+        var urlRequest = URLRequest(url: URL(string: "https://new-api.yourparts.com/yourparts/api/customer/vehicles/" ?? "")!)
+        urlRequest.httpMethod = HTTPMethod.get.rawValue
+        urlRequest = try! URLEncoding.default.encode(urlRequest, with: nil)
+        urlRequest.setValue(headers?["Authorization"], forHTTPHeaderField: "Authorization")
+        
+        Alamofire.request(urlRequest).responseJSON(completionHandler: {
+            response in
+            
+            print("Request: \(String(describing: response.request))")
+            print("Request: \(String(describing: response.request?.allHTTPHeaderFields))")
+            print("Response: \(String(describing: response.response))")
+            print("Result: \(response.result)")
+            
+            do{
+                //let responseJson = try JSON(data: response.data!)
+                let responseJson = try JSON(data: response.data!, options: .allowFragments)
+                
+                print(responseJson)
+                onSuccess(responseJson)
+            }catch let error{
+                print(error)
+                //onSuccess(JSON.null)
+            }
+            //code below
+        })
+    }
+    
     func communicateWithApi(url: String?, pagingUrl:String?, method: HTTPMethod, parameters: [String:Any]?,headers: [String: String]? , onSuccess: @escaping (JSON) -> Void, onFailure: @escaping (JSON) -> Void) {
         
         var apiURL: URL?

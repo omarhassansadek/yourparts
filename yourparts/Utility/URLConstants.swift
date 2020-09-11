@@ -15,6 +15,6 @@ var signupUrl = "yourparts/api/register/"
 
 var loginUrl = "yourparts/api/login/"
 
-var profileUrl = "yourparts/api/customer"
+var profileUrl = "yourparts/api/customer/"
 
-var myVehiclesUrl = "yourparts/api/customer/vehicles"
+var myVehiclesUrl = "yourparts/api/customer/vehicles/"

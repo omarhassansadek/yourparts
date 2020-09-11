@@ -63,6 +63,7 @@ class myCarsViewController: UIViewController, UITableViewDelegate, UITableViewDa
             return cell
         }else{
             let cell = tableView.dequeueReusableCell(withIdentifier: "carCell") as! carTableViewCell
+            cell.carNameLbl!.text = self.myCarsVM?.myCars[indexPath.row].model?.maker?.name ?? "" + " " + (self.myCarsVM.myCars[indexPath.row].model?.name)! ?? ""
             return cell
         }
     }

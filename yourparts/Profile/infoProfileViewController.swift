@@ -42,7 +42,7 @@ class infoProfileViewController: UIViewController {
         
         self.infoprofileVM.getUserProfile( onSuccess: { (isSuccess) in
             //
-            self.nameTf.text = self.infoprofileVM.userProfile.firstname! ?? "" + " " + self.infoprofileVM.userProfile.lastname! ?? ""
+            self.nameTf.text = "\(self.infoprofileVM.userProfile.firstname) \(self.infoprofileVM.userProfile.lastname)"
             self.mobileTf.text = self.infoprofileVM.userProfile.phone_number ?? ""
             self.emailTf.text = self.infoprofileVM.userProfile.email ?? ""
 
