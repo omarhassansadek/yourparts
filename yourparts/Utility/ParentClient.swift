@@ -51,7 +51,7 @@ class ParentClient: NSObject {
     
     func communicateWithApiSetHeaders(url: String?, method: HTTPMethod, parameters: [String:Any]?,headers: [String: String]?, onSuccess: @escaping (JSON) -> Void, onFailure: @escaping (JSON) -> Void){
         
-        var urlRequest = URLRequest(url: URL(string: "https://new-api.yourparts.com/yourparts/api/customer/vehicles/" ?? "")!)
+        var urlRequest = URLRequest(url: URL(string: url ?? "")!)
         urlRequest.httpMethod = HTTPMethod.get.rawValue
         urlRequest = try! URLEncoding.default.encode(urlRequest, with: nil)
         urlRequest.setValue(headers?["Authorization"], forHTTPHeaderField: "Authorization")

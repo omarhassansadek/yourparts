@@ -18,8 +18,9 @@ class loginViewController: UIViewController {
     @IBOutlet weak var passwordTf: UITextField!
     @IBOutlet weak var emailTf: UITextField!
     @IBOutlet weak var signinLbl: UILabel!
-    
     @IBOutlet weak var loginVM: loginViewModel!
+    
+    @IBOutlet weak var forgetPassBtn: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,7 +28,7 @@ class loginViewController: UIViewController {
         self.setNeedsStatusBarAppearanceUpdate()
         
         self.signinLbl.text = "Sign in".localized
-        self.signinLbl.font = UIFont(name: "Cairo-Bold", size: 17)
+        self.signinLbl.font = UIFont(name: "Cairo-Bold", size: 18)
         
         
         self.emailTf.attributedPlaceholder = NSAttributedString(string: "Email".localized , attributes: [
@@ -40,12 +41,27 @@ class loginViewController: UIViewController {
             .font: UIFont(name: "Cairo-Semibold", size: 12 )!
         ])
         
-        self.signinBtn.layer.cornerRadius = 10.0
+        self.signinBtn.layer.cornerRadius = 15.0
         self.signinBtn.setTitle("Sign in".localized, for: .normal)
-        self.signinBtn.titleLabel?.font = UIFont(name: "Cairo-SemiBold", size: 14 )
+        self.signinBtn.titleLabel?.font = UIFont(name: "Cairo-Bold", size: 14 )
         
         self.signupBtn.setTitle("Don't have an account? Sign up".localized, for: .normal)
-        self.signupBtn.titleLabel?.font = UIFont(name: "Cairo-SemiBold", size: 14 )
+        self.signupBtn.titleLabel?.font = UIFont(name: "Cairo-Bold", size: 14 )
+        
+        
+        self.forgetPassBtn.setTitle("Forget Password?".localized, for: .normal)
+        self.forgetPassBtn.titleLabel?.font = UIFont(name: "Cairo-Bold", size: 14 )
+        
+        self.emailTf.setLeftPaddingPoints(10)
+        self.emailTf.setRightPaddingPoints(10)
+        self.passwordTf.setLeftPaddingPoints(10)
+        self.passwordTf.setRightPaddingPoints(10)
+
+        self.emailTf.layer.cornerRadius = 15.0
+        self.passwordTf.layer.cornerRadius = 15.0
+
+        
+        
         
     }
     

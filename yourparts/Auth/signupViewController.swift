@@ -18,8 +18,10 @@ class signupViewController: UIViewController {
     
     @IBOutlet weak var nameTf: UITextField!
     @IBOutlet weak var emailTf: UITextField!
+    @IBOutlet weak var mobileTf: UITextField!
     @IBOutlet weak var passwordTf: UITextField!
-
+    @IBOutlet weak var confirmPassTf: UITextField!
+    
     @IBOutlet weak var activityindicatorView: NVActivityIndicatorView!
     
     var isEmailFilled = false
@@ -49,7 +51,35 @@ class signupViewController: UIViewController {
         ])
         
         
+        self.confirmPassTf.attributedPlaceholder = NSAttributedString(string: "Confirm Password".localized , attributes: [
+            .foregroundColor: UIColor.darkGray,
+            .font: UIFont(name: "Cairo-Regular", size: 12 )!
+        ])
         
+        
+        self.mobileTf.attributedPlaceholder = NSAttributedString(string: "Mobile Number".localized , attributes: [
+            .foregroundColor: UIColor.darkGray,
+            .font: UIFont(name: "Cairo-Regular", size: 12 )!
+        ])
+        
+        self.nameTf.layer.cornerRadius = 15.0
+        self.emailTf.layer.cornerRadius = 15.0
+        self.passwordTf.layer.cornerRadius = 15.0
+        self.confirmPassTf.layer.cornerRadius = 15.0
+        self.mobileTf.layer.cornerRadius = 15.0
+
+        
+        self.nameTf.setLeftPaddingPoints(10)
+        self.nameTf.setRightPaddingPoints(10)
+        self.emailTf.setLeftPaddingPoints(10)
+        self.emailTf.setRightPaddingPoints(10)
+        self.passwordTf.setLeftPaddingPoints(10)
+        self.passwordTf.setRightPaddingPoints(10)
+        self.confirmPassTf.setLeftPaddingPoints(10)
+        self.confirmPassTf.setRightPaddingPoints(10)
+        self.mobileTf.setLeftPaddingPoints(10)
+        self.mobileTf.setRightPaddingPoints(10)
+
         self.title1Lbl.text = "Create New Account".localized
         self.title1Lbl.font = UIFont(name: "Cairo-Bold", size: 18)
         
@@ -62,6 +92,8 @@ class signupViewController: UIViewController {
         
         self.checkboxLbl.text = "أوافق على الشروط و الأحكام".localized
         self.checkboxLbl.font = UIFont(name: "Cairo-Regular", size: 11)
+        
+        
         
     }
     

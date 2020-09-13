@@ -11,6 +11,8 @@
 
 "Password" = "Password" ;
 
+"Mobile Number" = "Mobile Number";
+
 "welcome" = "welcome";
 
 "Yourparts" = "Yourparts";
@@ -158,3 +160,8 @@
 "Sign in" = "Sign in";
 
 "Don't have an account? Sign up" = "Don't have an account? Sign up" ;
+
+"Confirm Password" = "Confirm Password" ;
+
+"Forget Password?" = "Forget Password?" ;
+
