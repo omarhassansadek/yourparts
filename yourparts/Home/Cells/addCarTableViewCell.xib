@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="addCarCell" rowHeight="80" id="KGk-i7-Jjw" customClass="addCarTableViewCell" customModule="yourparts" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="add" translatesAutoresizingMaskIntoConstraints="NO" id="jFD-KF-XAy">
+                        <rect key="frame" x="25" y="20" width="40" height="40"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="40" id="UnQ-sO-78e"/>
+                            <constraint firstAttribute="width" constant="40" id="gkJ-D5-tCe"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HrI-Xo-E2q">
+                        <rect key="frame" x="90" y="17.5" width="205" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="8o2-4u-e0k"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6dJ-IS-vyc">
+                        <rect key="frame" x="90" y="44" width="205" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="YQC-UH-VbI"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <color key="backgroundColor" red="0.93725490199999995" green="0.23921568630000001" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="HrI-Xo-E2q" secondAttribute="trailing" constant="25" id="GSm-6a-3Bm"/>
+                    <constraint firstItem="6dJ-IS-vyc" firstAttribute="leading" secondItem="jFD-KF-XAy" secondAttribute="trailing" constant="25" id="MBP-Qj-G69"/>
+                    <constraint firstItem="jFD-KF-XAy" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Uum-Ta-rSm"/>
+                    <constraint firstAttribute="bottom" secondItem="6dJ-IS-vyc" secondAttribute="bottom" constant="15" id="V0V-6T-AhO"/>
+                    <constraint firstItem="jFD-KF-XAy" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="25" id="b5b-M6-aXb"/>
+                    <constraint firstItem="HrI-Xo-E2q" firstAttribute="leading" secondItem="jFD-KF-XAy" secondAttribute="trailing" constant="25" id="drr-Sm-L8V"/>
+                    <constraint firstAttribute="trailing" secondItem="6dJ-IS-vyc" secondAttribute="trailing" constant="25" id="nal-2g-baQ"/>
+                    <constraint firstItem="HrI-Xo-E2q" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="17.5" id="pkp-pa-Khg"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="addCarLbl" destination="HrI-Xo-E2q" id="O6E-Ir-k9y"/>
+                <outlet property="detailAddCarLbl" destination="6dJ-IS-vyc" id="pra-Oe-hav"/>
+            </connections>
+            <point key="canvasLocation" x="137.68115942028987" y="141.96428571428569"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="add" width="32" height="32"/>
+    </resources>
+</document>

@@ -11,9 +11,9 @@ import Foundation
 
 var baseUrl = "https://new-api.yourparts.com/"
 
-var signupUrl = "auth/rest-auth/register/"
+var signupUrl = "auth/register/"
 
-var loginUrl = "auth/rest-auth/login/"
+var loginUrl = "auth/login/"
 
 var profileUrl = "customer/"
 
