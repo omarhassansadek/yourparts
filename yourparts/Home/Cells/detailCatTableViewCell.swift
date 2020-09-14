@@ -1,23 +1,21 @@
 //
-//  categoryTableViewCell.swift
+//  detailCatTableViewCell.swift
 //  yourparts
 //
-//  Created by Yourparts #1 on 9/13/20.
+//  Created by Yourparts #1 on 9/14/20.
 //  Copyright © 2020 yourparts. All rights reserved.
 //
 
 import UIKit
 
-class categoryTableViewCell: UITableViewCell {
+class detailCatTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var catImage: UIImageView!
     @IBOutlet weak var catName: UILabel!
-    @IBOutlet weak var roundView: UIView!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        self.roundView.layer.cornerRadius = 15.0
-        
+        self.catName.text = "Tire for your car".localized
+
         self.catName.font = UIFont(name: "Cairo-Bold", size: 14)
 
     }

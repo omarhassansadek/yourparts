@@ -18,7 +18,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dfb-AX-IcH">
-                        <rect key="frame" x="0.0" y="10" width="320" height="50"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OCz-TY-3HF">
                                 <rect key="frame" x="15" y="15" width="290" height="21"/>
@@ -38,12 +38,12 @@
                         </constraints>
                     </view>
                 </subviews>
-                <color key="backgroundColor" red="0.93725490199999995" green="0.23921568630000001" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                <color key="backgroundColor" red="0.93333333333333335" green="0.93333333333333335" blue="0.93333333333333335" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="Dfb-AX-IcH" secondAttribute="trailing" id="3fF-fd-S1x"/>
                     <constraint firstAttribute="bottom" secondItem="Dfb-AX-IcH" secondAttribute="bottom" id="KlM-mQ-YCz"/>
                     <constraint firstItem="Dfb-AX-IcH" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="QZn-C0-SZJ"/>
-                    <constraint firstItem="Dfb-AX-IcH" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="sy9-JE-4Ms"/>
+                    <constraint firstItem="Dfb-AX-IcH" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="sy9-JE-4Ms"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>

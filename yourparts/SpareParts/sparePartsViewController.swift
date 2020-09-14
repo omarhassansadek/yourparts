@@ -78,7 +78,7 @@ class sparePartsViewController: UIViewController, UITableViewDelegate, UITableVi
 
             let cellDelegate = spartsCollectionDelegate()
             //cellDelegate.profilesArray = self.storiesViewModel.commonTagsphotographerResponse?.data ?? [Photographer]()
-            cellDelegate.targetController = self
+            //cellDelegate.targetController = self
             cellDelegate.row = indexPath.row
             cell.row = indexPath.row
             //cellDelegate.type = "t"

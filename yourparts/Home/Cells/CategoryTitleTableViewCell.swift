@@ -16,18 +16,16 @@ class CategoryTitleTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
         //self.roundView.roundCorners(corners: [.topLeft, .topRight], radius: 15.0)
-
-        
+        //
+        //let view = UIView()
+        roundView.clipsToBounds = true
+        roundView.layer.cornerRadius = 10
+        roundView.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
         self.categoryLbl.text = "Categories".localized
-        self.categoryLbl.font = UIFont(name: "Cairo-Bold", size: 14)
+        self.categoryLbl.font = UIFont(name: "Cairo-Bold", size: 16)
 
     }
 
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
-      //  self.roundView.roundCorners(corners: [.topLeft, .topRight], radius: 15.0)
-    }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)

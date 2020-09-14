@@ -9,15 +9,16 @@
 import UIKit
 
 class homeSliderCollectionViewCell: UICollectionViewCell {
-
-    @IBOutlet weak var offerLbl: UILabel!
-    @IBOutlet weak var offerBtn: UIButton!
+    @IBOutlet weak var roundView: UIView!
+    @IBOutlet weak var offerimg: UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        self.offerLbl.text = "Discount 30%".localized
-        self.offerBtn.setTitle("Show Offer".localized, for: .normal)
-        self.offerBtn.titleLabel?.font = UIFont(name: "Cairo-Bold", size: 12)
+        self.roundView.layer.cornerRadius = 20.0
+        self.offerimg.layer.cornerRadius = 20.0
+        self.offerimg.contentMode = .scaleAspectFill
+        self.offerimg.clipsToBounds = true
+
     }
 
 }

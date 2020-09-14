@@ -18,3 +18,7 @@ var loginUrl = "auth/login/"
 var profileUrl = "customer/"
 
 var myVehiclesUrl = "customer/vehicles/"
+
+var categoriesUrl = "categories"
+
+
