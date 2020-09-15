@@ -32,9 +32,16 @@
                     </view>
                     <connections>
                         <outlet property="catTableView" destination="1Pp-Ad-4Yt" id="eif-SL-rrG"/>
+                        <outlet property="detailCatVM" destination="wlw-hh-3bw" id="BWN-9f-dKd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="T8m-fr-Sfv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <customObject id="wlw-hh-3bw" customClass="detailCatVM" customModule="yourparts" customModuleProvider="target">
+                    <connections>
+                        <outlet property="detailCatC" destination="cgQ-8H-vuo" id="vI1-rA-gpt"/>
+                    </connections>
+                </customObject>
+                <customObject id="cgQ-8H-vuo" customClass="detailCatClient" customModule="yourparts" customModuleProvider="target"/>
             </objects>
             <point key="canvasLocation" x="242.0289855072464" y="-206.25"/>
         </scene>

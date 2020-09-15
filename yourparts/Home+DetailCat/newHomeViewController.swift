@@ -126,7 +126,15 @@ class newHomeViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.performSegue(withIdentifier: "gotoDetailCat", sender: self)
+        
+        self.catIdToGo = self.homeVm.categoriesArr[indexPath.row - 3].id
+        
+        if self.catIdToGo == 1 || self.catIdToGo == 737 || self.catIdToGo == 58{
+            self.performSegue(withIdentifier: "gotoDetailCat", sender: self)
+        }else if self.catIdToGo == 85{
+            self.performSegue(withIdentifier: "gotoTires", sender: self)
+        }
+        
     }
     
     
@@ -145,6 +153,16 @@ class newHomeViewController: UIViewController, UITableViewDelegate, UITableViewD
             //
             //self.activityind.startAnimating()
 
+        }
+    }
+    
+    var catIdToGo: Int?
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "gotoDetailCat"{
+            var destVC = segue.destination as! detailCatViewController
+            destVC.catId = self.catIdToGo
         }
     }
     

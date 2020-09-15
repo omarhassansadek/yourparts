@@ -10,6 +10,7 @@ import UIKit
 
 class searchCatTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var backView: UIView!
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -20,6 +21,12 @@ class searchCatTableViewCell: UITableViewCell {
 
         backView.transform = CGAffineTransform(scaleX: -1, y: 1)
 
+        if #available(iOS 13.0, *) {
+            searchBar.searchTextField.placeholder = "Search with part name".localized
+            searchBar.searchTextField.font = UIFont(name: "Cairo-SemiBold", size: 11)
+        } else {
+            // Fallback on earlier versions
+        }
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

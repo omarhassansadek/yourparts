@@ -21,4 +21,10 @@ var myVehiclesUrl = "customer/vehicles/"
 
 var categoriesUrl = "categories"
 
+var rimSizeUrl = "tyres/rimsize/"
+
+var tireSizeUrl = "tyres/tyresize/"
+
+var rachoSizeUrl = "tyres/rachosize/"
+
 

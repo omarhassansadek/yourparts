@@ -18,5 +18,6 @@ class category{
     var image: String?
     var most_on_demand: Bool?
     var parent: String?
+    var detailCat : [category] = [] 
 
 }

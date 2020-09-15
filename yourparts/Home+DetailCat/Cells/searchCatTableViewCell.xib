@@ -10,7 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="searchCell" rowHeight="97" id="KGk-i7-Jjw" customClass="searchCatTableViewCell" customModule="yourparts" customModuleProvider="target">
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="searchCell" rowHeight="97" id="KGk-i7-Jjw" customClass="searchCatTableViewCell" customModule="yourparts" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
@@ -23,9 +23,8 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="accLeft" translatesAutoresizingMaskIntoConstraints="NO" id="efu-sv-VOq">
                                 <rect key="frame" x="0.0" y="0.0" width="15" height="15"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="keB-cv-mrY">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="keB-cv-mrY">
                                 <rect key="frame" x="-7.5" y="-7.5" width="30" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <connections>
                                     <action selector="goBackClicked:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="cRm-pG-Lco"/>
                                 </connections>
@@ -34,11 +33,15 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="efu-sv-VOq" secondAttribute="bottom" id="0jL-yz-VOc"/>
+                            <constraint firstItem="keB-cv-mrY" firstAttribute="top" secondItem="2uJ-p6-b11" secondAttribute="top" constant="-7.5" id="I32-p6-J5Q"/>
                             <constraint firstItem="efu-sv-VOq" firstAttribute="leading" secondItem="2uJ-p6-b11" secondAttribute="leading" id="QAm-CJ-Hic"/>
+                            <constraint firstAttribute="trailing" secondItem="keB-cv-mrY" secondAttribute="trailing" constant="-7.5" id="QgI-3z-0pw"/>
                             <constraint firstAttribute="height" constant="15" id="ZpN-ap-GI2"/>
+                            <constraint firstItem="keB-cv-mrY" firstAttribute="leading" secondItem="2uJ-p6-b11" secondAttribute="leading" constant="-7.5" id="i5C-Hh-Ddp"/>
                             <constraint firstItem="efu-sv-VOq" firstAttribute="top" secondItem="2uJ-p6-b11" secondAttribute="top" id="l5a-bV-bPc"/>
                             <constraint firstAttribute="width" constant="15" id="mjM-Jm-YJi"/>
                             <constraint firstAttribute="trailing" secondItem="efu-sv-VOq" secondAttribute="trailing" id="puT-wI-fHV"/>
+                            <constraint firstAttribute="bottom" secondItem="keB-cv-mrY" secondAttribute="bottom" constant="-7.5" id="smS-Af-W2e"/>
                         </constraints>
                     </view>
                     <searchBar contentMode="redraw" searchBarStyle="minimal" translatesAutoresizingMaskIntoConstraints="NO" id="7H5-Nu-jMi">
@@ -62,6 +65,7 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="backView" destination="2uJ-p6-b11" id="HQy-tZ-ihJ"/>
+                <outlet property="searchBar" destination="7H5-Nu-jMi" id="Nmb-9B-j4f"/>
             </connections>
             <point key="canvasLocation" x="137.68115942028987" y="109.15178571428571"/>
         </tableViewCell>

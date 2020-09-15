@@ -88,11 +88,13 @@
 
 "Tire Type" = "نوع الكاوتش";
 
-"Width" = "القطر";
+"Width" = "العرض";
 
 "Height" = "الأرتفاع";
 
 "Length" = "العرض";
+
+"Radius" = "القطر/ البوصة";
 
 "Search brand or model" = "ابحث بماركة او موديل" ;
 
@@ -171,3 +173,13 @@
 "Categories" = "الاقسام" ;
 
 "Offers Today" = "عروض اليوم" ;
+
+"Light Truck" = "نقل" ;
+
+"Passenger Car" = "ملاكى" ;
+
+"Enter Elements" = "أدخل العناصر" ;
+
+"Choose Speed" = "مستوى السرعة" ;
+
+"Search Tyres" = "ابحث عن الإطارات" ;

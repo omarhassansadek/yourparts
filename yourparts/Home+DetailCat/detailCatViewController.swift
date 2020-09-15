@@ -11,8 +11,18 @@ import UIKit
 class detailCatViewController: UIViewController , UITableViewDelegate, UITableViewDataSource{
 
     @IBOutlet weak var catTableView: UITableView!
+    @IBOutlet weak var detailCatVM: detailCatVM!
+    
+    var catId: Int?
+     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+            let statusBarView = UIView(frame: UIApplication.shared.statusBarFrame)
+            statusBarView.backgroundColor = UIColor.white
+            view.addSubview(statusBarView)
+        
+
 
         self.catTableView.delegate = self
         self.catTableView.dataSource = self
@@ -29,17 +39,19 @@ class detailCatViewController: UIViewController , UITableViewDelegate, UITableVi
                       
         let nib3 = UINib(nibName: String(describing: detailCatTableViewCell.self), bundle: nil)
         self.catTableView.register(nib3, forCellReuseIdentifier: "detailCatCell")
+        
+        self.getDetailCat()
     }
     
-      func numberOfSections(in tableView: UITableView) -> Int {
-            return 1
-        }
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
         
-        func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-            return 2 + 2
-        }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 2 + (self.detailCatVM.detailCategory?.detailCat.count ?? 0)
+    }
         
-        func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
             switch indexPath.row {
                 case 0:
                     let addCarCell = tableView.dequeueReusableCell(withIdentifier: "addCarCell") as! addCarTableViewCell
@@ -72,23 +84,23 @@ class detailCatViewController: UIViewController , UITableViewDelegate, UITableVi
                 
                 
                 //categoryCell.catImage.s
-//                categoryCell.catImage.sd_setImage(with: URL(string: self.homeVm.categoriesArr[indexPath.row - 3].image ?? "") , placeholderImage: nil, completed: { (image, error, cacheType, url) -> Void in
-//                    if ((error) != nil) {
-//                        // set the placeholder image here
-//                        categoryCell.catImage.image = UIImage(named: "teelFramel")
-//                    } else {
-//                        // success ... use the image
-//                    }
-//                })
-//
-//                categoryCell.catName.text = self.homeVm.categoriesArr[indexPath.row - 3].name
+                categoryCell.detailImg.sd_setImage(with: URL(string: self.detailCatVM.detailCategory?.detailCat[indexPath.row - 2].image ?? "") , placeholderImage: nil, completed: { (image, error, cacheType, url) -> Void in
+                    if ((error) != nil) {
+                        // set the placeholder image here
+                        categoryCell.detailImg.image = UIImage(named: "teelFramel")
+                    } else {
+                        // success ... use the image
+                    }
+                })
+                
+                categoryCell.catName.text = self.detailCatVM.detailCategory?.detailCat[indexPath.row - 2].name
                 
                 return categoryCell
             }
 
         }
         
-        func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
             
             switch indexPath.row {
                 case 0:
@@ -102,7 +114,18 @@ class detailCatViewController: UIViewController , UITableViewDelegate, UITableVi
             
             }
             
+    }
+    
+    
+    func getDetailCat(){
+        self.detailCatVM.getDetailCategory(id: self.catId ?? -1, apiParameters: [:], onSuccess: { (isSuccess) in
+            //
+            
+            self.catTableView.reloadData()
+        }) { (errMsg) in
+            //
         }
+    }
     
     
 

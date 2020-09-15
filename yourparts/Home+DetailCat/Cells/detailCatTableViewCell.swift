@@ -10,6 +10,7 @@ import UIKit
 
 class detailCatTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var detailImg: UIImageView!
     @IBOutlet weak var catName: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()

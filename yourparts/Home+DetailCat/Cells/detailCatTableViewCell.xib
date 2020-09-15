@@ -10,7 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="detailCatCell" rowHeight="95" id="KGk-i7-Jjw" customClass="detailCatTableViewCell" customModule="yourparts" customModuleProvider="target">
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="detailCatCell" rowHeight="95" id="KGk-i7-Jjw" customClass="detailCatTableViewCell" customModule="yourparts" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="320" height="95"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
@@ -64,6 +64,7 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="catName" destination="cYa-zi-uK1" id="8Rr-Rf-ngB"/>
+                <outlet property="detailImg" destination="XxW-wx-uRC" id="dJ4-4c-zfX"/>
             </connections>
             <point key="canvasLocation" x="139.13043478260872" y="124.88839285714285"/>
         </tableViewCell>

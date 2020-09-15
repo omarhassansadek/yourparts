@@ -109,7 +109,17 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aDZ-fZ-l4q" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2317.5999999999999" y="-1381.0344827586207"/>
+            <point key="canvasLocation" x="-2310" y="-1575"/>
+        </scene>
+        <!--Tire-->
+        <scene sceneID="IiH-hI-PT4">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Tire" id="lGf-4g-OYr" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="C0h-Mf-vSf"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ISD-5v-oFi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2312" y="-1230"/>
         </scene>
         <!--Home View Controller-->
         <scene sceneID="QVD-ME-VYT">
@@ -782,7 +792,7 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="HLH-1r-7u9">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.93725490196078431" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IQq-9Y-BB1" customClass="NVActivityIndicatorView" customModule="NVActivityIndicatorView">
                                 <rect key="frame" x="162.66666666666666" y="481" width="50" height="50"/>
@@ -816,6 +826,7 @@
                         <outlet property="homeVm" destination="u9B-Lg-8ru" id="BqG-Y0-mW6"/>
                         <outlet property="tableView" destination="HLH-1r-7u9" id="SMK-xI-BS8"/>
                         <segue destination="Up8-mW-2BH" kind="show" identifier="gotoDetailCat" id="xlc-Oz-fsg"/>
+                        <segue destination="lGf-4g-OYr" kind="show" identifier="gotoTires" id="wXP-Qx-Kwp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OPo-U5-nvV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

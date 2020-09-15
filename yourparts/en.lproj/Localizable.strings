@@ -97,6 +97,8 @@
 
 "Height" = "Height";
 
+"Radius" = "Radius";
+
 "Length" = "Length";
 
 "Search brand or model" = "Search brand or model";
@@ -170,3 +172,13 @@
 "Categories" = "Categories" ; 
 
 "Offers Today" = "Offers Today" ;
+
+"Light Truck" = "Light Truck" ;
+
+"Passenger Car" = "Passenger Car" ;
+
+"Enter Elements" = "Enter Elements" ;
+
+"Choose Speed" = "Choose Speed" ;
+
+"Search Tyres" = "Search Tyres" ;
