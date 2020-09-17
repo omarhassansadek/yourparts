@@ -1,15 +1,15 @@
 //
-//  productCellTableViewCell.swift
+//  userReviewCollectionViewCell.swift
 //  yourparts
 //
-//  Created by iMac1 on 8/5/20.
+//  Created by iMac1 on 8/6/20.
 //  Copyright © 2020 yourparts. All rights reserved.
 //
 
 import UIKit
 import Cosmos
 
-class productCellTableViewCell: UITableViewCell {
+class detailProductCellTableViewCell: UITableViewCell {
 
     @IBOutlet weak var productName: UILabel!
     @IBOutlet weak var productDesc: UILabel!
@@ -17,11 +17,14 @@ class productCellTableViewCell: UITableViewCell {
     @IBOutlet weak var productPrice: UILabel!
     @IBOutlet weak var productPriceDesc: UILabel!
     @IBOutlet weak var productDeliveryDesc: UILabel!
+
+    
+    @IBOutlet weak var roundView: UIView!
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
-        // Initialization code
+        self.roundView.layer.cornerRadius = 10.0
         
         self.productName.font = UIFont(name: "Cairo-Bold", size: 13)
 
@@ -35,10 +38,11 @@ class productCellTableViewCell: UITableViewCell {
         self.productPriceDesc.font = UIFont(name: "Cairo-SemiBold", size: 12)
 
         
-        self.productDeliveryDesc.font = UIFont(name: "Cairo-SemiBold", size: 11)
+        self.productDeliveryDesc.font = UIFont(name: "Cairo-SemiBold", size: 13)
 
     }
-
+    
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 

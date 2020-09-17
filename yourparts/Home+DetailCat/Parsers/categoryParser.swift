@@ -6,12 +6,17 @@ import SwiftyJSON
 class categoryParser{
     
     
-    func parseDetailCategories( fromJSON: JSON , onSuccess: @escaping (category) -> () ){
+    func parseDetailCategories(isSub: Bool, fromJSON: JSON , onSuccess: @escaping (category) -> () ){
         var detailCategory = category()
         
-        var catObj = self.parseCat(oneCategory: fromJSON)
+        var jsonResponse = fromJSON
         
-        for oneCat in fromJSON["children_category"].arrayValue{
+        if isSub{
+            jsonResponse = jsonResponse.arrayValue[0]
+        }
+        var catObj = self.parseCat(oneCategory: jsonResponse)
+        
+        for oneCat in jsonResponse["children_category"].arrayValue{
             
             var detailCat = self.parseCat(oneCategory: oneCat)
             catObj.detailCat.append(detailCat)

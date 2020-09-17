@@ -33,6 +33,8 @@
                     <connections>
                         <outlet property="catTableView" destination="1Pp-Ad-4Yt" id="eif-SL-rrG"/>
                         <outlet property="detailCatVM" destination="wlw-hh-3bw" id="BWN-9f-dKd"/>
+                        <segue destination="5VY-OK-cND" kind="show" identifier="gotoDetailCat" id="QdS-zW-dom"/>
+                        <segue destination="Bgy-ar-1aM" kind="show" identifier="gotoProductList" id="IpP-xp-BmO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="T8m-fr-Sfv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -44,6 +46,26 @@
                 <customObject id="cgQ-8H-vuo" customClass="detailCatClient" customModule="yourparts" customModuleProvider="target"/>
             </objects>
             <point key="canvasLocation" x="242.0289855072464" y="-206.25"/>
+        </scene>
+        <!--productList-->
+        <scene sceneID="1Lm-M4-HWa">
+            <objects>
+                <viewControllerPlaceholder storyboardName="product" referencedIdentifier="productList" id="Bgy-ar-1aM" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="wKi-7L-VcB"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="E9R-ly-9gj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1132" y="-396"/>
+        </scene>
+        <!--detailCat-->
+        <scene sceneID="oGW-JG-Q7c">
+            <objects>
+                <viewControllerPlaceholder storyboardName="detailCategory" referencedIdentifier="detailCat" id="5VY-OK-cND" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="1Ws-5F-atO"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TSD-Al-Ns1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1134" y="-9"/>
         </scene>
     </scenes>
 </document>

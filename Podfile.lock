@@ -1,6 +1,7 @@
 PODS:
   - Alamofire (4.9.1)
   - BEMCheckBox (1.4.1)
+  - Cosmos (22.1.0)
   - IQKeyboardManagerSwift (6.2.1)
   - MOLH (1.4.1)
   - NVActivityIndicatorView (4.8.0):
@@ -14,6 +15,7 @@ PODS:
 DEPENDENCIES:
   - Alamofire (~> 4.4)
   - BEMCheckBox
+  - Cosmos
   - IQKeyboardManagerSwift (~> 6.2.0)
   - MOLH
   - NVActivityIndicatorView
@@ -24,6 +26,7 @@ SPEC REPOS:
   trunk:
     - Alamofire
     - BEMCheckBox
+    - Cosmos
     - IQKeyboardManagerSwift
     - MOLH
     - NVActivityIndicatorView
@@ -33,12 +36,13 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
   BEMCheckBox: 5ba6e37ade3d3657b36caecc35c8b75c6c2b1a4e
+  Cosmos: 2795b36ad4bbea1af3050d6d65576ed63875f86a
   IQKeyboardManagerSwift: 0f0ae8935360b4003e6ea1ac7c19898f01e2f7c7
   MOLH: 9ea6c0390f5963b2df9827ae64035fbc8598b092
   NVActivityIndicatorView: d24b7ebcf80af5dcd994adb650e2b6c93379270f
   SDWebImage: 783af2c3fa36291a250030c4752ee370a9a51d13
   SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
 
-PODFILE CHECKSUM: 50c234a3d6afcd8269a8d88fdb5d8cc069641d5c
+PODFILE CHECKSUM: 3b2ba57d7df5dd8213975651fc5921835f7e15bb
 
 COCOAPODS: 1.9.3

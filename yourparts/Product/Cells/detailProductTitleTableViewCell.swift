@@ -1,5 +1,5 @@
 //
-//  extraProductsTitleTableViewCell.swift
+//  chooseAdrressTitleTableViewCell.swift
 //  yourparts
 //
 //  Created by iMac1 on 8/16/20.
@@ -8,16 +8,16 @@
 
 import UIKit
 
-class extraProductsTitleTableViewCell: UITableViewCell {
+class detailProductTitleTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var addExtraProductsTitle: UILabel!
-    
+    @IBOutlet weak var topConstraint: NSLayoutConstraint!
+    @IBOutlet weak var roundView: UIView!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        self.addExtraProductsTitle.text = "قطع إضافية لازمة لعملية التركيب"
-        self.addExtraProductsTitle.font = UIFont(name: "Cairo-SemiBold", size: 14)
-
+        self.roundView.layer.cornerRadius = 12.0
+        
+   
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

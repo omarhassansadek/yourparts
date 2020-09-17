@@ -15,6 +15,7 @@ target 'yourparts' do
   pod 'NVActivityIndicatorView'
   pod 'SDWebImage', '~> 4.0'
 	
+pod 'Cosmos'
   target 'yourpartsTests' do
     inherit! :search_paths
     # Pods for testing

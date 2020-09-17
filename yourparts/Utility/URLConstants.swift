@@ -27,4 +27,6 @@ var tireSizeUrl = "tyres/tyresize/"
 
 var rachoSizeUrl = "tyres/rachosize/"
 
+var productsUrl = "product/"
+
 

@@ -14,13 +14,24 @@ class detailCatViewController: UIViewController , UITableViewDelegate, UITableVi
     @IBOutlet weak var detailCatVM: detailCatVM!
     
     var catId: Int?
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.navigationBar.isHidden = true
+
+    }
      
     override func viewDidLoad() {
         super.viewDidLoad()
         
-            let statusBarView = UIView(frame: UIApplication.shared.statusBarFrame)
-            statusBarView.backgroundColor = UIColor.white
-            view.addSubview(statusBarView)
+        if self.subCat != -1{
+            self.getSubDetailCat()
+        }else{
+            self.getDetailCat()
+        }
+        
+        let statusBarView = UIView(frame: UIApplication.shared.statusBarFrame)
+        statusBarView.backgroundColor = UIColor.white
+        view.addSubview(statusBarView)
         
 
 
@@ -28,7 +39,6 @@ class detailCatViewController: UIViewController , UITableViewDelegate, UITableVi
         self.catTableView.dataSource = self
         // Do any additional setup after loading the view.
         
-        self.navigationController?.navigationBar.isHidden = true
 
         
         let nib = UINib(nibName: String(describing: addCarTableViewCell.self), bundle: nil)
@@ -40,7 +50,6 @@ class detailCatViewController: UIViewController , UITableViewDelegate, UITableVi
         let nib3 = UINib(nibName: String(describing: detailCatTableViewCell.self), bundle: nil)
         self.catTableView.register(nib3, forCellReuseIdentifier: "detailCatCell")
         
-        self.getDetailCat()
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -59,6 +68,8 @@ class detailCatViewController: UIViewController , UITableViewDelegate, UITableVi
                 case 1:
                     let searchCell = tableView.dequeueReusableCell(withIdentifier: "searchCell") as! searchCatTableViewCell
 //
+                    searchCell.catName.text = self.detailCatVM.detailCategory?.name ?? ""
+                    
 //                    let cellDelegate = offersCollectionDelegate()
 //                            //cellDelegate.profilesArray = self.storiesViewModel.commonTagsphotographerResponse?.data ?? [Photographer]()
 //                            //cellDelegate.targetController = self
@@ -98,7 +109,25 @@ class detailCatViewController: UIViewController , UITableViewDelegate, UITableVi
                 return categoryCell
             }
 
+    }
+    
+    
+    var indexChoosed: Int = -1
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        if indexPath.row > 1{
+            
+            if self.subCat != -1{
+                self.indexChoosed = indexPath.row - 2
+                self.performSegue(withIdentifier: "gotoProductList", sender: self)
+            }else{
+                self.indexChoosed = indexPath.row - 2
+                self.performSegue(withIdentifier: "gotoDetailCat", sender: self)
+            }
+
         }
+    }
         
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
             
@@ -106,7 +135,7 @@ class detailCatViewController: UIViewController , UITableViewDelegate, UITableVi
                 case 0:
                     return 80.0
                 case 1:
-                    return 80.0
+                    return 105.0
                 case 2:
                     return 95.0
             default:
@@ -127,7 +156,48 @@ class detailCatViewController: UIViewController , UITableViewDelegate, UITableVi
         }
     }
     
+    func getSubDetailCat(){
+        
+        if self.detailCat != -1 && self.subCat != -1{
+            self.detailCatVM.getSubDetailCategory(id: self.detailCat, subId: self.subCat, apiParameters: [:], onSuccess: { (isSuccess) in
+                
+                if isSuccess{
+                    self.catTableView.reloadData()
+
+                }
+            }) { (errMsg) in
+                //
+            }
+
+        }
+        
+
+    }
     
+    
+    var subCat: Int = -1
+    
+    var detailCat: Int = -1
+    
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "gotoDetailCat"{
+            if self.indexChoosed >= 0{
+                let destCont = segue.destination as! detailCatViewController
+                destCont.subCat = self.detailCatVM.detailCategory?.detailCat[self.indexChoosed].id ?? -1
+                destCont.detailCat = self.detailCatVM.detailCategory?.id ?? -1
+            }
+
+        }else{
+            let destCont = segue.destination as! productListViewController
+            destCont.vcTitle = self.detailCatVM.detailCategory?.detailCat[self.indexChoosed].name ?? ""
+            var subs_id = self.detailCatVM.detailCategory?.detailCat[self.indexChoosed].id ?? -1
+            var pathtoGo = self.detailCatVM.path + "&subs_id=\(subs_id)"
+            destCont.pathToCall = pathtoGo
+        }
+    }
 
     /*
     // MARK: - Navigation

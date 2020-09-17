@@ -18,6 +18,15 @@ class newHomeViewController: UIViewController, UITableViewDelegate, UITableViewD
     
    
     
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.navigationBar.barTintColor = primaryColor
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+
+
+        self.navigationController?.navigationBar.isHidden = true
+
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 //
@@ -26,7 +35,6 @@ class newHomeViewController: UIViewController, UITableViewDelegate, UITableViewD
         view.addSubview(statusBarView)
     
 
-        self.navigationController?.navigationBar.isHidden = true
         
         self.tableView.delegate = self
         self.tableView.dataSource = self

@@ -16,6 +16,8 @@ class detailCatVM: NSObject {
     
     var detailCategory: category?
     
+    var path: String = ""
+    
     func getDetailCategory(id: Int, apiParameters: [String:String], onSuccess: @escaping(Bool)-> () , onFailure: @escaping(String)-> ()){
          
          
@@ -23,7 +25,7 @@ class detailCatVM: NSObject {
             
             print(responseSuccess)
             
-            categoryParser().parseDetailCategories(fromJSON: responseSuccess) { (detailCat) in
+            categoryParser().parseDetailCategories(isSub: false, fromJSON: responseSuccess) { (detailCat) in
                 
                 print(detailCat.detailCat.count)
                 self.detailCategory = detailCat
@@ -36,5 +38,26 @@ class detailCatVM: NSObject {
          
      }
 
+    
+    func getSubDetailCategory(id: Int, subId: Int, apiParameters: [String:String], onSuccess: @escaping(Bool)-> () , onFailure: @escaping(String)-> ()){
+            
+           self.path = baseUrl+categoriesUrl+"/\(id)?sub_id=\(subId)"
+    
+           self.detailCatC.requestDetailCat(url: baseUrl+categoriesUrl+"/\(id)?sub_id=\(subId)", apiMethod: .get, parametersOfCall: nil, apiEncoding: JSONEncoding.default, completionSuccess: { (responseSuccess) in
+               
+               print(responseSuccess)
+               
+            categoryParser().parseDetailCategories(isSub: true, fromJSON: responseSuccess) { (detailCat) in
+                   
+                   print(detailCat.detailCat.count)
+                   self.detailCategory = detailCat
+                   onSuccess(true)
+               }
+               
+           }) { (responseFailure) in
+               //
+           }
+            
+        }
     
 }

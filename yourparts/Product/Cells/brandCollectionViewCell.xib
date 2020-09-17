@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="brandCell" id="gTV-IL-0wX" customClass="brandCollectionViewCell" customModule="yourparts" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="174" height="50"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="174" height="50"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bil-2k-xI9">
+                        <rect key="frame" x="5" y="7.5" width="164" height="35"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="brandSample" translatesAutoresizingMaskIntoConstraints="NO" id="rhD-2r-TjU">
+                                <rect key="frame" x="0.0" y="0.0" width="164" height="35"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="rhD-2r-TjU" secondAttribute="bottom" id="4la-1p-3qU"/>
+                            <constraint firstAttribute="trailing" secondItem="rhD-2r-TjU" secondAttribute="trailing" id="7fq-cH-5rq"/>
+                            <constraint firstAttribute="height" constant="35" id="UDL-8c-P9b"/>
+                            <constraint firstItem="rhD-2r-TjU" firstAttribute="top" secondItem="Bil-2k-xI9" secondAttribute="top" id="cBy-CT-yIw"/>
+                            <constraint firstItem="rhD-2r-TjU" firstAttribute="leading" secondItem="Bil-2k-xI9" secondAttribute="leading" id="kHK-Km-VvE"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="Bil-2k-xI9" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="5" id="AIg-cg-EXQ"/>
+                <constraint firstItem="Bil-2k-xI9" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="TFi-H4-PhC"/>
+                <constraint firstAttribute="trailing" secondItem="Bil-2k-xI9" secondAttribute="trailing" constant="5" id="cln-VC-Pro"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <size key="customSize" width="174" height="50"/>
+            <connections>
+                <outlet property="brandimg" destination="rhD-2r-TjU" id="qmu-t1-aly"/>
+                <outlet property="roundView" destination="Bil-2k-xI9" id="9U4-7h-TRs"/>
+            </connections>
+            <point key="canvasLocation" x="227.536231884058" y="127.90178571428571"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="brandSample" width="90" height="34"/>
+    </resources>
+</document>

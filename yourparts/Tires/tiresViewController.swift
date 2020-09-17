@@ -86,6 +86,8 @@ class tiresViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
         
         self.navigationController?.navigationBar.isHidden = false
 
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+
         self.navigationController?.navigationBar.barTintColor = anotherGreyColor
         
         self.widthLbl.text = "Radius".localized
@@ -229,6 +231,19 @@ class tiresViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
             self.widthTf.text = self.tiresVM.tireSizes[row].size ?? ""
         }
     }
+    
+    @IBAction func searchBtnClicked(_ sender: Any) {
+        self.performSegue(withIdentifier: "gotoTireProduct", sender: self)
+        
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "gotoTireProduct"{
+            let destCont = segue.destination as! productListViewController
+            destCont.vcTitle = "Tires".localized
+        }
+    }
+    
 //    
 //
 //    func numberOfSections(in tableView: UITableView) -> Int {
