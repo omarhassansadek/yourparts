@@ -21,6 +21,8 @@ class productDetailsViewController: UIViewController, UITableViewDelegate, UITab
     var product: product?
     
     var productDetailsArr : [detailProduct] = []
+    
+    @IBOutlet weak var productDetailsVM: productDetailsViewModel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -99,6 +101,17 @@ class productDetailsViewController: UIViewController, UITableViewDelegate, UITab
             cell.productPrice.text =  "\(self.product?.unit_price ?? "") جنيه"
             cell.productPriceDesc.text = "Price for unit".localized
             cell.productDeliveryDesc.text = "Price delivery and spare part price is different from each city".localized
+            
+            
+            cell.productImage.sd_setImage(with: URL(string: self.product?.image ?? "") , placeholderImage: nil, completed: { (image, error, cacheType, url) -> Void in
+                      if ((error) != nil) {
+                          // set the placeholder image here
+                          cell.productImage.image = UIImage(named: "goodTire")
+                      } else {
+                          // success ... use the image
+                      }
+                  })
+
             return cell
         }else if indexPath.row == 1{
             let cell2 = tableView.dequeueReusableCell(withIdentifier: "detailsTitleCell") as! detailProductTitleTableViewCell
@@ -158,6 +171,25 @@ class productDetailsViewController: UIViewController, UITableViewDelegate, UITab
             return 35.0
         }
      }
+    
+    
+    @IBAction func addToCartPressed(_ sender: Any) {
+        
+        
+        var paramsDic : [String: Any] = [:]
+        paramsDic["product_code"] = String(self.product?.id ?? -1)
+        paramsDic["quantity"] = 1
+        paramsDic["cart"] = 0000007
+        paramsDic["product"] = self.product?.id ?? ""
+        
+        self.productDetailsVM.addProductToCart(apiParameters: paramsDic, onSuccess: { (isSuccess) in
+            if isSuccess{
+                AlertViewer().showAlertView(withMessage: "تم اضافة المنتج في العربة", onController: self)
+            }
+        }) { (errMsg) in
+            //
+        }
+    }
     
     /*
     // MARK: - Navigation

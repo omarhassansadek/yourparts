@@ -188,7 +188,50 @@
 
 "Price delivery and spare part price is different from each city" = "سعر الشحن و قطع الغيار يختلف بين المحافظات و المدن" ;
 
-
 "Product Details" = "تفاصيل المنتج";
 
 "More" = "المزيد" ;
+
+"Filter Options" = "التصفية:";
+
+"Speed Rate" = "معدل السرعة" ;
+
+"Optional Requirements" = "متطلبات أختيارية" ;
+
+"Delete Filters" = "مسح التصفية" ;
+
+"Done" = "موافق" ;
+
+"Your cart is empty" = "عربة التسوق الخاصة بك فارغة" ;
+
+"Check the best spare parts for your car" = "تصفح اقسام الشراء لتجد افضل قطع غيار سيارتك" ;
+
+"Go Shopping" = "اذهب إلى التسوق" ;
+
+"Charge Cost" = "الشحن" ;
+
+"Total Price" = "إجمالى السعر" ;
+
+"Pay" = "الدفع" ;
+
+"There is no address saved" = "لا يوجد عنوان مسجل" ;
+
+"Add Address" = "اضف العنوان";
+
+"Delivery Address" = "عنوان التوصيل";
+
+"City" = "اسم المحافظة" ;
+
+"Region" = "اسم المنطقة" ;
+
+"Street" = "اسم الشارع" ;
+
+"Building" = "رقم العمارة" ;
+
+"Floor" = "رقم الطابق" ;
+
+"Appartment" = "رقم الشقة" ;
+
+"Add Address" = "اضف عنوان" ;
+
+"Save Address" = "حفظ عنوان" ;

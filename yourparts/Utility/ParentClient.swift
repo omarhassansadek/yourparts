@@ -99,7 +99,7 @@ class ParentClient: NSObject {
             print("Result: \(response.result)")
             
             
-            if response.response?.statusCode == 200 {
+            if response.response?.statusCode == 200 ||  response.response?.statusCode == 201 {
                 
                 do{
                     //let responseJson = try JSON(data: response.data!)

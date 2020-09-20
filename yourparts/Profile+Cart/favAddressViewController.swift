@@ -25,9 +25,9 @@ class favAddressViewController: UIViewController, UITableViewDelegate, UITableVi
         let nib = UINib(nibName: String(describing: addTableViewCell.self), bundle: nil)
         self.addressTableView.register(nib, forCellReuseIdentifier: "addBtnCell")
         
-        let nib2 = UINib(nibName: String(describing: addressTableViewCell.self), bundle: nil)
-        self.addressTableView.register(nib2, forCellReuseIdentifier: "addressCell")
-        
+//        let nib2 = UINib(nibName: String(describing: addressTableViewCell.self), bundle: nil)
+//        self.addressTableView.register(nib2, forCellReuseIdentifier: "addressCell")
+//
         self.configure()
         // Do any additional setup after loading the view.
     }
@@ -58,17 +58,14 @@ class favAddressViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.row == self.favAddresVM.addressArr.count{
+//        if indexPath.row == self.favAddresVM.addressArr.count{
             let cell = tableView.dequeueReusableCell(withIdentifier: "addBtnCell") as! addTableViewCell
             cell.addAddress = {
                 self.favAddresVM.addressArr.append("s")
                 self.addressTableView.reloadData()
             }
             return cell
-        }else{
-            let cell = tableView.dequeueReusableCell(withIdentifier: "addressCell") as! addressTableViewCell
-            return cell
-        }
+//        }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

@@ -271,6 +271,7 @@
             <connections>
                 <outlet property="productDeliveryDesc" destination="VbJ-1W-H33" id="G7m-h6-47L"/>
                 <outlet property="productDesc" destination="zXC-AC-zgF" id="8tM-4U-8CV"/>
+                <outlet property="productImage" destination="4Gc-Bg-KfH" id="CdZ-sB-nBS"/>
                 <outlet property="productName" destination="ING-NN-cbL" id="ZaT-Nq-YkQ"/>
                 <outlet property="productPrice" destination="ORY-P8-4Ce" id="5dz-A7-K1G"/>
                 <outlet property="productPriceDesc" destination="Q15-zp-tXq" id="6ln-7x-jCy"/>

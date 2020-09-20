@@ -8,9 +8,24 @@
 
 import UIKit
 import NVActivityIndicatorView
+import Spring
 
 class productListViewController: UIViewController, UICollectionViewDelegate , UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UITableViewDelegate , UITableViewDataSource {
-
+    
+    @IBOutlet weak var doneFilterBtn: UIButton!
+    
+    @IBOutlet weak var deleteFilterBtn: UIButton!
+    
+    @IBOutlet weak var view2Btn: UIView!
+    
+    @IBOutlet weak var view1Btn: UIView!
+    
+    @IBOutlet weak var optionalRequirementsBtn: UIButton!
+    
+    @IBOutlet weak var speedRateBtn: UIButton!
+    
+    @IBOutlet weak var filterView: SpringView!
+    
     @IBOutlet weak var brandViewConstant: NSLayoutConstraint!
     
     @IBOutlet weak var brandView: UIView!
@@ -27,6 +42,7 @@ class productListViewController: UIViewController, UICollectionViewDelegate , UI
     
     @IBOutlet weak var activityindicator: NVActivityIndicatorView!
     
+    @IBOutlet weak var filterTitleLbl: UILabel!
     
     override func viewWillAppear(_ animated: Bool) {
         if self.pathToCall != nil {
@@ -42,7 +58,13 @@ class productListViewController: UIViewController, UICollectionViewDelegate , UI
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.configure()
+        
         self.getProducts()
+        
+        let button1 = UIBarButtonItem(image: UIImage(named: "filter"), style: .plain, target: self, action: Selector("filterProducts")) // action:#selector(Class.MethodName) for swift 3
+        self.navigationItem.rightBarButtonItem  = button1
+        
         
         self.navigationController?.navigationBar.isHidden = false
         
@@ -78,6 +100,7 @@ class productListViewController: UIViewController, UICollectionViewDelegate , UI
             topItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         }
 
+        
         
         // Do any additional setup after loading the view.
     }
@@ -127,7 +150,7 @@ class productListViewController: UIViewController, UICollectionViewDelegate , UI
       }
       
       func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-          return 10
+        return self.productVM.productsResponse?.results.count ?? 0
       }
       
       
@@ -136,6 +159,16 @@ class productListViewController: UIViewController, UICollectionViewDelegate , UI
           cell.productName.text = self.productVM.productsResponse?.results[indexPath.row].product_name
           cell.productDesc.text = self.productVM.productsResponse?.results[indexPath.row].created_at
           cell.productPrice.text =  "\(self.productVM.productsResponse?.results[indexPath.row].unit_price ?? "") جنيه"
+        
+         cell.productImage.sd_setImage(with: URL(string: self.productVM.productsResponse?.results[indexPath.row].image ?? "") , placeholderImage: nil, completed: { (image, error, cacheType, url) -> Void in
+                if ((error) != nil) {
+                    // set the placeholder image here
+                    cell.productImage.image = UIImage(named: "goodTire")
+                } else {
+                    // success ... use the image
+                }
+            })
+
          cell.productPriceDesc.text = "Price for unit".localized
         cell.productDeliveryDesc.text = "Price delivery and spare part price is different from each city".localized
           return cell
@@ -150,6 +183,29 @@ class productListViewController: UIViewController, UICollectionViewDelegate , UI
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.indexChoosed = indexPath.row
         self.performSegue(withIdentifier: "gotoDetailProducts", sender: self)
+    }
+    
+    
+    func configure(){
+        self.filterTitleLbl.text = "Filter Options".localized
+        self.filterTitleLbl.font = UIFont(name: "Cairo-SemiBold", size: 15)
+        self.speedRateBtn.setTitle("Speed Rate".localized, for: .normal)
+        self.speedRateBtn.titleLabel?.font = UIFont(name: "Cairo-SemiBold", size: 13)
+        self.speedRateBtn.setTitleColor(primaryColor, for: .normal)
+        self.optionalRequirementsBtn.setTitle("Optional Requirements".localized, for: .normal)
+        self.optionalRequirementsBtn.titleLabel?.font = UIFont(name: "Cairo-SemiBold", size: 13)
+        self.optionalRequirementsBtn.setTitleColor(UIColor.black, for: .normal)
+        
+        self.deleteFilterBtn.setTitle("Delete Filters".localized, for: .normal)
+        self.deleteFilterBtn.titleLabel?.font = UIFont(name: "Cairo-SemiBold", size: 13)
+        self.deleteFilterBtn.setTitleColor(UIColor.black, for: .normal)
+
+        self.doneFilterBtn.setTitle("Done".localized, for: .normal)
+        self.doneFilterBtn.titleLabel?.font = UIFont(name: "Cairo-SemiBold", size: 13)
+        self.doneFilterBtn.setTitleColor(primaryColor, for: .normal)
+
+
+        
     }
     
     
@@ -178,6 +234,58 @@ class productListViewController: UIViewController, UICollectionViewDelegate , UI
         }
         
     }
+    
+    
+    var filterOpened = false
+    
+    @objc func filterProducts(){
+        print("clicked")
+        
+        
+        if !self.filterOpened {
+            self.filterOpened = true
+            self.filterView.isHidden = false
+            self.filterView.animation = "slideUp"
+            self.filterView.animate()
+            
+            Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(updateCounter), userInfo: nil, repeats: true)
+
+            
+        }
+    }
+
+    @objc func updateCounter() {
+        //example functionality
+        self.filterView.backgroundColor = UIColor(displayP3Red: 0/255, green: 0/255, blue: 0/255, alpha: 0.5)
+
+    }
+
+    
+    @IBAction func filterBtnsClicked(_ sender: UIButton) {
+        if (sender.tag == 11){
+            self.speedRateBtn.setTitleColor(primaryColor, for: .normal)
+            self.view1Btn.backgroundColor = primaryColor
+            
+            self.optionalRequirementsBtn.setTitleColor(UIColor.black, for: .normal)
+            self.view2Btn.backgroundColor = UIColor.white
+        }else{
+            self.speedRateBtn.setTitleColor(UIColor.black, for: .normal)
+            self.view1Btn.backgroundColor = UIColor.white
+            
+            self.optionalRequirementsBtn.setTitleColor(primaryColor, for: .normal)
+            self.view2Btn.backgroundColor = primaryColor
+
+        }
+    }
+    
+    @IBAction func doneFilter(_ sender: Any) {
+        self.filterView.animation = "fadeOut"
+        self.filterView.animate()
+        self.filterOpened = false
+        self.filterView.backgroundColor = UIColor.clear
+
+    }
+    
     /*
     // MARK: - Navigation
 

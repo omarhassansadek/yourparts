@@ -14,8 +14,9 @@ target 'yourparts' do
   pod 'SwiftyJSON'
   pod 'NVActivityIndicatorView'
   pod 'SDWebImage', '~> 4.0'
-	
-pod 'Cosmos'
+  pod 'Spring'
+  pod 'Cosmos'
+  pod 'ShadowView'
   target 'yourpartsTests' do
     inherit! :search_paths
     # Pods for testing
