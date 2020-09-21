@@ -1,95 +1,88 @@
 //
-//  addressPaymentViewController.swift
+//  paymentMethodViewController.swift
 //  yourparts
 //
-//  Created by Yourparts #1 on 9/20/20.
+//  Created by iMac1 on 9/21/20.
 //  Copyright © 2020 yourparts. All rights reserved.
 //
 
 import UIKit
 
-class addressPaymentViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class paymentMethodViewController: UIViewController, UITableViewDelegate, UITableViewDataSource  {
 
-    @IBOutlet weak var addressTableView: UITableView!
-    @IBOutlet weak var addViewBtn: UIButton!
-    @IBOutlet weak var noAddressLbl: UILabel!
-    @IBOutlet weak var addAddressView: UIView!
-    
+    @IBOutlet weak var paymentMethodTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        self.addressTableView.delegate = self
-        self.addressTableView.dataSource = self
         
-        let nib = UINib(nibName: String(describing: addressTableViewCell.self), bundle: nil)
-        self.addressTableView.register(nib, forCellReuseIdentifier: "addressCell")
-
+        
+        self.paymentMethodTableView.delegate = self
+        self.paymentMethodTableView.dataSource = self
+        
+        
+        let nib = UINib(nibName: String(describing: methodTableViewCell.self), bundle: nil)
+        self.paymentMethodTableView.register(nib, forCellReuseIdentifier: "methodCell")
+        
         let nib2 = UINib(nibName: String(describing: addAddressTableViewCell.self), bundle: nil)
-        self.addressTableView.register(nib2, forCellReuseIdentifier: "AddAddressCell")
-
+        self.paymentMethodTableView.register(nib2, forCellReuseIdentifier: "AddAddressCell")
+        
         
         self.navigationController?.navigationBar.tintColor = primaryColor
-
+        
         self.navigationController?.navigationBar.shadowImage = UIImage()
-
+        
         self.navigationController?.navigationBar.barTintColor = anotherGreyColor
-
-        self.title = "Delivery Address".localized
+        
+        self.title = "Payment Method".localized
         
         self.navigationController?.navigationBar.titleTextAttributes =
             [NSAttributedString.Key.foregroundColor: UIColor.black,
              NSAttributedString.Key.font: UIFont(name: "Cairo-Bold", size: 18)!]
-
+        
         //AddAddressCell
-
         
-        self.noAddressLbl.text = "There is no address saved".localized
         
-        self.noAddressLbl.font = UIFont(name: "Cairo-Regular", size: 19)
-
-        self.addViewBtn.setTitle("Add Address".localized, for: .normal)
-        
-        self.addViewBtn.titleLabel?.font = UIFont(name: "Cairo-Bold", size: 14)
-        
-        self.addViewBtn.layer.cornerRadius = 15.0
-
+    
         // Do any additional setup after loading the view.
     }
     
-
-    @IBAction func addViewBtnClicked(_ sender: Any) {
-        //self.addAddressView.layer.isHidden = true
-    }
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return 4
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         
-        if indexPath.row == 2{
+        if indexPath.row == 3{
+            
             let addAddressCell = tableView.dequeueReusableCell(withIdentifier: "AddAddressCell") as! addAddressTableViewCell
             addAddressCell.addAddress = {
                 self.performSegue(withIdentifier: "gotoAddAddress", sender: self)
             }
+            
+            addAddressCell.addAddressBtn.setTitle("Choose Payment Method".localized, for: .normal)
+
             return addAddressCell
-
+            
         }else{
-            let addressCell = tableView.dequeueReusableCell(withIdentifier: "addressCell") as! addressTableViewCell
-            //addressCell.chooseAddressCheckBox.On
-            return addressCell
+            let methodCell = tableView.dequeueReusableCell(withIdentifier: "methodCell") as! methodTableViewCell
+            switch indexPath.row{
+                case 0:
+                    methodCell.methodico.image = UIImage(named: "methodico1")
+                case 1:
+                    methodCell.methodico.image = UIImage(named: "methodico2")
+                case 2:
+                    methodCell.methodico.image = UIImage(named: "methodico3")
 
-        }
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.row != 2{
-            self.performSegue(withIdentifier: "gotoSecondPaymentView", sender: self)
+                default:
+                  break
+                }
+            return methodCell
+            
         }
     }
     
@@ -98,10 +91,11 @@ class addressPaymentViewController: UIViewController, UITableViewDelegate, UITab
         if indexPath.row == 2{
             return 135.0
         }else{
-            return 135.0
+            return 65.0
         }
-
+        
     }
+
     /*
     // MARK: - Navigation
 
@@ -112,5 +106,4 @@ class addressPaymentViewController: UIViewController, UITableViewDelegate, UITab
     }
     */
 
-    
 }

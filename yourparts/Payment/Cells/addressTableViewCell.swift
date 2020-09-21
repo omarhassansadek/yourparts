@@ -16,6 +16,7 @@ class addressTableViewCell: UITableViewCell {
     @IBOutlet weak var appartmentNo: UILabel!
     @IBOutlet weak var mainAddressLbl: UILabel!
     @IBOutlet weak var buildingNo: UILabel!
+    @IBOutlet weak var chooseAddressCheckBox: BEMCheckBox!
     
     
     override func awakeFromNib() {
