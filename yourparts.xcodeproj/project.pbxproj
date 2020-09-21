@@ -16,6 +16,9 @@
 		3915F94524D0827D00BF6157 /* searchDetailsTireTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3915F94324D0827D00BF6157 /* searchDetailsTireTableViewCell.swift */; };
 		3915F94624D0827D00BF6157 /* searchDetailsTireTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3915F94424D0827D00BF6157 /* searchDetailsTireTableViewCell.xib */; };
 		391910DD24D09D5C00F45FB4 /* IntAndExt.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 391910DC24D09D5C00F45FB4 /* IntAndExt.storyboard */; };
+		391F73852518599D00A8ECF3 /* paymentMethodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 391F73842518599D00A8ECF3 /* paymentMethodViewController.swift */; };
+		391F738825185A0A00A8ECF3 /* methodTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 391F738625185A0A00A8ECF3 /* methodTableViewCell.swift */; };
+		391F738925185A0A00A8ECF3 /* methodTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 391F738725185A0A00A8ECF3 /* methodTableViewCell.xib */; };
 		39327C6E24D034C40050E3EE /* Oil.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 39327C7024D034C40050E3EE /* Oil.storyboard */; };
 		393BC01824A7C28700CAB4BE /* favAddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 393BC01724A7C28700CAB4BE /* favAddressViewController.swift */; };
 		393BC01B24A7C3CF00CAB4BE /* addTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 393BC01924A7C3CF00CAB4BE /* addTableViewCell.swift */; };
@@ -198,6 +201,9 @@
 		3915F94324D0827D00BF6157 /* searchDetailsTireTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = searchDetailsTireTableViewCell.swift; sourceTree = "<group>"; };
 		3915F94424D0827D00BF6157 /* searchDetailsTireTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = searchDetailsTireTableViewCell.xib; sourceTree = "<group>"; };
 		391910DC24D09D5C00F45FB4 /* IntAndExt.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = IntAndExt.storyboard; sourceTree = "<group>"; };
+		391F73842518599D00A8ECF3 /* paymentMethodViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = paymentMethodViewController.swift; sourceTree = "<group>"; };
+		391F738625185A0A00A8ECF3 /* methodTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = methodTableViewCell.swift; sourceTree = "<group>"; };
+		391F738725185A0A00A8ECF3 /* methodTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = methodTableViewCell.xib; sourceTree = "<group>"; };
 		39327C6F24D034C40050E3EE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Oil.storyboard; sourceTree = "<group>"; };
 		39327C7224D034D00050E3EE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Oil.strings; sourceTree = "<group>"; };
 		39327C7324D034D60050E3EE /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/Oil.strings; sourceTree = "<group>"; };
@@ -915,6 +921,7 @@
 				5CF0636525176BBC00E73380 /* payment.storyboard */,
 				5CF0636725176E8500E73380 /* addressPaymentViewController.swift */,
 				5CF0637425179E8F00E73380 /* addAddressViewController.swift */,
+				391F73842518599D00A8ECF3 /* paymentMethodViewController.swift */,
 			);
 			path = Payment;
 			sourceTree = "<group>";
@@ -926,6 +933,8 @@
 				5CF0636E2517797D00E73380 /* addressTableViewCell.swift */,
 				5CF0637125177F5200E73380 /* addAddressTableViewCell.xib */,
 				5CF0637025177F5200E73380 /* addAddressTableViewCell.swift */,
+				391F738625185A0A00A8ECF3 /* methodTableViewCell.swift */,
+				391F738725185A0A00A8ECF3 /* methodTableViewCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -1107,6 +1116,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				391F738925185A0A00A8ECF3 /* methodTableViewCell.xib in Resources */,
 				39F0590424A92D6600CA348F /* carTableViewCell.xib in Resources */,
 				3990DE3224E84C3200ED3F49 /* seeMoreCollectionViewCell.xib in Resources */,
 				39AA658B24B5B942005AC3CD /* myCars.storyboard in Resources */,
@@ -1296,6 +1306,7 @@
 				39E4223224D07CED00524591 /* tiresViewController.swift in Sources */,
 				5C433A0A2513A04A00F67552 /* cart.swift in Sources */,
 				39F0590324A92D6600CA348F /* carTableViewCell.swift in Sources */,
+				391F738825185A0A00A8ECF3 /* methodTableViewCell.swift in Sources */,
 				5CF983D0250FBACF00D56721 /* searchCatTableViewCell.swift in Sources */,
 				5C17EFD6250A82880090C4D2 /* maker.swift in Sources */,
 				5C433A022513995300F67552 /* productDetailsViewModel.swift in Sources */,
@@ -1379,6 +1390,7 @@
 				3990DE3924E905A300ED3F49 /* extraProductTableViewCell.swift in Sources */,
 				3999F17324DA48B900EAEC56 /* productCellTableViewCell.swift in Sources */,
 				39E3B5C624E1944B0042BCAF /* favViewController.swift in Sources */,
+				391F73852518599D00A8ECF3 /* paymentMethodViewController.swift in Sources */,
 				398D311724ED762F0035A00E /* signupClient.swift in Sources */,
 				5C4339E125121BA600F67552 /* productListViewController.swift in Sources */,
 				398FF34F24D02E3E0001F8C1 /* detailOilViewController.swift in Sources */,

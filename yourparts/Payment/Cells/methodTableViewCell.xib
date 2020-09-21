@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="methodCell" rowHeight="65" id="KGk-i7-Jjw" customClass="methodTableViewCell" customModule="yourparts" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="65"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="64.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5Er-N0-ilf">
+                        <rect key="frame" x="25" y="15" width="35" height="35"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="35" id="YV8-gT-vvI"/>
+                            <constraint firstAttribute="width" constant="35" id="a8I-yg-vR1"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mXH-ZP-WRx">
+                        <rect key="frame" x="85" y="22" width="185" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="et7-OJ-3MQ"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wyl-ah-R2a" customClass="BEMCheckBox">
+                        <rect key="frame" x="275" y="22.5" width="20" height="20"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="20" id="6Am-mD-D0Q"/>
+                            <constraint firstAttribute="width" constant="20" id="J8C-zY-hAg"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="onTintColor">
+                                <color key="value" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="onCheckColor">
+                                <color key="value" red="0.93725490199999995" green="0.23921568630000001" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="mXH-ZP-WRx" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="HYW-uB-5kC"/>
+                    <constraint firstItem="wyl-ah-R2a" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="N4Z-rh-QBn"/>
+                    <constraint firstAttribute="trailing" secondItem="mXH-ZP-WRx" secondAttribute="trailing" constant="50" id="PFM-zU-Dc5"/>
+                    <constraint firstAttribute="trailing" secondItem="wyl-ah-R2a" secondAttribute="trailing" constant="25" id="Sf2-KY-Y2m"/>
+                    <constraint firstItem="5Er-N0-ilf" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="nHd-JZ-VdH"/>
+                    <constraint firstItem="5Er-N0-ilf" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="25" id="q5H-uo-y0z"/>
+                    <constraint firstItem="mXH-ZP-WRx" firstAttribute="leading" secondItem="5Er-N0-ilf" secondAttribute="trailing" constant="25" id="ryk-Nj-hCl"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="methodBox" destination="wyl-ah-R2a" id="eHi-2G-wWc"/>
+                <outlet property="methodico" destination="5Er-N0-ilf" id="WSE-Eq-NtY"/>
+                <outlet property="methodname" destination="mXH-ZP-WRx" id="K0h-DD-Bqf"/>
+            </connections>
+            <point key="canvasLocation" x="144" y="180.35982008995504"/>
+        </tableViewCell>
+    </objects>
+</document>
