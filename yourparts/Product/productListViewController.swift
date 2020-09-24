@@ -170,7 +170,45 @@ class productListViewController: UIViewController, UICollectionViewDelegate , UI
             })
 
          cell.productPriceDesc.text = "Price for unit".localized
-        cell.productDeliveryDesc.text = "Price delivery and spare part price is different from each city".localized
+         cell.productDeliveryDesc.text = "Price delivery and spare part price is different from each city".localized
+         
+         cell.addToCart = {
+            
+            //cell.addToCart
+            cell.activityind.startAnimating()
+            
+            cell.cartimg.isHidden = true
+            
+            var paramsDic : [String: Any] = [:]
+            
+//            paramsDic["product_code"] = String(self.productVM.productsResponse?.results[indexPath.row].id ?? -1)
+            paramsDic["quantity"] = 1
+//            paramsDic["cart"] = UserDefaults.standard.integer(forKey: "cartid")
+            paramsDic["sparepart_id"] = self.productVM.productsResponse?.results[indexPath.row].id
+//            paramsDic["extra"] = ""
+
+            self.productVM.addToCart(apiParameters: paramsDic, onSuccess: { (isSuccess) in
+                //
+                //AlertViewer().showAlertView(withMessage: "Added to Cart" , onController: self)
+
+                cell.cartimg.image = UIImage(named: "cartSuccess")
+                
+                cell.cartimg.isHidden = false
+
+                
+                cell.activityind.stopAnimating()
+            }) { (err) in
+                //
+                cell.activityind.stopAnimating()
+                
+                cell.cartimg.image = UIImage(named: "cart")
+
+                cell.cartimg.isHidden = false
+
+                AlertViewer().showAlertView(withMessage: err , onController: self)
+
+            }
+         }
           return cell
       }
       

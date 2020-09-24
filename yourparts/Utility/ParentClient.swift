@@ -119,12 +119,12 @@ class ParentClient: NSObject {
                     onFailure(responseJsonFailure)
                 }catch _{
                     //print(error)
-                    onFailure(JSON.null)
+                    onFailure(JSON("We encountered error. Try agian later"))
                 }
                 
                 //ErrorHandler.sharedInstance().handleClientError(response: response, onFailure: onFailure)
             }else{
-                
+                onFailure(JSON("We encountered error. Try agian later"))
                 //var dicStatusCode: [String: Any] = [ "statusCode" : "\(response.response?.statusCode)"]
                 //let statusCodeJSON = JSON(dicStatusCode)
                 //onFailure(statusCodeJSON)

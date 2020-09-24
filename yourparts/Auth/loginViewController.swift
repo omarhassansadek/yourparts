@@ -93,7 +93,7 @@ class loginViewController: UIViewController {
                     if isSuccess{
                         self.activityindicator.stopAnimating()
                         self.signinBtn.setTitle( "Sign in".localized, for: .normal)
-
+                        UserDefaults.standard.set(true, forKey: "isLogged")
                         self.performSegue(withIdentifier: "gotoHomeFromLogin", sender: self)
                     }
                     

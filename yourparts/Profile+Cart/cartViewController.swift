@@ -42,8 +42,15 @@ class cartViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     @IBOutlet var cartVM: cartViewModel!
     
+    var refreshControl = UIRefreshControl()
+
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        refreshControl.addTarget(self, action: #selector(self.refresh(_:)), for: .valueChanged)
+        
+        cartTableView.addSubview(refreshControl)
         
         self.configure()
         
@@ -88,6 +95,12 @@ class cartViewController: UIViewController, UITableViewDelegate, UITableViewData
         // Do any additional setup after loading the view.
     }
     
+
+    @objc func refresh(_ sender: AnyObject) {
+       // Code to refresh table view
+       self.getCartData()
+    }
+
     
     func numberOfSections(in tableView: UITableView) -> Int {
           return 1
@@ -99,11 +112,34 @@ class cartViewController: UIViewController, UITableViewDelegate, UITableViewData
       
       
       func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
           let cell = tableView.dequeueReusableCell(withIdentifier: "cartCell") as! cartTableViewCell
-          cell.productName.text = "Bridgestone Run Flat كاوتش"
-          cell.productDesc.text = "205/60/16"
-          cell.productPrice.text =  "3433 جنيه"
+        
+          cell.productName.text = self.cartVM.cartArr[indexPath.row].product_name
+          cell.productDesc.text = self.cartVM.cartArr[indexPath.row].created_at
+          cell.productPrice.text =  self.cartVM.cartArr[indexPath.row].unit_price
+          
+          cell.quantityTf.text = String( self.cartVM.cartArr[indexPath.row].quantity ?? -1 )
+          
+        
+        
+          let cellDelegate = quantityPickerDelegate()
+        
+          cell.quantityTf.inputView = cell.quantityPickerView
+          cell.setPickerViewDataSourceDelegate(cellDelegate, forRow: indexPath.row)
+        
+          //addCarCell.carMakerTf.addTarget(self, action: #selector(self.textFieldDidChange(_:)), for: .editingChanged)
+
+//          cellDelegate.carMakersArr = self.carMakersArr
+//          cellDelegate.carBrandsArr = self.carBrandsArr
+       
+          cellDelegate.targetController = self
+          cellDelegate.row = indexPath.row
+          cell.row = indexPath.row
+          //cellDelegate.type = "m"
+
           return cell
+        
       }
       
      func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -127,11 +163,16 @@ class cartViewController: UIViewController, UITableViewDelegate, UITableViewData
             }
         }
     }
-
+    
+    var firstLoad = false
     
     func getCartData(){
         
-        self.activityind.startAnimating()
+        if !self.firstLoad {
+            self.activityind.startAnimating()
+            self.firstLoad = true
+        }
+        
         
         self.cartVM.getCartProducts(onSuccess: { (isSuccess) in
             //
@@ -145,6 +186,9 @@ class cartViewController: UIViewController, UITableViewDelegate, UITableViewData
                     
                     self.emptyCartPlaceholder.isHidden = true
                     self.goShoppingBtn.isHidden = true
+                    self.deliveryPrice.text = self.cartVM.amount
+                    self.totalPrice.text = self.cartVM.total
+
                     
                 }else{
                     self.cartTableView.isHidden = true
@@ -153,6 +197,9 @@ class cartViewController: UIViewController, UITableViewDelegate, UITableViewData
                     self.goShoppingBtn.isHidden = false
 
                 }
+                
+                self.refreshControl.endRefreshing()
+
                 self.cartTableView.reloadData()
             }
         }) { (errMsg) in
@@ -181,7 +228,6 @@ class cartViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         self.deliveryPrice.font = UIFont(name: "Cairo-Regular", size: 13)
         
-        self.deliveryPrice.text = "50 جنيه".localized
 
         
         self.totalPriceLbl.font = UIFont(name: "Cairo-Bold", size: 13)
@@ -190,7 +236,6 @@ class cartViewController: UIViewController, UITableViewDelegate, UITableViewData
                
         self.totalPrice.font = UIFont(name: "Cairo-Bold", size: 13)
         
-        self.totalPrice.text = "3483 جنيه"
 
         self.payBtn.setTitle("Pay".localized, for: .normal)
         

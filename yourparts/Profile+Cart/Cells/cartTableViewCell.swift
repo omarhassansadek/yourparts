@@ -17,10 +17,23 @@ class cartTableViewCell: UITableViewCell {
     @IBOutlet weak var productDesc: UILabel!
     @IBOutlet weak var ratingView: CosmosView!
     @IBOutlet weak var productPrice: UILabel!
+    
+    @IBOutlet weak var quantityTf: UITextField!
+    
+   var pickerDataSourceDelegate : quantityPickerDelegate?
 
+    var row: Int?
+    
+    var quantityPickerView = UIPickerView()
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        
+     //   self.productName.sizeToFit()
+       // self.productName.numberOfLines = 0
+        
+//        self.quantityTf.inputView = quantityPickerView
         
         self.roundCounterView.layer.cornerRadius = 12.5
         
@@ -42,4 +55,16 @@ class cartTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+}
+
+extension cartTableViewCell{
+    
+    func setPickerViewDataSourceDelegate(_ dataSourceDelegate: quantityPickerDelegate , forRow row:Int ){
+        self.pickerDataSourceDelegate = dataSourceDelegate
+        self.row = row
+        quantityPickerView.delegate = self.pickerDataSourceDelegate
+        quantityPickerView.dataSource = self.pickerDataSourceDelegate
+        quantityPickerView.reloadAllComponents()
+    }
+ 
 }

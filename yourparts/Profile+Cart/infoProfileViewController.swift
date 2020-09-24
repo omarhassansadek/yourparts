@@ -10,21 +10,16 @@ import UIKit
 
 class infoProfileViewController: UIViewController {
 
+
+    @IBOutlet weak var mobileLbl: UILabel!
+    @IBOutlet weak var nameLbl: UILabel!
+    @IBOutlet weak var mobileView: UIView!
+    @IBOutlet weak var nameView: UIView!
+    @IBOutlet var infoprofileVM : infoProfileViewModel!
+    
     @IBOutlet weak var nameTf: UITextField!
     
     @IBOutlet weak var mobileTf: UITextField!
-    
-    @IBOutlet weak var emailTf: UITextField!
-    
-    @IBOutlet weak var jobTf: UITextField!
-    
-    @IBOutlet weak var profileimg: UIImageView!
-   
-    @IBOutlet weak var editBtn: UIButton!
-  
-    @IBOutlet var labelsArr: [UILabel]!
-
-    @IBOutlet var infoprofileVM : infoProfileViewModel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,30 +30,58 @@ class infoProfileViewController: UIViewController {
     
     func configure(){
         
+        self.nameView.layer.cornerRadius = 12.5
+
+        self.mobileView.layer.cornerRadius = 12.5
+        
+        self.nameLbl.text = "Name".localized
+        
+        self.nameLbl.font = UIFont(name: "Cairo-SemiBold", size: 14 )
+
+        self.mobileLbl.text = "Mobile Number".localized
+              
+        self.mobileLbl.font = UIFont(name: "Cairo-SemiBold", size: 14 )
+
+
+        
+        self.nameTf.attributedPlaceholder = NSAttributedString(string: "Name".localized , attributes: [
+            .foregroundColor: UIColor.darkGray,
+            .font: UIFont(name: "Cairo-Semibold", size: 12 )!
+        ])
+        
+        self.mobileTf.attributedPlaceholder = NSAttributedString(string: "Mobile Number".localized , attributes: [
+            .foregroundColor: UIColor.darkGray,
+            .font: UIFont(name: "Cairo-Semibold", size: 12 )!
+        ])
+        
         
         if let topItem = self.navigationController?.navigationBar.topItem {
             topItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         }
-        
-        self.infoprofileVM.getUserProfile( onSuccess: { (isSuccess) in
-            //
-            self.nameTf.text = "\(self.infoprofileVM.userProfile.firstname) \(self.infoprofileVM.userProfile.lastname)"
-            self.mobileTf.text = self.infoprofileVM.userProfile.phone_number ?? ""
-            self.emailTf.text = self.infoprofileVM.userProfile.email ?? ""
-
-           // self.jobTf.text = self.infoprofileVM.userProfile.
-        }) { (errormsg) in
-            //
-        }
         self.navigationController?.navigationBar.tintColor = primaryColor
-        for lbl in labelsArr{
-            lbl.font = UIFont(name: "TheMixArab", size: 13)
-            lbl.textColor = UIColor.gray
-        }
+
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+
+        self.navigationController?.navigationBar.barTintColor = anotherGreyColor
+
+        self.title = "Settings".localized
         
-        self.profileimg.layer.cornerRadius = 50.0
-   
-        self.editBtn.layer.cornerRadius = 15.0
+        self.navigationController?.navigationBar.titleTextAttributes =
+            [NSAttributedString.Key.foregroundColor: UIColor.black,
+             NSAttributedString.Key.font: UIFont(name: "Cairo-Bold", size: 18)!]
+
+//
+//        self.infoprofileVM.getUserProfile( onSuccess: { (isSuccess) in
+//            //
+//            self.nameTf.text = "\(self.infoprofileVM.userProfile.firstname) \(self.infoprofileVM.userProfile.lastname)"
+//            self.mobileTf.text = self.infoprofileVM.userProfile.phone_number ?? ""
+//            self.emailTf.text = self.infoprofileVM.userProfile.email ?? ""
+//
+//           // self.jobTf.text = self.infoprofileVM.userProfile.
+//        }) { (errormsg) in
+//            //
+//        }
+ 
     }
     
     

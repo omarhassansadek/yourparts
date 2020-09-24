@@ -216,13 +216,47 @@
                                     <constraint firstItem="oaW-dd-gw3" firstAttribute="leading" secondItem="Gt2-bx-XYU" secondAttribute="leading" constant="15" id="mQ4-DQ-yDr"/>
                                 </constraints>
                             </view>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cart" translatesAutoresizingMaskIntoConstraints="NO" id="CW6-au-18t">
-                                <rect key="frame" x="181" y="146" width="34" height="34"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Tg-MU-nxI">
+                                <rect key="frame" x="180" y="145" width="35" height="35"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cart" translatesAutoresizingMaskIntoConstraints="NO" id="CW6-au-18t">
+                                        <rect key="frame" x="0.0" y="0.0" width="35" height="35"/>
+                                    </imageView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xCR-d4-S2p" customClass="NVActivityIndicatorView" customModule="NVActivityIndicatorView">
+                                        <rect key="frame" x="0.0" y="0.0" width="35" height="35"/>
+                                        <color key="backgroundColor" red="0.93725490199999995" green="0.23921568630000001" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="color">
+                                                <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="typeName" value="circleStrokeSpin"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K6g-dC-dtz">
+                                        <rect key="frame" x="0.0" y="0.0" width="35" height="35"/>
+                                        <connections>
+                                            <action selector="addToCartBtnClicked:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="6tT-jd-TLI"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="34" id="lqG-qu-cBG"/>
-                                    <constraint firstAttribute="width" constant="34" id="xe5-i5-tTr"/>
+                                    <constraint firstAttribute="trailing" secondItem="xCR-d4-S2p" secondAttribute="trailing" id="11V-Tq-Zg0"/>
+                                    <constraint firstAttribute="trailing" secondItem="K6g-dC-dtz" secondAttribute="trailing" id="5yp-fy-Wtg"/>
+                                    <constraint firstAttribute="bottom" secondItem="xCR-d4-S2p" secondAttribute="bottom" id="6at-9e-YfI"/>
+                                    <constraint firstItem="xCR-d4-S2p" firstAttribute="leading" secondItem="4Tg-MU-nxI" secondAttribute="leading" id="AFM-Gf-upp"/>
+                                    <constraint firstAttribute="width" constant="35" id="B5L-aL-xiT"/>
+                                    <constraint firstAttribute="trailing" secondItem="CW6-au-18t" secondAttribute="trailing" id="InL-vI-dkG"/>
+                                    <constraint firstAttribute="height" constant="35" id="KMQ-HV-0X4"/>
+                                    <constraint firstAttribute="bottom" secondItem="K6g-dC-dtz" secondAttribute="bottom" id="LUl-m1-yUL"/>
+                                    <constraint firstItem="K6g-dC-dtz" firstAttribute="leading" secondItem="4Tg-MU-nxI" secondAttribute="leading" id="LW6-b2-EEg"/>
+                                    <constraint firstAttribute="bottom" secondItem="CW6-au-18t" secondAttribute="bottom" id="a5B-Wz-TxD"/>
+                                    <constraint firstItem="CW6-au-18t" firstAttribute="leading" secondItem="4Tg-MU-nxI" secondAttribute="leading" id="atC-bC-Wq1"/>
+                                    <constraint firstItem="xCR-d4-S2p" firstAttribute="top" secondItem="4Tg-MU-nxI" secondAttribute="top" id="dq8-LN-3uq"/>
+                                    <constraint firstItem="K6g-dC-dtz" firstAttribute="top" secondItem="4Tg-MU-nxI" secondAttribute="top" id="tI7-1O-ohV"/>
+                                    <constraint firstItem="CW6-au-18t" firstAttribute="top" secondItem="4Tg-MU-nxI" secondAttribute="top" id="uNc-lU-NAY"/>
                                 </constraints>
-                            </imageView>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -242,11 +276,11 @@
                             <constraint firstItem="Gt2-bx-XYU" firstAttribute="top" secondItem="6ut-PQ-Oq4" secondAttribute="bottom" id="cI3-z1-xaM"/>
                             <constraint firstItem="1dA-Jp-Itb" firstAttribute="leading" secondItem="tXr-Gh-GvY" secondAttribute="leading" id="cdG-a2-pLs"/>
                             <constraint firstItem="atd-GW-lgH" firstAttribute="top" secondItem="1dA-Jp-Itb" secondAttribute="bottom" id="gUn-8g-i41"/>
-                            <constraint firstItem="Gt2-bx-XYU" firstAttribute="top" secondItem="CW6-au-18t" secondAttribute="bottom" constant="15" id="i7I-By-Ak4"/>
                             <constraint firstAttribute="trailing" secondItem="OUj-JY-RO7" secondAttribute="trailing" id="ppX-ce-axf"/>
-                            <constraint firstAttribute="trailing" secondItem="CW6-au-18t" secondAttribute="trailing" constant="25" id="rLZ-cd-FW6"/>
+                            <constraint firstItem="Gt2-bx-XYU" firstAttribute="top" secondItem="4Tg-MU-nxI" secondAttribute="bottom" constant="15" id="qpM-Wv-9E0"/>
                             <constraint firstAttribute="trailing" secondItem="eaT-tW-8H2" secondAttribute="trailing" id="vdh-aa-94r"/>
                             <constraint firstAttribute="trailing" secondItem="3rN-k5-Wf3" secondAttribute="trailing" id="wbj-oK-iz6"/>
+                            <constraint firstAttribute="trailing" secondItem="4Tg-MU-nxI" secondAttribute="trailing" constant="25" id="xCx-0V-uXS"/>
                             <constraint firstItem="Gt2-bx-XYU" firstAttribute="leading" secondItem="tXr-Gh-GvY" secondAttribute="leading" id="zbd-kC-VS6"/>
                             <constraint firstItem="OUj-JY-RO7" firstAttribute="top" secondItem="3rN-k5-Wf3" secondAttribute="bottom" id="zsn-gn-aKf"/>
                         </constraints>
@@ -265,6 +299,8 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="activityind" destination="xCR-d4-S2p" id="Brs-gy-fH1"/>
+                <outlet property="cartimg" destination="CW6-au-18t" id="yA6-BP-lus"/>
                 <outlet property="productDeliveryDesc" destination="oaW-dd-gw3" id="9bf-A0-ZDl"/>
                 <outlet property="productDesc" destination="1m2-EM-wra" id="faK-o7-stJ"/>
                 <outlet property="productImage" destination="tit-ph-7A4" id="gtC-WS-ybP"/>

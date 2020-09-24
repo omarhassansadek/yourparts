@@ -7,16 +7,47 @@
 //
 
 import UIKit
+import BEMCheckBox
 
 class paymentMethodViewController: UIViewController, UITableViewDelegate, UITableViewDataSource  {
 
+    @IBOutlet weak var checkico: UIImageView!
+    @IBOutlet weak var dimmedView: UIView!
+    @IBOutlet weak var alertView: UIView!
+    @IBOutlet weak var cancelBtn: UIButton!
+    @IBOutlet weak var saveBtn: UIButton!
+    @IBOutlet weak var textViewLbl: UITextView!
     @IBOutlet weak var paymentMethodTableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+      
+        self.alertView.layer.cornerRadius = 15.0
         
+        self.textViewLbl.text = "Click to make sure to pay when received".localized
+        self.textViewLbl.font = UIFont(name: "Cairo-Regular", size: 14)!
+        
+        
+        self.saveBtn.setTitle("Continue".localized, for: .normal)
+        
+        self.saveBtn.titleLabel?.font = UIFont(name: "Cairo-Bold", size: 14)
+        
+        self.saveBtn.layer.cornerRadius = 12.5
+        
+        
+        self.cancelBtn.setTitle("Cancel".localized, for: .normal)
+        
+        self.cancelBtn.titleLabel?.font = UIFont(name: "Cairo-Bold", size: 14)
+        
+        self.cancelBtn.layer.cornerRadius = 12.5
+
+        
+        
+
         
         self.paymentMethodTableView.delegate = self
         self.paymentMethodTableView.dataSource = self
+        
         
         
         let nib = UINib(nibName: String(describing: methodTableViewCell.self), bundle: nil)
@@ -25,6 +56,10 @@ class paymentMethodViewController: UIViewController, UITableViewDelegate, UITabl
         let nib2 = UINib(nibName: String(describing: addAddressTableViewCell.self), bundle: nil)
         self.paymentMethodTableView.register(nib2, forCellReuseIdentifier: "AddAddressCell")
         
+        if let topItem = self.navigationController?.navigationBar.topItem {
+            topItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        }
+
         
         self.navigationController?.navigationBar.tintColor = primaryColor
         
@@ -61,7 +96,7 @@ class paymentMethodViewController: UIViewController, UITableViewDelegate, UITabl
             
             let addAddressCell = tableView.dequeueReusableCell(withIdentifier: "AddAddressCell") as! addAddressTableViewCell
             addAddressCell.addAddress = {
-                self.performSegue(withIdentifier: "gotoAddAddress", sender: self)
+               self.performSegue(withIdentifier: "gotoConfirmVC", sender: self)
             }
             
             addAddressCell.addAddressBtn.setTitle("Choose Payment Method".localized, for: .normal)
@@ -73,29 +108,65 @@ class paymentMethodViewController: UIViewController, UITableViewDelegate, UITabl
             switch indexPath.row{
                 case 0:
                     methodCell.methodico.image = UIImage(named: "methodico1")
+                    methodCell.methodname.text = "الدفع عند الاستلام"
+                    
                 case 1:
                     methodCell.methodico.image = UIImage(named: "methodico2")
+                    methodCell.methodname.text = "فيزا"
+
                 case 2:
                     methodCell.methodico.image = UIImage(named: "methodico3")
+                    methodCell.methodname.text = "تقسيط"
 
                 default:
                   break
                 }
+            
+            methodCell.chooseMethodSelect = {
+                //func
+                if indexPath.row == 0{
+                    self.dimmedView.isHidden = false
+                    self.alertView.isHidden = false
+                }
+                methodCell.methodBox.on = true
+            }
             return methodCell
             
         }
     }
     
+    
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
-        if indexPath.row == 2{
+        if indexPath.row == 3{
             return 135.0
         }else{
             return 65.0
         }
         
     }
+    
 
+    @IBAction func saveBtnClicked(_ sender: Any) {
+        self.dimmedView.isHidden = true
+        //self.alertView.isHidden = true
+        
+        self.textViewLbl.isHidden = true
+        
+        self.saveBtn.isHidden = true
+
+        self.cancelBtn.isHidden = true
+
+        self.checkico.isHidden = false
+
+
+    }
+    
+    @IBAction func cancelBtnClicked(_ sender: Any) {
+        self.dimmedView.isHidden = true
+        self.alertView.isHidden = true
+    }
     /*
     // MARK: - Navigation
 

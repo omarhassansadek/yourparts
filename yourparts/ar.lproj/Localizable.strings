@@ -16,11 +16,15 @@
 
 "Yourparts" = "يوربارتس";
 
-"Main Information" = "بياناتي الأساسية";
+"Main Information" = "تعديل بياناتى" ;
 
 "Edit your profile" = "عدل بينات حسابك";
 
 "Favourite Cars" = "سياراتي المضافة";
+
+"Past Orders" = "عمليات الشراء السابقة";
+
+"Current Orders" = "عمليات الشراء تحت التنفيذ";
 
 "Add car now" = "أضف سيارة الأن";
 
@@ -239,3 +243,39 @@
 "Choose Payment Method" = "تأكيد طريقة الدفع" ;
 
 "Payment Method" = "طريقة الدفع" ;
+
+"There is no added cars" = "لا يوجد سيارة مضافة بالقائمة" ;
+
+"Add car to browse its spare parts" = "اضف سيارتك لسهوله البحث عن قطع الغيار الخاصة بها" ;
+
+"Add Car" = "اضف سيارة" ;
+
+"My Cars" = "سياراتى" ;
+
+"Add new car" = "اضف سيارة اخرى" ;
+
+"Add your car" = "اضف سيارتك" ;
+
+
+"Click to make sure to pay when received" =  "اضعط على زر تأكيد لاكمال عمليه الدفع عند الاستلام" ;
+
+
+"Continue" = "تاكيد" ;
+
+"Cancel" = "الغاة" ;
+
+"Added to cart" = "المنتج في عربة التسوق" ;
+
+"Peices in Favorites" = "قطعة في المفضلة" ;
+
+"Peices in Cart" = "قطعة في عربة التسوق" ;
+
+"Settings" = "الإعدادات" ;
+
+"Change Password" = "تغيير كلمة المرور الخاصة بك";
+
+"Privacy Policy" = "سياسة الخصوصية";
+
+"About Application" = "عن التطبيق" ;
+
+"Logout" = "خروج" ;

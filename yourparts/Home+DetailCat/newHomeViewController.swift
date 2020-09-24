@@ -44,6 +44,7 @@ class newHomeViewController: UIViewController, UITableViewDelegate, UITableViewD
 
     
         self.reqHomeCats()
+        
         //registering cells
         let nib = UINib(nibName: String(describing: addCarTableViewCell.self), bundle: nil)
         self.tableView.register(nib, forCellReuseIdentifier: "addCarCell")

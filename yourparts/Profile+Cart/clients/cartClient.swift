@@ -15,8 +15,10 @@ class cartClient: ParentClient {
     
     func requestCartData(url: String, apiMethod: HTTPMethod, parametersOfCall: [String: Any]? , apiEncoding: ParameterEncoding, headers: [String: String]? , completionSuccess: @escaping (JSON) -> Void , completionFailure: @escaping (JSON) -> Void ){
         
+        let cartHeaders: [String: String] = ["Authorization" : "JWT \(UserDefaults.standard.string(forKey: "authToken") ?? "")"]
+
         
-        self.communicateWithApi(url: url, pagingUrl: nil, method: .get, parameters: parametersOfCall, headers: nil, onSuccess: { (responseSuccess) in
+        self.communicateWithApi(url: url, pagingUrl: nil, method: .get, parameters: parametersOfCall, headers: cartHeaders, onSuccess: { (responseSuccess) in
             //
             completionSuccess(responseSuccess)
         }) { (responseFailure) in

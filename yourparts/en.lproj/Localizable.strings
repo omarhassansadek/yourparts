@@ -27,6 +27,10 @@
 
 "Your Addresses" = "Your Addresses";
 
+"Past Orders" = "Past Orders";
+
+"Current Orders" = "Current Orders";
+
 "Add address now" = "Add address now";
 
 "Favourite" = "Favourite";
@@ -238,3 +242,37 @@
 "Choose Payment Method" = "Choose Payment Method" ;
 
 "Payment Method" = "Payment Method" ;
+
+"There is no added cars" = "There is no added cars" ;
+
+"Add car to browse its spare parts" = "Add car to browse its spare parts" ;
+
+"Add Car" = "Add Car" ;
+
+"My Cars" = "My Cars" ;
+
+"Add new car" = "Add new car" ;
+
+"Add your car" = "Add your car" ;
+
+"Click to make sure to pay when received" =  "Click to make sure to pay when received" ;
+
+"Continue" = "Continue" ;
+
+"Cancel" = "Cancel" ;
+
+"Added to cart" = "Added to cart" ;
+
+"Peices in Favorites" = "Peices in Favorites" ;
+
+"Peices in Cart" = "Peices in Cart" ;
+
+"Settings" = "Settings" ;
+
+"Change Password" = "Change Password";
+
+"Privacy Policy" = "Privacy Policy";
+
+"About Application" = "About Application" ;
+
+"Logout" = "Logout" ;

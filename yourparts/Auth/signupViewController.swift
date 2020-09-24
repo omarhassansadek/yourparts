@@ -24,9 +24,12 @@ class signupViewController: UIViewController {
     
     @IBOutlet weak var activityindicatorView: NVActivityIndicatorView!
     
+    var isUsernameFilled = false
     var isEmailFilled = false
+    var isMobileFilled = false
     var isPasswordFilled = false
-    
+    var isConfirmPasswordFilled = false
+
     @IBOutlet weak var signupVM: signupViewModel!
     
     @IBOutlet weak var checkboxLbl: UILabel!
@@ -112,12 +115,26 @@ class signupViewController: UIViewController {
     }
     
     @IBAction func signUserUp(){
+        
         self.createAccImg.isHidden = true
         self.activityindicatorView.startAnimating()
+        
+        var username: String?
+        if EmptyFieldValidator.isFieldEmpty(field: self.nameTf){
+            username = String((self.nameTf.text)!)
+            self.isUsernameFilled = true
+        }
+        
         var email: String?
         if EmptyFieldValidator.isFieldEmpty(field: self.emailTf){
             email = String((self.emailTf.text)!)
             self.isEmailFilled = true
+        }
+        
+        var mobile: String?
+        if EmptyFieldValidator.isFieldEmpty(field: self.mobileTf){
+            mobile = String((self.mobileTf.text)!)
+            self.isMobileFilled = true
         }
         
         var pass: String?
@@ -126,40 +143,59 @@ class signupViewController: UIViewController {
             self.isPasswordFilled = true
         }
         
-        if isValidEmail(testStr: email!){
-            if (self.passwordTf.text?.count ?? 0 >= 6) {
-                
-                let userParameters: [String: String] = ["email": self.emailTf.text! , "password1" : self.passwordTf.text! , "password2" : self.passwordTf.text!]
-                
-                self.signupVM.registerUser(apiParameters: userParameters, onSuccess: { (isSuccess) in
-                    //gotoHomePage
+        var confirmpass: String?
+        if EmptyFieldValidator.isFieldEmpty(field: self.confirmPassTf){
+            confirmpass = String((self.confirmPassTf.text)!)
+            self.isConfirmPasswordFilled = true
+        }
+       
+        if isUsernameFilled && isEmailFilled && isMobileFilled && isPasswordFilled && isConfirmPasswordFilled{
+            
+            
+            if isValidEmail(testStr: email!){
+                if (self.passwordTf.text?.count ?? 0 >= 6) {
+                    
+                    let userParameters: [String: String] = ["username" : username! , "email": email!, "password1" : pass! , "password2" : confirmpass!, "phone_number" : mobile! ]
+                    
+                    self.signupVM.registerUser(apiParameters: userParameters, onSuccess: { (isSuccess) in
+                        //gotoHomePage
+                        self.activityindicatorView.stopAnimating()
+                        self.createAccImg.isHidden = false
+
+
+                        self.performSegue(withIdentifier: "gotoHome", sender: self)
+                        
+                    }) { (errorMsg) in
+                        //
+                        self.createAccImg.isHidden = false
+                        
+                        AlertViewer().showAlertView(withMessage: "We encountered an error. Try agian later", onController: self)
+
+                        self.activityindicatorView.stopAnimating()
+
+                    }
+                    
+                    
+                }else{
                     self.activityindicatorView.stopAnimating()
                     self.createAccImg.isHidden = false
 
-
-                    self.performSegue(withIdentifier: "gotoHome", sender: self)
-                }) { (errorMsg) in
-                    //
-                    self.createAccImg.isHidden = false
-
-                    self.activityindicatorView.stopAnimating()
-
+                    AlertViewer().showAlertView(withMessage: "Password must be at least 6 characters", onController: self)
                 }
-                
-                
             }else{
                 self.activityindicatorView.stopAnimating()
                 self.createAccImg.isHidden = false
 
-                AlertViewer().showAlertView(withMessage: "Password must be at least 6 characters", onController: self)
+                AlertViewer().showAlertView(withMessage: "Invalid email format", onController: self)
             }
+            
+            
+            
         }else{
-            self.activityindicatorView.stopAnimating()
-            self.createAccImg.isHidden = false
+            AlertViewer().showAlertView(withMessage: "All fields are required", onController: self)
 
-            AlertViewer().showAlertView(withMessage: "Invalid email format", onController: self)
         }
-        
+
         
     }
     

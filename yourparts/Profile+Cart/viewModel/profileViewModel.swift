@@ -15,24 +15,19 @@ class profileViewModel: NSObject {
     
     
     func populateArr(){
-        let obj1 = profileMenu(img: "profileico1", mTitle: "Main Information", sTitle: "Edit your profile")
+        let obj1 = profileMenu(img: "profileico1", mTitle: "Main Information".localized, sTitle: "")
         self.profileListArr.append(obj1)
         
-        let obj2 = profileMenu(img: "profileico2", mTitle: "Favourite Cars" , sTitle: "Add car now")
+        let obj2 = profileMenu(img: "profileico2", mTitle: "Favourite Cars".localized , sTitle: "")
         self.profileListArr.append(obj2)
 
-        let obj3 = profileMenu(img: "profileico3", mTitle: "Your Addresses", sTitle: "Add address now")
+        let obj3 = profileMenu(img: "profileico3", mTitle: "Past Orders".localized, sTitle: "")
         self.profileListArr.append(obj3)
 
-        let obj4 = profileMenu(img: "profileico4", mTitle: "Favourite", sTitle: "x items in favourite")
+        let obj4 = profileMenu(img: "profileico4", mTitle: "Current Orders".localized, sTitle: "")
         self.profileListArr.append(obj4)
 
-        let obj5 = profileMenu(img: "profileico5", mTitle: "Cart", sTitle: "Add items to cart")
+        let obj5 = profileMenu(img: "profileico5", mTitle: "Your Addresses".localized, sTitle: "")
         self.profileListArr.append(obj5)
-
-        let obj6 = profileMenu(img: "profileico5", mTitle: "Requested items", sTitle: "Check your requested items")
-        self.profileListArr.append(obj6)
-
-        
     }
 }

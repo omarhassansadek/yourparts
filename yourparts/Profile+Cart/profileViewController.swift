@@ -13,8 +13,15 @@ class profileViewController: UIViewController, UITableViewDataSource, UITableVie
 
     @IBOutlet var profileVM: profileViewModel!
     @IBOutlet weak var profileTableView: UITableView!
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.navigationBar.isHidden = true
+
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         
         for family: String in UIFont.familyNames
         {
@@ -30,9 +37,11 @@ class profileViewController: UIViewController, UITableViewDataSource, UITableVie
         self.profileTableView.dataSource = self
 
         //registering cells
-        let nib = UINib(nibName: String(describing: profileInfoTableViewCell.self), bundle: nil)
-        self.profileTableView.register(nib, forCellReuseIdentifier: "profileInfoCell")
+        let nib = UINib(nibName: String(describing: profileHeaderTableViewCell.self), bundle: nil)
+        self.profileTableView.register(nib, forCellReuseIdentifier: "profileHeader")
         
+        let nib2 = UINib(nibName: String(describing: profileMenuTableViewCell.self), bundle: nil)
+        self.profileTableView.register(nib2, forCellReuseIdentifier: "profileOption")
 
         
         //populate Array
@@ -45,59 +54,57 @@ class profileViewController: UIViewController, UITableViewDataSource, UITableVie
         // Do any additional setup after loading the view.
     }
     
+    
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 7
+        return 1 + self.profileVM.profileListArr.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-            let cell = tableView.dequeueReusableCell(withIdentifier: "profileInfoCell") as! profileInfoTableViewCell
         
         
    
         
             if (indexPath.row == 0){
+                let cell = tableView.dequeueReusableCell(withIdentifier: "profileHeader") as! profileHeaderTableViewCell
 
-                cell.profileName.text = "Yourparts".localized
-                
-                cell.cellThumb.backgroundColor = UIColor.darkGray
-                
-                cell.profileDate.textColor = UIColor.darkGray
+                if let userEmail = UserDefaults.standard.string(forKey: "useremail"){
+                    cell.userEmail.text = userEmail
+                }
 
-                cell.profileName.font = UIFont(name: "TheMixArab-Bold", size: 17)
+                if let userName = UserDefaults.standard.string(forKey: "username"){
+                    cell.userName.text = userName
+                }
                 
-                cell.profileDate.font = UIFont(name: "TheMixArab", size: 13)
-
+                cell.goSettings = {
+                    self.performSegue(withIdentifier: "gotoSettings", sender: self)
+                }
                 
-                cell.separator.isHidden = true
-            
+                return cell
+                
             }else{
+                let menucell = tableView.dequeueReusableCell(withIdentifier: "profileOption") as! profileMenuTableViewCell
+                menucell.optionico.image = UIImage(named: self.profileVM.profileListArr[indexPath.row - 1].image ?? "")
+                menucell.optionName.text = self.profileVM.profileListArr[indexPath.row - 1].mainTitle ?? ""
             
-                cell.profileName.text = self.profileVM.profileListArr[indexPath.row - 1].mainTitle?.localized
-                
-                cell.profileDate.textColor = UIColor(displayP3Red: 0/255, green: 151/255, blue: 255/55, alpha: 1.0)
-                
-                cell.profileDate.text = self.profileVM.profileListArr[indexPath.row - 1].secondaryTitle?.localized
-                
-                cell.cellThumb.image = UIImage(named: self.profileVM.profileListArr[indexPath.row - 1].image ?? "")
-                
-                cell.cellThumb.backgroundColor = UIColor.clear
-                
-                cell.separator.isHidden = false
+                return menucell
+
             }
+                
         
-            return cell
+        
         
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
         if indexPath.row == 0 {
-            return 85.0
+            return 285.0
         }else{
             return 60.0
         }
@@ -106,26 +113,31 @@ class profileViewController: UIViewController, UITableViewDataSource, UITableVie
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         switch indexPath.row {
-        case 3:
-            self.performSegue(withIdentifier: "gotoFavAddresses", sender: self)
-            
-        case 5:
-            self.performSegue(withIdentifier: "gotoCart", sender: self)
-            
-        case 4:
-            self.performSegue(withIdentifier: "gotoFavorites", sender: self)
+//        case 3:
+//            // self.performSegue(withIdentifier: "gotoFavAddresses", sender: self)
+//            
+//        case 5:
+//          //  self.performSegue(withIdentifier: "gotoCart", sender: self)
+//            
+//        case 4:
+//           // self.performSegue(withIdentifier: "gotoFavorites", sender: self)
+//            
+//        case 1:
+//            //gotoProfileinfo
+//            //self.performSegue(withIdentifier: "gotoProfileinfo", sender: self)
             
         case 1:
             //gotoProfileinfo
             self.performSegue(withIdentifier: "gotoProfileinfo", sender: self)
-            
-        case 2:
-            //gotoProfileinfo
-            self.performSegue(withIdentifier: "gotoMyCarsVC", sender: self)
         default:
             break
         }
       
+    }
+    
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        self.navigationController?.navigationBar.isHidden = false
     }
     /*
     // MARK: - Navigation

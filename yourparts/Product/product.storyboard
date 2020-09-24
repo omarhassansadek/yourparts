@@ -334,6 +334,16 @@
                                             <constraint firstItem="ari-Wo-E6R" firstAttribute="centerY" secondItem="5Ha-53-JsJ" secondAttribute="centerY" id="xsk-UO-RLT"/>
                                         </constraints>
                                     </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KMS-F8-EzR" customClass="NVActivityIndicatorView" customModule="NVActivityIndicatorView">
+                                        <rect key="frame" x="85" y="18" width="265" height="50"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="typeName" value="ballPulse"/>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="color">
+                                                <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FXS-1q-O1c">
                                         <rect key="frame" x="85" y="17.5" width="265" height="50"/>
                                         <color key="backgroundColor" red="0.93725490199999995" green="0.23921568630000001" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -351,7 +361,11 @@
                                 <color key="backgroundColor" red="0.95686274509803915" green="0.95686274509803915" blue="0.95686274509803915" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="FXS-1q-O1c" firstAttribute="leading" secondItem="5Ha-53-JsJ" secondAttribute="trailing" constant="10" id="AvK-Mk-5E9"/>
+                                    <constraint firstAttribute="bottom" secondItem="KMS-F8-EzR" secondAttribute="bottom" constant="17" id="IGd-in-fuE"/>
+                                    <constraint firstItem="KMS-F8-EzR" firstAttribute="leading" secondItem="5Ha-53-JsJ" secondAttribute="trailing" constant="10" id="J9M-ox-4v5"/>
                                     <constraint firstAttribute="height" constant="85" id="XZc-Ba-pLy"/>
+                                    <constraint firstItem="KMS-F8-EzR" firstAttribute="top" secondItem="VP2-aP-GGB" secondAttribute="top" constant="18" id="XjA-dH-B92"/>
+                                    <constraint firstAttribute="trailing" secondItem="KMS-F8-EzR" secondAttribute="trailing" constant="25" id="Yxp-tI-3DE"/>
                                     <constraint firstAttribute="trailing" secondItem="FXS-1q-O1c" secondAttribute="trailing" constant="25" id="aY5-gz-KA8"/>
                                     <constraint firstItem="FXS-1q-O1c" firstAttribute="centerY" secondItem="VP2-aP-GGB" secondAttribute="centerY" id="h30-bd-YT4"/>
                                     <constraint firstItem="5Ha-53-JsJ" firstAttribute="leading" secondItem="VP2-aP-GGB" secondAttribute="leading" constant="25" id="kfj-4K-lps"/>
@@ -373,6 +387,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="bbF-Vo-Ja6"/>
                     <connections>
+                        <outlet property="activityind" destination="KMS-F8-EzR" id="xsq-X9-86h"/>
                         <outlet property="addToCartBtn" destination="FXS-1q-O1c" id="819-Hr-nIO"/>
                         <outlet property="favContainer" destination="5Ha-53-JsJ" id="htq-CE-4iy"/>
                         <outlet property="productDetailsVM" destination="axm-yH-Tgg" id="6XN-A7-gyS"/>

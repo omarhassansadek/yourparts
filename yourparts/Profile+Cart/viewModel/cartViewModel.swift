@@ -13,15 +13,23 @@ class cartViewModel: NSObject {
 
     @IBOutlet weak var cartC: cartClient!
     
-    var cartArr : [cart] = []
+    var cartArr : [product] = []
     
+    var amount : String = ""
+    
+    var total : String = ""
+
     
      func getCartProducts( onSuccess: @escaping(Bool)-> () , onFailure: @escaping(String)-> ()){
-        self.cartC.requestCartData(url: baseUrl+cartsUrl, apiMethod: .get, parametersOfCall: nil, apiEncoding: JSONEncoding.default, headers: nil, completionSuccess: { (responseSuccess) in
+        self.cartC.requestCartData(url: baseUrl+cartUrl, apiMethod: .get, parametersOfCall: nil, apiEncoding: JSONEncoding.default, headers: nil, completionSuccess: { (responseSuccess) in
             
             
             print(responseSuccess)
             
+            self.amount = responseSuccess["extra_rows"].arrayValue[0]["amount"].string ?? ""
+            
+            self.total = responseSuccess["total"].string ?? ""
+
             cartParser().parseCartData(fromJSON: responseSuccess) { (cartDataArr) in
                 self.cartArr = cartDataArr
                 
@@ -40,7 +48,7 @@ class cartViewModel: NSObject {
     
     func deleteFromCart(id: Int,  onSuccess: @escaping(Bool)-> () , onFailure: @escaping(String)-> ()){
         
-        self.cartC.requestCartData(url: baseUrl+cartsUrl+"\(id)", apiMethod: .delete, parametersOfCall: nil, apiEncoding: JSONEncoding.default, headers: nil, completionSuccess: { (responseSuccess) in
+        self.cartC.requestCartData(url: baseUrl+cartUrl+"\(id)", apiMethod: .delete, parametersOfCall: nil, apiEncoding: JSONEncoding.default, headers: nil, completionSuccess: { (responseSuccess) in
             
             
             print(responseSuccess)

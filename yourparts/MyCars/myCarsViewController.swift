@@ -10,16 +10,18 @@ import UIKit
 
 class myCarsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
-    @IBOutlet weak var mainTitle: UILabel!
-    @IBOutlet weak var detailTitle: UILabel!
     @IBOutlet weak var carsTableView: UITableView!
+    @IBOutlet weak var noCarsLbl: UILabel!
+    
+    @IBOutlet weak var addCarLbl: UILabel!
+    @IBOutlet weak var addCarBtn: UIButton!
     
     @IBOutlet weak var myCarsVM: myCarsViewModel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.fetchCars()
+        //self.fetchCars()
 
         //setting the back button style and navigation controller
         if let topItem = self.navigationController?.navigationBar.topItem {
@@ -28,20 +30,40 @@ class myCarsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         self.navigationController?.navigationBar.tintColor = primaryColor
         
         
-        self.mainTitle.font = UIFont(name: "TheMixArab-Bold", size: 17)
-        self.detailTitle.font = UIFont(name: "TheMixArab", size: 13)
+        self.noCarsLbl.font = UIFont(name: "Cairo-Bold", size: 18)
+        self.noCarsLbl.text = "There is no added cars".localized
 
-        
+        self.addCarLbl.font = UIFont(name: "Cairo-Regular", size: 13)
+        self.addCarLbl.text = "Add car to browse its spare parts".localized
+
         //registering cells
-        let nib = UINib(nibName: String(describing: addTableViewCell.self), bundle: nil)
-        self.carsTableView.register(nib, forCellReuseIdentifier: "addBtnCell")
+        let nib = UINib(nibName: String(describing: addAddressTableViewCell.self), bundle: nil)
+        self.carsTableView.register(nib, forCellReuseIdentifier: "AddAddressCell")
+
+        let nib2 = UINib(nibName: String(describing: myCarTableViewCell.self), bundle: nil)
+        self.carsTableView.register(nib2, forCellReuseIdentifier: "myCarCell")
         
-        let nib2 = UINib(nibName: String(describing: carTableViewCell.self), bundle: nil)
-        self.carsTableView.register(nib2, forCellReuseIdentifier: "carCell")
+        self.addCarBtn.layer.cornerRadius = 15.0
+        self.addCarBtn.setTitle("Add Car".localized, for: .normal)
+        self.addCarBtn.titleLabel?.font = UIFont(name: "Cairo-Bold", size: 16)
+
         
         self.carsTableView.delegate = self
         self.carsTableView.dataSource = self
         // Do any additional setup after loading the view.
+        
+        
+
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+
+        self.navigationController?.navigationBar.barTintColor = anotherGreyColor
+
+        self.title = "My Cars".localized
+               
+        self.navigationController?.navigationBar.titleTextAttributes =
+                   [NSAttributedString.Key.foregroundColor: UIColor.black,
+                    NSAttributedString.Key.font: UIFont(name: "Cairo-Bold", size: 18)!]
+
     }
 
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -49,21 +71,24 @@ class myCarsViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.myCarsVM.myCars.count
+        return 3
         
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row == 2{
-            let cell = tableView.dequeueReusableCell(withIdentifier: "addBtnCell") as! addTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "AddAddressCell") as! addAddressTableViewCell
+            
+            cell.addAddressBtn.setTitle("Add new car".localized, for: .normal)
+
             cell.addAddress = {
                 self.performSegue(withIdentifier: "gotoAddCarVC", sender: self)
                // AlertViewer().showAlertView(withMessage: "This feauture isn't available right now", onController: self)
             }
             return cell
         }else{
-            let cell = tableView.dequeueReusableCell(withIdentifier: "carCell") as! carTableViewCell
-            cell.carNameLbl!.text = self.myCarsVM?.myCars[indexPath.row].model?.maker?.name ?? "" + " " + (self.myCarsVM.myCars[indexPath.row].model?.name)! ?? ""
+            let cell = tableView.dequeueReusableCell(withIdentifier: "myCarCell") as! myCarTableViewCell
+            //cell.carNameLbl!.text = self.myCarsVM?.myCars[indexPath.row].model?.maker?.name ?? "" + " " + (self.myCarsVM.myCars[indexPath.row].model?.name)! ?? ""
             return cell
         }
     }
@@ -71,9 +96,9 @@ class myCarsViewController: UIViewController, UITableViewDelegate, UITableViewDa
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.row == 2{
             //last cell
-            return 75.0
+            return 135.0
         }else{
-            return 250.0
+            return 110.0
         }
     }
     

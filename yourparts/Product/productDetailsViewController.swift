@@ -7,9 +7,12 @@
 //
 
 import UIKit
+import NVActivityIndicatorView
 
 class productDetailsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-
+    
+    @IBOutlet weak var activityind: NVActivityIndicatorView!
+    
     @IBOutlet weak var productinfoTableView: UITableView!
     
     @IBOutlet weak var addToCartBtn: UIButton!
@@ -175,19 +178,27 @@ class productDetailsViewController: UIViewController, UITableViewDelegate, UITab
     
     @IBAction func addToCartPressed(_ sender: Any) {
         
-        
+        self.activityind.startAnimating()
         var paramsDic : [String: Any] = [:]
-        paramsDic["product_code"] = String(self.product?.id ?? -1)
+        //paramsDic["product_code"] = String(self.product?.id ?? -1)
         paramsDic["quantity"] = 1
-        paramsDic["cart"] = 0000007
-        paramsDic["product"] = self.product?.id ?? ""
-        
+        //paramsDic["cart"] = UserDefaults.standard.integer(forKey: "cartid")
+        paramsDic["sparepart_id"] = self.product?.id ?? ""
+        //paramsDic["extra"] = ""
+
         self.productDetailsVM.addProductToCart(apiParameters: paramsDic, onSuccess: { (isSuccess) in
             if isSuccess{
-                AlertViewer().showAlertView(withMessage: "تم اضافة المنتج في العربة", onController: self)
+                self.activityind.stopAnimating()
+                
+                self.addToCartBtn.setTitle("Added to cart".localized, for: .normal)
+
+                self.addToCartBtn.backgroundColor = UIColor(displayP3Red: 138/255, green: 209/255, blue: 97/255, alpha: 1.0)
+                
             }
         }) { (errMsg) in
             //
+            AlertViewer().showAlertView(withMessage: errMsg , onController: self)
+
         }
     }
     

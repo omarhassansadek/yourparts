@@ -32,25 +32,15 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="accLeft" translatesAutoresizingMaskIntoConstraints="NO" id="efu-sv-VOq">
                                 <rect key="frame" x="0.0" y="0.0" width="15" height="15"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="keB-cv-mrY">
-                                <rect key="frame" x="-7.5" y="-7.5" width="37.5" height="30"/>
-                                <connections>
-                                    <action selector="goBackClicked:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="cRm-pG-Lco"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="efu-sv-VOq" secondAttribute="bottom" id="0jL-yz-VOc"/>
-                            <constraint firstItem="keB-cv-mrY" firstAttribute="top" secondItem="2uJ-p6-b11" secondAttribute="top" constant="-7.5" id="I32-p6-J5Q"/>
                             <constraint firstItem="efu-sv-VOq" firstAttribute="leading" secondItem="2uJ-p6-b11" secondAttribute="leading" id="QAm-CJ-Hic"/>
-                            <constraint firstAttribute="trailing" secondItem="keB-cv-mrY" secondAttribute="trailing" constant="-15" id="QgI-3z-0pw"/>
                             <constraint firstAttribute="height" constant="15" id="ZpN-ap-GI2"/>
-                            <constraint firstItem="keB-cv-mrY" firstAttribute="leading" secondItem="2uJ-p6-b11" secondAttribute="leading" constant="-7.5" id="i5C-Hh-Ddp"/>
                             <constraint firstItem="efu-sv-VOq" firstAttribute="top" secondItem="2uJ-p6-b11" secondAttribute="top" id="l5a-bV-bPc"/>
                             <constraint firstAttribute="width" constant="15" id="mjM-Jm-YJi"/>
                             <constraint firstAttribute="trailing" secondItem="efu-sv-VOq" secondAttribute="trailing" id="puT-wI-fHV"/>
-                            <constraint firstAttribute="bottom" secondItem="keB-cv-mrY" secondAttribute="bottom" constant="-7.5" id="smS-Af-W2e"/>
                         </constraints>
                     </view>
                     <searchBar contentMode="redraw" searchBarStyle="minimal" translatesAutoresizingMaskIntoConstraints="NO" id="7H5-Nu-jMi">
@@ -60,6 +50,16 @@
                         </constraints>
                         <textInputTraits key="textInputTraits"/>
                     </searchBar>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="keB-cv-mrY">
+                        <rect key="frame" x="15" y="17" width="105" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="105" id="DKB-zB-qeh"/>
+                            <constraint firstAttribute="height" constant="21" id="gbY-g4-U9J"/>
+                        </constraints>
+                        <connections>
+                            <action selector="goBackClicked:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="cRm-pG-Lco"/>
+                        </connections>
+                    </button>
                 </subviews>
                 <color key="backgroundColor" red="0.93333333330000001" green="0.93333333330000001" blue="0.93333333330000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 <constraints>
@@ -70,7 +70,9 @@
                     <constraint firstAttribute="trailing" secondItem="vML-A3-RdX" secondAttribute="trailing" constant="15" id="IYm-Jy-aOQ"/>
                     <constraint firstItem="2uJ-p6-b11" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="20" id="Rni-wc-8s0"/>
                     <constraint firstItem="vML-A3-RdX" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="40" id="S2t-rG-JlS"/>
+                    <constraint firstItem="keB-cv-mrY" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="17" id="iXJ-67-g4R"/>
                     <constraint firstAttribute="bottom" secondItem="7H5-Nu-jMi" secondAttribute="bottom" constant="15.5" id="s2t-UQ-g0N"/>
+                    <constraint firstItem="keB-cv-mrY" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="ypm-zS-ojF"/>
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" red="0.93725490199999995" green="0.23921568630000001" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

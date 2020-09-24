@@ -40,6 +40,10 @@ class addressPaymentViewController: UIViewController, UITableViewDelegate, UITab
             [NSAttributedString.Key.foregroundColor: UIColor.black,
              NSAttributedString.Key.font: UIFont(name: "Cairo-Bold", size: 18)!]
 
+        if let topItem = self.navigationController?.navigationBar.topItem {
+            topItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        }
+
         //AddAddressCell
 
         

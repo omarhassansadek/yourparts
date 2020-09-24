@@ -8,6 +8,36 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--View Controller-->
+        <scene sceneID="inO-Jh-QLI">
+            <objects>
+                <viewController storyboardIdentifier="firstAuth" modalPresentationStyle="fullScreen" id="gt4-2w-eHM" customClass="ViewController" customModule="yourparts" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="MZd-hc-Ntx">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="authBg" translatesAutoresizingMaskIntoConstraints="NO" id="STf-SX-2ac">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="STf-SX-2ac" firstAttribute="top" secondItem="MZd-hc-Ntx" secondAttribute="top" id="75i-hf-2cM"/>
+                            <constraint firstItem="STf-SX-2ac" firstAttribute="leading" secondItem="3YS-cR-Sd1" secondAttribute="leading" id="yMj-9u-tgY"/>
+                            <constraint firstAttribute="trailing" secondItem="STf-SX-2ac" secondAttribute="trailing" id="ytB-1H-rHJ"/>
+                            <constraint firstAttribute="bottom" secondItem="STf-SX-2ac" secondAttribute="bottom" id="zS2-N4-gVl"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="3YS-cR-Sd1"/>
+                    </view>
+                    <connections>
+                        <segue destination="iIR-pJ-skI" kind="show" identifier="gotoLogin" id="hWs-dG-uKW"/>
+                        <segue destination="KEG-3c-sZb" kind="presentation" identifier="gotoHomeScreen" modalTransitionStyle="flipHorizontal" id="k8T-Qr-eZU"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qad-lf-Lpe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1123" y="153"/>
+        </scene>
         <!--Signup View Controller-->
         <scene sceneID="dQF-fl-j6l">
             <objects>
@@ -305,7 +335,7 @@
         <!--Login View Controller-->
         <scene sceneID="Cv1-HJ-14j">
             <objects>
-                <viewController storyboardIdentifier="loginScreen" id="iIR-pJ-skI" customClass="loginViewController" customModule="yourparts" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="loginScreen" modalPresentationStyle="fullScreen" id="iIR-pJ-skI" customClass="loginViewController" customModule="yourparts" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="euP-kc-RZh">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -438,6 +468,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="dZo-fw-q9u"/>
                     </view>
+                    <navigationItem key="navigationItem" id="S3O-8k-7a0"/>
                     <connections>
                         <outlet property="activityindicator" destination="w5I-3c-amM" id="7Cm-8i-Yl5"/>
                         <outlet property="emailTf" destination="NjI-km-fgO" id="A7q-Z7-7IW"/>
@@ -466,11 +497,11 @@
                 <viewControllerPlaceholder storyboardName="Main" referencedIdentifier="tabx" id="KEG-3c-sZb" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dIY-vG-xWq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="653" y="844"/>
+            <point key="canvasLocation" x="-502" y="892"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="mlD-Qt-lwR"/>
+        <segue reference="k8T-Qr-eZU"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="authBg" width="375" height="812"/>

@@ -11,10 +11,24 @@ import MOLH
 
 class ViewController: UIViewController {
 
-    @IBOutlet weak var welcomeLbl: UILabel!
+//    @IBOutlet weak var welcomeLbl: UILabel!
  
+    override func viewDidAppear(_ animated: Bool) {
+        
+            var isLogged = UserDefaults.standard.bool(forKey: "isLogged")
+        
+            if isLogged{
+                self.performSegue(withIdentifier: "gotoHomeScreen", sender: self)
+            }else{
+                self.performSegue(withIdentifier: "gotoLogin", sender: self)
+            }
+        
+        
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
  
         for family: String in UIFont.familyNames
         {
@@ -25,22 +39,22 @@ class ViewController: UIViewController {
             }
         }
         
-        //unselected state tint
-        self.tabBarController?.tabBar.unselectedItemTintColor = greyColor
-        
-        
-        //change tab bar font
-        if MOLHLanguage.isArabic() {
-            UITabBarItem.appearance().setTitleTextAttributes([NSAttributedString.Key.font: UIFont(name: "TheMixArab-Bold", size: 10)!], for: .normal)
-            UITabBarItem.appearance().setTitleTextAttributes([NSAttributedString.Key.font: UIFont(name: "TheMixArab-Bold", size: 10)!], for: .selected)
-
-        }
-        
-        //Logo in navBar
-        let logo = UIImage(named: "navLogo")
-        let imageView = UIImageView(image:logo)
-        self.navigationItem.titleView = imageView
-
+//        //unselected state tint
+//        self.tabBarController?.tabBar.unselectedItemTintColor = greyColor
+//
+//
+//        //change tab bar font
+//        if MOLHLanguage.isArabic() {
+//            UITabBarItem.appearance().setTitleTextAttributes([NSAttributedString.Key.font: UIFont(name: "TheMixArab-Bold", size: 10)!], for: .normal)
+//            UITabBarItem.appearance().setTitleTextAttributes([NSAttributedString.Key.font: UIFont(name: "TheMixArab-Bold", size: 10)!], for: .selected)
+//
+//        }
+//
+//        //Logo in navBar
+//        let logo = UIImage(named: "navLogo")
+//        let imageView = UIImageView(image:logo)
+//        self.navigationItem.titleView = imageView
+//
        
         
        
