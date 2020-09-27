@@ -68,6 +68,28 @@ class cartViewModel: NSObject {
         }
     }
     
+    
+    func addToCart( apiParameters: [String:Any], onSuccess: @escaping(Bool)-> () , onFailure: @escaping(String)-> ()){
+        
+        var urlPath = baseUrl+addCartsUrl
+        
+        self.cartC.addToCart(url: baseUrl+addCartsUrl, apiMethod: .post, parametersOfCall: apiParameters, apiEncoding: JSONEncoding.default, completionSuccess: { (responseSuccess) in
+              //
+              print(responseSuccess)
+              //if responseSuccess["cart"].int == UserDefaults.standard.integer(forKey: "cartid"){
+                  if let cartId = responseSuccess["Cart_id"].int{
+                      //self.cart_id = cartId
+                      onSuccess(true)
+                  }
+              //}
+              
+          }) { (responseFailure) in
+              onFailure("We encountered an error. Try again later")
+          }
+        
+        
+    }
+
  
     
 }

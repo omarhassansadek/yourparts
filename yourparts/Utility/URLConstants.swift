@@ -32,3 +32,9 @@ var productsUrl = "product/"
 var addCartsUrl = "cart/add/"
 
 var cartUrl = "cart/"
+
+var addAddressUrl = "customer/billingaddress/add/"
+
+var getAddressUrl = "customer/billingaddress/"
+
+var getCityUrl = "city/"

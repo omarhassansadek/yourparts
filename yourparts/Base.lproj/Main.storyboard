@@ -44,7 +44,7 @@
                                     <constraint firstItem="UoV-15-mLR" firstAttribute="leading" secondItem="JZ4-7J-cxP" secondAttribute="leading" id="pFR-3j-4gf"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Us0-td-yEl">
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Us0-td-yEl">
                                 <rect key="frame" x="50" y="594" width="275" height="85"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yS7-9e-sGl">

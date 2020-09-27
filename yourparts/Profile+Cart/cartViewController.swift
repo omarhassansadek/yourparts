@@ -119,16 +119,17 @@ class cartViewController: UIViewController, UITableViewDelegate, UITableViewData
           cell.productDesc.text = self.cartVM.cartArr[indexPath.row].created_at
           cell.productPrice.text =  self.cartVM.cartArr[indexPath.row].unit_price
           
-          cell.quantityTf.text = String( self.cartVM.cartArr[indexPath.row].quantity ?? -1 )
           
         
         
           let cellDelegate = quantityPickerDelegate()
         
+          cell.quantityTf.tag = indexPath.row
+        
           cell.quantityTf.inputView = cell.quantityPickerView
           cell.setPickerViewDataSourceDelegate(cellDelegate, forRow: indexPath.row)
         
-          //addCarCell.carMakerTf.addTarget(self, action: #selector(self.textFieldDidChange(_:)), for: .editingChanged)
+          cell.quantityTf.addTarget(self, action: #selector(self.textFieldDidChange(_:)), for: .editingDidEnd)
 
 //          cellDelegate.carMakersArr = self.carMakersArr
 //          cellDelegate.carBrandsArr = self.carBrandsArr
@@ -137,10 +138,12 @@ class cartViewController: UIViewController, UITableViewDelegate, UITableViewData
           cellDelegate.row = indexPath.row
           cell.row = indexPath.row
           //cellDelegate.type = "m"
+          cell.quantityTf.text = String( self.cartVM.cartArr[indexPath.row].quantity ?? -1 )
+
 
           return cell
         
-      }
+     }
       
      func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 195.0
@@ -185,7 +188,7 @@ class cartViewController: UIViewController, UITableViewDelegate, UITableViewData
                     self.paymentView.isHidden = false
                     
                     self.emptyCartPlaceholder.isHidden = true
-                    self.goShoppingBtn.isHidden = true
+                    self.goShoppingViewPlaceholder.isHidden = true
                     self.deliveryPrice.text = self.cartVM.amount
                     self.totalPrice.text = self.cartVM.total
 
@@ -194,7 +197,7 @@ class cartViewController: UIViewController, UITableViewDelegate, UITableViewData
                     self.cartTableView.isHidden = true
                     self.paymentView.isHidden = true
                     self.emptyCartPlaceholder.isHidden = false
-                    self.goShoppingBtn.isHidden = false
+                    self.goShoppingViewPlaceholder.isHidden = false
 
                 }
                 
@@ -257,7 +260,24 @@ class cartViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.performSegue(withIdentifier: "gotoPayment", sender: self)
     }
     
+    func reloadTableData(){
+    }
 
+    
+    @objc func textFieldDidChange(_ textField: UITextField) {
+        print("End Editing")
+        var index = textField.tag
+        var params: [String: Any] = [:]
+        params["sparepart_id"] = self.cartVM.cartArr[index].id
+        params["quantity"] = self.cartVM.cartArr[index].quantity
+        self.cartVM.addToCart(apiParameters: params, onSuccess: { (isSuccess) in
+            //
+            self.getCartData()
+        }) { (error) in
+            //
+        }
+        //self.cartTableView.reloadData()
+    }
     /*
     // MARK: - Navigation
 

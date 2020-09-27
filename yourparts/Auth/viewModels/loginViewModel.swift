@@ -30,7 +30,7 @@ class loginViewModel: NSObject {
                 
                 self.usrDef.set(key, forKey: "authToken")
                 
-                if let userId = responseSuccess["user"]["id"].int{
+                if let userId = responseSuccess["user"]["pk"].int{
                     self.usrDef.set(userId, forKey: "userid")
                 }
 

@@ -7,9 +7,12 @@
 //
 
 import UIKit
+import NVActivityIndicatorView
 
 class addAddressViewController: UIViewController {
-
+    
+    @IBOutlet weak var activityind: NVActivityIndicatorView!
+    
     @IBOutlet weak var appartmentTf: UITextField!
     @IBOutlet weak var floorNoTf: UITextField!
     @IBOutlet weak var buildingNoTf: UITextField!
@@ -25,9 +28,12 @@ class addAddressViewController: UIViewController {
     
     @IBOutlet weak var addAddressBtn: UIButton!
     
+    @IBOutlet var AddressVM: AddressViewModel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+
        // self.preferredContentSize = CGSize(width: self.view.frame.width , height: 100)
         
         self.handlerView.layer.cornerRadius = 5.0
@@ -83,6 +89,49 @@ class addAddressViewController: UIViewController {
 
                                 
         // Do any additional setup after loading the view.
+    }
+    
+    
+    @IBAction func addBtnClicked(_ sender: Any) {
+        
+        self.activityind.startAnimating()
+        
+        self.addAddressBtn.setTitle("".localized, for: .normal)
+
+        var parametersToBeSend: [String: Any] = [:]
+        parametersToBeSend["priority"] = 1
+        parametersToBeSend["name"] = "Omar"
+        parametersToBeSend["zip_code"] = "11111"
+        parametersToBeSend["region"] = self.cityTf.text
+        parametersToBeSend["city"] = self.regionTf.text
+        parametersToBeSend["address"] = self.streetTf.text
+        
+        self.AddressVM.addUserAddress(addressParameters: parametersToBeSend, onSuccess: { (isSuccess) in
+            //
+
+            self.activityind.stopAnimating()
+            
+            self.addAddressBtn.backgroundColor = UIColor(displayP3Red: 138/255, green: 209/255, blue: 97/255, alpha: 1.0)
+
+            self.addAddressBtn.setTitle("Saved Successfully".localized, for: .normal)
+
+            Timer.scheduledTimer(timeInterval: 1.5, target: self, selector: #selector(self.updateCounter), userInfo: nil, repeats: false)
+
+            
+        }) { (errMsg) in
+            //
+            AlertViewer().showAlertView(withMessage: "errMsg", onController: self)
+            self.activityind.stopAnimating()
+        }
+
+    }
+    
+    @objc func updateCounter() {
+        
+        NotificationCenter.default.post(name: Notification.Name("finishAddAddress"), object: nil)
+
+
+        self.dismiss(animated: true, completion: nil)
     }
     
 

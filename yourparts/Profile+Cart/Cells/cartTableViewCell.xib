@@ -160,10 +160,10 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3hY-wk-4Sp">
-                                        <rect key="frame" x="140" y="-15" width="65" height="40"/>
+                                        <rect key="frame" x="135" y="-15" width="70" height="40"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r7L-GY-mfP">
-                                                <rect key="frame" x="43.5" y="0.0" width="15" height="40"/>
+                                                <rect key="frame" x="48.5" y="0.0" width="15" height="40"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pxj-we-zXR">
                                                         <rect key="frame" x="0.0" y="6.5" width="12.5" height="10"/>
@@ -192,7 +192,7 @@
                                                 </constraints>
                                             </view>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="1" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TwG-42-0kD">
-                                                <rect key="frame" x="0.0" y="0.0" width="50" height="40"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="55" height="40"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
@@ -200,7 +200,7 @@
                                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.93725490199999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstItem="r7L-GY-mfP" firstAttribute="top" secondItem="3hY-wk-4Sp" secondAttribute="top" id="BXk-k4-d1p"/>
-                                            <constraint firstAttribute="width" constant="65" id="CED-6i-kG8"/>
+                                            <constraint firstAttribute="width" constant="70" id="CED-6i-kG8"/>
                                             <constraint firstAttribute="bottom" secondItem="r7L-GY-mfP" secondAttribute="bottom" id="Gsa-3n-N9M"/>
                                             <constraint firstItem="TwG-42-0kD" firstAttribute="leading" secondItem="3hY-wk-4Sp" secondAttribute="leading" id="KrH-lF-gSN"/>
                                             <constraint firstAttribute="trailing" secondItem="r7L-GY-mfP" secondAttribute="trailing" constant="6.5" id="VOg-cx-FW9"/>

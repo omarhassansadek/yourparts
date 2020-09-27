@@ -39,8 +39,15 @@ class quantityPickerDelegate : NSObject ,UIPickerViewDelegate, UIPickerViewDataS
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-     
+        
+        
+        print(self.row ?? -1)
+        print(self.countArr[row])
+        self.targetController?.cartVM.cartArr[self.row ?? -1].quantity = Int(self.countArr[row])
+        //self.targetController?.reloadTableData()
+            
     }
+    
 //    func numberOfSections(in collectionView: UICollectionView) -> Int {
 //        return 1
 //    }

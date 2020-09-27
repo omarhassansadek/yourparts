@@ -7,19 +7,29 @@
 //
 
 import UIKit
+import NVActivityIndicatorView
 
 class addressPaymentViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
+    @IBOutlet weak var activityind: NVActivityIndicatorView!
     @IBOutlet weak var addressTableView: UITableView!
     @IBOutlet weak var addViewBtn: UIButton!
     @IBOutlet weak var noAddressLbl: UILabel!
     @IBOutlet weak var addAddressView: UIView!
     
+    @IBOutlet var AddressVM: AddressViewModel!
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.getAddresses()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.addressTableView.delegate = self
-        self.addressTableView.dataSource = self
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(self.reloadAddresses), name: Notification.Name("finishAddAddress"), object: nil)
+
         
         let nib = UINib(nibName: String(describing: addressTableViewCell.self), bundle: nil)
         self.addressTableView.register(nib, forCellReuseIdentifier: "addressCell")
@@ -60,6 +70,38 @@ class addressPaymentViewController: UIViewController, UITableViewDelegate, UITab
         // Do any additional setup after loading the view.
     }
     
+    func getAddresses(){
+        self.activityind.startAnimating()
+
+        self.AddressVM.getUserAddress(onSuccess: { (isSuccess) in
+            //
+            
+            if isSuccess{
+                
+                self.addressTableView.delegate = self
+                self.addressTableView.dataSource = self
+
+                if self.AddressVM.addressArr.count > 0{
+                    self.addAddressView.isHidden = true
+
+                    self.activityind.stopAnimating()
+
+                    self.addressTableView.reloadData()
+
+                }else{
+                    self.addAddressView.isHidden = false
+                }
+            }
+            
+        }) { (errMsg) in
+            //
+            self.addAddressView.isHidden = false
+
+            self.activityind.stopAnimating()
+
+        }
+    }
+    
 
     @IBAction func addViewBtnClicked(_ sender: Any) {
         //self.addAddressView.layer.isHidden = true
@@ -70,13 +112,13 @@ class addressPaymentViewController: UIViewController, UITableViewDelegate, UITab
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return self.AddressVM.addressArr.count + 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         
-        if indexPath.row == 2{
+        if indexPath.row == self.AddressVM.addressArr.count{
             let addAddressCell = tableView.dequeueReusableCell(withIdentifier: "AddAddressCell") as! addAddressTableViewCell
             addAddressCell.addAddress = {
                 self.performSegue(withIdentifier: "gotoAddAddress", sender: self)
@@ -86,6 +128,9 @@ class addressPaymentViewController: UIViewController, UITableViewDelegate, UITab
         }else{
             let addressCell = tableView.dequeueReusableCell(withIdentifier: "addressCell") as! addressTableViewCell
             //addressCell.chooseAddressCheckBox.On
+            addressCell.buildingNo.text = self.AddressVM.addressArr[indexPath.row].address
+            //addressCell.appartmentNo.text = self.AddressVM.addressArr[indexPath.row - 1].address
+            addressCell.region.text = "\(self.AddressVM.addressArr[indexPath.row].city ?? "") - \(self.AddressVM.addressArr[indexPath.row].region ?? "")"
             return addressCell
 
         }
@@ -106,6 +151,14 @@ class addressPaymentViewController: UIViewController, UITableViewDelegate, UITab
         }
 
     }
+    
+    @objc func reloadAddresses(notification: Notification) {
+        self.getAddresses()
+
+    }
+
+    
+    
     /*
     // MARK: - Navigation
 

@@ -117,6 +117,10 @@
 		5C17EFD6250A82880090C4D2 /* maker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C17EFD5250A82880090C4D2 /* maker.swift */; };
 		5C17EFD8250A83420090C4D2 /* carType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C17EFD7250A83420090C4D2 /* carType.swift */; };
 		5C17EFDE250A88780090C4D2 /* vehicleParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C17EFDD250A88780090C4D2 /* vehicleParser.swift */; };
+		5C4021BD2520BFFF002FD3A0 /* AddressViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C4021BC2520BFFF002FD3A0 /* AddressViewModel.swift */; };
+		5C4021C02520C08C002FD3A0 /* AddressClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C4021BF2520C08C002FD3A0 /* AddressClient.swift */; };
+		5C4021C32520D5BC002FD3A0 /* addressParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C4021C22520D5BC002FD3A0 /* addressParser.swift */; };
+		5C4021C62520D67B002FD3A0 /* address.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C4021C52520D67B002FD3A0 /* address.swift */; };
 		5C42CF85251CEB100032C357 /* requestPickerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C42CF84251CEB100032C357 /* requestPickerDelegate.swift */; };
 		5C4339E125121BA600F67552 /* productListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C4339E025121BA600F67552 /* productListViewController.swift */; };
 		5C4339E425121C9200F67552 /* brandCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C4339E225121C9200F67552 /* brandCollectionViewCell.swift */; };
@@ -333,6 +337,10 @@
 		5C17EFD5250A82880090C4D2 /* maker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = maker.swift; sourceTree = "<group>"; };
 		5C17EFD7250A83420090C4D2 /* carType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = carType.swift; sourceTree = "<group>"; };
 		5C17EFDD250A88780090C4D2 /* vehicleParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = vehicleParser.swift; sourceTree = "<group>"; };
+		5C4021BC2520BFFF002FD3A0 /* AddressViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressViewModel.swift; sourceTree = "<group>"; };
+		5C4021BF2520C08C002FD3A0 /* AddressClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressClient.swift; sourceTree = "<group>"; };
+		5C4021C22520D5BC002FD3A0 /* addressParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addressParser.swift; sourceTree = "<group>"; };
+		5C4021C52520D67B002FD3A0 /* address.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = address.swift; sourceTree = "<group>"; };
 		5C42CF84251CEB100032C357 /* requestPickerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = requestPickerDelegate.swift; sourceTree = "<group>"; };
 		5C4339E025121BA600F67552 /* productListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = productListViewController.swift; sourceTree = "<group>"; };
 		5C4339E225121C9200F67552 /* brandCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = brandCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -910,6 +918,38 @@
 			path = parsers;
 			sourceTree = "<group>";
 		};
+		5C4021BB2520BFD8002FD3A0 /* viewModels */ = {
+			isa = PBXGroup;
+			children = (
+				5C4021BC2520BFFF002FD3A0 /* AddressViewModel.swift */,
+			);
+			path = viewModels;
+			sourceTree = "<group>";
+		};
+		5C4021BE2520C06A002FD3A0 /* clients */ = {
+			isa = PBXGroup;
+			children = (
+				5C4021BF2520C08C002FD3A0 /* AddressClient.swift */,
+			);
+			path = clients;
+			sourceTree = "<group>";
+		};
+		5C4021C12520D591002FD3A0 /* Parsers */ = {
+			isa = PBXGroup;
+			children = (
+				5C4021C22520D5BC002FD3A0 /* addressParser.swift */,
+			);
+			path = Parsers;
+			sourceTree = "<group>";
+		};
+		5C4021C42520D64F002FD3A0 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				5C4021C52520D67B002FD3A0 /* address.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		5C4339E625123ADB00F67552 /* clients */ = {
 			isa = PBXGroup;
 			children = (
@@ -957,6 +997,10 @@
 		5CF0636425176B6600E73380 /* Payment */ = {
 			isa = PBXGroup;
 			children = (
+				5C4021C42520D64F002FD3A0 /* Model */,
+				5C4021C12520D591002FD3A0 /* Parsers */,
+				5C4021BE2520C06A002FD3A0 /* clients */,
+				5C4021BB2520BFD8002FD3A0 /* viewModels */,
 				5CF06369251777C200E73380 /* Cells */,
 				5CF0636525176BBC00E73380 /* payment.storyboard */,
 				5CF0636725176E8500E73380 /* addressPaymentViewController.swift */,
@@ -1350,8 +1394,10 @@
 				5CF0636F2517797D00E73380 /* addressTableViewCell.swift in Sources */,
 				397B745524CF9C3800B74BEC /* oilTableViewCell.swift in Sources */,
 				39EC50632497A8FE00ABAF05 /* AppDelegate.swift in Sources */,
+				5C4021C32520D5BC002FD3A0 /* addressParser.swift in Sources */,
 				39E4223224D07CED00524591 /* tiresViewController.swift in Sources */,
 				5C433A0A2513A04A00F67552 /* cart.swift in Sources */,
+				5C4021BD2520BFFF002FD3A0 /* AddressViewModel.swift in Sources */,
 				39F0590324A92D6600CA348F /* carTableViewCell.swift in Sources */,
 				391F738825185A0A00A8ECF3 /* methodTableViewCell.swift in Sources */,
 				5CF983D0250FBACF00D56721 /* searchCatTableViewCell.swift in Sources */,
@@ -1383,6 +1429,7 @@
 				5CF983C9250F8E2600D56721 /* offersCollectionDelegate.swift in Sources */,
 				5CF063792518C7FB00E73380 /* installmentsViewController.swift in Sources */,
 				39CA5CFD2505EE78002F6E91 /* loginClient.swift in Sources */,
+				5C4021C62520D67B002FD3A0 /* address.swift in Sources */,
 				39CA5CF92505ED40002F6E91 /* Connectivity.swift in Sources */,
 				5CF983DC2511130A00D56721 /* tiresViewModel.swift in Sources */,
 				398FF34C24D028B90001F8C1 /* detailOilTableViewCell.swift in Sources */,
@@ -1397,6 +1444,7 @@
 				5CF063822518DCBF00E73380 /* myCarTableViewCell.swift in Sources */,
 				39AEFF1824E10C0700AE0552 /* homeViewController.swift in Sources */,
 				390FFD4024A288F9008BD0B0 /* constants.swift in Sources */,
+				5C4021C02520C08C002FD3A0 /* AddressClient.swift in Sources */,
 				5CF0637225177F5200E73380 /* addAddressTableViewCell.swift in Sources */,
 				5C4339F52512581900F67552 /* productDetailsViewController.swift in Sources */,
 				5CF983C6250F8C5A00D56721 /* offerTableViewCell.swift in Sources */,

@@ -27,4 +27,20 @@ class cartClient: ParentClient {
         }
     }
     
+    func addToCart(url: String, apiMethod: HTTPMethod, parametersOfCall: [String: Any]? , apiEncoding: ParameterEncoding , completionSuccess: @escaping (JSON) -> Void , completionFailure: @escaping (JSON) -> Void ){
+          
+          let cartHeaders: [String: String] = ["Authorization" : "JWT \(UserDefaults.standard.string(forKey: "authToken") ?? "")"]
+
+          
+          self.communicateWithApi(url: url, pagingUrl: nil, method: apiMethod, parameters: parametersOfCall, headers: cartHeaders, onSuccess: { (responseSuccess) in
+              //
+              completionSuccess(responseSuccess)
+          }) { (responseFailure) in
+              //
+              completionFailure(responseFailure)
+          }
+          
+      }
+    
+    
 }

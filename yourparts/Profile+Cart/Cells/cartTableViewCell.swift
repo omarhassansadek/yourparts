@@ -35,6 +35,10 @@ class cartTableViewCell: UITableViewCell {
         
 //        self.quantityTf.inputView = quantityPickerView
         
+        self.quantityTf.tintColor = .clear
+        
+
+        
         self.roundCounterView.layer.cornerRadius = 12.5
         
         self.productName.font = UIFont(name: "Cairo-Bold", size: 13)
