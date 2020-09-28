@@ -15,10 +15,31 @@ class AddressViewModel: NSObject {
     @IBOutlet var AddressC: AddressClient!
     
     var addressArr: [address] = []
-    
+    var ctitiesArr: [city] = []
+    var regionArr: [city] = []
+
     func getAllCity( onSuccess: @escaping(Bool)-> () , onFailure: @escaping(String)-> ()){
         self.AddressC.getAllCities(url: baseUrl+getCityUrl, apiMethod: .get, parametersOfCall: nil, apiEncoding: JSONEncoding.default, headers: nil, completionSuccess: { (responseSuccess) in
             //
+            cityParser().parseCities(fromJSON: responseSuccess, onSuccess: { (cityArr) in
+                //
+                self.ctitiesArr = cityArr
+                onSuccess(true)
+            })
+        }) { (responseFailure) in
+            //
+        }
+    }
+    
+    func getAllregions(id: Int, onSuccess: @escaping(Bool)-> () , onFailure: @escaping(String)-> ()){
+        self.AddressC.getAllCities(url: baseUrl+getCityUrl+"?region_id=\(id)", apiMethod: .get, parametersOfCall: nil, apiEncoding: JSONEncoding.default, headers: nil, completionSuccess: { (responseSuccess) in
+            //
+            cityParser().parseCities(fromJSON: responseSuccess, onSuccess: { (cityArr) in
+                //
+                self.regionArr = cityArr
+                onSuccess(true)
+
+            })
         }) { (responseFailure) in
             //
         }

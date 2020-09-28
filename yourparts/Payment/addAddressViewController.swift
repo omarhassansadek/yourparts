@@ -9,7 +9,7 @@
 import UIKit
 import NVActivityIndicatorView
 
-class addAddressViewController: UIViewController {
+class addAddressViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     
     @IBOutlet weak var activityind: NVActivityIndicatorView!
     
@@ -30,6 +30,10 @@ class addAddressViewController: UIViewController {
     
     @IBOutlet var AddressVM: AddressViewModel!
     
+    var cityPickerView = UIPickerView()
+    
+    var regionPickerView = UIPickerView()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -41,6 +45,12 @@ class addAddressViewController: UIViewController {
         for oneView in roundViews{
             oneView.layer.cornerRadius = 15.0
         }
+        
+        self.cityPickerView.delegate = self
+        self.cityPickerView.dataSource = self
+        
+        self.regionPickerView.delegate = self
+        self.regionPickerView.dataSource = self
 
         
         self.addAddressLbl.text = "Add Address".localized
@@ -87,7 +97,8 @@ class addAddressViewController: UIViewController {
         self.addAddressBtn.setTitle("Save Address".localized, for: .normal)
         self.addAddressBtn.titleLabel?.font = UIFont(name: "Cairo-Bold", size: 14)
 
-                                
+        self.getCities()
+        
         // Do any additional setup after loading the view.
     }
     
@@ -134,6 +145,63 @@ class addAddressViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
+    func getCities(){
+        self.AddressVM.getAllCity(onSuccess: { (isSuccess) in
+            //
+            if isSuccess{
+                self.cityPickerView.reloadAllComponents()
+                self.cityTf.text = self.AddressVM.ctitiesArr[0].name
+                
+            }
+        }) { (errMsg) in
+            //
+        }
+    }
+    
+    func getRegions(id: Int){
+        self.AddressVM.getAllregions(id: id, onSuccess: { (isSuccess) in
+            if isSuccess{
+                self.regionPickerView.reloadAllComponents()
+                self.regionTf.text = self.AddressVM.regionArr[0].name
+            }
+        }) { (errMsg) in
+            //
+        }
+    }
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        
+        if pickerView == cityPickerView{
+           return self.AddressVM.ctitiesArr.count
+        }else{
+           return self.AddressVM.regionArr.count
+
+        }
+        
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        if pickerView == cityPickerView{
+            return self.AddressVM.ctitiesArr[row].name ?? ""
+        }else{
+            return self.AddressVM.regionArr[row].name ?? ""
+
+        }
+        
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        if pickerView == cityPickerView{
+            self.cityTf.text = self.AddressVM.ctitiesArr[row].name ?? ""
+            self.getRegions(id: self.AddressVM.ctitiesArr[row].id ?? -1)
+        }else{
+            self.regionTf.text = self.AddressVM.regionArr[row].name ?? ""
+        }
+    }
 
     /*
     // MARK: - Navigation

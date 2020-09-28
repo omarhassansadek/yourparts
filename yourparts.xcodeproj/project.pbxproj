@@ -28,6 +28,8 @@
 		394306D124A42B5300B9580C /* menuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 394306D024A42B5300B9580C /* menuViewController.swift */; };
 		394B035924A9E67A001E8C23 /* plainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 394B035724A9E67A001E8C23 /* plainTableViewCell.swift */; };
 		394B035A24A9E67A001E8C23 /* plainTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 394B035824A9E67A001E8C23 /* plainTableViewCell.xib */; };
+		395803D82521C446007FFF5E /* cityParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 395803D72521C446007FFF5E /* cityParser.swift */; };
+		395803DA2521C478007FFF5E /* city.swift in Sources */ = {isa = PBXBuildFile; fileRef = 395803D92521C478007FFF5E /* city.swift */; };
 		3969EFB324EC110400695277 /* Auth.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3969EFB224EC110400695277 /* Auth.storyboard */; };
 		3969EFB524EC142000695277 /* signupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3969EFB424EC142000695277 /* signupViewController.swift */; };
 		3972554B24A3B09D0092D1B5 /* profileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3972554A24A3B09D0092D1B5 /* profileViewController.swift */; };
@@ -234,6 +236,8 @@
 		394306D024A42B5300B9580C /* menuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = menuViewController.swift; sourceTree = "<group>"; };
 		394B035724A9E67A001E8C23 /* plainTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = plainTableViewCell.swift; sourceTree = "<group>"; };
 		394B035824A9E67A001E8C23 /* plainTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = plainTableViewCell.xib; sourceTree = "<group>"; };
+		395803D72521C446007FFF5E /* cityParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = cityParser.swift; sourceTree = "<group>"; };
+		395803D92521C478007FFF5E /* city.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = city.swift; sourceTree = "<group>"; };
 		3969EFB224EC110400695277 /* Auth.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Auth.storyboard; sourceTree = "<group>"; };
 		3969EFB424EC142000695277 /* signupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = signupViewController.swift; sourceTree = "<group>"; };
 		3972554A24A3B09D0092D1B5 /* profileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = profileViewController.swift; sourceTree = "<group>"; };
@@ -938,6 +942,7 @@
 			isa = PBXGroup;
 			children = (
 				5C4021C22520D5BC002FD3A0 /* addressParser.swift */,
+				395803D72521C446007FFF5E /* cityParser.swift */,
 			);
 			path = Parsers;
 			sourceTree = "<group>";
@@ -946,6 +951,7 @@
 			isa = PBXGroup;
 			children = (
 				5C4021C52520D67B002FD3A0 /* address.swift */,
+				395803D92521C478007FFF5E /* city.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1419,6 +1425,7 @@
 				5C4339EB25123B1A00F67552 /* productViewModel.swift in Sources */,
 				397B745E24CFDE3900B74BEC /* oilViewController.swift in Sources */,
 				3990DE3124E84C3200ED3F49 /* seeMoreCollectionViewCell.swift in Sources */,
+				395803DA2521C478007FFF5E /* city.swift in Sources */,
 				3972554B24A3B09D0092D1B5 /* profileViewController.swift in Sources */,
 				5C17EFD8250A83420090C4D2 /* carType.swift in Sources */,
 				3915F94524D0827D00BF6157 /* searchDetailsTireTableViewCell.swift in Sources */,
@@ -1426,6 +1433,7 @@
 				5C42CF85251CEB100032C357 /* requestPickerDelegate.swift in Sources */,
 				398D311924ED77340035A00E /* URLConstants.swift in Sources */,
 				3990DE3D24E906E600ED3F49 /* addToCartBtnTableViewCell.swift in Sources */,
+				395803D82521C446007FFF5E /* cityParser.swift in Sources */,
 				5CF983C9250F8E2600D56721 /* offersCollectionDelegate.swift in Sources */,
 				5CF063792518C7FB00E73380 /* installmentsViewController.swift in Sources */,
 				39CA5CFD2505EE78002F6E91 /* loginClient.swift in Sources */,
