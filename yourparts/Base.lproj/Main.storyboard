@@ -404,6 +404,16 @@
             </objects>
             <point key="canvasLocation" x="-2310" y="-1575"/>
         </scene>
+        <!--addCarVC-->
+        <scene sceneID="bIn-Vs-4To">
+            <objects>
+                <viewControllerPlaceholder storyboardName="myCars" referencedIdentifier="addCarVC" id="QCW-yO-WKt" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="8ha-ll-Rv1"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tQm-Xh-Jfg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2249" y="-1381"/>
+        </scene>
         <!--Tire-->
         <scene sceneID="IiH-hI-PT4">
             <objects>
@@ -1119,6 +1129,7 @@
                         <outlet property="tableView" destination="HLH-1r-7u9" id="SMK-xI-BS8"/>
                         <segue destination="Up8-mW-2BH" kind="show" identifier="gotoDetailCat" id="xlc-Oz-fsg"/>
                         <segue destination="lGf-4g-OYr" kind="show" identifier="gotoTires" id="wXP-Qx-Kwp"/>
+                        <segue destination="QCW-yO-WKt" kind="show" identifier="gotoAddCarVC" id="DEZ-AB-yyz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OPo-U5-nvV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

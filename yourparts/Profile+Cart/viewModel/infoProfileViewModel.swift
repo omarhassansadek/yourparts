@@ -46,7 +46,7 @@ class infoProfileViewModel: NSObject {
                 self.userProfile.phone_number = phone_number
             }
             
-            if let facebook_id = responseSuccess["facebook_id"].string{
+            if let facebook_id = responseSuccess["facebook_id"].int{
                 self.userProfile.facebook_id = facebook_id
             }
 
@@ -59,11 +59,11 @@ class infoProfileViewModel: NSObject {
             }
             
             if let works_from = responseSuccess["works_from"].string{
-                self.userProfile.works_from = works_from
+                //self.userProfile.works_from = works_from
             }
             
             if let works_to = responseSuccess["works_to"].string{
-                self.userProfile.works_to = works_to
+                //self.userProfile.works_to = works_to
             }
             
             onSuccess(true)

@@ -113,28 +113,37 @@ class profileViewController: UIViewController, UITableViewDataSource, UITableVie
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         switch indexPath.row {
+            case 2:
+                //gotoCarsMyVC
+                self.performSegue(withIdentifier: "gotoMyCarsVC", sender: self)
+                
+            case 1:
+                //gotoProfileinfo
+                self.performSegue(withIdentifier: "gotoProfileinfo", sender: self)
+
 //        case 3:
 //            // self.performSegue(withIdentifier: "gotoFavAddresses", sender: self)
 //            
-//        case 5:
-//          //  self.performSegue(withIdentifier: "gotoCart", sender: self)
+            case 5:
+               self.performSegue(withIdentifier: "gotoPaymentView", sender: self)
 //            
 //        case 4:
 //           // self.performSegue(withIdentifier: "gotoFavorites", sender: self)
-//            
-//        case 1:
-//            //gotoProfileinfo
-//            //self.performSegue(withIdentifier: "gotoProfileinfo", sender: self)
             
-        case 1:
-            //gotoProfileinfo
-            self.performSegue(withIdentifier: "gotoProfileinfo", sender: self)
+            //gotoPaymentView
+//            
         default:
             break
         }
       
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "gotoPaymentView"{
+            let destVC = segue.destination as! addressPaymentViewController
+            destVC.isComingFromProfile = true            
+        }
+    }
     
     override func viewWillDisappear(_ animated: Bool) {
         self.navigationController?.navigationBar.isHidden = false

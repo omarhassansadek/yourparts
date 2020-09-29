@@ -33,6 +33,7 @@ class addAddressViewController: UIViewController, UIPickerViewDelegate, UIPicker
     var cityPickerView = UIPickerView()
     
     var regionPickerView = UIPickerView()
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,6 +52,9 @@ class addAddressViewController: UIViewController, UIPickerViewDelegate, UIPicker
         
         self.regionPickerView.delegate = self
         self.regionPickerView.dataSource = self
+        
+        self.cityTf.inputView = cityPickerView
+        self.regionTf.inputView = regionPickerView
 
         
         self.addAddressLbl.text = "Add Address".localized
@@ -151,7 +155,7 @@ class addAddressViewController: UIViewController, UIPickerViewDelegate, UIPicker
             if isSuccess{
                 self.cityPickerView.reloadAllComponents()
                 self.cityTf.text = self.AddressVM.ctitiesArr[0].name
-                
+                self.getRegions(id: self.AddressVM.ctitiesArr[0].id ?? -1)
             }
         }) { (errMsg) in
             //
@@ -162,7 +166,11 @@ class addAddressViewController: UIViewController, UIPickerViewDelegate, UIPicker
         self.AddressVM.getAllregions(id: id, onSuccess: { (isSuccess) in
             if isSuccess{
                 self.regionPickerView.reloadAllComponents()
-                self.regionTf.text = self.AddressVM.regionArr[0].name
+                if self.AddressVM.regionArr.count > 0{
+                    self.regionTf.text = self.AddressVM.regionArr[0].name
+                }else{
+                    self.regionTf.text = ""
+                }
             }
         }) { (errMsg) in
             //

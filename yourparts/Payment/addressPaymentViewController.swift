@@ -11,6 +11,8 @@ import NVActivityIndicatorView
 
 class addressPaymentViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
+    @IBOutlet weak var indView: UIView!
+    @IBOutlet weak var indviewheightConstraint: NSLayoutConstraint!
     @IBOutlet weak var activityind: NVActivityIndicatorView!
     @IBOutlet weak var addressTableView: UITableView!
     @IBOutlet weak var addViewBtn: UIButton!
@@ -24,9 +26,16 @@ class addressPaymentViewController: UIViewController, UITableViewDelegate, UITab
         self.getAddresses()
     }
     
+    var isComingFromProfile: Bool?
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        if self.isComingFromProfile ?? false{
+            self.indviewheightConstraint.constant = 0
+            self.indView.layoutIfNeeded()
+        }
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.reloadAddresses), name: Notification.Name("finishAddAddress"), object: nil)
 

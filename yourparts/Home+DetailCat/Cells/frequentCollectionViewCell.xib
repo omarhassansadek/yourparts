@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="frequentCell" id="gTV-IL-0wX" customClass="frequentCollectionViewCell" customModule="yourparts" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="167" height="167"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="167" height="167"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hgy-w0-qVw">
+                        <rect key="frame" x="5" y="15" width="157" height="137"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="teelFramel" translatesAutoresizingMaskIntoConstraints="NO" id="iEU-yO-9Hn">
+                                <rect key="frame" x="15" y="0.0" width="127" height="96"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="naN-H0-SIw">
+                                <rect key="frame" x="0.0" y="111" width="157" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="V9f-cK-cgs"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="iEU-yO-9Hn" secondAttribute="trailing" constant="15" id="CFf-94-N1B"/>
+                            <constraint firstItem="naN-H0-SIw" firstAttribute="leading" secondItem="Hgy-w0-qVw" secondAttribute="leading" id="Czo-Bd-rbv"/>
+                            <constraint firstAttribute="bottom" secondItem="naN-H0-SIw" secondAttribute="bottom" constant="5" id="NsT-iw-lNf"/>
+                            <constraint firstAttribute="trailing" secondItem="naN-H0-SIw" secondAttribute="trailing" id="aXb-V1-yMd"/>
+                            <constraint firstItem="naN-H0-SIw" firstAttribute="top" secondItem="iEU-yO-9Hn" secondAttribute="bottom" constant="15" id="iso-5m-NX1"/>
+                            <constraint firstItem="iEU-yO-9Hn" firstAttribute="top" secondItem="Hgy-w0-qVw" secondAttribute="top" id="kmO-z2-9HP"/>
+                            <constraint firstItem="iEU-yO-9Hn" firstAttribute="leading" secondItem="Hgy-w0-qVw" secondAttribute="leading" constant="15" id="mnv-mo-XOY"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.93725490196078431" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="Hgy-w0-qVw" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="5" id="Hzo-oJ-tcp"/>
+                <constraint firstItem="Hgy-w0-qVw" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="15" id="RdZ-Vq-7in"/>
+                <constraint firstAttribute="trailing" secondItem="Hgy-w0-qVw" secondAttribute="trailing" constant="5" id="Y40-EE-0y6"/>
+                <constraint firstAttribute="bottom" secondItem="Hgy-w0-qVw" secondAttribute="bottom" constant="15" id="jmc-8K-51y"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <size key="customSize" width="161" height="127"/>
+            <connections>
+                <outlet property="catImage" destination="iEU-yO-9Hn" id="jRj-X3-VUU"/>
+                <outlet property="catLbl" destination="naN-H0-SIw" id="NgI-hi-Qqq"/>
+                <outlet property="imgBottomConstraint" destination="iso-5m-NX1" id="tnF-UH-3ap"/>
+                <outlet property="imgLeadingConstraint" destination="mnv-mo-XOY" id="W1M-ZC-E0m"/>
+                <outlet property="imgTopConstraint" destination="kmO-z2-9HP" id="GQe-Ed-4Jl"/>
+                <outlet property="imgTrailingConstraint" destination="CFf-94-N1B" id="Vey-Jc-3qT"/>
+                <outlet property="roundView" destination="Hgy-w0-qVw" id="eDa-8p-h4T"/>
+                <outlet property="topConstraintView" destination="RdZ-Vq-7in" id="msc-oZ-VIQ"/>
+            </connections>
+            <point key="canvasLocation" x="218.11594202898553" y="113.50446428571428"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="teelFramel" width="74" height="74"/>
+    </resources>
+</document>

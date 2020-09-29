@@ -33,7 +33,7 @@ class cityParser{
                 cityObj.code = code
             }
             
-            if let shipping_fee = oneCity["shipping_fee"].int {
+            if let shipping_fee = oneCity["shipping_fee"].string {
                 cityObj.shipping_fee = shipping_fee
             }
             

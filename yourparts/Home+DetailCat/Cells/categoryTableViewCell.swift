@@ -18,7 +18,7 @@ class categoryTableViewCell: UITableViewCell {
         // Initialization code
         self.roundView.layer.cornerRadius = 15.0
         
-        self.catName.font = UIFont(name: "Cairo-Bold", size: 14)
+        self.catName.font = UIFont(name: "Cairo-Bold", size: 18)
 
     }
 

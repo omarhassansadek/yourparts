@@ -39,10 +39,8 @@ class loginViewModel: NSObject {
                 }
 
                 
-                if let firstName = responseSuccess["user"]["first_name"].string{
-                    if let lastName = responseSuccess["user"]["last_name"].string{
-                        self.usrDef.set(firstName + " " + lastName , forKey: "username")
-                    }
+                if let userName = responseSuccess["user"]["username"].string{
+                    self.usrDef.set(userName , forKey: "username")
                 }
 
 

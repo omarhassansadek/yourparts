@@ -19,6 +19,9 @@ class addCarViewController: UIViewController {
     @IBOutlet weak var chooseModelTF: UITextField!
     @IBOutlet weak var chooseBrandTF: UITextField!
     @IBOutlet weak var chooseType: UITextField!
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -58,6 +61,9 @@ class addCarViewController: UIViewController {
         self.yearModel.font = UIFont(name: "Cairo-SemiBold", size: 14 )
 
 
+        for oneView in roundViews{
+            oneView.layer.cornerRadius = 12.5
+        }
         
 //
 //        self.chooseType.attributedPlaceholder = NSAttributedString(string: "Choose Type".localized , attributes: [
@@ -82,7 +88,10 @@ class addCarViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-
+    
+    
+    @IBOutlet var roundViews: [UIView]!
+    
     /*
     // MARK: - Navigation
 

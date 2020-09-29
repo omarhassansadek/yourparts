@@ -20,7 +20,7 @@ class offerTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
         self.collectionTitle.text = "Offers Today".localized
-        self.collectionTitle.font = UIFont(name: "Cairo-Bold", size: 16)
+        self.collectionTitle.font = UIFont(name: "Cairo-Bold", size: 18)
 
         let nib1 = UINib.init(nibName: String(describing: homeSliderCollectionViewCell.self), bundle: nil)
         offerCollectionView.register(nib1, forCellWithReuseIdentifier: "offerSlider")

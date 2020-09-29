@@ -11,7 +11,7 @@ import Foundation
 
 var baseUrl = "https://new-api.yourparts.com/"
 
-var signupUrl = "auth/register/"
+var signupUrl = "auth/registration/"
 
 var loginUrl = "auth/login/"
 
@@ -38,3 +38,5 @@ var addAddressUrl = "customer/billingaddress/add/"
 var getAddressUrl = "customer/billingaddress/"
 
 var getCityUrl = "city/"
+
+var getOffersUrl = "ads/offeroftheday"

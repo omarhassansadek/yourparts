@@ -16,6 +16,24 @@ class confirmationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        if let topItem = self.navigationController?.navigationBar.topItem {
+            topItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        }
+
+        
+        self.navigationController?.navigationBar.tintColor = primaryColor
+        
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        
+        self.navigationController?.navigationBar.barTintColor = anotherGreyColor
+        
+        self.title = "Confirmation".localized
+        
+        self.navigationController?.navigationBar.titleTextAttributes =
+            [NSAttributedString.Key.foregroundColor: UIColor.black,
+             NSAttributedString.Key.font: UIFont(name: "Cairo-Bold", size: 18)!]
+
+        
         // Do any additional setup after loading the view.
     }
     

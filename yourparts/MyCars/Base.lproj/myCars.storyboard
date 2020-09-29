@@ -119,6 +119,9 @@
                                         <state key="normal" title="Button">
                                             <color key="titleColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.93725490199999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="addCarBtnClicked:" destination="DwL-i4-eJA" eventType="touchUpInside" id="7IL-e7-l8S"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -170,7 +173,7 @@
         <!--Add Car View Controller-->
         <scene sceneID="Ehd-zv-e4E">
             <objects>
-                <viewController modalPresentationStyle="fullScreen" id="JDh-dK-t9z" customClass="addCarViewController" customModule="yourparts" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="addCarVC" modalPresentationStyle="fullScreen" id="JDh-dK-t9z" customClass="addCarViewController" customModule="yourparts" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="tQ6-2h-hnj">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -374,6 +377,10 @@
                         <outlet property="typeLbl" destination="Szs-Uw-gXS" id="0md-Id-PAA"/>
                         <outlet property="yearManuTF" destination="WLy-d8-1Jx" id="X7i-Cp-4zh"/>
                         <outlet property="yearModel" destination="Yxh-Cc-EDD" id="NRM-ZP-d8F"/>
+                        <outletCollection property="roundViews" destination="3WQ-x1-mvH" collectionClass="NSMutableArray" id="vfA-8A-hyE"/>
+                        <outletCollection property="roundViews" destination="hTP-q5-CiA" collectionClass="NSMutableArray" id="pzb-4M-4uO"/>
+                        <outletCollection property="roundViews" destination="cvN-HE-OuM" collectionClass="NSMutableArray" id="xbt-Fc-TRk"/>
+                        <outletCollection property="roundViews" destination="fkj-vb-Gu4" collectionClass="NSMutableArray" id="wwe-yQ-FrE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cXc-MC-W3q" userLabel="First Responder" sceneMemberID="firstResponder"/>

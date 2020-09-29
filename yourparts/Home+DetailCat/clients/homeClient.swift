@@ -23,4 +23,17 @@ class homeClient: ParentClient {
             completionFailure(responseFailure)
         }
     }
+    
+    func requestOffers(url: String, apiMethod: HTTPMethod, parametersOfCall: [String: Any]? , apiEncoding: ParameterEncoding , completionSuccess: @escaping (JSON) -> Void , completionFailure: @escaping (JSON) -> Void ){
+        
+        
+        self.communicateWithApi(url: url, pagingUrl: nil, method: .get, parameters: parametersOfCall, headers: nil, onSuccess: { (responseSuccess) in
+            //
+            completionSuccess(responseSuccess)
+        }) { (responseFailure) in
+            //
+            completionFailure(responseFailure)
+        }
+    }
+    
 }

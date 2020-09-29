@@ -111,6 +111,11 @@ class myCarsViewController: UIViewController, UITableViewDelegate, UITableViewDa
             //
         }
     }
+    
+    @IBAction func addCarBtnClicked(_ sender: Any) {
+        self.performSegue(withIdentifier: "gotoAddCarVC", sender: self)
+    }
+    
     /*
     // MARK: - Navigation
 
@@ -120,5 +125,6 @@ class myCarsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         // Pass the selected object to the new view controller.
     }
     */
+    
 
 }

@@ -14,8 +14,8 @@ class homeSliderCollectionViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        self.roundView.layer.cornerRadius = 20.0
-        self.offerimg.layer.cornerRadius = 20.0
+        self.roundView.layer.cornerRadius = 15.0
+        self.offerimg.layer.cornerRadius = 15.0
         self.offerimg.contentMode = .scaleAspectFill
         self.offerimg.clipsToBounds = true
 

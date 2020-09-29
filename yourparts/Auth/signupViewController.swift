@@ -155,7 +155,7 @@ class signupViewController: UIViewController {
             if isValidEmail(testStr: email!){
                 if (self.passwordTf.text?.count ?? 0 >= 6) {
                     
-                    let userParameters: [String: String] = ["username" : username! , "email": email!, "password1" : pass! , "password2" : confirmpass!, "phone_number" : mobile! ]
+                    let userParameters: [String: String] = ["username" : username! , "email": email!, "password" : pass! , "confirm_password" : confirmpass!, "phone_number" : mobile! ]
                     
                     self.signupVM.registerUser(apiParameters: userParameters, onSuccess: { (isSuccess) in
                         //gotoHomePage

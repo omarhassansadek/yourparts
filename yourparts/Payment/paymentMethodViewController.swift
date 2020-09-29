@@ -74,9 +74,6 @@ class paymentMethodViewController: UIViewController, UITableViewDelegate, UITabl
              NSAttributedString.Key.font: UIFont(name: "Cairo-Bold", size: 18)!]
         
         //AddAddressCell
-        
-        
-    
         // Do any additional setup after loading the view.
     }
     
@@ -89,21 +86,28 @@ class paymentMethodViewController: UIViewController, UITableViewDelegate, UITabl
         return 4
     }
     
+    var selectedMethod = 0
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
+      
         
         if indexPath.row == 3{
             
             let addAddressCell = tableView.dequeueReusableCell(withIdentifier: "AddAddressCell") as! addAddressTableViewCell
             addAddressCell.addAddress = {
-               self.performSegue(withIdentifier: "gotoConfirmVC", sender: self)
+                if self.selectedMethod == 1{
+                     self.dimmedView.isHidden = false
+                     self.alertView.isHidden = false
+                }else{
+                    self.performSegue(withIdentifier: "gotoConfirmVC", sender: self)
+                }
             }
-            
             addAddressCell.addAddressBtn.setTitle("Choose Payment Method".localized, for: .normal)
-
             return addAddressCell
             
         }else{
+            
             let methodCell = tableView.dequeueReusableCell(withIdentifier: "methodCell") as! methodTableViewCell
             switch indexPath.row{
                 case 0:
@@ -125,16 +129,32 @@ class paymentMethodViewController: UIViewController, UITableViewDelegate, UITabl
             methodCell.chooseMethodSelect = {
                 //func
                 if indexPath.row == 0{
-                    self.dimmedView.isHidden = false
-                    self.alertView.isHidden = false
+                   self.selectedMethod = 1
+                }else{
+                    self.selectedMethod = 0
                 }
-                methodCell.methodBox.on = true
+                for (index, box) in self.arrayBox.enumerated(){
+                    if index == indexPath.row{
+                        self.arrayBox[index] = true
+                    }else{
+                        self.arrayBox[index] = false
+
+                    }
+                }
+                
+                self.paymentMethodTableView.reloadData()
             }
+            
+            methodCell.methodBox.on = arrayBox[indexPath.row]
+            
+                  
             return methodCell
             
         }
     }
     
+    
+    var arrayBox: [Bool] = [false, false, false]
     
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -149,24 +169,34 @@ class paymentMethodViewController: UIViewController, UITableViewDelegate, UITabl
     
 
     @IBAction func saveBtnClicked(_ sender: Any) {
-        self.dimmedView.isHidden = true
-        //self.alertView.isHidden = true
         
-        self.textViewLbl.isHidden = true
+     
+        UIView.animate(withDuration: 1.5, animations: {
+            self.dimmedView.isHidden = true
+            self.alertView.isHidden = true
+        }) { (isSuccess) in
+            //
+            self.performSegue(withIdentifier: "gotoConfirmVC", sender: self)
+        }
+        //self.textViewLbl.isHidden = true
         
-        self.saveBtn.isHidden = true
+        //self.saveBtn.isHidden = true
 
-        self.cancelBtn.isHidden = true
+        //self.cancelBtn.isHidden = true
 
-        self.checkico.isHidden = false
-
-
+        //self.checkico.isHidden = false
     }
     
     @IBAction func cancelBtnClicked(_ sender: Any) {
         self.dimmedView.isHidden = true
         self.alertView.isHidden = true
     }
+    
+    @IBAction func goBacktoAddress(_ sender: Any) {
+        print("Ok")
+        self.navigationController?.popViewController(animated: true)
+    }
+    
     /*
     // MARK: - Navigation
 

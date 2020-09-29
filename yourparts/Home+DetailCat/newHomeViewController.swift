@@ -16,6 +16,8 @@ class newHomeViewController: UIViewController, UITableViewDelegate, UITableViewD
     @IBOutlet weak var homeVm: homeViewModel!
     @IBOutlet weak var tableView: UITableView!
     
+    
+    
    
     
     override func viewWillAppear(_ animated: Bool) {
@@ -34,16 +36,16 @@ class newHomeViewController: UIViewController, UITableViewDelegate, UITableViewD
         statusBarView.backgroundColor = UIColor.white
         view.addSubview(statusBarView)
     
-
-        
         self.tableView.delegate = self
         self.tableView.dataSource = self
+
+
+        
         // Do any additional setup after loading the view.
         
         self.setNeedsStatusBarAppearanceUpdate()
 
     
-        self.reqHomeCats()
         
         //registering cells
         let nib = UINib(nibName: String(describing: addCarTableViewCell.self), bundle: nil)
@@ -57,7 +59,16 @@ class newHomeViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         let nib4 = UINib(nibName: String(describing: offerTableViewCell.self), bundle: nil)
         self.tableView.register(nib4, forCellReuseIdentifier: "offerCell")
+
+        let nib5 = UINib(nibName: String(describing: frequentlyNeededTableViewCell.self), bundle: nil)
+        self.tableView.register(nib5, forCellReuseIdentifier: "frequentCell")
         
+        let nib6 = UINib(nibName: String(describing: brandsTableViewCell.self), bundle: nil)
+        self.tableView.register(nib6, forCellReuseIdentifier: "brandCell")
+        
+
+        
+        self.getOffers()
         //
 
     }
@@ -67,7 +78,7 @@ class newHomeViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3 + self.homeVm.categoriesArr.count
+        return 1 + self.catCount
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -82,6 +93,7 @@ class newHomeViewController: UIViewController, UITableViewDelegate, UITableViewD
                         //cellDelegate.profilesArray = self.storiesViewModel.commonTagsphotographerResponse?.data ?? [Photographer]()
                         //cellDelegate.targetController = self
                 cellDelegate.row = indexPath.row
+                cellDelegate.offersArr = self.homeVm.offersArr
                 offerCell.row = indexPath.row
                         //cellDelegate.type = "t"
 //                offerCell.collectionTitle.text = sparts[indexPath.row - 1]
@@ -93,25 +105,107 @@ class newHomeViewController: UIViewController, UITableViewDelegate, UITableViewD
                         
                 return offerCell
                 
-            case 2:
-                let catCell = tableView.dequeueReusableCell(withIdentifier: "categoryTitleCell") as! CategoryTitleTableViewCell
-                return catCell
+            case 2,3:
                 
+                let frequentCell = tableView.dequeueReusableCell(withIdentifier: "frequentCell") as! frequentlyNeededTableViewCell
+                
+
+                                           
+                               let cellDelegate = frequentlyCollectionDelegate()
+                                                   //cellDelegate.profilesArray = self.storiesViewModel.commonTagsphotographerResponse?.data ?? [Photographer]()
+                                                   //cellDelegate.targetController = self
+                               cellDelegate.row = indexPath.row
+                               frequentCell.row = indexPath.row
+                                if indexPath.row == 2
+                                {
+                                    cellDelegate.type = "c"
+                                    frequentCell.frequentlyNeededLbl.text = "What your car needs".localized
+                                    frequentCell.frequentlyNeededLbl.font = UIFont(name: "Cairo-Bold", size: 18)
+
+
+                                }else{
+                                    cellDelegate.type = "f"
+                                    frequentCell.frequentlyNeededLbl.text = "Frequently Needed".localized
+                                    frequentCell.frequentlyNeededLbl.font = UIFont(name: "Cairo-Bold", size: 18)
+
+                                }
+                           //                offerCell.collectionTitle.text = sparts[indexPath.row - 1]
+                                                   
+                               frequentCell.setCollectionViewDataSourceDelegate(cellDelegate, forRow: indexPath.row)
+                                                 
+                               frequentCell.selectionStyle = .none
+                                                 
+                                                   
+                return frequentCell
+            
+                
+            case 4:
+               let catCell = tableView.dequeueReusableCell(withIdentifier: "categoryTitleCell") as! CategoryTitleTableViewCell
+                           return catCell
+            
+        case self.catCount - 1 ,self.catCount :
+                
+                let brandCell = tableView.dequeueReusableCell(withIdentifier: "brandCell") as! brandsTableViewCell
+                
+
+                                           
+                    let cellDelegate = brandsCollectionDelegate()
+                                                   //cellDelegate.profilesArray = self.storiesViewModel.commonTagsphotographerResponse?.data ?? [Photographer]()
+                                                   //cellDelegate.targetController = self
+                    cellDelegate.row = indexPath.row
+                    brandCell.row = indexPath.row
+                    if indexPath.row == self.catCount
+                    {
+                        cellDelegate.type = "c"
+                        brandCell.titleLbl.text = "Spare Parts Brand".localized
+
+
+                    }else{
+                        cellDelegate.type = "f"
+                        brandCell.titleLbl.text = "Cars Brand".localized
+                        
+                    }
+                                                   
+                    brandCell.setCollectionViewDataSourceDelegate(cellDelegate, forRow: indexPath.row)
+                                                 
+                    brandCell.selectionStyle = .none
+                                                 
+                                                   
+                return brandCell
+            
         default:
             let categoryCell = tableView.dequeueReusableCell(withIdentifier: "catCell") as! categoryTableViewCell
             
-            
-            //categoryCell.catImage.s
-            categoryCell.catImage.sd_setImage(with: URL(string: self.homeVm.categoriesArr[indexPath.row - 3].image ?? "") , placeholderImage: nil, completed: { (image, error, cacheType, url) -> Void in
-                if ((error) != nil) {
-                    // set the placeholder image here
-                    categoryCell.catImage.image = UIImage(named: "teelFramel")
-                } else {
-                    // success ... use the image
-                }
-            })
+            switch indexPath.row {
+            case 5:
+                categoryCell.catImage.image = UIImage(named: "cat1")
+            case 6:
+                categoryCell.catImage.image = UIImage(named: "cat2")
+            case 7:
+                categoryCell.catImage.image = UIImage(named: "cat3")
+            case 8:
+                categoryCell.catImage.image = UIImage(named: "cat4")
+            case 9:
+                categoryCell.catImage.image = UIImage(named: "cat5")
+            case 10:
+                categoryCell.catImage.image = UIImage(named: "cat6")
 
-            categoryCell.catName.text = self.homeVm.categoriesArr[indexPath.row - 3].name
+            default:
+                categoryCell.catImage.image = UIImage(named: "teelFramel")
+
+            }
+            //categoryCell.catImage.s
+//            categoryCell.catImage.sd_setImage(with: URL(string: self.homeVm.categoriesArr[indexPath.row - 4].image ?? "") , placeholderImage: nil, completed: { (image, error, cacheType, url) -> Void in
+//                if ((error) != nil) {
+//                    // set the placeholder image here
+//                    categoryCell.catImage.image = UIImage(named: "teelFramel")
+//                } else {
+//                    // success ... use the image
+//                }
+//            })
+
+            print(indexPath.row)
+            categoryCell.catName.text = self.homeVm.categoriesArr[indexPath.row - 5].name ?? ""
             
             return categoryCell
         }
@@ -124,27 +218,44 @@ class newHomeViewController: UIViewController, UITableViewDelegate, UITableViewD
             case 0:
                 return 80.0
             case 1:
-                return 205.0
-            case 2:
+                return 300.0
+            case 2,3:
+                return 170.0
+
+            case 4:
                 return 45.0
+            
+            case self.catCount - 1, self.catCount:
+                return 105.0
         default:
-            return 115.0
+            return 135.0
         
         }
         
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print(indexPath.row)
         
-        self.catIdToGo = self.homeVm.categoriesArr[indexPath.row - 3].id
+        if indexPath.row > 4{
+            if indexPath.row != 13 && indexPath.row != 12{
+                self.catIdToGo = self.homeVm.categoriesArr[indexPath.row - 5].id
+                           
+                           if self.catIdToGo == 1 || self.catIdToGo == 737 || self.catIdToGo == 58{
+                               self.performSegue(withIdentifier: "gotoDetailCat", sender: self)
+                           }else if self.catIdToGo == 85{
+                               self.performSegue(withIdentifier: "gotoTires", sender: self)
+                           }
+            }
         
-        if self.catIdToGo == 1 || self.catIdToGo == 737 || self.catIdToGo == 58{
-            self.performSegue(withIdentifier: "gotoDetailCat", sender: self)
-        }else if self.catIdToGo == 85{
-            self.performSegue(withIdentifier: "gotoTires", sender: self)
+        }else if indexPath.row == 1{
+            self.performSegue(withIdentifier: "gotoAddCarVC", sender: self)
         }
+   
         
     }
+    
+    var catCount = 0
     
     
     func reqHomeCats(){
@@ -155,6 +266,8 @@ class newHomeViewController: UIViewController, UITableViewDelegate, UITableViewD
             self.activityind.stopAnimating()
 
             if isSuccess{
+
+                self.catCount = self.homeVm.categoriesArr.count + 2 + 4
                 self.tableView.reloadData()
             }
             
@@ -172,6 +285,22 @@ class newHomeViewController: UIViewController, UITableViewDelegate, UITableViewD
         if segue.identifier == "gotoDetailCat"{
             var destVC = segue.destination as! detailCatViewController
             destVC.catId = self.catIdToGo
+        }
+    }
+    
+    func getOffers(){
+        self.homeVm.getOffersFromApi(onSuccess: { (isSuccess) in
+            //
+            
+            print(isSuccess)
+            
+            
+            self.reqHomeCats()
+
+        }) { (errorMsg) in
+            //
+            self.reqHomeCats()
+
         }
     }
     

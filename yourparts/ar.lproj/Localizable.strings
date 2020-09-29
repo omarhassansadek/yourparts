@@ -262,7 +262,7 @@
 
 "Continue" = "تاكيد" ;
 
-"Cancel" = "الغاة" ;
+"Cancel" = "الغاء" ;
 
 "Added to cart" = "المنتج في عربة التسوق" ;
 
@@ -281,3 +281,13 @@
 "Logout" = "خروج" ;
 
 "Saved Successfully" = "تم الحفظ بنجاح" ;
+
+"Confirmation" = "التأكيد";
+
+"Frequently Needed" = "الأكثر طلباً";
+
+"What your car needs" = "ما تحتاجه السيارة دائما";
+
+"Spare Parts Brand" = "ماركات قطع الغيار" ;
+
+"Cars Brand" = "ماركات السيارات" ;

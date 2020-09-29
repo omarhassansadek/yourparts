@@ -22,7 +22,7 @@ class CategoryTitleTableViewCell: UITableViewCell {
         roundView.layer.cornerRadius = 10
         roundView.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
         self.categoryLbl.text = "Categories".localized
-        self.categoryLbl.font = UIFont(name: "Cairo-Bold", size: 16)
+        self.categoryLbl.font = UIFont(name: "Cairo-Bold", size: 18)
 
     }
 

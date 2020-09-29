@@ -8,9 +8,10 @@
 
 import UIKit
 
-class infoProfileViewController: UIViewController {
+class infoProfileViewController: UIViewController, UITextFieldDelegate {
 
 
+    @IBOutlet weak var editBtn: UIButton!
     @IBOutlet weak var mobileLbl: UILabel!
     @IBOutlet weak var nameLbl: UILabel!
     @IBOutlet weak var mobileView: UIView!
@@ -30,6 +31,10 @@ class infoProfileViewController: UIViewController {
     
     func configure(){
         
+        self.nameTf.delegate = self
+        
+        self.mobileTf.delegate = self
+        
         self.nameView.layer.cornerRadius = 12.5
 
         self.mobileView.layer.cornerRadius = 12.5
@@ -43,6 +48,15 @@ class infoProfileViewController: UIViewController {
         self.mobileLbl.font = UIFont(name: "Cairo-SemiBold", size: 14 )
 
 
+        
+
+        self.editBtn.setTitle("Edit your profile".localized, for: .normal)
+        
+        self.editBtn.titleLabel?.font = UIFont(name: "Cairo-Bold", size: 14)
+        
+        self.editBtn.layer.cornerRadius = 15.0
+
+        
         
         self.nameTf.attributedPlaceholder = NSAttributedString(string: "Name".localized , attributes: [
             .foregroundColor: UIColor.darkGray,
@@ -82,6 +96,10 @@ class infoProfileViewController: UIViewController {
 //            //
 //        }
  
+    }
+    
+    @IBAction func changeInTfs(_ sender: UITextField) {
+        self.editBtn.backgroundColor = primaryColor
     }
     
     

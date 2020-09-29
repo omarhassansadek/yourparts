@@ -40,10 +40,16 @@
                         <segue destination="YCt-t2-osj" kind="show" identifier="gotoCart" id="tFe-3L-yFr"/>
                         <segue destination="PZZ-sH-hv3" kind="show" identifier="gotoFavorites" id="mDO-yY-pL0"/>
                         <segue destination="G0p-bQ-Ekc" kind="show" identifier="gotoSettings" id="ObQ-da-O0h"/>
+                        <segue destination="s8p-2E-Lvz" kind="show" identifier="gotoPaymentView" id="SDm-es-XGh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Z6b-in-YOp" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <customObject id="3A9-6Q-P3v" customClass="profileViewModel" customModule="yourparts" customModuleProvider="target"/>
+                <customObject id="bWU-ve-6zm" customClass="profileClient" customModule="yourparts" customModuleProvider="target"/>
+                <customObject id="3A9-6Q-P3v" customClass="profileViewModel" customModule="yourparts" customModuleProvider="target">
+                    <connections>
+                        <outlet property="profileC" destination="bWU-ve-6zm" id="nKG-L1-wFb"/>
+                    </connections>
+                </customObject>
             </objects>
             <point key="canvasLocation" x="1116" y="131.78410794602701"/>
         </scene>
@@ -53,7 +59,17 @@
                 <viewControllerPlaceholder storyboardName="myCars" referencedIdentifier="myCarsVC" id="lZR-N0-BRV" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Ex-gm-JuY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2014" y="230"/>
+            <point key="canvasLocation" x="2057" y="-117"/>
+        </scene>
+        <!--paymentView1-->
+        <scene sceneID="3sp-cs-AhB">
+            <objects>
+                <viewControllerPlaceholder storyboardName="payment" referencedIdentifier="paymentView1" id="s8p-2E-Lvz" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="mHd-gU-aqB"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="w1p-As-MZ3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2056" y="255"/>
         </scene>
         <!--Cart View Controller-->
         <scene sceneID="blt-Rx-aQp">
@@ -121,7 +137,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WjV-aX-wf5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3006" y="603"/>
+            <point key="canvasLocation" x="3130" y="913"/>
         </scene>
         <!--Settings View Controller-->
         <scene sceneID="iSd-yc-TpI">
@@ -152,7 +168,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dyb-Gh-Pr8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2014" y="1397"/>
+            <point key="canvasLocation" x="1116" y="1342"/>
         </scene>
         <!--Fav View Controller-->
         <scene sceneID="IJq-wS-17j">
@@ -220,7 +236,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pHX-HB-cdK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3006" y="1397"/>
+            <point key="canvasLocation" x="2282" y="1973"/>
         </scene>
         <!--Info Profile View Controller-->
         <scene sceneID="AQG-2G-4q4">
@@ -255,6 +271,9 @@
                                                                 <rect key="frame" x="15" y="0.0" width="295" height="40"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <textInputTraits key="textInputTraits"/>
+                                                                <connections>
+                                                                    <action selector="changeInTfs:" destination="E5I-rZ-JBw" eventType="editingChanged" id="qh0-qa-Vb6"/>
+                                                                </connections>
                                                             </textField>
                                                         </subviews>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -297,6 +316,9 @@
                                                                 <rect key="frame" x="15" y="0.0" width="295" height="40"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <textInputTraits key="textInputTraits"/>
+                                                                <connections>
+                                                                    <action selector="changeInTfs:" destination="E5I-rZ-JBw" eventType="editingChanged" id="Lze-co-Nf9"/>
+                                                                </connections>
                                                             </textField>
                                                         </subviews>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -322,7 +344,7 @@
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4jS-rl-A6Z">
                                                 <rect key="frame" x="25" y="250" width="325" height="50"/>
-                                                <color key="backgroundColor" red="0.93725490199999995" green="0.23921568630000001" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="q6H-r4-XvD"/>
                                                 </constraints>
@@ -365,6 +387,7 @@
                         <viewLayoutGuide key="safeArea" id="pSo-1B-Yi0"/>
                     </view>
                     <connections>
+                        <outlet property="editBtn" destination="4jS-rl-A6Z" id="0TM-FJ-Teo"/>
                         <outlet property="infoprofileVM" destination="p6J-DB-lzd" id="WGN-Ss-4jn"/>
                         <outlet property="mobileLbl" destination="vDn-TC-YmV" id="max-Uf-6Pl"/>
                         <outlet property="mobileTf" destination="3eo-N4-3g2" id="rL5-2z-oee"/>
@@ -382,7 +405,7 @@
                 </customObject>
                 <customObject id="8bY-IO-fAG" customClass="infoProfileClient" customModule="yourparts" customModuleProvider="target"/>
             </objects>
-            <point key="canvasLocation" x="2013.5999999999999" y="-1077.2113943028487"/>
+            <point key="canvasLocation" x="2014" y="-1700"/>
         </scene>
         <!--Fav Address View Controller-->
         <scene sceneID="SdG-bv-Occ">
@@ -461,7 +484,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tD8-uu-wQd" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <customObject id="qnP-lA-uOW" customClass="favAddressViewModel" customModule="yourparts" customModuleProvider="target"/>
             </objects>
-            <point key="canvasLocation" x="2014" y="-309"/>
+            <point key="canvasLocation" x="2014" y="-794"/>
         </scene>
     </scenes>
     <resources>

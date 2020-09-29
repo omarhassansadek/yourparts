@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import SDWebImage
 
 class offersCollectionDelegate : NSObject ,UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
@@ -18,12 +19,14 @@ class offersCollectionDelegate : NSObject ,UICollectionViewDataSource, UICollect
     var row: Int?
     var type: String?
     
+    var offersArr: [offer]?
+    
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 6
+        return self.offersArr?.count ?? 1
         
         
     }
@@ -34,8 +37,15 @@ class offersCollectionDelegate : NSObject ,UICollectionViewDataSource, UICollect
             let cellCollection = collectionView.dequeueReusableCell(withReuseIdentifier: "offerSlider", for: indexPath) as! homeSliderCollectionViewCell
             
             cellCollection.roundView.backgroundColor = UIColor.white
-            cellCollection.offerimg.image = UIImage(named:"offerSample")
-            
+            //cellCollection.offerimg.image = UIImage(named: self.offersArr[indexPath.row])
+            cellCollection.offerimg.sd_setImage(with: URL(string: self.offersArr?[indexPath.row].image ?? "") , placeholderImage: nil, completed: { (image, error, cacheType, url) -> Void in
+                   if ((error) != nil) {
+                       // set the placeholder image here
+                       cellCollection.offerimg.image = UIImage(named: "offer2")
+                   } else {
+                       // success ... use the image
+                   }
+               })
             return cellCollection
         
         
@@ -90,7 +100,7 @@ class offersCollectionDelegate : NSObject ,UICollectionViewDataSource, UICollect
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 15.0
+        return 10.0
     }
     
     

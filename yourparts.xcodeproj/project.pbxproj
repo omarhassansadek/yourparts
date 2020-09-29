@@ -111,7 +111,6 @@
 		39FFAF9C24D0A0F700532C7F /* detailItemsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FFAF9B24D0A0F700532C7F /* detailItemsViewController.swift */; };
 		5C17EFC7250A6F0A0090C4D2 /* infoProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C17EFC6250A6F0A0090C4D2 /* infoProfileViewModel.swift */; };
 		5C17EFCA250A6F280090C4D2 /* infoProfileClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C17EFC9250A6F280090C4D2 /* infoProfileClient.swift */; };
-		5C17EFCC250A75840090C4D2 /* user.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C17EFCB250A75840090C4D2 /* user.swift */; };
 		5C17EFCE250A81490090C4D2 /* myCarsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C17EFCD250A81490090C4D2 /* myCarsViewModel.swift */; };
 		5C17EFD0250A81560090C4D2 /* myCarsClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C17EFCF250A81560090C4D2 /* myCarsClient.swift */; };
 		5C17EFD2250A81700090C4D2 /* vehicle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C17EFD1250A81700090C4D2 /* vehicle.swift */; };
@@ -151,6 +150,21 @@
 		5C89029D251B8FCD00730869 /* settingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C89029C251B8FCD00730869 /* settingsViewController.swift */; };
 		5C8902A0251B96D900730869 /* spaceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C89029E251B96D900730869 /* spaceTableViewCell.swift */; };
 		5C8902A1251B96D900730869 /* spaceTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C89029F251B96D900730869 /* spaceTableViewCell.xib */; };
+		5CA8BFE32522141400676B9A /* frequentlyNeededTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CA8BFE12522141400676B9A /* frequentlyNeededTableViewCell.swift */; };
+		5CA8BFE42522141400676B9A /* frequentlyNeededTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5CA8BFE22522141400676B9A /* frequentlyNeededTableViewCell.xib */; };
+		5CA8BFE7252215CB00676B9A /* frequentCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CA8BFE5252215CB00676B9A /* frequentCollectionViewCell.swift */; };
+		5CA8BFE8252215CB00676B9A /* frequentCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5CA8BFE6252215CB00676B9A /* frequentCollectionViewCell.xib */; };
+		5CA8BFEA252217A700676B9A /* frequentlyCollectionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CA8BFE9252217A700676B9A /* frequentlyCollectionDelegate.swift */; };
+		5CA8BFED2522475100676B9A /* brandsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CA8BFEB2522475100676B9A /* brandsTableViewCell.swift */; };
+		5CA8BFEE2522475100676B9A /* brandsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5CA8BFEC2522475100676B9A /* brandsTableViewCell.xib */; };
+		5CA8BFF12522495800676B9A /* brandimgCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CA8BFEF2522495800676B9A /* brandimgCollectionViewCell.swift */; };
+		5CA8BFF22522495800676B9A /* brandimgCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5CA8BFF02522495800676B9A /* brandimgCollectionViewCell.xib */; };
+		5CA8BFF4252249E900676B9A /* brandsCollectionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CA8BFF3252249E900676B9A /* brandsCollectionDelegate.swift */; };
+		5CA8BFF62523368800676B9A /* offerParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CA8BFF52523368800676B9A /* offerParser.swift */; };
+		5CA8BFF82523370C00676B9A /* offer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CA8BFF72523370C00676B9A /* offer.swift */; };
+		5CA8BFFA2523848900676B9A /* profileClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CA8BFF92523848900676B9A /* profileClient.swift */; };
+		5CA8BFFC2523854200676B9A /* profileParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CA8BFFB2523854200676B9A /* profileParser.swift */; };
+		5CA8BFFE2523857500676B9A /* user.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CA8BFFD2523857500676B9A /* user.swift */; };
 		5CF0636625176BBC00E73380 /* payment.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5CF0636525176BBC00E73380 /* payment.storyboard */; };
 		5CF0636825176E8500E73380 /* addressPaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF0636725176E8500E73380 /* addressPaymentViewController.swift */; };
 		5CF0636D251777E500E73380 /* addressTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5CF0636B251777E500E73380 /* addressTableViewCell.xib */; };
@@ -333,7 +347,6 @@
 		3F626031724FE72C11AE91BB /* Pods-yourpartsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-yourpartsTests.release.xcconfig"; path = "Target Support Files/Pods-yourpartsTests/Pods-yourpartsTests.release.xcconfig"; sourceTree = "<group>"; };
 		5C17EFC6250A6F0A0090C4D2 /* infoProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = infoProfileViewModel.swift; sourceTree = "<group>"; };
 		5C17EFC9250A6F280090C4D2 /* infoProfileClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = infoProfileClient.swift; sourceTree = "<group>"; };
-		5C17EFCB250A75840090C4D2 /* user.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = user.swift; sourceTree = "<group>"; };
 		5C17EFCD250A81490090C4D2 /* myCarsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = myCarsViewModel.swift; sourceTree = "<group>"; };
 		5C17EFCF250A81560090C4D2 /* myCarsClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = myCarsClient.swift; sourceTree = "<group>"; };
 		5C17EFD1250A81700090C4D2 /* vehicle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = vehicle.swift; sourceTree = "<group>"; };
@@ -373,6 +386,21 @@
 		5C89029C251B8FCD00730869 /* settingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = settingsViewController.swift; sourceTree = "<group>"; };
 		5C89029E251B96D900730869 /* spaceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = spaceTableViewCell.swift; sourceTree = "<group>"; };
 		5C89029F251B96D900730869 /* spaceTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = spaceTableViewCell.xib; sourceTree = "<group>"; };
+		5CA8BFE12522141400676B9A /* frequentlyNeededTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = frequentlyNeededTableViewCell.swift; sourceTree = "<group>"; };
+		5CA8BFE22522141400676B9A /* frequentlyNeededTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = frequentlyNeededTableViewCell.xib; sourceTree = "<group>"; };
+		5CA8BFE5252215CB00676B9A /* frequentCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = frequentCollectionViewCell.swift; sourceTree = "<group>"; };
+		5CA8BFE6252215CB00676B9A /* frequentCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = frequentCollectionViewCell.xib; sourceTree = "<group>"; };
+		5CA8BFE9252217A700676B9A /* frequentlyCollectionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = frequentlyCollectionDelegate.swift; sourceTree = "<group>"; };
+		5CA8BFEB2522475100676B9A /* brandsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = brandsTableViewCell.swift; sourceTree = "<group>"; };
+		5CA8BFEC2522475100676B9A /* brandsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = brandsTableViewCell.xib; sourceTree = "<group>"; };
+		5CA8BFEF2522495800676B9A /* brandimgCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = brandimgCollectionViewCell.swift; sourceTree = "<group>"; };
+		5CA8BFF02522495800676B9A /* brandimgCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = brandimgCollectionViewCell.xib; sourceTree = "<group>"; };
+		5CA8BFF3252249E900676B9A /* brandsCollectionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = brandsCollectionDelegate.swift; sourceTree = "<group>"; };
+		5CA8BFF52523368800676B9A /* offerParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = offerParser.swift; sourceTree = "<group>"; };
+		5CA8BFF72523370C00676B9A /* offer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = offer.swift; sourceTree = "<group>"; };
+		5CA8BFF92523848900676B9A /* profileClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = profileClient.swift; sourceTree = "<group>"; };
+		5CA8BFFB2523854200676B9A /* profileParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = profileParser.swift; sourceTree = "<group>"; };
+		5CA8BFFD2523857500676B9A /* user.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = user.swift; sourceTree = "<group>"; };
 		5CF0636525176BBC00E73380 /* payment.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = payment.storyboard; sourceTree = "<group>"; };
 		5CF0636725176E8500E73380 /* addressPaymentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addressPaymentViewController.swift; sourceTree = "<group>"; };
 		5CF0636B251777E500E73380 /* addressTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = addressTableViewCell.xib; sourceTree = "<group>"; };
@@ -618,6 +646,7 @@
 			children = (
 				397E8B8A24A5D53800780312 /* profileMenu.swift */,
 				5C433A092513A04A00F67552 /* cart.swift */,
+				5CA8BFFD2523857500676B9A /* user.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -758,6 +787,8 @@
 				39AEFF1724E10C0700AE0552 /* homeViewController.swift */,
 				5CF983AD250E829900D56721 /* newHomeViewController.swift */,
 				5CF983C8250F8E2600D56721 /* offersCollectionDelegate.swift */,
+				5CA8BFE9252217A700676B9A /* frequentlyCollectionDelegate.swift */,
+				5CA8BFF3252249E900676B9A /* brandsCollectionDelegate.swift */,
 				5CF983CC250FB69A00D56721 /* detailCatViewController.swift */,
 				5CF983CA250FB61100D56721 /* detailCategory.storyboard */,
 			);
@@ -781,6 +812,14 @@
 				5CF983CF250FBACF00D56721 /* searchCatTableViewCell.xib */,
 				5CF983D2250FBC7D00D56721 /* detailCatTableViewCell.swift */,
 				5CF983D3250FBC7D00D56721 /* detailCatTableViewCell.xib */,
+				5CA8BFE12522141400676B9A /* frequentlyNeededTableViewCell.swift */,
+				5CA8BFE22522141400676B9A /* frequentlyNeededTableViewCell.xib */,
+				5CA8BFE5252215CB00676B9A /* frequentCollectionViewCell.swift */,
+				5CA8BFE6252215CB00676B9A /* frequentCollectionViewCell.xib */,
+				5CA8BFEB2522475100676B9A /* brandsTableViewCell.swift */,
+				5CA8BFEC2522475100676B9A /* brandsTableViewCell.xib */,
+				5CA8BFEF2522495800676B9A /* brandimgCollectionViewCell.swift */,
+				5CA8BFF02522495800676B9A /* brandimgCollectionViewCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -882,6 +921,7 @@
 			children = (
 				5C17EFC9250A6F280090C4D2 /* infoProfileClient.swift */,
 				5C433A0725139EC800F67552 /* cartClient.swift */,
+				5CA8BFF92523848900676B9A /* profileClient.swift */,
 			);
 			path = clients;
 			sourceTree = "<group>";
@@ -897,7 +937,6 @@
 		5C17EFDA250A882F0090C4D2 /* models */ = {
 			isa = PBXGroup;
 			children = (
-				5C17EFCB250A75840090C4D2 /* user.swift */,
 				5C17EFD1250A81700090C4D2 /* vehicle.swift */,
 				5C17EFD3250A81E40090C4D2 /* carModel.swift */,
 				5C17EFD5250A82880090C4D2 /* maker.swift */,
@@ -996,6 +1035,7 @@
 			isa = PBXGroup;
 			children = (
 				5C433A0C2513A0B800F67552 /* cartParser.swift */,
+				5CA8BFFB2523854200676B9A /* profileParser.swift */,
 			);
 			path = parsers;
 			sourceTree = "<group>";
@@ -1053,6 +1093,7 @@
 			isa = PBXGroup;
 			children = (
 				5CF983BF250F7E6E00D56721 /* categoryParser.swift */,
+				5CA8BFF52523368800676B9A /* offerParser.swift */,
 			);
 			path = Parsers;
 			sourceTree = "<group>";
@@ -1061,6 +1102,7 @@
 			isa = PBXGroup;
 			children = (
 				5CF983C2250F7EC900D56721 /* category.swift */,
+				5CA8BFF72523370C00676B9A /* offer.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1212,6 +1254,7 @@
 				39F0590424A92D6600CA348F /* carTableViewCell.xib in Resources */,
 				3990DE3224E84C3200ED3F49 /* seeMoreCollectionViewCell.xib in Resources */,
 				39AA658B24B5B942005AC3CD /* myCars.storyboard in Resources */,
+				5CA8BFE42522141400676B9A /* frequentlyNeededTableViewCell.xib in Resources */,
 				5C433A0025138EFB00F67552 /* cartTableViewCell.xib in Resources */,
 				397B745C24CFA98B00B74BEC /* Cairo-Regular.ttf in Resources */,
 				393BC01C24A7C3CF00CAB4BE /* addTableViewCell.xib in Resources */,
@@ -1219,6 +1262,7 @@
 				3915F94624D0827D00BF6157 /* searchDetailsTireTableViewCell.xib in Resources */,
 				397B745A24CFA98B00B74BEC /* Cairo-SemiBold.ttf in Resources */,
 				39EC506D2497A90500ABAF05 /* LaunchScreen.storyboard in Resources */,
+				5CA8BFE8252215CB00676B9A /* frequentCollectionViewCell.xib in Resources */,
 				3969EFB324EC110400695277 /* Auth.storyboard in Resources */,
 				394B035A24A9E67A001E8C23 /* plainTableViewCell.xib in Resources */,
 				3972555124A3BC4F0092D1B5 /* the_mix_arab_regular.ttf in Resources */,
@@ -1240,6 +1284,7 @@
 				3990DE3A24E905A300ED3F49 /* extraProductTableViewCell.xib in Resources */,
 				3989841624E565AC00A7188C /* headerTableViewCell.xib in Resources */,
 				397B745624CF9C3800B74BEC /* oilTableViewCell.xib in Resources */,
+				5CA8BFF22522495800676B9A /* brandimgCollectionViewCell.xib in Resources */,
 				5CF0636625176BBC00E73380 /* payment.storyboard in Resources */,
 				5C890293251A4B6400730869 /* profileHeaderTableViewCell.xib in Resources */,
 				5CF983D1250FBACF00D56721 /* searchCatTableViewCell.xib in Resources */,
@@ -1256,6 +1301,7 @@
 				3999F17424DA48B900EAEC56 /* productCellTableViewCell.xib in Resources */,
 				397B745B24CFA98B00B74BEC /* Cairo-Bold.ttf in Resources */,
 				3990DE3624E904A000ED3F49 /* detailRowTableViewCell.xib in Resources */,
+				5CA8BFEE2522475100676B9A /* brandsTableViewCell.xib in Resources */,
 				5CF983AC250E7C3A00D56721 /* addCarTableViewCell.xib in Resources */,
 				5CF0636D251777E500E73380 /* addressTableViewCell.xib in Resources */,
 				39EC50682497A8FE00ABAF05 /* Main.storyboard in Resources */,
@@ -1413,6 +1459,7 @@
 				398D311B24ED7B3F0035A00E /* loginViewController.swift in Sources */,
 				5C8902A0251B96D900730869 /* spaceTableViewCell.swift in Sources */,
 				5CF0636825176E8500E73380 /* addressPaymentViewController.swift in Sources */,
+				5CA8BFFE2523857500676B9A /* user.swift in Sources */,
 				39FFAF9924D0A02100532C7F /* filterItemsTableViewCell.swift in Sources */,
 				5C17EFD4250A81E40090C4D2 /* carModel.swift in Sources */,
 				5CF983D4250FBC7D00D56721 /* detailCatTableViewCell.swift in Sources */,
@@ -1436,6 +1483,8 @@
 				395803D82521C446007FFF5E /* cityParser.swift in Sources */,
 				5CF983C9250F8E2600D56721 /* offersCollectionDelegate.swift in Sources */,
 				5CF063792518C7FB00E73380 /* installmentsViewController.swift in Sources */,
+				5CA8BFF62523368800676B9A /* offerParser.swift in Sources */,
+				5CA8BFEA252217A700676B9A /* frequentlyCollectionDelegate.swift in Sources */,
 				39CA5CFD2505EE78002F6E91 /* loginClient.swift in Sources */,
 				5C4021C62520D67B002FD3A0 /* address.swift in Sources */,
 				39CA5CF92505ED40002F6E91 /* Connectivity.swift in Sources */,
@@ -1451,6 +1500,7 @@
 				5CF0637525179E8F00E73380 /* addAddressViewController.swift in Sources */,
 				5CF063822518DCBF00E73380 /* myCarTableViewCell.swift in Sources */,
 				39AEFF1824E10C0700AE0552 /* homeViewController.swift in Sources */,
+				5CA8BFFA2523848900676B9A /* profileClient.swift in Sources */,
 				390FFD4024A288F9008BD0B0 /* constants.swift in Sources */,
 				5C4021C02520C08C002FD3A0 /* AddressClient.swift in Sources */,
 				5CF0637225177F5200E73380 /* addAddressTableViewCell.swift in Sources */,
@@ -1458,7 +1508,6 @@
 				5CF983C6250F8C5A00D56721 /* offerTableViewCell.swift in Sources */,
 				5CF983B2250E850100D56721 /* CategoryTitleTableViewCell.swift in Sources */,
 				5C4339F025123D9700F67552 /* productResponse.swift in Sources */,
-				5C17EFCC250A75840090C4D2 /* user.swift in Sources */,
 				39E05F4724A80E8D00F2C025 /* infoProfileViewController.swift in Sources */,
 				5C433A0625139EB200F67552 /* cartViewModel.swift in Sources */,
 				5CF983C3250F7EC900D56721 /* category.swift in Sources */,
@@ -1466,7 +1515,9 @@
 				397E8B8B24A5D53800780312 /* profileMenu.swift in Sources */,
 				39AEFF0F24DFE7B100AE0552 /* productCollectionViewCell.swift in Sources */,
 				39AEFF1524E1088500AE0552 /* homeSliderCollectionViewCell.swift in Sources */,
+				5CA8BFF12522495800676B9A /* brandimgCollectionViewCell.swift in Sources */,
 				5C433A0D2513A0B800F67552 /* cartParser.swift in Sources */,
+				5CA8BFE7252215CB00676B9A /* frequentCollectionViewCell.swift in Sources */,
 				5CF983AB250E7C3A00D56721 /* addCarTableViewCell.swift in Sources */,
 				394306D124A42B5300B9580C /* menuViewController.swift in Sources */,
 				393BC01824A7C28700CAB4BE /* favAddressViewController.swift in Sources */,
@@ -1474,6 +1525,7 @@
 				39CA5CFB2505EE46002F6E91 /* loginViewModel.swift in Sources */,
 				398D311424ED76110035A00E /* signupViewModel.swift in Sources */,
 				5C17EFC7250A6F0A0090C4D2 /* infoProfileViewModel.swift in Sources */,
+				5CA8BFED2522475100676B9A /* brandsTableViewCell.swift in Sources */,
 				5CF983B6250E8AFE00D56721 /* categoryTableViewCell.swift in Sources */,
 				5C17EFDE250A88780090C4D2 /* vehicleParser.swift in Sources */,
 				398D311124ED75260035A00E /* ParentClient.swift in Sources */,
@@ -1481,6 +1533,7 @@
 				3989841124E564D800A7188C /* sparePartsViewController.swift in Sources */,
 				3969EFB524EC142000695277 /* signupViewController.swift in Sources */,
 				5C890292251A4B6400730869 /* profileHeaderTableViewCell.swift in Sources */,
+				5CA8BFF82523370C00676B9A /* offer.swift in Sources */,
 				5C17EFCA250A6F280090C4D2 /* infoProfileClient.swift in Sources */,
 				5C4339FF25138EFB00F67552 /* cartTableViewCell.swift in Sources */,
 				5CF983E62511157F00D56721 /* rimsizeParser.swift in Sources */,
@@ -1492,6 +1545,7 @@
 				39CA5CF72505E74A002F6E91 /* EmptyFieldValidator.swift in Sources */,
 				397E8B9024A5D63200780312 /* profileViewModel.swift in Sources */,
 				3989841524E565AC00A7188C /* headerTableViewCell.swift in Sources */,
+				5CA8BFF4252249E900676B9A /* brandsCollectionDelegate.swift in Sources */,
 				3912EC8A24A9D2700024C4B8 /* menuTitleTableViewCell.swift in Sources */,
 				5C433A042513997100F67552 /* productDetailsClient.swift in Sources */,
 				5CF983E32511153700D56721 /* rimsize.swift in Sources */,
@@ -1500,6 +1554,7 @@
 				5C89029A251B805E00730869 /* settingTableViewCell.swift in Sources */,
 				3990DE3924E905A300ED3F49 /* extraProductTableViewCell.swift in Sources */,
 				3999F17324DA48B900EAEC56 /* productCellTableViewCell.swift in Sources */,
+				5CA8BFE32522141400676B9A /* frequentlyNeededTableViewCell.swift in Sources */,
 				39E3B5C624E1944B0042BCAF /* favViewController.swift in Sources */,
 				391F73852518599D00A8ECF3 /* paymentMethodViewController.swift in Sources */,
 				398D311724ED762F0035A00E /* signupClient.swift in Sources */,
@@ -1507,6 +1562,7 @@
 				5C89029D251B8FCD00730869 /* settingsViewController.swift in Sources */,
 				398FF34F24D02E3E0001F8C1 /* detailOilViewController.swift in Sources */,
 				5CF983BA250F7C8600D56721 /* homeViewModel.swift in Sources */,
+				5CA8BFFC2523854200676B9A /* profileParser.swift in Sources */,
 				391577BA24E7D7AF009C4722 /* spartsCollectionDelegate.swift in Sources */,
 				5CF983D72510C0E200D56721 /* detailCatVM.swift in Sources */,
 				3990DE3524E9049F00ED3F49 /* detailRowTableViewCell.swift in Sources */,
