@@ -14,7 +14,6 @@ class addressTableViewCell: UITableViewCell {
 
     @IBOutlet weak var region: UILabel!
     @IBOutlet weak var appartmentNo: UILabel!
-    @IBOutlet weak var mainAddressLbl: UILabel!
     @IBOutlet weak var buildingNo: UILabel!
     @IBOutlet weak var chooseAddressCheckBox: BEMCheckBox!
     
@@ -22,9 +21,9 @@ class addressTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        self.mainAddressLbl.text = "عنوان التوصيل".localized
+        //self.mainAddressLbl.text = "عنوان التوصيل".localized
         
-        self.mainAddressLbl.font = UIFont(name: "Cairo-Bold", size: 12)
+        //self.mainAddressLbl.font = UIFont(name: "Cairo-Bold", size: 12)
 
         self.buildingNo.text = "ريحانة ريزدينس".localized
         

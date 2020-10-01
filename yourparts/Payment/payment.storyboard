@@ -214,6 +214,15 @@
                                     <constraint firstItem="hJw-uE-e1n" firstAttribute="top" secondItem="yFj-pQ-hua" secondAttribute="top" id="zI0-g1-sHt"/>
                                 </constraints>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VMr-5B-uZa">
+                                <rect key="frame" x="15" y="156.5" width="384" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="QxU-wJ-To4"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3YC-tF-qZc">
                                 <rect key="frame" x="50" y="398" width="314" height="100"/>
                                 <subviews>
@@ -252,7 +261,7 @@
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="jAk-l2-jeM">
-                                <rect key="frame" x="0.0" y="184" width="414" height="712"/>
+                                <rect key="frame" x="0.0" y="189" width="414" height="707"/>
                                 <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.93725490199999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="35V-xv-ZNG" customClass="NVActivityIndicatorView" customModule="NVActivityIndicatorView">
@@ -274,16 +283,19 @@
                         <constraints>
                             <constraint firstItem="sWQ-kN-f2W" firstAttribute="trailing" secondItem="jAk-l2-jeM" secondAttribute="trailing" id="1Oy-Fr-KqC"/>
                             <constraint firstAttribute="bottom" secondItem="jAk-l2-jeM" secondAttribute="bottom" id="5SF-Ja-niC"/>
+                            <constraint firstItem="VMr-5B-uZa" firstAttribute="top" secondItem="yFj-pQ-hua" secondAttribute="bottom" constant="12.5" id="6e6-SX-meB"/>
                             <constraint firstItem="3YC-tF-qZc" firstAttribute="leading" secondItem="sWQ-kN-f2W" secondAttribute="leading" constant="50" id="DOA-20-ayV"/>
+                            <constraint firstItem="sWQ-kN-f2W" firstAttribute="trailing" secondItem="VMr-5B-uZa" secondAttribute="trailing" constant="15" id="Ftg-Ve-9xe"/>
                             <constraint firstItem="35V-xv-ZNG" firstAttribute="centerY" secondItem="4bw-gk-F4Z" secondAttribute="centerY" id="JnF-AM-Vqy"/>
                             <constraint firstItem="jAk-l2-jeM" firstAttribute="leading" secondItem="sWQ-kN-f2W" secondAttribute="leading" id="Rq5-Rp-XqB"/>
+                            <constraint firstItem="VMr-5B-uZa" firstAttribute="leading" secondItem="sWQ-kN-f2W" secondAttribute="leading" constant="15" id="Umf-op-Ohi"/>
                             <constraint firstItem="yFj-pQ-hua" firstAttribute="top" secondItem="sWQ-kN-f2W" secondAttribute="top" constant="25" id="dQ3-Ny-eHl"/>
                             <constraint firstItem="yFj-pQ-hua" firstAttribute="leading" secondItem="sWQ-kN-f2W" secondAttribute="leading" constant="50" id="jBu-m3-ELe"/>
                             <constraint firstItem="3YC-tF-qZc" firstAttribute="centerY" secondItem="4bw-gk-F4Z" secondAttribute="centerY" id="vD2-Uh-c1W"/>
                             <constraint firstItem="sWQ-kN-f2W" firstAttribute="trailing" secondItem="3YC-tF-qZc" secondAttribute="trailing" constant="50" id="vdm-uj-fAY"/>
                             <constraint firstItem="35V-xv-ZNG" firstAttribute="centerX" secondItem="4bw-gk-F4Z" secondAttribute="centerX" id="xJu-YL-Df6"/>
                             <constraint firstItem="sWQ-kN-f2W" firstAttribute="trailing" secondItem="yFj-pQ-hua" secondAttribute="trailing" constant="50" id="xkD-3d-e2d"/>
-                            <constraint firstItem="jAk-l2-jeM" firstAttribute="top" secondItem="yFj-pQ-hua" secondAttribute="bottom" constant="40" id="y3X-za-XTb"/>
+                            <constraint firstItem="jAk-l2-jeM" firstAttribute="top" secondItem="yFj-pQ-hua" secondAttribute="bottom" constant="45" id="y3X-za-XTb"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="sWQ-kN-f2W"/>
                     </view>
@@ -293,6 +305,8 @@
                         <outlet property="addAddressView" destination="3YC-tF-qZc" id="F6r-b2-wAe"/>
                         <outlet property="addViewBtn" destination="heI-sj-J7X" id="y3W-nh-FDa"/>
                         <outlet property="addressTableView" destination="jAk-l2-jeM" id="Z4Y-zc-y0i"/>
+                        <outlet property="addressTableViewTopConstraint" destination="y3X-za-XTb" id="tRM-ha-Fz1"/>
+                        <outlet property="chooseLocLbl" destination="VMr-5B-uZa" id="4jz-Hg-U3N"/>
                         <outlet property="indView" destination="yFj-pQ-hua" id="wwN-cE-UKi"/>
                         <outlet property="indviewheightConstraint" destination="Z7Q-2S-ZHS" id="2GM-aA-Wk2"/>
                         <outlet property="noAddressLbl" destination="Kuv-2s-EGW" id="Yqb-ED-33n"/>

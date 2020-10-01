@@ -11,6 +11,7 @@ import NVActivityIndicatorView
 
 class addressPaymentViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
+    @IBOutlet weak var addressTableViewTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var indView: UIView!
     @IBOutlet weak var indviewheightConstraint: NSLayoutConstraint!
     @IBOutlet weak var activityind: NVActivityIndicatorView!
@@ -21,6 +22,7 @@ class addressPaymentViewController: UIViewController, UITableViewDelegate, UITab
     
     @IBOutlet var AddressVM: AddressViewModel!
     
+    @IBOutlet weak var chooseLocLbl: UILabel!
     
     override func viewWillAppear(_ animated: Bool) {
         self.getAddresses()
@@ -35,6 +37,9 @@ class addressPaymentViewController: UIViewController, UITableViewDelegate, UITab
         if self.isComingFromProfile ?? false{
             self.indviewheightConstraint.constant = 0
             self.indView.layoutIfNeeded()
+            self.addressTableViewTopConstraint.constant = 15
+            self.addressTableView.layoutIfNeeded()
+
         }
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.reloadAddresses), name: Notification.Name("finishAddAddress"), object: nil)
@@ -53,8 +58,17 @@ class addressPaymentViewController: UIViewController, UITableViewDelegate, UITab
 
         self.navigationController?.navigationBar.barTintColor = anotherGreyColor
 
+        
         self.title = "Delivery Address".localized
         
+        
+        if !(self.isComingFromProfile ?? false) {
+            self.chooseLocLbl.text = "Choose Location".localized
+            self.chooseLocLbl.font = UIFont(name: "Cairo-Bold", size: 14)!
+        }else{
+            self.chooseLocLbl.text = ""
+        }
+
         self.navigationController?.navigationBar.titleTextAttributes =
             [NSAttributedString.Key.foregroundColor: UIColor.black,
              NSAttributedString.Key.font: UIFont(name: "Cairo-Bold", size: 18)!]
@@ -147,16 +161,18 @@ class addressPaymentViewController: UIViewController, UITableViewDelegate, UITab
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row != 2{
-            self.performSegue(withIdentifier: "gotoSecondPaymentView", sender: self)
+            if !(self.isComingFromProfile ?? false){
+                self.performSegue(withIdentifier: "gotoSecondPaymentView", sender: self)
+            }
         }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
         if indexPath.row == 2{
-            return 135.0
+            return 115.0
         }else{
-            return 135.0
+            return 115.0
         }
 
     }

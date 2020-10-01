@@ -30,9 +30,11 @@ class categoryParser{
             
               var catArr:[category] = []
         
-              for oneCategory in fromJSON["results"].arrayValue {
+        for (index,oneCategory) in fromJSON["results"].arrayValue.enumerated() {
 //
                 var catObj =  self.parseCat(oneCategory: oneCategory)
+                
+                catObj.image = "cat\(index + 1)"
                 
                 catArr.append(catObj)
 
@@ -58,7 +60,8 @@ class categoryParser{
                           }
                         
                           if let image = oneCategory["image"].string {
-                               catObj.image = image
+                              // catObj.image = image
+                            
                            }
                         
                           if let most_important = oneCategory["most_important"].bool {

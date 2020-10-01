@@ -19,6 +19,8 @@ var profileUrl = "customer/"
 
 var myVehiclesUrl = "customer/vehicles/"
 
+var myVehiclesTypeUrl = "vehicle/type/"
+
 var categoriesUrl = "categories"
 
 var rimSizeUrl = "tyres/rimsize/"

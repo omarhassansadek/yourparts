@@ -25,6 +25,7 @@ class homeViewModel: NSObject {
             //
             categoryParser().parseCategories(fromJSON: responseSuccess) { catArr in
                 self.categoriesArr = catArr
+                //self.categoriesArr[]
                 onSuccess(true)
             }
             

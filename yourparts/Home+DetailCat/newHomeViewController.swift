@@ -23,10 +23,7 @@ class newHomeViewController: UIViewController, UITableViewDelegate, UITableViewD
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.navigationBar.barTintColor = primaryColor
         self.navigationController?.navigationBar.shadowImage = UIImage()
-
-
         self.navigationController?.navigationBar.isHidden = true
-
     }
     
     override func viewDidLoad() {
@@ -66,6 +63,9 @@ class newHomeViewController: UIViewController, UITableViewDelegate, UITableViewD
         let nib6 = UINib(nibName: String(describing: brandsTableViewCell.self), bundle: nil)
         self.tableView.register(nib6, forCellReuseIdentifier: "brandCell")
         
+        let nib7 = UINib(nibName: String(describing: catGridTableViewCell.self), bundle: nil)
+        self.tableView.register(nib7, forCellReuseIdentifier: "catGridCell")
+
 
         
         self.getOffers()
@@ -174,26 +174,49 @@ class newHomeViewController: UIViewController, UITableViewDelegate, UITableViewD
                 return brandCell
             
         default:
-            let categoryCell = tableView.dequeueReusableCell(withIdentifier: "catCell") as! categoryTableViewCell
-            
-            switch indexPath.row {
-            case 5:
-                categoryCell.catImage.image = UIImage(named: "cat1")
-            case 6:
-                categoryCell.catImage.image = UIImage(named: "cat2")
-            case 7:
-                categoryCell.catImage.image = UIImage(named: "cat3")
-            case 8:
-                categoryCell.catImage.image = UIImage(named: "cat4")
-            case 9:
-                categoryCell.catImage.image = UIImage(named: "cat5")
-            case 10:
-                categoryCell.catImage.image = UIImage(named: "cat6")
+            let categoryCell = tableView.dequeueReusableCell(withIdentifier: "catGridCell") as! catGridTableViewCell
+//
 
-            default:
-                categoryCell.catImage.image = UIImage(named: "teelFramel")
-
-            }
+            categoryCell.layoutIfNeeded()
+                                   
+            let cellDelegate = catCollectionDelegate()
+                                           //cellDelegate.profilesArray = self.storiesViewModel.commonTagsphotographerResponse?.data ?? [Photographer]()
+            cellDelegate.targetController = self
+            cellDelegate.row = indexPath.row
+            categoryCell.row = indexPath.row
+//            if indexPath.row == self.catCount
+//            {
+//                cellDelegate.type = "c"
+//                brandCell.titleLbl.text = "Spare Parts Brand".localized
+//
+//
+//            }else{
+//                cellDelegate.type = "f"
+//                brandCell.titleLbl.text = "Cars Brand".localized
+//
+//            }
+                                           
+            categoryCell.setCollectionViewDataSourceDelegate(cellDelegate, forRow: indexPath.row)
+                                         
+            categoryCell.selectionStyle = .none
+//            switch indexPath.row {
+//            case 5:
+//                categoryCell.catImage.image = UIImage(named: "cat1")
+//            case 6:
+//                categoryCell.catImage.image = UIImage(named: "cat2")
+//            case 7:
+//                categoryCell.catImage.image = UIImage(named: "cat3")
+//            case 8:
+//                categoryCell.catImage.image = UIImage(named: "cat4")
+//            case 9:
+//                categoryCell.catImage.image = UIImage(named: "cat5")
+//            case 10:
+//                categoryCell.catImage.image = UIImage(named: "cat6")
+//
+//            default:
+//                categoryCell.catImage.image = UIImage(named: "teelFramel")
+//
+//            }
             //categoryCell.catImage.s
 //            categoryCell.catImage.sd_setImage(with: URL(string: self.homeVm.categoriesArr[indexPath.row - 4].image ?? "") , placeholderImage: nil, completed: { (image, error, cacheType, url) -> Void in
 //                if ((error) != nil) {
@@ -204,9 +227,9 @@ class newHomeViewController: UIViewController, UITableViewDelegate, UITableViewD
 //                }
 //            })
 
-            print(indexPath.row)
-            categoryCell.catName.text = self.homeVm.categoriesArr[indexPath.row - 5].name ?? ""
-            
+//            print(indexPath.row)
+//            categoryCell.catName.text = self.homeVm.categoriesArr[indexPath.row - 5].name ?? ""
+//
             return categoryCell
         }
 
@@ -226,10 +249,11 @@ class newHomeViewController: UIViewController, UITableViewDelegate, UITableViewD
                 return 45.0
             
             case self.catCount - 1, self.catCount:
-                return 105.0
+                return 120.0
         default:
-            return 135.0
-        
+            var countOfRows =  CGFloat(Double(self.homeVm.categoriesArr.count) / 2.0)
+            
+            return ((self.view.frame.width / 2.0) * 0.60 ) * countOfRows
         }
         
     }
@@ -248,7 +272,7 @@ class newHomeViewController: UIViewController, UITableViewDelegate, UITableViewD
                            }
             }
         
-        }else if indexPath.row == 1{
+        }else if indexPath.row == 0{
             self.performSegue(withIdentifier: "gotoAddCarVC", sender: self)
         }
    
@@ -267,7 +291,8 @@ class newHomeViewController: UIViewController, UITableViewDelegate, UITableViewD
 
             if isSuccess{
 
-                self.catCount = self.homeVm.categoriesArr.count + 2 + 4
+                //self.catCount = self.homeVm.categoriesArr.count + 2 + 4
+                self.catCount = 1 + 2 + 4
                 self.tableView.reloadData()
             }
             

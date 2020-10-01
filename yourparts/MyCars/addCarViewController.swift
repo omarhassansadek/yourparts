@@ -8,7 +8,7 @@
 
 import UIKit
 
-class addCarViewController: UIViewController {
+class addCarViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
 
     @IBOutlet weak var yearModel: UILabel!
     @IBOutlet weak var typeLbl: UILabel!
@@ -20,10 +20,35 @@ class addCarViewController: UIViewController {
     @IBOutlet weak var chooseBrandTF: UITextField!
     @IBOutlet weak var chooseType: UITextField!
     
+    @IBOutlet weak var addCarVM: addCarViewModel!
     
-    
+    var carTypesPickerView = UIPickerView()
+    var carMakerPickerView = UIPickerView()
+    var carModelsPickerView = UIPickerView()
+    var carYearsPickerView = UIPickerView()
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.getTypes()
+        
+        self.chooseType.inputView = self.carTypesPickerView
+        self.chooseBrandTF.inputView = self.carMakerPickerView
+        self.chooseModelTF.inputView = self.carModelsPickerView
+        self.yearManuTF.inputView = self.carYearsPickerView
+
+        self.carTypesPickerView.delegate = self
+        self.carTypesPickerView.dataSource = self
+
+        self.carMakerPickerView.delegate = self
+        self.carMakerPickerView.dataSource = self
+
+        self.carModelsPickerView.delegate = self
+        self.carModelsPickerView.dataSource = self
+
+        self.carYearsPickerView.delegate = self
+        self.carYearsPickerView.dataSource = self
+
         
         if let topItem = self.navigationController?.navigationBar.topItem {
             topItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
@@ -92,6 +117,106 @@ class addCarViewController: UIViewController {
     
     @IBOutlet var roundViews: [UIView]!
     
+    var selectedTypeId: Int = -1
+    
+    
+    func getTypes(){
+        self.addCarVM.getCarTypes(onSuccess: { (isSuccess) in
+            //
+            if isSuccess{
+                self.carTypesPickerView.reloadAllComponents()
+                self.chooseType.text = self.addCarVM.carTypes[0].name ?? ""
+                self.getMakers(type_id: self.addCarVM.carTypes[0].id ?? -1)
+                self.selectedTypeId = self.addCarVM.carTypes[0].id ?? -1
+            }
+            
+        }) { (errMsg) in
+            //
+        }
+    }
+    
+    func getMakers(type_id: Int){
+        self.addCarVM.getCarMakers(id: type_id, onSuccess: { (isSucces) in
+            if isSucces{
+                self.carMakerPickerView.reloadAllComponents()
+                self.chooseBrandTF.text = self.addCarVM.carMakers[0].name ?? ""
+                self.getModels(maker_id: self.addCarVM.carMakers[0].id ?? -1)
+
+            }
+        }) { (errMsg) in
+            //
+        }
+    }
+    
+    func getModels(maker_id: Int ){
+        self.addCarVM.getCarModels(id: maker_id, selectedType: self.selectedTypeId, onSuccess: { (isSucces) in
+            if isSucces{
+                self.carModelsPickerView.reloadAllComponents()
+                self.chooseModelTF.text = self.addCarVM.carModels[0].name ?? ""
+
+            }
+        }) { (errMsg) in
+            //
+        }
+    }
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        if pickerView == self.carTypesPickerView{
+            return self.addCarVM.carTypes.count
+        }else if pickerView == self.carMakerPickerView{
+            return self.addCarVM.carMakers.count
+        }else if pickerView == self.carModelsPickerView{
+            return self.addCarVM.carModels.count
+        }else{
+            return self.addCarVM.carYears.count
+        }
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        if pickerView == self.carTypesPickerView{
+            return self.addCarVM.carTypes[row].name ?? ""
+        }else if pickerView == self.carMakerPickerView{
+            return self.addCarVM.carMakers[row].name ?? ""
+        }else if pickerView == self.carModelsPickerView{
+            return self.addCarVM.carModels[row].name ?? ""
+        }else{
+            return ""
+        }
+//        }else if pickerView == self.carModelsPickerView{
+//            //return self.addCarVM.carModels.count
+//        }else{
+//            //return self.addCarVM.carYears.count
+//        }
+
+    }
+    
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+                if pickerView == self.carTypesPickerView{
+                    self.chooseType.text = self.addCarVM.carTypes[row].name ?? ""
+                    self.getMakers(type_id: self.addCarVM.carTypes[row].id ?? -1)
+                    self.selectedTypeId = self.addCarVM.carTypes[row].id ?? -1
+                }else if pickerView == self.carMakerPickerView{
+                    self.chooseBrandTF.text = self.addCarVM.carMakers[row].name ?? ""
+                    self.getModels(maker_id: self.addCarVM.carMakers[row].id ?? -1)
+
+                }else if pickerView == self.carModelsPickerView{
+                    self.chooseModelTF.text = self.addCarVM.carModels[row].name ?? ""
+
+                    //return ""
+                }else{
+                    
+                }
+        //        }else if pickerView == self.carModelsPickerView{
+        //            //return self.addCarVM.carModels.count
+        //        }else{
+        //            //return self.addCarVM.carYears.count
+        //        }
+    }
     /*
     // MARK: - Navigation
 

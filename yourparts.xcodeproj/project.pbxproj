@@ -118,6 +118,17 @@
 		5C17EFD6250A82880090C4D2 /* maker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C17EFD5250A82880090C4D2 /* maker.swift */; };
 		5C17EFD8250A83420090C4D2 /* carType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C17EFD7250A83420090C4D2 /* carType.swift */; };
 		5C17EFDE250A88780090C4D2 /* vehicleParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C17EFDD250A88780090C4D2 /* vehicleParser.swift */; };
+		5C3251FA2525EA24001418FC /* catGridTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C3251F82525EA24001418FC /* catGridTableViewCell.swift */; };
+		5C3251FB2525EA24001418FC /* catGridTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C3251F92525EA24001418FC /* catGridTableViewCell.xib */; };
+		5C3251FE2525EA6E001418FC /* catGridCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C3251FC2525EA6E001418FC /* catGridCollectionViewCell.swift */; };
+		5C3251FF2525EA6E001418FC /* catGridCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C3251FD2525EA6E001418FC /* catGridCollectionViewCell.xib */; };
+		5C3252012525ED22001418FC /* catCollectionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C3252002525ED22001418FC /* catCollectionDelegate.swift */; };
+		5C32520325261AE5001418FC /* addCarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C32520225261AE5001418FC /* addCarViewModel.swift */; };
+		5C32520525261AF3001418FC /* addCarClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C32520425261AF3001418FC /* addCarClient.swift */; };
+		5C32520725261C38001418FC /* vehicleTypesParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C32520625261C38001418FC /* vehicleTypesParser.swift */; };
+		5C32520925261FAE001418FC /* carYear.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C32520825261FAE001418FC /* carYear.swift */; };
+		5C32520B252622E4001418FC /* vehicleMarkerParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C32520A252622E4001418FC /* vehicleMarkerParser.swift */; };
+		5C32520D252627E4001418FC /* vehicleModelsParsers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C32520C252627E4001418FC /* vehicleModelsParsers.swift */; };
 		5C4021BD2520BFFF002FD3A0 /* AddressViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C4021BC2520BFFF002FD3A0 /* AddressViewModel.swift */; };
 		5C4021C02520C08C002FD3A0 /* AddressClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C4021BF2520C08C002FD3A0 /* AddressClient.swift */; };
 		5C4021C32520D5BC002FD3A0 /* addressParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C4021C22520D5BC002FD3A0 /* addressParser.swift */; };
@@ -354,6 +365,17 @@
 		5C17EFD5250A82880090C4D2 /* maker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = maker.swift; sourceTree = "<group>"; };
 		5C17EFD7250A83420090C4D2 /* carType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = carType.swift; sourceTree = "<group>"; };
 		5C17EFDD250A88780090C4D2 /* vehicleParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = vehicleParser.swift; sourceTree = "<group>"; };
+		5C3251F82525EA24001418FC /* catGridTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = catGridTableViewCell.swift; sourceTree = "<group>"; };
+		5C3251F92525EA24001418FC /* catGridTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = catGridTableViewCell.xib; sourceTree = "<group>"; };
+		5C3251FC2525EA6E001418FC /* catGridCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = catGridCollectionViewCell.swift; sourceTree = "<group>"; };
+		5C3251FD2525EA6E001418FC /* catGridCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = catGridCollectionViewCell.xib; sourceTree = "<group>"; };
+		5C3252002525ED22001418FC /* catCollectionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = catCollectionDelegate.swift; sourceTree = "<group>"; };
+		5C32520225261AE5001418FC /* addCarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addCarViewModel.swift; sourceTree = "<group>"; };
+		5C32520425261AF3001418FC /* addCarClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addCarClient.swift; sourceTree = "<group>"; };
+		5C32520625261C38001418FC /* vehicleTypesParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = vehicleTypesParser.swift; sourceTree = "<group>"; };
+		5C32520825261FAE001418FC /* carYear.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = carYear.swift; sourceTree = "<group>"; };
+		5C32520A252622E4001418FC /* vehicleMarkerParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = vehicleMarkerParser.swift; sourceTree = "<group>"; };
+		5C32520C252627E4001418FC /* vehicleModelsParsers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = vehicleModelsParsers.swift; sourceTree = "<group>"; };
 		5C4021BC2520BFFF002FD3A0 /* AddressViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressViewModel.swift; sourceTree = "<group>"; };
 		5C4021BF2520C08C002FD3A0 /* AddressClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressClient.swift; sourceTree = "<group>"; };
 		5C4021C22520D5BC002FD3A0 /* addressParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addressParser.swift; sourceTree = "<group>"; };
@@ -786,10 +808,11 @@
 				39AEFF1224E1086300AE0552 /* Cells */,
 				39AEFF1724E10C0700AE0552 /* homeViewController.swift */,
 				5CF983AD250E829900D56721 /* newHomeViewController.swift */,
+				5CF983CC250FB69A00D56721 /* detailCatViewController.swift */,
 				5CF983C8250F8E2600D56721 /* offersCollectionDelegate.swift */,
 				5CA8BFE9252217A700676B9A /* frequentlyCollectionDelegate.swift */,
 				5CA8BFF3252249E900676B9A /* brandsCollectionDelegate.swift */,
-				5CF983CC250FB69A00D56721 /* detailCatViewController.swift */,
+				5C3252002525ED22001418FC /* catCollectionDelegate.swift */,
 				5CF983CA250FB61100D56721 /* detailCategory.storyboard */,
 			);
 			path = "Home+DetailCat";
@@ -820,6 +843,10 @@
 				5CA8BFEC2522475100676B9A /* brandsTableViewCell.xib */,
 				5CA8BFEF2522495800676B9A /* brandimgCollectionViewCell.swift */,
 				5CA8BFF02522495800676B9A /* brandimgCollectionViewCell.xib */,
+				5C3251F82525EA24001418FC /* catGridTableViewCell.swift */,
+				5C3251F92525EA24001418FC /* catGridTableViewCell.xib */,
+				5C3251FC2525EA6E001418FC /* catGridCollectionViewCell.swift */,
+				5C3251FD2525EA6E001418FC /* catGridCollectionViewCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -930,6 +957,7 @@
 			isa = PBXGroup;
 			children = (
 				5C17EFCD250A81490090C4D2 /* myCarsViewModel.swift */,
+				5C32520225261AE5001418FC /* addCarViewModel.swift */,
 			);
 			path = viewModels;
 			sourceTree = "<group>";
@@ -941,6 +969,7 @@
 				5C17EFD3250A81E40090C4D2 /* carModel.swift */,
 				5C17EFD5250A82880090C4D2 /* maker.swift */,
 				5C17EFD7250A83420090C4D2 /* carType.swift */,
+				5C32520825261FAE001418FC /* carYear.swift */,
 			);
 			path = models;
 			sourceTree = "<group>";
@@ -949,6 +978,7 @@
 			isa = PBXGroup;
 			children = (
 				5C17EFCF250A81560090C4D2 /* myCarsClient.swift */,
+				5C32520425261AF3001418FC /* addCarClient.swift */,
 			);
 			path = clients;
 			sourceTree = "<group>";
@@ -957,6 +987,9 @@
 			isa = PBXGroup;
 			children = (
 				5C17EFDD250A88780090C4D2 /* vehicleParser.swift */,
+				5C32520625261C38001418FC /* vehicleTypesParser.swift */,
+				5C32520A252622E4001418FC /* vehicleMarkerParser.swift */,
+				5C32520C252627E4001418FC /* vehicleModelsParsers.swift */,
 			);
 			path = parsers;
 			sourceTree = "<group>";
@@ -1291,7 +1324,9 @@
 				5C890297251B715B00730869 /* profileMenuTableViewCell.xib in Resources */,
 				3912EC8B24A9D2700024C4B8 /* menuTitleTableViewCell.xib in Resources */,
 				5CF063832518DCBF00E73380 /* myCarTableViewCell.xib in Resources */,
+				5C3251FB2525EA24001418FC /* catGridTableViewCell.xib in Resources */,
 				5C8902A1251B96D900730869 /* spaceTableViewCell.xib in Resources */,
+				5C3251FF2525EA6E001418FC /* catGridCollectionViewCell.xib in Resources */,
 				5C4339E525121C9200F67552 /* brandCollectionViewCell.xib in Resources */,
 				393BC02224A7D96E00CAB4BE /* Assets.xcassets in Resources */,
 				3990DE3E24E906E600ED3F49 /* addToCartBtnTableViewCell.xib in Resources */,
@@ -1445,6 +1480,7 @@
 				394B035924A9E67A001E8C23 /* plainTableViewCell.swift in Sources */,
 				5CF0636F2517797D00E73380 /* addressTableViewCell.swift in Sources */,
 				397B745524CF9C3800B74BEC /* oilTableViewCell.swift in Sources */,
+				5C32520B252622E4001418FC /* vehicleMarkerParser.swift in Sources */,
 				39EC50632497A8FE00ABAF05 /* AppDelegate.swift in Sources */,
 				5C4021C32520D5BC002FD3A0 /* addressParser.swift in Sources */,
 				39E4223224D07CED00524591 /* tiresViewController.swift in Sources */,
@@ -1476,6 +1512,7 @@
 				3972554B24A3B09D0092D1B5 /* profileViewController.swift in Sources */,
 				5C17EFD8250A83420090C4D2 /* carType.swift in Sources */,
 				3915F94524D0827D00BF6157 /* searchDetailsTireTableViewCell.swift in Sources */,
+				5C32520725261C38001418FC /* vehicleTypesParser.swift in Sources */,
 				3989841A24E56BA700A7188C /* SparePartCategoryTableViewCell.swift in Sources */,
 				5C42CF85251CEB100032C357 /* requestPickerDelegate.swift in Sources */,
 				398D311924ED77340035A00E /* URLConstants.swift in Sources */,
@@ -1490,6 +1527,7 @@
 				39CA5CF92505ED40002F6E91 /* Connectivity.swift in Sources */,
 				5CF983DC2511130A00D56721 /* tiresViewModel.swift in Sources */,
 				398FF34C24D028B90001F8C1 /* detailOilTableViewCell.swift in Sources */,
+				5C3251FE2525EA6E001418FC /* catGridCollectionViewCell.swift in Sources */,
 				5C890296251B715B00730869 /* profileMenuTableViewCell.swift in Sources */,
 				3912EC8424A9C2ED0024C4B8 /* AlertViewer.swift in Sources */,
 				393BC01B24A7C3CF00CAB4BE /* addTableViewCell.swift in Sources */,
@@ -1497,6 +1535,7 @@
 				5C17EFD0250A81560090C4D2 /* myCarsClient.swift in Sources */,
 				39FFAF9C24D0A0F700532C7F /* detailItemsViewController.swift in Sources */,
 				3990DE4524E9241B00ED3F49 /* detailSpartViewController.swift in Sources */,
+				5C32520525261AF3001418FC /* addCarClient.swift in Sources */,
 				5CF0637525179E8F00E73380 /* addAddressViewController.swift in Sources */,
 				5CF063822518DCBF00E73380 /* myCarTableViewCell.swift in Sources */,
 				39AEFF1824E10C0700AE0552 /* homeViewController.swift in Sources */,
@@ -1521,6 +1560,7 @@
 				5CF983AB250E7C3A00D56721 /* addCarTableViewCell.swift in Sources */,
 				394306D124A42B5300B9580C /* menuViewController.swift in Sources */,
 				393BC01824A7C28700CAB4BE /* favAddressViewController.swift in Sources */,
+				5C32520925261FAE001418FC /* carYear.swift in Sources */,
 				3972FC8B24DBABC100841739 /* detailProductCellTableViewCell.swift in Sources */,
 				39CA5CFB2505EE46002F6E91 /* loginViewModel.swift in Sources */,
 				398D311424ED76110035A00E /* signupViewModel.swift in Sources */,
@@ -1529,9 +1569,11 @@
 				5CF983B6250E8AFE00D56721 /* categoryTableViewCell.swift in Sources */,
 				5C17EFDE250A88780090C4D2 /* vehicleParser.swift in Sources */,
 				398D311124ED75260035A00E /* ParentClient.swift in Sources */,
+				5C3251FA2525EA24001418FC /* catGridTableViewCell.swift in Sources */,
 				5CF983CD250FB69A00D56721 /* detailCatViewController.swift in Sources */,
 				3989841124E564D800A7188C /* sparePartsViewController.swift in Sources */,
 				3969EFB524EC142000695277 /* signupViewController.swift in Sources */,
+				5C32520D252627E4001418FC /* vehicleModelsParsers.swift in Sources */,
 				5C890292251A4B6400730869 /* profileHeaderTableViewCell.swift in Sources */,
 				5CA8BFF82523370C00676B9A /* offer.swift in Sources */,
 				5C17EFCA250A6F280090C4D2 /* infoProfileClient.swift in Sources */,
@@ -1560,6 +1602,8 @@
 				398D311724ED762F0035A00E /* signupClient.swift in Sources */,
 				5C4339E125121BA600F67552 /* productListViewController.swift in Sources */,
 				5C89029D251B8FCD00730869 /* settingsViewController.swift in Sources */,
+				5C3252012525ED22001418FC /* catCollectionDelegate.swift in Sources */,
+				5C32520325261AE5001418FC /* addCarViewModel.swift in Sources */,
 				398FF34F24D02E3E0001F8C1 /* detailOilViewController.swift in Sources */,
 				5CF983BA250F7C8600D56721 /* homeViewModel.swift in Sources */,
 				5CA8BFFC2523854200676B9A /* profileParser.swift in Sources */,
