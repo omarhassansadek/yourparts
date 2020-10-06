@@ -48,15 +48,16 @@ class cartViewModel: NSObject {
     
     func deleteFromCart(id: Int,  onSuccess: @escaping(Bool)-> () , onFailure: @escaping(String)-> ()){
         
-        self.cartC.requestCartData(url: baseUrl+cartUrl+"\(id)", apiMethod: .delete, parametersOfCall: nil, apiEncoding: JSONEncoding.default, headers: nil, completionSuccess: { (responseSuccess) in
+        self.cartC.requestCartData(url: baseUrl+cartItemUrl+"\(id)", apiMethod: .delete, parametersOfCall: nil, apiEncoding: JSONEncoding.default, headers: nil, completionSuccess: { (responseSuccess) in
             
             
             print(responseSuccess)
             
+            
 //            cartParser().parseCartData(fromJSON: responseSuccess) { (cartDataArr) in
 //                self.cartArr = cartDataArr
 //
-//                onSuccess(true)
+                onSuccess(true)
 //
 //            }
             
@@ -69,16 +70,16 @@ class cartViewModel: NSObject {
     }
     
     
-    func addToCart( apiParameters: [String:Any], onSuccess: @escaping(Bool)-> () , onFailure: @escaping(String)-> ()){
+    func addToCart(id: Int, apiParameters: [String:Any], onSuccess: @escaping(Bool)-> () , onFailure: @escaping(String)-> ()){
         
-        var urlPath = baseUrl+addCartsUrl
-        
-        self.cartC.addToCart(url: baseUrl+addCartsUrl, apiMethod: .post, parametersOfCall: apiParameters, apiEncoding: JSONEncoding.default, completionSuccess: { (responseSuccess) in
+
+        self.cartC.addToCart(url: baseUrl+cartItemUrl+"\(id)/", apiMethod: .patch, parametersOfCall: apiParameters, apiEncoding: JSONEncoding.default, completionSuccess: { (responseSuccess) in
               //
               print(responseSuccess)
               //if responseSuccess["cart"].int == UserDefaults.standard.integer(forKey: "cartid"){
-                  if let cartId = responseSuccess["Cart_id"].int{
+                  if let cartId = responseSuccess["id"].int{
                       //self.cart_id = cartId
+                      print(cartId)
                       onSuccess(true)
                   }
               //}

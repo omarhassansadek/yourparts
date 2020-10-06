@@ -91,7 +91,7 @@ class newHomeViewController: UIViewController, UITableViewDelegate, UITableViewD
                 
                 let cellDelegate = offersCollectionDelegate()
                         //cellDelegate.profilesArray = self.storiesViewModel.commonTagsphotographerResponse?.data ?? [Photographer]()
-                        //cellDelegate.targetController = self
+                cellDelegate.targetController = self
                 cellDelegate.row = indexPath.row
                 cellDelegate.offersArr = self.homeVm.offersArr
                 offerCell.row = indexPath.row
@@ -113,7 +113,7 @@ class newHomeViewController: UIViewController, UITableViewDelegate, UITableViewD
                                            
                                let cellDelegate = frequentlyCollectionDelegate()
                                                    //cellDelegate.profilesArray = self.storiesViewModel.commonTagsphotographerResponse?.data ?? [Photographer]()
-                                                   //cellDelegate.targetController = self
+                               cellDelegate.targetController = self
                                cellDelegate.row = indexPath.row
                                frequentCell.row = indexPath.row
                                 if indexPath.row == 2
@@ -304,14 +304,38 @@ class newHomeViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     var catIdToGo: Int?
-    
+
+    var selectedLevel3Cat: Int?
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == "gotoDetailCat"{
             var destVC = segue.destination as! detailCatViewController
             destVC.catId = self.catIdToGo
+        }else if segue.identifier == "gotoProductListVC"{
+            let destCont = segue.destination as! productListViewController
+            destCont.vcTitle = "Offers Today".localized
+            //var subs_id = self.detailCatVM.detailCategory?.detailCat[self.indexChoosed].id ?? -1
+            var pathtoGo = baseUrl+catLevel3Url+"\(self.selectedLevel3Cat! )"
+            destCont.pathToCall = pathtoGo
+
         }
     }
+    
+    func getFreqNeeded(){
+        self.homeVm.getFreqNeededFromApi(onSuccess: { (isSuccess) in
+           
+            if isSuccess{
+                self.reqHomeCats()
+            }
+            
+        }) { (errMsg) in
+            //
+            self.reqHomeCats()
+
+        }
+    }
+    
     
     func getOffers(){
         self.homeVm.getOffersFromApi(onSuccess: { (isSuccess) in
@@ -319,12 +343,11 @@ class newHomeViewController: UIViewController, UITableViewDelegate, UITableViewD
             
             print(isSuccess)
             
-            
-            self.reqHomeCats()
+            self.getFreqNeeded()
 
         }) { (errorMsg) in
             //
-            self.reqHomeCats()
+            self.getFreqNeeded()
 
         }
     }

@@ -14,11 +14,11 @@ class categoryParser{
         if isSub{
             jsonResponse = jsonResponse.arrayValue[0]
         }
-        var catObj = self.parseCat(oneCategory: jsonResponse)
+        var catObj = self.parseCat(slidingCat: false, oneCategory: jsonResponse)
         
         for oneCat in jsonResponse["children_category"].arrayValue{
             
-            var detailCat = self.parseCat(oneCategory: oneCat)
+            var detailCat = self.parseCat(slidingCat: false, oneCategory: oneCat)
             catObj.detailCat.append(detailCat)
             
         }
@@ -26,13 +26,13 @@ class categoryParser{
         onSuccess(catObj)
     }
     
-    func parseCategories( fromJSON: JSON , onSuccess: @escaping ([category]) -> () ) {
+    func parseCategories(slidingCat: Bool, fromJSON: JSON , onSuccess: @escaping ([category]) -> () ) {
             
               var catArr:[category] = []
         
         for (index,oneCategory) in fromJSON["results"].arrayValue.enumerated() {
 //
-                var catObj =  self.parseCat(oneCategory: oneCategory)
+                var catObj =  self.parseCat(slidingCat: slidingCat, oneCategory: oneCategory)
                 
                 catObj.image = "cat\(index + 1)"
                 
@@ -45,24 +45,48 @@ class categoryParser{
     }
     
     
-    func parseCat(oneCategory : JSON) -> category{
+    func parseCat(slidingCat:Bool , oneCategory : JSON) -> category{
         
                             var catObj = category()
 
-                          if let id = oneCategory["id"].int {
-                              catObj.id = id
+        
+
+                          if slidingCat{
+                             if let id = oneCategory["category"]["id"].int {
+                                 catObj.id = id
+                             }
+                          }else{
+                                 
+                             if let id = oneCategory["id"].int {
+                                 catObj.id = id
+                             }
                           }
                           if let slug = oneCategory["slug"].string {
                               catObj.slug = slug
                           }
-                         if let name = oneCategory["name"].string {
-                              catObj.name = name
+        
+                          if slidingCat{
+                            if let name = oneCategory["category"]["name"].string {
+                                catObj.name = name
+                            }
+                          }else{
+                            if let name = oneCategory["name"].string {
+                                catObj.name = name
+                            }
                           }
-                        
-                          if let image = oneCategory["image"].string {
-                              // catObj.image = image
-                            
-                           }
+        
+                          if slidingCat{
+                             if let name = oneCategory["category"]["image"].string {
+                                 catObj.image = name
+                             }
+                          }else{
+                               
+                             if let image = oneCategory["image"].string {
+                                 // catObj.image = image
+                               
+                              }
+                          }
+
                         
                           if let most_important = oneCategory["most_important"].bool {
                                catObj.most_important = most_important
@@ -76,7 +100,10 @@ class categoryParser{
                           if let parent = oneCategory["parent"].string {
                                catObj.parent = parent
                            }
-                        
+        
+                           if let category_level = oneCategory["category_level"].string {
+                                catObj.category_level = category_level
+                           }
                         
                           //for oneDetailCat in fromJSON[""]
                         

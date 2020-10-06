@@ -14,6 +14,7 @@ class addCarViewModel: NSObject {
     
     @IBOutlet weak var addCarC: addCarClient!
     
+    
     var carTypes: [carType] = []
     var carMakers: [maker] = []
     var carModels: [carModel] = []
@@ -76,5 +77,47 @@ class addCarViewModel: NSObject {
                   //
         }
     }
+
+    
+    func getCarYears(id: Int, selectedType: Int, selectedMaker:Int,  onSuccess: @escaping(Bool)-> () , onFailure: @escaping(String)-> () ){
+        self.addCarC.getCarTypesFromApi(url: baseUrl+myVehiclesTypeUrl+"\(selectedType)?make=\(selectedMaker)&model=\(id)", apiMethod: .get, parametersOfCall: nil, apiEncoding: JSONEncoding.default, completionSuccess: { (responseSuccess) in
+                  //
+                  
+                print(responseSuccess)
+                  
+                vehicleYearParsers().vehicleYearParsers(fromJSON: responseSuccess) { (carYearsArr) in
+                    self.carYears = carYearsArr
+                    onSuccess(true)
+                }
+
+          }) { (responseFailure) in
+                  //
+        }
+    }
+    
+    
+    func addCar(params: [String: Any] ,  onSuccess: @escaping(Bool)-> () , onFailure: @escaping(String)-> () ){
+        
+        self.addCarC.getCarTypesFromApi(url: baseUrl+add_get_VehicleUrl, apiMethod: .post, parametersOfCall: params, apiEncoding: JSONEncoding.default, completionSuccess: { (responseSuccess) in
+                  //
+                  
+                print(responseSuccess)
+            
+                if let id = responseSuccess["vehicle"].int {
+                    //
+                    onSuccess(true)
+                }
+                  
+//                vehicleYearParsers().vehicleYearParsers(fromJSON: responseSuccess) { (carYearsArr) in
+//                    self.carYears = carYearsArr
+//                    onSuccess(true)
+//                }
+
+          }) { (responseFailure) in
+                  //
+                  onFailure("We encountered an error. Try agian later")
+        }
+    }
+
 
 }

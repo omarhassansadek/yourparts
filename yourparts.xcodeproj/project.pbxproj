@@ -133,6 +133,7 @@
 		5C4021C02520C08C002FD3A0 /* AddressClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C4021BF2520C08C002FD3A0 /* AddressClient.swift */; };
 		5C4021C32520D5BC002FD3A0 /* addressParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C4021C22520D5BC002FD3A0 /* addressParser.swift */; };
 		5C4021C62520D67B002FD3A0 /* address.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C4021C52520D67B002FD3A0 /* address.swift */; };
+		5C41EDF6252A0C1800D4234B /* vehicleYearParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C41EDF5252A0C1700D4234B /* vehicleYearParser.swift */; };
 		5C42CF85251CEB100032C357 /* requestPickerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C42CF84251CEB100032C357 /* requestPickerDelegate.swift */; };
 		5C4339E125121BA600F67552 /* productListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C4339E025121BA600F67552 /* productListViewController.swift */; };
 		5C4339E425121C9200F67552 /* brandCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C4339E225121C9200F67552 /* brandCollectionViewCell.swift */; };
@@ -380,6 +381,7 @@
 		5C4021BF2520C08C002FD3A0 /* AddressClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressClient.swift; sourceTree = "<group>"; };
 		5C4021C22520D5BC002FD3A0 /* addressParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addressParser.swift; sourceTree = "<group>"; };
 		5C4021C52520D67B002FD3A0 /* address.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = address.swift; sourceTree = "<group>"; };
+		5C41EDF5252A0C1700D4234B /* vehicleYearParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = vehicleYearParser.swift; sourceTree = "<group>"; };
 		5C42CF84251CEB100032C357 /* requestPickerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = requestPickerDelegate.swift; sourceTree = "<group>"; };
 		5C4339E025121BA600F67552 /* productListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = productListViewController.swift; sourceTree = "<group>"; };
 		5C4339E225121C9200F67552 /* brandCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = brandCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -990,6 +992,7 @@
 				5C32520625261C38001418FC /* vehicleTypesParser.swift */,
 				5C32520A252622E4001418FC /* vehicleMarkerParser.swift */,
 				5C32520C252627E4001418FC /* vehicleModelsParsers.swift */,
+				5C41EDF5252A0C1700D4234B /* vehicleYearParser.swift */,
 			);
 			path = parsers;
 			sourceTree = "<group>";
@@ -1495,6 +1498,7 @@
 				398D311B24ED7B3F0035A00E /* loginViewController.swift in Sources */,
 				5C8902A0251B96D900730869 /* spaceTableViewCell.swift in Sources */,
 				5CF0636825176E8500E73380 /* addressPaymentViewController.swift in Sources */,
+				5C41EDF6252A0C1800D4234B /* vehicleYearParser.swift in Sources */,
 				5CA8BFFE2523857500676B9A /* user.swift in Sources */,
 				39FFAF9924D0A02100532C7F /* filterItemsTableViewCell.swift in Sources */,
 				5C17EFD4250A81E40090C4D2 /* carModel.swift in Sources */,

@@ -13,7 +13,10 @@ class vehicle{
     var id: Int?
     var model: carModel?
     var year: Int?
-    var date_created: String?
-    var date_updated: String?
-
+    var customer: Int?
+    var vehicle: Int?
+    var vehicle_name: String?
+    var model_name: String?
+    var image: String?
+    var isChecked: Bool?
 }

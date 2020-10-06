@@ -18,7 +18,7 @@ class cartClient: ParentClient {
         let cartHeaders: [String: String] = ["Authorization" : "JWT \(UserDefaults.standard.string(forKey: "authToken") ?? "")"]
 
         
-        self.communicateWithApi(url: url, pagingUrl: nil, method: .get, parameters: parametersOfCall, headers: cartHeaders, onSuccess: { (responseSuccess) in
+        self.communicateWithApi(url: url, pagingUrl: nil, method: apiMethod, parameters: parametersOfCall, headers: cartHeaders, onSuccess: { (responseSuccess) in
             //
             completionSuccess(responseSuccess)
         }) { (responseFailure) in

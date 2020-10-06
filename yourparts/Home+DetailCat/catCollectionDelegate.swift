@@ -47,8 +47,17 @@ class catCollectionDelegate: NSObject ,UICollectionViewDataSource, UICollectionV
         }
         
         func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-            if indexPath.row == 5{
+            //if indexPath.row == 5{
+            //}
+            //if indexPath.row != 13 && indexPath.row != 12{
+            self.targetController?.catIdToGo = self.targetController?.homeVm.categoriesArr[indexPath.row].id
+                           
+            if self.targetController?.catIdToGo == 1 || self.targetController?.catIdToGo == 737 || self.targetController?.catIdToGo == 58{
+                self.targetController?.performSegue(withIdentifier: "gotoDetailCat", sender: self)
+            }else if self.targetController?.catIdToGo == 85{
+                self.targetController?.performSegue(withIdentifier: "gotoTires", sender: self)
             }
+            //}
         }
  
         

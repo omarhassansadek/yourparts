@@ -56,8 +56,10 @@ class offerParser{
                     offerObj.is_active = is_active
               }
             
+              offerObj.categories_included = []
               if let categories_included = oneOffer["categories_included"].array {
                     //offerObj.categories_included = categories_included
+                    
                     for oneCat in categories_included{
                         offerObj.categories_included?.append(oneCat.int ?? -1)
                     }

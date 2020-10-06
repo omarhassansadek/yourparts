@@ -193,7 +193,11 @@ class productListViewController: UIViewController, UICollectionViewDelegate , UI
 
                 cell.cartimg.image = UIImage(named: "cartSuccess")
                 
+                cell.cartView.backgroundColor = UIColor(displayP3Red: 138/255, green: 209/255, blue: 97/255, alpha: 1.0)
+
                 cell.cartimg.isHidden = false
+                
+                
 
                 
                 cell.activityind.stopAnimating()
@@ -203,6 +207,8 @@ class productListViewController: UIViewController, UICollectionViewDelegate , UI
                 
                 cell.cartimg.image = UIImage(named: "cart")
 
+                cell.cartView.backgroundColor = primaryColor
+                
                 cell.cartimg.isHidden = false
 
                 AlertViewer().showAlertView(withMessage: err , onController: self)

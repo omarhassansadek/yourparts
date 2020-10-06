@@ -54,7 +54,6 @@ class cartViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         self.configure()
         
-        self.getCartData()
         
         self.placeholderLbl.text = "Your cart is empty".localized
         
@@ -95,6 +94,9 @@ class cartViewController: UIViewController, UITableViewDelegate, UITableViewData
         // Do any additional setup after loading the view.
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        self.getCartData()
+    }
 
     @objc func refresh(_ sender: AnyObject) {
        // Code to refresh table view
@@ -159,7 +161,7 @@ class cartViewController: UIViewController, UITableViewDelegate, UITableViewData
             self.cartVM.deleteFromCart(id: self.cartVM.cartArr[indexPath.row].id ?? -1, onSuccess: { (isSuccess) in
                 if isSuccess{
                     self.cartVM.cartArr.remove(at: indexPath.row)
-                    self.cartTableView.reloadData()
+                    self.getCartData()
                 }
             }) { (errorMsg) in
                 //
@@ -252,7 +254,7 @@ class cartViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     @IBAction func goShppoingBtnClicked(_ sender: Any) {
         tabBarController?.selectedIndex = 0
-    }
+    }   
     
     
     
@@ -268,11 +270,15 @@ class cartViewController: UIViewController, UITableViewDelegate, UITableViewData
         print("End Editing")
         var index = textField.tag
         var params: [String: Any] = [:]
-        params["sparepart_id"] = self.cartVM.cartArr[index].id
+        //params["id"] = self.cartVM.cartArr[index].id
         params["quantity"] = self.cartVM.cartArr[index].quantity
-        self.cartVM.addToCart(apiParameters: params, onSuccess: { (isSuccess) in
+        self.cartVM.addToCart(id: self.cartVM.cartArr[index].id ?? -1, apiParameters: params, onSuccess: { (isSuccess) in
             //
-            self.getCartData()
+            if isSuccess{
+                self.firstLoad = false
+                self.getCartData()
+            }
+            
         }) { (error) in
             //
         }

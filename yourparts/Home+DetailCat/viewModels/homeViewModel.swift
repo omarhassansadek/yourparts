@@ -16,6 +16,8 @@ class homeViewModel: NSObject {
     
     var categoriesArr: [category] = []
     
+    var freqCategoriesArr: [category] = []
+
     var offersArr : [offer] = []
     
     func getHomeCategories(apiParameters: [String:String], onSuccess: @escaping(Bool)-> () , onFailure: @escaping(String)-> ()){
@@ -23,7 +25,7 @@ class homeViewModel: NSObject {
          
         self.homeC.requestCategories(url: baseUrl+categoriesUrl, apiMethod: .get, parametersOfCall: nil, apiEncoding: JSONEncoding.default, completionSuccess: { (responseSuccess) in
             //
-            categoryParser().parseCategories(fromJSON: responseSuccess) { catArr in
+            categoryParser().parseCategories(slidingCat: false, fromJSON: responseSuccess) { catArr in
                 self.categoriesArr = catArr
                 //self.categoriesArr[]
                 onSuccess(true)
@@ -60,4 +62,28 @@ class homeViewModel: NSObject {
         }
          
      }
+    
+    
+    func getFreqNeededFromApi( onSuccess: @escaping(Bool)-> () , onFailure: @escaping(String)-> ()){
+             
+             
+            self.homeC.requestOffers(url: baseUrl+getFreqNeeded, apiMethod: .get, parametersOfCall: nil, apiEncoding: JSONEncoding.default, completionSuccess: { (responseSuccess) in
+                
+                
+                print(responseSuccess)
+                
+               
+                  
+                categoryParser().parseCategories(slidingCat: true, fromJSON: responseSuccess) { catArr in
+                    self.freqCategoriesArr = catArr
+                    onSuccess(true)
+                }
+                
+                
+            }) { (responseFailure) in
+                //
+            }
+             
+    }
+
 }

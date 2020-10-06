@@ -315,7 +315,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="A3Z-tx-ZYL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3309" y="1105"/>
+            <point key="canvasLocation" x="-3291" y="1105"/>
         </scene>
         <!--Menu View Controller-->
         <scene sceneID="hyC-z8-hud">
@@ -402,7 +402,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aDZ-fZ-l4q" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2310" y="-1575"/>
+            <point key="canvasLocation" x="-2326" y="-1617"/>
         </scene>
         <!--addCarVC-->
         <scene sceneID="bIn-Vs-4To">
@@ -412,7 +412,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tQm-Xh-Jfg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2249" y="-1381"/>
+            <point key="canvasLocation" x="-2320" y="-1471"/>
         </scene>
         <!--Tire-->
         <scene sceneID="IiH-hI-PT4">
@@ -422,7 +422,17 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ISD-5v-oFi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2312" y="-1230"/>
+            <point key="canvasLocation" x="-2320" y="-1278"/>
+        </scene>
+        <!--productList-->
+        <scene sceneID="78i-Mg-kfj">
+            <objects>
+                <viewControllerPlaceholder storyboardName="product" referencedIdentifier="productList" id="Zci-G4-PfR" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="d01-5F-2eb"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="021-Qm-mjB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2320" y="-1135"/>
         </scene>
         <!--Home View Controller-->
         <scene sceneID="QVD-ME-VYT">
@@ -1130,6 +1140,7 @@
                         <segue destination="Up8-mW-2BH" kind="show" identifier="gotoDetailCat" id="xlc-Oz-fsg"/>
                         <segue destination="lGf-4g-OYr" kind="show" identifier="gotoTires" id="wXP-Qx-Kwp"/>
                         <segue destination="QCW-yO-WKt" kind="show" identifier="gotoAddCarVC" id="DEZ-AB-yyz"/>
+                        <segue destination="Zci-G4-PfR" kind="show" identifier="gotoProductListVC" id="t0N-Z3-bnh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OPo-U5-nvV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

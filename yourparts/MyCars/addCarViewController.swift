@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import NVActivityIndicatorView
 
-class addCarViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+class addCarViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
 
     @IBOutlet weak var yearModel: UILabel!
     @IBOutlet weak var typeLbl: UILabel!
@@ -20,6 +21,11 @@ class addCarViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     @IBOutlet weak var chooseBrandTF: UITextField!
     @IBOutlet weak var chooseType: UITextField!
     
+    @IBOutlet weak var chooseTypeView: UIView!
+    @IBOutlet weak var chooseBrandView: UIView!
+    @IBOutlet weak var chooseModelsView: UIView!
+    @IBOutlet weak var chooseYearView: UIView!
+    
     @IBOutlet weak var addCarVM: addCarViewModel!
     
     var carTypesPickerView = UIPickerView()
@@ -27,11 +33,37 @@ class addCarViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     var carModelsPickerView = UIPickerView()
     var carYearsPickerView = UIPickerView()
 
+    @IBOutlet weak var activityind: NVActivityIndicatorView!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.getTypes()
         
+        self.chooseType.attributedPlaceholder = NSAttributedString(string: "Choose Type".localized , attributes: [
+                     .foregroundColor: UIColor.black,
+                     .font: UIFont(name: "Cairo-Semibold", size: 14 )!
+                 ])
+
+
+        self.chooseType.font = UIFont(name: "Cairo-Semibold", size: 14 )
+        self.chooseBrandTF.font = UIFont(name: "Cairo-Semibold", size: 14 )
+        self.chooseModelTF.font = UIFont(name: "Cairo-Semibold", size: 14 )
+        self.yearManuTF.font = UIFont(name: "Cairo-Semibold", size: 14 )
+
+
+        self.chooseType.tintColor = .clear
+        self.chooseModelTF.tintColor = .clear
+        self.chooseBrandTF.tintColor = .clear
+        self.yearManuTF.tintColor = .clear
+
+//        self.chooseType.delegate = self
+//        self.chooseModelTF.delegate = self
+//        self.chooseBrandTF.delegate = self
+//        self.yearManuTF.delegate = self
+//
+
         self.chooseType.inputView = self.carTypesPickerView
         self.chooseBrandTF.inputView = self.carMakerPickerView
         self.chooseModelTF.inputView = self.carModelsPickerView
@@ -96,20 +128,20 @@ class addCarViewController: UIViewController, UIPickerViewDelegate, UIPickerView
 //            .font: UIFont(name: "TheMixArab", size: 14 )!
 //            ])
 //
-//        self.chooseBrandTF.attributedPlaceholder = NSAttributedString(string: "Choose Brand".localized , attributes: [
-//            .foregroundColor: UIColor.darkGray,
-//            .font: UIFont(name: "TheMixArab", size: 14 )!
-//            ])
-//
-//        self.chooseModelTF.attributedPlaceholder = NSAttributedString(string: "Choose Model".localized , attributes: [
-//            .foregroundColor: UIColor.darkGray,
-//            .font: UIFont(name: "TheMixArab", size: 14 )!
-//            ])
-//
-//        self.yearManuTF.attributedPlaceholder = NSAttributedString(string: "Manufacture Year".localized , attributes: [
-//            .foregroundColor: UIColor.darkGray,
-//            .font: UIFont(name: "TheMixArab", size: 14 )!
-//            ])
+        self.chooseBrandTF.attributedPlaceholder = NSAttributedString(string: "Choose Brand".localized , attributes: [
+            .foregroundColor: UIColor.white,
+            .font: UIFont(name: "TheMixArab", size: 14 )!
+            ])
+
+        self.chooseModelTF.attributedPlaceholder = NSAttributedString(string: "Choose Model".localized , attributes: [
+            .foregroundColor: UIColor.white,
+            .font: UIFont(name: "TheMixArab", size: 14 )!
+            ])
+
+        self.yearManuTF.attributedPlaceholder = NSAttributedString(string: "Manufacture Year".localized , attributes: [
+            .foregroundColor: UIColor.white,
+            .font: UIFont(name: "TheMixArab", size: 14 )!
+            ])
         // Do any additional setup after loading the view.
     }
     
@@ -117,17 +149,23 @@ class addCarViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     
     @IBOutlet var roundViews: [UIView]!
     
-    var selectedTypeId: Int = -1
+    var selectedTypeId: Int = 1
     
+    var selectedMakerId: Int = -1
+
+    var selectedModelId: Int = -1
+
+    var selectedCarId: Int = -1
+
     
     func getTypes(){
         self.addCarVM.getCarTypes(onSuccess: { (isSuccess) in
             //
             if isSuccess{
                 self.carTypesPickerView.reloadAllComponents()
-                self.chooseType.text = self.addCarVM.carTypes[0].name ?? ""
-                self.getMakers(type_id: self.addCarVM.carTypes[0].id ?? -1)
-                self.selectedTypeId = self.addCarVM.carTypes[0].id ?? -1
+                //self.chooseType.text = self.addCarVM.carTypes[0].name ?? ""
+                //self.getMakers(type_id: self.addCarVM.carTypes[0].id ?? -1)
+                //self.selectedTypeId = self.addCarVM.carTypes[0].id ?? -1
             }
             
         }) { (errMsg) in
@@ -139,8 +177,8 @@ class addCarViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         self.addCarVM.getCarMakers(id: type_id, onSuccess: { (isSucces) in
             if isSucces{
                 self.carMakerPickerView.reloadAllComponents()
-                self.chooseBrandTF.text = self.addCarVM.carMakers[0].name ?? ""
-                self.getModels(maker_id: self.addCarVM.carMakers[0].id ?? -1)
+                //self.chooseBrandTF.text = self.addCarVM.carMakers[0].name ?? ""
+                //self.getModels(maker_id: self.addCarVM.carMakers[0].id ?? -1)
 
             }
         }) { (errMsg) in
@@ -152,14 +190,85 @@ class addCarViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         self.addCarVM.getCarModels(id: maker_id, selectedType: self.selectedTypeId, onSuccess: { (isSucces) in
             if isSucces{
                 self.carModelsPickerView.reloadAllComponents()
-                self.chooseModelTF.text = self.addCarVM.carModels[0].name ?? ""
-
+                //self.chooseModelTF.text = self.addCarVM.carModels[0].name ?? ""
             }
         }) { (errMsg) in
             //
         }
     }
     
+    func getyears(model_id: Int ){
+        
+        self.addCarVM.getCarYears(id: model_id, selectedType: selectedTypeId, selectedMaker: self.selectedMakerId, onSuccess: { (isSuccess) in
+            //
+            self.carYearsPickerView.reloadAllComponents()
+
+        }) { (errMsg) in
+            //
+        }
+
+    }
+
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        if textField == chooseType{
+            //self.chooseBrandView.backgroundColor = UIColor.white
+            //self.chooseBrandTF.attributedPlaceholder = NSAttributedString(string: "Choose Brand".localized , attributes: [
+                                         //   .foregroundColor: UIColor.black,
+                                         //   .font: UIFont(name: "Cairo-Semibold", size: 14 )!
+                                        //])
+            self.chooseModelTF.attributedPlaceholder = NSAttributedString(string: "Choose Model".localized , attributes: [
+                                     .foregroundColor: UIColor.white,
+                                     .font: UIFont(name: "Cairo-Semibold", size: 14 )!
+                                 ])
+            self.yearManuTF.attributedPlaceholder = NSAttributedString(string: "Manufacture Year".localized , attributes: [
+                                                        .foregroundColor: UIColor.white,
+                                                        .font: UIFont(name: "Cairo-Semibold", size: 14 )!
+                                                ])
+            self.chooseBrandTF.text = ""
+            self.chooseModelTF.text = ""
+            self.yearManuTF.text = ""
+            self.chooseBrandTF.isUserInteractionEnabled = true
+            self.chooseModelTF.isUserInteractionEnabled = false
+            self.yearManuTF.isUserInteractionEnabled = false
+            self.chooseModelsView.backgroundColor = UIColor.lightGray
+            self.chooseYearView.backgroundColor = UIColor.lightGray
+            self.addNewCarBtn.backgroundColor = UIColor.lightGray
+            
+        }else if textField == chooseBrandTF{
+            //self.chooseModelsView.backgroundColor = UIColor.lightGray
+            //self.chooseModelsView.backgroundColor = UIColor.white
+            //self.chooseModelTF.attributedPlaceholder = NSAttributedString(string: "Choose Model".localized , attributes: [
+                 // .foregroundColor: UIColor.black,
+                 // .font: UIFont(name: "Cairo-Semibold", size: 14 )!
+              //])
+            self.yearManuTF.attributedPlaceholder = NSAttributedString(string: "Manufacture Year".localized , attributes: [
+                    .foregroundColor: UIColor.white,
+                    .font: UIFont(name: "Cairo-Semibold", size: 14 )!
+            ])
+            self.chooseModelTF.isUserInteractionEnabled = true
+            self.yearManuTF.isUserInteractionEnabled = false
+            //self.chooseModelsView.backgroundColor = UIColor.white
+            self.chooseYearView.backgroundColor = UIColor.lightGray
+            self.chooseModelTF.text = ""
+            self.yearManuTF.text = ""
+            self.addNewCarBtn.backgroundColor = UIColor.lightGray
+        }else if textField == chooseModelTF{
+            //self.yearManuTF.attributedPlaceholder = NSAttributedString(string: "Manufacture Year".localized , attributes: [
+                         //  .foregroundColor: UIColor.black,
+                         //  .font: UIFont(name: "Cairo-Semibold", size: 14 )!
+                   //])
+                   
+            self.yearManuTF.text = ""
+                   
+            self.yearManuTF.isUserInteractionEnabled = true
+                   
+            self.addNewCarBtn.backgroundColor = UIColor.lightGray
+            //self.chooseYearView.backgroundColor = UIColor.lightGray
+        }else{
+            //print("Ok")
+        }
+    }
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
@@ -184,7 +293,7 @@ class addCarViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         }else if pickerView == self.carModelsPickerView{
             return self.addCarVM.carModels[row].name ?? ""
         }else{
-            return ""
+            return String(self.addCarVM.carYears[row].year ?? Int())
         }
 //        }else if pickerView == self.carModelsPickerView{
 //            //return self.addCarVM.carModels.count
@@ -200,23 +309,131 @@ class addCarViewController: UIViewController, UIPickerViewDelegate, UIPickerView
                     self.chooseType.text = self.addCarVM.carTypes[row].name ?? ""
                     self.getMakers(type_id: self.addCarVM.carTypes[row].id ?? -1)
                     self.selectedTypeId = self.addCarVM.carTypes[row].id ?? -1
+                    self.chooseBrandView.backgroundColor = UIColor.white
+                    self.chooseBrandTF.attributedPlaceholder = NSAttributedString(string: "Choose Brand".localized , attributes: [
+                                 .foregroundColor: UIColor.black,
+                                 .font: UIFont(name: "Cairo-Semibold", size: 14 )!
+                             ])
+                    self.chooseModelTF.attributedPlaceholder = NSAttributedString(string: "Choose Model".localized , attributes: [
+                          .foregroundColor: UIColor.white,
+                          .font: UIFont(name: "Cairo-Semibold", size: 14 )!
+                      ])
+                    self.yearManuTF.attributedPlaceholder = NSAttributedString(string: "Manufacture Year".localized , attributes: [
+                                             .foregroundColor: UIColor.white,
+                                             .font: UIFont(name: "Cairo-Semibold", size: 14 )!
+                                     ])
+                    self.chooseBrandTF.text = ""
+                    self.chooseModelTF.text = ""
+                    self.yearManuTF.text = ""
+                    self.chooseBrandTF.isUserInteractionEnabled = true
+                    self.chooseModelTF.isUserInteractionEnabled = false
+                    self.yearManuTF.isUserInteractionEnabled = false
+                    self.chooseModelsView.backgroundColor = UIColor.lightGray
+                    self.chooseYearView.backgroundColor = UIColor.lightGray
+
+                    self.addNewCarBtn.backgroundColor = UIColor.lightGray
+
                 }else if pickerView == self.carMakerPickerView{
                     self.chooseBrandTF.text = self.addCarVM.carMakers[row].name ?? ""
                     self.getModels(maker_id: self.addCarVM.carMakers[row].id ?? -1)
+                    self.selectedMakerId = self.addCarVM.carMakers[row].id ?? -1
+                    self.chooseModelsView.backgroundColor = UIColor.white
+                    self.chooseModelTF.attributedPlaceholder = NSAttributedString(string: "Choose Model".localized , attributes: [
+                          .foregroundColor: UIColor.black,
+                          .font: UIFont(name: "Cairo-Semibold", size: 14 )!
+                      ])
+                    self.yearManuTF.attributedPlaceholder = NSAttributedString(string: "Manufacture Year".localized , attributes: [
+                            .foregroundColor: UIColor.white,
+                            .font: UIFont(name: "Cairo-Semibold", size: 14 )!
+                    ])
+                    self.chooseModelTF.isUserInteractionEnabled = true
+                    self.yearManuTF.isUserInteractionEnabled = false
+                    self.chooseModelsView.backgroundColor = UIColor.white
+                    self.chooseYearView.backgroundColor = UIColor.lightGray
+                    self.chooseModelTF.text = ""
+                    self.yearManuTF.text = ""
+                    self.addNewCarBtn.backgroundColor = UIColor.lightGray
+
 
                 }else if pickerView == self.carModelsPickerView{
+                    self.selectedModelId = self.addCarVM.carModels[row].id ?? -1
                     self.chooseModelTF.text = self.addCarVM.carModels[row].name ?? ""
+                    self.chooseYearView.backgroundColor = UIColor.white
+                    self.getyears(model_id: self.addCarVM.carModels[row].id ?? -1)
+
+                      self.yearManuTF.attributedPlaceholder = NSAttributedString(string: "Manufacture Year".localized , attributes: [
+                            .foregroundColor: UIColor.black,
+                            .font: UIFont(name: "Cairo-Semibold", size: 14 )!
+                    ])
+                    
+                    self.yearManuTF.text = ""
+                    
+                    self.yearManuTF.isUserInteractionEnabled = true
+                    
+                    self.addNewCarBtn.backgroundColor = UIColor.lightGray
+
 
                     //return ""
                 }else{
                     
+                    print(self.selectedTypeId)
+                    print(self.selectedMakerId)
+                    print(self.selectedModelId)
+                    print(self.addCarVM.carYears[row].year ?? Int())
+                    self.selectedCarId = self.addCarVM.carYears[row].id ?? Int()
+                    self.yearManuTF.text = String(self.addCarVM.carYears[row].year ?? Int())
+                    self.addNewCarBtn.backgroundColor = primaryColor
+                    
                 }
+        
+        
+        self.view.endEditing(true)
         //        }else if pickerView == self.carModelsPickerView{
         //            //return self.addCarVM.carModels.count
         //        }else{
         //            //return self.addCarVM.carYears.count
         //        }
     }
+    
+    
+    @IBAction func addNewCarBtnClicked(_ sender: Any) {
+        self.addNewCarBtn.setTitle("", for: .normal)
+        self.activityind.startAnimating()
+        var paramsDic: [String: Any] = [:]
+
+        if let userId = UserDefaults.standard.string(forKey: "userid"){
+            paramsDic["customer"] = Int(userId)
+        }
+        paramsDic["vehicle"] = self.selectedCarId
+
+       
+        
+        self.addCarVM.addCar(params: paramsDic, onSuccess: { (isSuccess) in
+            if isSuccess{
+                self.activityind.stopAnimating()
+                self.addNewCarBtn.setTitle("Add Car Successfully".localized, for: .normal)
+                self.addNewCarBtn.backgroundColor = UIColor(displayP3Red: 138/255, green: 209/255, blue: 97/255, alpha: 1.0)
+                Timer.scheduledTimer(timeInterval: 1.5, target: self, selector: #selector(self.carAddedSuccess), userInfo: nil, repeats: false)
+
+            }
+        }) { (errMsg) in
+            //
+            self.activityind.stopAnimating()
+            self.addNewCarBtn.setTitle("Add Car".localized, for: .normal)
+            AlertViewer().showAlertView(withMessage: errMsg, onController: self)
+
+        }
+    }
+    
+    
+    @objc func carAddedSuccess() {
+        
+        //NotificationCenter.default.post(name: Notification.Name("finishAddAddress"), object: nil)
+        self.navigationController?.popViewController(animated: true)
+
+    }
+    
+    
     /*
     // MARK: - Navigation
 

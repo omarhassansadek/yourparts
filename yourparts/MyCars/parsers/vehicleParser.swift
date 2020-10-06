@@ -21,20 +21,31 @@ class vehicleParser{
 //
                     var OneVehicleArray = vehicle()
 //
-                  if let id = oneVehicle["vehicle"]["id"].int {
+                  if let id = oneVehicle["id"].int {
                       OneVehicleArray.id = id
                   }
                 
                  OneVehicleArray.model = self.parseCarModel(fromJSON: oneVehicle["vehicle"]["model"])
                 
+                  if let vehicle = oneVehicle["vehicle"].int {
+                    OneVehicleArray.vehicle = vehicle
+                  }
                   if let year = oneVehicle["year"].int {
                       OneVehicleArray.year = year
                   }
-                  if let date_created = oneVehicle["date_created"].string {
-                      OneVehicleArray.date_created = date_created
+                  if let vehicle_name = oneVehicle["vehicle_name"].string {
+                      OneVehicleArray.vehicle_name = vehicle_name
                   }
-                 if let date_updated = oneVehicle["date_updated"].string {
-                      OneVehicleArray.date_updated = date_updated
+                  if let model_name = oneVehicle["model_name"].string {
+                      OneVehicleArray.model_name = model_name
+                  }
+                
+                  if let customer = oneVehicle["customer"].int {
+                     OneVehicleArray.customer = customer
+                  }
+
+                  if let image = oneVehicle["image"].string {
+                     OneVehicleArray.image = image
                   }
 
                 vehiclesArr.append(OneVehicleArray)

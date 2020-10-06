@@ -21,9 +21,9 @@
                         <rect key="frame" x="5" y="15" width="157" height="137"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="teelFramel" translatesAutoresizingMaskIntoConstraints="NO" id="iEU-yO-9Hn">
-                                <rect key="frame" x="15" y="0.0" width="127" height="96"/>
+                                <rect key="frame" x="15" y="0.0" width="127" height="93"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="naN-H0-SIw">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="naN-H0-SIw">
                                 <rect key="frame" x="0.0" y="111" width="157" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="V9f-cK-cgs"/>
@@ -39,7 +39,7 @@
                             <constraint firstItem="naN-H0-SIw" firstAttribute="leading" secondItem="Hgy-w0-qVw" secondAttribute="leading" id="Czo-Bd-rbv"/>
                             <constraint firstAttribute="bottom" secondItem="naN-H0-SIw" secondAttribute="bottom" constant="5" id="NsT-iw-lNf"/>
                             <constraint firstAttribute="trailing" secondItem="naN-H0-SIw" secondAttribute="trailing" id="aXb-V1-yMd"/>
-                            <constraint firstItem="naN-H0-SIw" firstAttribute="top" secondItem="iEU-yO-9Hn" secondAttribute="bottom" constant="15" id="iso-5m-NX1"/>
+                            <constraint firstItem="naN-H0-SIw" firstAttribute="top" secondItem="iEU-yO-9Hn" secondAttribute="bottom" constant="18" id="iso-5m-NX1"/>
                             <constraint firstItem="iEU-yO-9Hn" firstAttribute="top" secondItem="Hgy-w0-qVw" secondAttribute="top" id="kmO-z2-9HP"/>
                             <constraint firstItem="iEU-yO-9Hn" firstAttribute="leading" secondItem="Hgy-w0-qVw" secondAttribute="leading" constant="15" id="mnv-mo-XOY"/>
                         </constraints>

@@ -20,9 +20,9 @@ class myCarsViewModel: NSObject {
 
     func getMyVehicles( onSuccess: @escaping(Bool)-> () , onFailure: @escaping(String)-> () ){
         var headersDic : [String: String] = [:]
-        headersDic["Authorization"] = "Token \(self.userDef.string(forKey: "token") ?? "")"
-        
-        self.myCarsC.requestMyVehicle(url: baseUrl+myVehiclesUrl, apiMethod: .get, parametersOfCall: nil, apiEncoding: JSONEncoding.default, headers: headersDic, completionSuccess: { (responseSuccesss) in
+        headersDic["Authorization"] = "JWT \(UserDefaults.standard.string(forKey: "authToken") ?? "")"
+
+        self.myCarsC.requestMyVehicle(url: baseUrl+add_get_VehicleUrl, apiMethod: .get, parametersOfCall: nil, apiEncoding: JSONEncoding.default, headers: headersDic, completionSuccess: { (responseSuccesss) in
             //
             print(responseSuccesss)
             
@@ -34,6 +34,24 @@ class myCarsViewModel: NSObject {
             
         }) { (responseFailure) in
             //
+            onFailure("We encountered an error. Try again later")
         }
     }
+    
+    
+    func deleteMyVehicle(id: Int, onSuccess: @escaping(Bool)-> () , onFailure: @escaping(String)-> () ){
+        var headersDic : [String: String] = [:]
+        headersDic["Authorization"] = "JWT \(UserDefaults.standard.string(forKey: "authToken") ?? "")"
+
+        self.myCarsC.requestMyVehicle(url: baseUrl+add_get_VehicleUrl+"\(id)/", apiMethod: .delete, parametersOfCall: nil, apiEncoding: JSONEncoding.default, headers: headersDic, completionSuccess: { (responseSuccesss) in
+            //
+            print(responseSuccesss)
+            onSuccess(true)
+            
+        }) { (responseFailure) in
+            //
+            onFailure("We encountered an error. Try again later")
+        }
+    }
+
 }

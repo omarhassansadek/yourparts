@@ -21,7 +21,11 @@ var myVehiclesUrl = "customer/vehicles/"
 
 var myVehiclesTypeUrl = "vehicle/type/"
 
+var add_get_VehicleUrl = "customervehicle/"
+
 var categoriesUrl = "categories"
+
+var catLevel3Url = "subcategory/"
 
 var rimSizeUrl = "tyres/rimsize/"
 
@@ -35,6 +39,8 @@ var addCartsUrl = "cart/add/"
 
 var cartUrl = "cart/"
 
+var cartItemUrl = "cartitem/"
+
 var addAddressUrl = "customer/billingaddress/add/"
 
 var getAddressUrl = "customer/billingaddress/"
@@ -42,3 +48,5 @@ var getAddressUrl = "customer/billingaddress/"
 var getCityUrl = "city/"
 
 var getOffersUrl = "ads/offeroftheday"
+
+var getFreqNeeded = "product/category/frequentlyneeded/"
