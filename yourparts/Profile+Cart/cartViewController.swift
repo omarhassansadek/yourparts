@@ -229,7 +229,7 @@ class cartViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         self.deliveryLbl.font = UIFont(name: "Cairo-Regular", size: 13)
 
-        self.deliveryLbl.text = "Charge Cost".localized
+        self.deliveryLbl.text = "Vat".localized
         
         self.deliveryPrice.font = UIFont(name: "Cairo-Regular", size: 13)
         

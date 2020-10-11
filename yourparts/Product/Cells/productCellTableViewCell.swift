@@ -34,6 +34,7 @@ class productCellTableViewCell: UITableViewCell {
         
         self.cartView.layer.cornerRadius = 5.0
         
+        
         self.productName.font = UIFont(name: "Cairo-Bold", size: 13)
 
         
@@ -55,6 +56,7 @@ class productCellTableViewCell: UITableViewCell {
                  addToCartBtn()
         }
     }
+    
     @IBOutlet weak var cartView: UIView!
     
     override func setSelected(_ selected: Bool, animated: Bool) {

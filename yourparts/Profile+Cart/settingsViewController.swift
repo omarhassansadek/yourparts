@@ -96,6 +96,24 @@ class settingsViewController: UIViewController, UITableViewDataSource, UITableVi
             return  59.0
         }
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.row == settingOptions.count{
+            var alertCont = UIAlertController(title: "Yourparts", message: "Are you sure you want to logout?".localized, preferredStyle: .alert)
+            
+            alertCont.addAction(UIAlertAction(title: "Cancel", style: .destructive, handler: { _ in
+                alertCont.dismiss(animated: true, completion: nil)
+            }))
+            
+            alertCont.addAction(UIAlertAction(title: "Continue", style: .default, handler: { _ in
+                //go to login
+                self.performSegue(withIdentifier: "gotoAuthModule", sender: self)
+            }))
+
+            
+            self.present(alertCont, animated: true, completion: nil)
+        }
+    }
     /*
     // MARK: - Navigation
 

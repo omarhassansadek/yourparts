@@ -11,6 +11,9 @@ import NVActivityIndicatorView
 
 class addressPaymentViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
+    @IBOutlet weak var receivingMethodsView: UIView!
+    @IBOutlet weak var fixerLbl: UILabel!
+    @IBOutlet weak var homeLbl: UILabel!
     @IBOutlet weak var addressTableViewTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var indView: UIView!
     @IBOutlet weak var indviewheightConstraint: NSLayoutConstraint!
@@ -35,6 +38,9 @@ class addressPaymentViewController: UIViewController, UITableViewDelegate, UITab
         super.viewDidLoad()
 
         if self.isComingFromProfile ?? false{
+            self.receivingMethodsView.isHidden = true
+            self.chooseLocLbl.isHidden = false
+            self.addressTableView.isHidden = false
             self.indviewheightConstraint.constant = 0
             self.indView.layoutIfNeeded()
             self.addressTableViewTopConstraint.constant = 15
@@ -61,6 +67,15 @@ class addressPaymentViewController: UIViewController, UITableViewDelegate, UITab
         
         self.title = "Delivery Address".localized
         
+        self.homeLbl.text = "Receive from home".localized
+        
+        self.fixerLbl.text = "Receive from yourfixers branch".localized
+
+        self.homeLbl.font = UIFont(name: "Cairo-SemiBold", size: 14)!
+
+        self.fixerLbl.font = UIFont(name: "Cairo-SemiBold", size: 14)!
+
+
         
         if !(self.isComingFromProfile ?? false) {
             self.chooseLocLbl.text = "Choose Location".localized
@@ -182,6 +197,19 @@ class addressPaymentViewController: UIViewController, UITableViewDelegate, UITab
 
     }
 
+    
+    @IBAction func receiveFromHomeClicked(_ sender: Any) {
+        //self.receivingMethodsView.isHidden = false
+   
+        UIView.animate(withDuration: 5.5, delay: 0.0, options: .allowAnimatedContent, animations: {
+            self.chooseLocLbl.isHidden = false
+            self.receivingMethodsView.isHidden = true
+            self.addressTableView.isHidden = false
+
+        }) { _ in
+        }
+        
+    }
     
     
     /*
