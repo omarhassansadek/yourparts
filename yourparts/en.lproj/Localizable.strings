@@ -213,6 +213,8 @@
 
 "Charge Cost" = "Charge Cost" ;
 
+"Vat" = "Vat" ;
+
 "Total Price" = "Total Price" ;
 
 "Pay" = "Pay" ;
@@ -294,3 +296,9 @@
 "Choose Brand" = "Choose Brand" ; 
 
 "Add Car Successfully" = "Add Car Successfully";
+
+"Are you sure you want to logout?" = "Are you sure you want to logout?" ;
+
+"Receive from home" = "Receive from home" ;
+
+"Receive from yourfixers branch" = "Receive from yourfixers branch" ;

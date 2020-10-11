@@ -164,11 +164,22 @@
                     <navigationItem key="navigationItem" id="4Tg-V1-VuB"/>
                     <connections>
                         <outlet property="settingsTableView" destination="8QJ-9g-RA9" id="U72-TS-C4I"/>
+                        <segue destination="aIW-Gr-qB9" kind="presentation" identifier="gotoAuthModule" modalTransitionStyle="flipHorizontal" id="SOQ-1f-caw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dyb-Gh-Pr8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1116" y="1342"/>
+        </scene>
+        <!--loginScreen-->
+        <scene sceneID="Bdg-Hg-odj">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Auth" referencedIdentifier="loginScreen" id="aIW-Gr-qB9" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="UeD-kG-bZ2"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="s1B-4w-cQ5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1116" y="1850"/>
         </scene>
         <!--Fav View Controller-->
         <scene sceneID="IJq-wS-17j">

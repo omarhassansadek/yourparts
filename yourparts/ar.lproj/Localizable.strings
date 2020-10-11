@@ -214,6 +214,8 @@
 
 "Charge Cost" = "الشحن" ;
 
+"Vat" = "الضريبة" ;
+
 "Total Price" = "إجمالى السعر" ;
 
 "Pay" = "الدفع" ;
@@ -297,3 +299,9 @@
 "Choose Brand" = "اختر الماركة" ; 
 
 "Add Car Successfully" = "تم اضافة بنجاح";
+
+"Are you sure you want to logout?" = "هل تريد تسجيل الخروج؟" ;
+
+"Receive from home" = "استلام من المنزل" ;
+
+"Receive from yourfixers branch" = "استلام من فروعنا" ;
