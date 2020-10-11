@@ -10,7 +10,7 @@ import UIKit
 import MOLH
 import IQKeyboardManagerSwift
 
-@UIApplicationMain
+//@UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, MOLHResetable {
 
     var window: UIWindow?

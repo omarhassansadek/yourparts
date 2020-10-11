@@ -131,6 +131,8 @@
 		5C32520925261FAE001418FC /* carYear.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C32520825261FAE001418FC /* carYear.swift */; };
 		5C32520B252622E4001418FC /* vehicleMarkerParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C32520A252622E4001418FC /* vehicleMarkerParser.swift */; };
 		5C32520D252627E4001418FC /* vehicleModelsParsers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C32520C252627E4001418FC /* vehicleModelsParsers.swift */; };
+		5C3A29A6253340D900EBE984 /* Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C3A29A5253340D900EBE984 /* Application.swift */; };
+		5C3A29A8253341DE00EBE984 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C3A29A7253341DE00EBE984 /* main.swift */; };
 		5C4021BD2520BFFF002FD3A0 /* AddressViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C4021BC2520BFFF002FD3A0 /* AddressViewModel.swift */; };
 		5C4021C02520C08C002FD3A0 /* AddressClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C4021BF2520C08C002FD3A0 /* AddressClient.swift */; };
 		5C4021C32520D5BC002FD3A0 /* addressParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C4021C22520D5BC002FD3A0 /* addressParser.swift */; };
@@ -377,6 +379,8 @@
 		5C32520825261FAE001418FC /* carYear.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = carYear.swift; sourceTree = "<group>"; };
 		5C32520A252622E4001418FC /* vehicleMarkerParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = vehicleMarkerParser.swift; sourceTree = "<group>"; };
 		5C32520C252627E4001418FC /* vehicleModelsParsers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = vehicleModelsParsers.swift; sourceTree = "<group>"; };
+		5C3A29A5253340D900EBE984 /* Application.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Application.swift; sourceTree = "<group>"; };
+		5C3A29A7253341DE00EBE984 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		5C4021BC2520BFFF002FD3A0 /* AddressViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressViewModel.swift; sourceTree = "<group>"; };
 		5C4021BF2520C08C002FD3A0 /* AddressClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressClient.swift; sourceTree = "<group>"; };
 		5C4021C22520D5BC002FD3A0 /* addressParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addressParser.swift; sourceTree = "<group>"; };
@@ -913,6 +917,8 @@
 				39EC506B2497A90500ABAF05 /* LaunchScreen.storyboard */,
 				39EC506E2497A90500ABAF05 /* Info.plist */,
 				399592A924A3D5F500D092AB /* Localizable.strings */,
+				5C3A29A5253340D900EBE984 /* Application.swift */,
+				5C3A29A7253341DE00EBE984 /* main.swift */,
 			);
 			path = yourparts;
 			sourceTree = "<group>";
@@ -1475,6 +1481,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5C3A29A6253340D900EBE984 /* Application.swift in Sources */,
 				39EC50652497A8FE00ABAF05 /* ViewController.swift in Sources */,
 				5C4339EE25123D6500F67552 /* product.swift in Sources */,
 				39F0590024A928B100CA348F /* myCarsViewController.swift in Sources */,
@@ -1540,6 +1547,7 @@
 				39FFAF9C24D0A0F700532C7F /* detailItemsViewController.swift in Sources */,
 				3990DE4524E9241B00ED3F49 /* detailSpartViewController.swift in Sources */,
 				5C32520525261AF3001418FC /* addCarClient.swift in Sources */,
+				5C3A29A8253341DE00EBE984 /* main.swift in Sources */,
 				5CF0637525179E8F00E73380 /* addAddressViewController.swift in Sources */,
 				5CF063822518DCBF00E73380 /* myCarTableViewCell.swift in Sources */,
 				39AEFF1824E10C0700AE0552 /* homeViewController.swift in Sources */,
