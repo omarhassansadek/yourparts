@@ -14,7 +14,7 @@ target 'yourparts' do
   pod 'SwiftyJSON'
   pod 'NVActivityIndicatorView'
   pod 'SDWebImage', '~> 4.0'
-  pod 'Spring'
+  pod 'Spring', :git => 'https://github.com/MengTo/Spring.git', :branch => 'swift5'
   pod 'Cosmos'
   pod 'ShadowView'
   target 'yourpartsTests' do
