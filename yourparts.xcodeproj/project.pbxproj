@@ -516,6 +516,49 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		1FD22E762534596900CF0ED8 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				1FD22E7825345DB600CF0ED8 /* Assets */,
+				1FD22E7725345D4300CF0ED8 /* Localization */,
+				3972554424A3ABD00092D1B5 /* Fonts */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		1FD22E7725345D4300CF0ED8 /* Localization */ = {
+			isa = PBXGroup;
+			children = (
+				399592A924A3D5F500D092AB /* Localizable.strings */,
+			);
+			path = Localization;
+			sourceTree = "<group>";
+		};
+		1FD22E7825345DB600CF0ED8 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				393BC02124A7D96E00CAB4BE /* Assets.xcassets */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
+		1FD22E7925345DF300CF0ED8 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				39AEFF1124E1085D00AE0552 /* Home+DetailCat */,
+				3989840D24E563A100A7188C /* Spare Parts */,
+				391910D924D09D2B00F45FB4 /* Interior & Exterior Parts */,
+				397B744F24CF9ADE00B74BEC /* Oils */,
+				39E4222F24D07CC700524591 /* Tyres */,
+				3999F16B24D9ED8700EAEC56 /* Product */,
+				394747BD24B589D600253236 /* My Cars */,
+				5CF0636425176B6600E73380 /* Payment */,
+				3969EFB124EC10CB00695277 /* Auth */,
+				3972554924A3B07A0092D1B5 /* Profile+Cart */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
 		390FFD3E24A288E0008BD0B0 /* Utility */ = {
 			isa = PBXGroup;
 			children = (
@@ -548,7 +591,7 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
-		391910D924D09D2B00F45FB4 /* Int&Ext */ = {
+		391910D924D09D2B00F45FB4 /* Interior & Exterior Parts */ = {
 			isa = PBXGroup;
 			children = (
 				391910DA24D09D3900F45FB4 /* Cells */,
@@ -556,7 +599,7 @@
 				39FFAF9524D09EF300532C7F /* intAndExtViewController.swift */,
 				39FFAF9B24D0A0F700532C7F /* detailItemsViewController.swift */,
 			);
-			path = "Int&Ext";
+			path = "Interior & Exterior Parts";
 			sourceTree = "<group>";
 		};
 		391910DA24D09D3900F45FB4 /* Cells */ = {
@@ -578,7 +621,7 @@
 			path = Menu;
 			sourceTree = "<group>";
 		};
-		394747BD24B589D600253236 /* MyCars */ = {
+		394747BD24B589D600253236 /* My Cars */ = {
 			isa = PBXGroup;
 			children = (
 				5C17EFDC250A886D0090C4D2 /* parsers */,
@@ -590,7 +633,7 @@
 				39F058FF24A928B100CA348F /* myCarsViewController.swift */,
 				39AA658924B5B333005AC3CD /* addCarViewController.swift */,
 			);
-			path = MyCars;
+			path = "My Cars";
 			sourceTree = "<group>";
 		};
 		3969EFB124EC10CB00695277 /* Auth */ = {
@@ -701,7 +744,7 @@
 			path = viewModel;
 			sourceTree = "<group>";
 		};
-		3989840D24E563A100A7188C /* SpareParts */ = {
+		3989840D24E563A100A7188C /* Spare Parts */ = {
 			isa = PBXGroup;
 			children = (
 				3989841224E5651C00A7188C /* Cells */,
@@ -710,7 +753,7 @@
 				3990DE4424E9241B00ED3F49 /* detailSpartViewController.swift */,
 				391577B924E7D7AF009C4722 /* spartsCollectionDelegate.swift */,
 			);
-			path = SpareParts;
+			path = "Spare Parts";
 			sourceTree = "<group>";
 		};
 		3989841224E5651C00A7188C /* Cells */ = {
@@ -847,7 +890,7 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
-		39E4222F24D07CC700524591 /* Tires */ = {
+		39E4222F24D07CC700524591 /* Tyres */ = {
 			isa = PBXGroup;
 			children = (
 				5CF983E42511156500D56721 /* parser */,
@@ -858,7 +901,7 @@
 				39E4223324D07D0800524591 /* Tire.storyboard */,
 				39E4223124D07CED00524591 /* tiresViewController.swift */,
 			);
-			path = Tires;
+			path = Tyres;
 			sourceTree = "<group>";
 		};
 		39E4223024D07CCD00524591 /* Cells */ = {
@@ -897,26 +940,15 @@
 		39EC50612497A8FE00ABAF05 /* yourparts */ = {
 			isa = PBXGroup;
 			children = (
-				5CF0636425176B6600E73380 /* Payment */,
-				3989840D24E563A100A7188C /* SpareParts */,
-				39AEFF1124E1085D00AE0552 /* Home+DetailCat */,
-				3999F16B24D9ED8700EAEC56 /* Product */,
-				391910D924D09D2B00F45FB4 /* Int&Ext */,
-				39E4222F24D07CC700524591 /* Tires */,
-				397B744F24CF9ADE00B74BEC /* Oils */,
-				394747BD24B589D600253236 /* MyCars */,
+				1FD22E7925345DF300CF0ED8 /* Modules */,
 				394306CF24A42B3B00B9580C /* Menu */,
-				3972554924A3B07A0092D1B5 /* Profile+Cart */,
-				3969EFB124EC10CB00695277 /* Auth */,
-				3972554424A3ABD00092D1B5 /* Fonts */,
 				390FFD3E24A288E0008BD0B0 /* Utility */,
+				1FD22E762534596900CF0ED8 /* Resources */,
 				39EC50622497A8FE00ABAF05 /* AppDelegate.swift */,
 				39EC50642497A8FE00ABAF05 /* ViewController.swift */,
 				39EC50662497A8FE00ABAF05 /* Main.storyboard */,
-				393BC02124A7D96E00CAB4BE /* Assets.xcassets */,
 				39EC506B2497A90500ABAF05 /* LaunchScreen.storyboard */,
 				39EC506E2497A90500ABAF05 /* Info.plist */,
-				399592A924A3D5F500D092AB /* Localizable.strings */,
 				5C3A29A5253340D900EBE984 /* Application.swift */,
 				5C3A29A7253341DE00EBE984 /* main.swift */,
 			);

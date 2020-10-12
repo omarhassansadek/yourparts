@@ -10,22 +10,22 @@ import UIKit
 import MOLH
 
 class Application: UIApplication,UIApplicationDelegate {
-
-         override open var userInterfaceLayoutDirection: UIUserInterfaceLayoutDirection {
-
-             get {
-
-                 if MOLHLanguage.isRTLLanguage()    {
-
-                     return .rightToLeft
-
-                 }else {
-
-                     return .leftToRight
-
-                 }
-
-             }
-         }
-
-     }
+    
+    override open var userInterfaceLayoutDirection: UIUserInterfaceLayoutDirection {
+        
+        get {
+            
+            if MOLHLanguage.isRTLLanguage()    {
+                
+                return .rightToLeft
+                
+            }else {
+                
+                return .leftToRight
+                
+            }
+            
+        }
+    }
+    
+}
