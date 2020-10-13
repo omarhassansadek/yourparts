@@ -18,6 +18,8 @@ class cartViewModel: NSObject {
     var amount : String = ""
     
     var total : String = ""
+    
+    var cartId: Int?
 
     
      func getCartProducts( onSuccess: @escaping(Bool)-> () , onFailure: @escaping(String)-> ()){
@@ -29,6 +31,8 @@ class cartViewModel: NSObject {
             self.amount = responseSuccess["extra_rows"].arrayValue[0]["amount"].string ?? ""
             
             self.total = responseSuccess["total"].string ?? ""
+            
+            self.cartId = responseSuccess["id"].int ?? -1
 
             cartParser().parseCartData(fromJSON: responseSuccess) { (cartDataArr) in
                 self.cartArr = cartDataArr
@@ -87,10 +91,29 @@ class cartViewModel: NSObject {
           }) { (responseFailure) in
               onFailure("We encountered an error. Try again later")
           }
-        
-        
     }
+    
+    var orderId: Int?
 
+    func createOrder(apiParameters: [String:Any], onSuccess: @escaping(Bool)-> () , onFailure: @escaping(String)-> ()){
+         
+         print(apiParameters)
+
+         self.cartC.addToCart(url: baseUrl+createOrderUrl, apiMethod: .post, parametersOfCall: apiParameters, apiEncoding: JSONEncoding.default, completionSuccess: { (responseSuccess) in
+               //
+               print(responseSuccess)
+
+            if let id = responseSuccess["id"].int{
+                self.orderId = id
+                onSuccess(true)
+            }else{
+                onFailure("We encountered an error. Try again later")
+            }
+            
+           }) { (responseFailure) in
+               onFailure("We encountered an error. Try again later")
+           }
+     }
  
     
 }

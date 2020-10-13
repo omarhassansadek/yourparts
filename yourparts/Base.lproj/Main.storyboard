@@ -225,16 +225,32 @@
                                             <action selector="paymentBtnClicked:" destination="ds2-uD-L1T" eventType="touchUpInside" id="0gX-ke-39p"/>
                                         </connections>
                                     </button>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hsk-Sm-0yE" customClass="NVActivityIndicatorView" customModule="NVActivityIndicatorView">
+                                        <rect key="frame" x="25" y="110" width="325" height="45"/>
+                                        <color key="backgroundColor" red="0.93725490199999995" green="0.23921568630000001" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="45" id="BFE-2c-nl8"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="color">
+                                                <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="typeName" value="ballPulse"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="oMJ-ow-yaM" firstAttribute="centerX" secondItem="CTN-sg-WVQ" secondAttribute="centerX" id="2hB-H8-bdv"/>
                                     <constraint firstItem="LyB-06-ob6" firstAttribute="top" secondItem="hax-jW-mpt" secondAttribute="bottom" constant="10" id="35d-5l-eer"/>
+                                    <constraint firstItem="Hsk-Sm-0yE" firstAttribute="leading" secondItem="CTN-sg-WVQ" secondAttribute="leading" constant="25" id="3Pp-2K-di2"/>
                                     <constraint firstAttribute="trailing" secondItem="LyB-06-ob6" secondAttribute="trailing" constant="25" id="5Z1-g0-7MK"/>
                                     <constraint firstAttribute="trailing" secondItem="hax-jW-mpt" secondAttribute="trailing" constant="25" id="6Er-kI-lCH"/>
                                     <constraint firstAttribute="trailing" secondItem="9vJ-UJ-Veo" secondAttribute="trailing" constant="25" id="9eZ-ak-PRK"/>
+                                    <constraint firstAttribute="trailing" secondItem="Hsk-Sm-0yE" secondAttribute="trailing" constant="25" id="HEH-DT-yPL"/>
                                     <constraint firstItem="oMJ-ow-yaM" firstAttribute="top" secondItem="CTN-sg-WVQ" secondAttribute="top" constant="5" id="NLk-JF-IIY"/>
                                     <constraint firstItem="9vJ-UJ-Veo" firstAttribute="leading" secondItem="CTN-sg-WVQ" secondAttribute="leading" constant="25" id="Pca-BH-cqh"/>
+                                    <constraint firstAttribute="bottom" secondItem="Hsk-Sm-0yE" secondAttribute="bottom" constant="15" id="dSw-gJ-HxK"/>
                                     <constraint firstAttribute="height" constant="170" id="mO3-WB-5ps"/>
                                     <constraint firstItem="hax-jW-mpt" firstAttribute="top" secondItem="9vJ-UJ-Veo" secondAttribute="bottom" id="rkq-2c-8oI"/>
                                     <constraint firstItem="9vJ-UJ-Veo" firstAttribute="top" secondItem="oMJ-ow-yaM" secondAttribute="bottom" constant="10" id="sc9-GU-V1Q"/>
@@ -279,6 +295,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="QmL-DI-VT6"/>
                     <connections>
+                        <outlet property="actind" destination="Hsk-Sm-0yE" id="DJn-ua-0X4"/>
                         <outlet property="activityind" destination="Gh2-qe-fHg" id="5vu-Py-VQg"/>
                         <outlet property="cartTableView" destination="bgq-ur-ugl" id="lhZ-ld-35K"/>
                         <outlet property="cartVM" destination="ihE-pB-4Wh" id="xaH-v2-gKB"/>

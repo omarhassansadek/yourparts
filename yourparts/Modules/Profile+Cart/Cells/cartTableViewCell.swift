@@ -9,9 +9,11 @@
 
 import UIKit
 import Cosmos
+import BEMCheckBox
 
 class cartTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var checkBoxView: UIView!
     @IBOutlet weak var roundCounterView: UIView!
     @IBOutlet weak var productName: UILabel!
     @IBOutlet weak var productDesc: UILabel!
@@ -19,6 +21,8 @@ class cartTableViewCell: UITableViewCell {
     @IBOutlet weak var productPrice: UILabel!
     
     @IBOutlet weak var quantityTf: UITextField!
+    @IBOutlet weak var shipLbl: UILabel!
+    @IBOutlet weak var fixLbl: UILabel!
     
    var pickerDataSourceDelegate : quantityPickerDelegate?
 
@@ -49,6 +53,13 @@ class cartTableViewCell: UITableViewCell {
         
         self.productPrice.font = UIFont(name: "Cairo-Bold", size: 16)
 
+        self.shipLbl.font = UIFont(name: "Cairo-Regular", size: 10)
+
+        self.fixLbl.font = UIFont(name: "Cairo-Regular", size: 10)
+        
+        self.shipLbl.text = "Ship in the same day".localized
+
+        self.fixLbl.text = "Fix Service".localized
         
 
     }

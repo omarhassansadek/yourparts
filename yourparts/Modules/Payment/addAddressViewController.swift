@@ -28,7 +28,7 @@ class addAddressViewController: UIViewController, UIPickerViewDelegate, UIPicker
     
     @IBOutlet weak var addAddressBtn: UIButton!
     
-    @IBOutlet var AddressVM: AddressViewModel!
+    @IBOutlet var paymentVM: paymentViewModel!
     
     var cityPickerView = UIPickerView()
     
@@ -121,7 +121,7 @@ class addAddressViewController: UIViewController, UIPickerViewDelegate, UIPicker
         parametersToBeSend["city"] = self.regionTf.text
         parametersToBeSend["address"] = self.streetTf.text
         
-        self.AddressVM.addUserAddress(addressParameters: parametersToBeSend, onSuccess: { (isSuccess) in
+        self.paymentVM.addUserAddress(addressParameters: parametersToBeSend, onSuccess: { (isSuccess) in
             //
 
             self.activityind.stopAnimating()
@@ -150,12 +150,12 @@ class addAddressViewController: UIViewController, UIPickerViewDelegate, UIPicker
     }
     
     func getCities(){
-        self.AddressVM.getAllCity(onSuccess: { (isSuccess) in
+        self.paymentVM.getAllCity(onSuccess: { (isSuccess) in
             //
             if isSuccess{
                 self.cityPickerView.reloadAllComponents()
-                self.cityTf.text = self.AddressVM.ctitiesArr[0].name
-                self.getRegions(id: self.AddressVM.ctitiesArr[0].id ?? -1)
+                self.cityTf.text = self.paymentVM.ctitiesArr[0].name
+                self.getRegions(id: self.paymentVM.ctitiesArr[0].id ?? -1)
             }
         }) { (errMsg) in
             //
@@ -163,11 +163,11 @@ class addAddressViewController: UIViewController, UIPickerViewDelegate, UIPicker
     }
     
     func getRegions(id: Int){
-        self.AddressVM.getAllregions(id: id, onSuccess: { (isSuccess) in
+        self.paymentVM.getAllregions(id: id, onSuccess: { (isSuccess) in
             if isSuccess{
                 self.regionPickerView.reloadAllComponents()
-                if self.AddressVM.regionArr.count > 0{
-                    self.regionTf.text = self.AddressVM.regionArr[0].name
+                if self.paymentVM.regionArr.count > 0{
+                    self.regionTf.text = self.paymentVM.regionArr[0].name
                 }else{
                     self.regionTf.text = ""
                 }
@@ -184,9 +184,9 @@ class addAddressViewController: UIViewController, UIPickerViewDelegate, UIPicker
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         
         if pickerView == cityPickerView{
-           return self.AddressVM.ctitiesArr.count
+           return self.paymentVM.ctitiesArr.count
         }else{
-           return self.AddressVM.regionArr.count
+           return self.paymentVM.regionArr.count
 
         }
         
@@ -194,9 +194,9 @@ class addAddressViewController: UIViewController, UIPickerViewDelegate, UIPicker
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         if pickerView == cityPickerView{
-            return self.AddressVM.ctitiesArr[row].name ?? ""
+            return self.paymentVM.ctitiesArr[row].name ?? ""
         }else{
-            return self.AddressVM.regionArr[row].name ?? ""
+            return self.paymentVM.regionArr[row].name ?? ""
 
         }
         
@@ -204,10 +204,10 @@ class addAddressViewController: UIViewController, UIPickerViewDelegate, UIPicker
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         if pickerView == cityPickerView{
-            self.cityTf.text = self.AddressVM.ctitiesArr[row].name ?? ""
-            self.getRegions(id: self.AddressVM.ctitiesArr[row].id ?? -1)
+            self.cityTf.text = self.paymentVM.ctitiesArr[row].name ?? ""
+            self.getRegions(id: self.paymentVM.ctitiesArr[row].id ?? -1)
         }else{
-            self.regionTf.text = self.AddressVM.regionArr[row].name ?? ""
+            self.regionTf.text = self.paymentVM.regionArr[row].name ?? ""
         }
     }
 

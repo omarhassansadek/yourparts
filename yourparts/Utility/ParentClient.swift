@@ -115,7 +115,7 @@ class ParentClient: NSObject {
             }else if response.response?.statusCode == 400{
                 do{
                     let responseJsonFailure = try JSON(data: response.data!)
-                    //print(responseJson)
+                    print(responseJsonFailure)
                     onFailure(responseJsonFailure)
                 }catch _{
                     //print(error)

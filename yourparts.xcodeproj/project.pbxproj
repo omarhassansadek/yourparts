@@ -127,8 +127,8 @@
 		5C32520D252627E4001418FC /* vehicleModelsParsers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C32520C252627E4001418FC /* vehicleModelsParsers.swift */; };
 		5C3A29A6253340D900EBE984 /* Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C3A29A5253340D900EBE984 /* Application.swift */; };
 		5C3A29A8253341DE00EBE984 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C3A29A7253341DE00EBE984 /* main.swift */; };
-		5C4021BD2520BFFF002FD3A0 /* AddressViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C4021BC2520BFFF002FD3A0 /* AddressViewModel.swift */; };
-		5C4021C02520C08C002FD3A0 /* AddressClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C4021BF2520C08C002FD3A0 /* AddressClient.swift */; };
+		5C4021BD2520BFFF002FD3A0 /* paymentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C4021BC2520BFFF002FD3A0 /* paymentViewModel.swift */; };
+		5C4021C02520C08C002FD3A0 /* paymentClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C4021BF2520C08C002FD3A0 /* paymentClient.swift */; };
 		5C4021C32520D5BC002FD3A0 /* addressParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C4021C22520D5BC002FD3A0 /* addressParser.swift */; };
 		5C4021C62520D67B002FD3A0 /* address.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C4021C52520D67B002FD3A0 /* address.swift */; };
 		5C41EDF6252A0C1800D4234B /* vehicleYearParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C41EDF5252A0C1700D4234B /* vehicleYearParser.swift */; };
@@ -160,6 +160,10 @@
 		5C89029D251B8FCD00730869 /* settingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C89029C251B8FCD00730869 /* settingsViewController.swift */; };
 		5C8902A0251B96D900730869 /* spaceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C89029E251B96D900730869 /* spaceTableViewCell.swift */; };
 		5C8902A1251B96D900730869 /* spaceTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C89029F251B96D900730869 /* spaceTableViewCell.xib */; };
+		5C97B2BC2535016F0068DDCC /* confirmAddressTableViewCell.swift in Resources */ = {isa = PBXBuildFile; fileRef = 5CD113C22534A7530039CE44 /* confirmAddressTableViewCell.swift */; };
+		5C97B2BD2535016F0068DDCC /* confirmAddressTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5CD113C32534A7530039CE44 /* confirmAddressTableViewCell.xib */; };
+		5C97B2C02535070E0068DDCC /* paymentMethodTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C97B2BE2535070E0068DDCC /* paymentMethodTableViewCell.swift */; };
+		5C97B2C12535070E0068DDCC /* paymentMethodTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C97B2BF2535070E0068DDCC /* paymentMethodTableViewCell.xib */; };
 		5CA8BFE32522141400676B9A /* frequentlyNeededTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CA8BFE12522141400676B9A /* frequentlyNeededTableViewCell.swift */; };
 		5CA8BFE42522141400676B9A /* frequentlyNeededTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5CA8BFE22522141400676B9A /* frequentlyNeededTableViewCell.xib */; };
 		5CA8BFE7252215CB00676B9A /* frequentCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CA8BFE5252215CB00676B9A /* frequentCollectionViewCell.swift */; };
@@ -175,6 +179,8 @@
 		5CA8BFFA2523848900676B9A /* profileClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CA8BFF92523848900676B9A /* profileClient.swift */; };
 		5CA8BFFC2523854200676B9A /* profileParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CA8BFFB2523854200676B9A /* profileParser.swift */; };
 		5CA8BFFE2523857500676B9A /* user.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CA8BFFD2523857500676B9A /* user.swift */; };
+		5CD113C125349D830039CE44 /* paymentClient.swift in Resources */ = {isa = PBXBuildFile; fileRef = 5C4021BF2520C08C002FD3A0 /* paymentClient.swift */; };
+		5CD113C42534A7530039CE44 /* confirmAddressTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CD113C22534A7530039CE44 /* confirmAddressTableViewCell.swift */; };
 		5CF0636625176BBC00E73380 /* payment.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5CF0636525176BBC00E73380 /* payment.storyboard */; };
 		5CF0636825176E8500E73380 /* addressPaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF0636725176E8500E73380 /* addressPaymentViewController.swift */; };
 		5CF0636D251777E500E73380 /* addressTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5CF0636B251777E500E73380 /* addressTableViewCell.xib */; };
@@ -369,8 +375,8 @@
 		5C32520C252627E4001418FC /* vehicleModelsParsers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = vehicleModelsParsers.swift; sourceTree = "<group>"; };
 		5C3A29A5253340D900EBE984 /* Application.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Application.swift; sourceTree = "<group>"; };
 		5C3A29A7253341DE00EBE984 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
-		5C4021BC2520BFFF002FD3A0 /* AddressViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressViewModel.swift; sourceTree = "<group>"; };
-		5C4021BF2520C08C002FD3A0 /* AddressClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressClient.swift; sourceTree = "<group>"; };
+		5C4021BC2520BFFF002FD3A0 /* paymentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = paymentViewModel.swift; sourceTree = "<group>"; };
+		5C4021BF2520C08C002FD3A0 /* paymentClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = paymentClient.swift; sourceTree = "<group>"; };
 		5C4021C22520D5BC002FD3A0 /* addressParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addressParser.swift; sourceTree = "<group>"; };
 		5C4021C52520D67B002FD3A0 /* address.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = address.swift; sourceTree = "<group>"; };
 		5C41EDF5252A0C1700D4234B /* vehicleYearParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = vehicleYearParser.swift; sourceTree = "<group>"; };
@@ -402,6 +408,8 @@
 		5C89029C251B8FCD00730869 /* settingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = settingsViewController.swift; sourceTree = "<group>"; };
 		5C89029E251B96D900730869 /* spaceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = spaceTableViewCell.swift; sourceTree = "<group>"; };
 		5C89029F251B96D900730869 /* spaceTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = spaceTableViewCell.xib; sourceTree = "<group>"; };
+		5C97B2BE2535070E0068DDCC /* paymentMethodTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = paymentMethodTableViewCell.swift; sourceTree = "<group>"; };
+		5C97B2BF2535070E0068DDCC /* paymentMethodTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = paymentMethodTableViewCell.xib; sourceTree = "<group>"; };
 		5CA8BFE12522141400676B9A /* frequentlyNeededTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = frequentlyNeededTableViewCell.swift; sourceTree = "<group>"; };
 		5CA8BFE22522141400676B9A /* frequentlyNeededTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = frequentlyNeededTableViewCell.xib; sourceTree = "<group>"; };
 		5CA8BFE5252215CB00676B9A /* frequentCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = frequentCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -417,6 +425,8 @@
 		5CA8BFF92523848900676B9A /* profileClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = profileClient.swift; sourceTree = "<group>"; };
 		5CA8BFFB2523854200676B9A /* profileParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = profileParser.swift; sourceTree = "<group>"; };
 		5CA8BFFD2523857500676B9A /* user.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = user.swift; sourceTree = "<group>"; };
+		5CD113C22534A7530039CE44 /* confirmAddressTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = confirmAddressTableViewCell.swift; sourceTree = "<group>"; };
+		5CD113C32534A7530039CE44 /* confirmAddressTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = confirmAddressTableViewCell.xib; sourceTree = "<group>"; };
 		5CF0636525176BBC00E73380 /* payment.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = payment.storyboard; sourceTree = "<group>"; };
 		5CF0636725176E8500E73380 /* addressPaymentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addressPaymentViewController.swift; sourceTree = "<group>"; };
 		5CF0636B251777E500E73380 /* addressTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = addressTableViewCell.xib; sourceTree = "<group>"; };
@@ -994,7 +1004,7 @@
 		5C4021BB2520BFD8002FD3A0 /* viewModels */ = {
 			isa = PBXGroup;
 			children = (
-				5C4021BC2520BFFF002FD3A0 /* AddressViewModel.swift */,
+				5C4021BC2520BFFF002FD3A0 /* paymentViewModel.swift */,
 			);
 			path = viewModels;
 			sourceTree = "<group>";
@@ -1002,7 +1012,7 @@
 		5C4021BE2520C06A002FD3A0 /* clients */ = {
 			isa = PBXGroup;
 			children = (
-				5C4021BF2520C08C002FD3A0 /* AddressClient.swift */,
+				5C4021BF2520C08C002FD3A0 /* paymentClient.swift */,
 			);
 			path = clients;
 			sourceTree = "<group>";
@@ -1091,12 +1101,16 @@
 		5CF06369251777C200E73380 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				5CF0636B251777E500E73380 /* addressTableViewCell.xib */,
 				5CF0636E2517797D00E73380 /* addressTableViewCell.swift */,
-				5CF0637125177F5200E73380 /* addAddressTableViewCell.xib */,
+				5CF0636B251777E500E73380 /* addressTableViewCell.xib */,
 				5CF0637025177F5200E73380 /* addAddressTableViewCell.swift */,
-				391F738725185A0A00A8ECF3 /* methodTableViewCell.xib */,
+				5CF0637125177F5200E73380 /* addAddressTableViewCell.xib */,
 				391F738625185A0A00A8ECF3 /* methodTableViewCell.swift */,
+				391F738725185A0A00A8ECF3 /* methodTableViewCell.xib */,
+				5CD113C22534A7530039CE44 /* confirmAddressTableViewCell.swift */,
+				5CD113C32534A7530039CE44 /* confirmAddressTableViewCell.xib */,
+				5C97B2BE2535070E0068DDCC /* paymentMethodTableViewCell.swift */,
+				5C97B2BF2535070E0068DDCC /* paymentMethodTableViewCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -1290,6 +1304,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5C97B2BC2535016F0068DDCC /* confirmAddressTableViewCell.swift in Resources */,
+				5C97B2BD2535016F0068DDCC /* confirmAddressTableViewCell.xib in Resources */,
+				5CD113C125349D830039CE44 /* paymentClient.swift in Resources */,
 				391F738925185A0A00A8ECF3 /* methodTableViewCell.xib in Resources */,
 				39F0590424A92D6600CA348F /* carTableViewCell.xib in Resources */,
 				3990DE3224E84C3200ED3F49 /* seeMoreCollectionViewCell.xib in Resources */,
@@ -1336,6 +1353,7 @@
 				393BC02224A7D96E00CAB4BE /* Assets.xcassets in Resources */,
 				3990DE3E24E906E600ED3F49 /* addToCartBtnTableViewCell.xib in Resources */,
 				3989840F24E5647E00A7188C /* Spareparts.storyboard in Resources */,
+				5C97B2C12535070E0068DDCC /* paymentMethodTableViewCell.xib in Resources */,
 				398FF34D24D028B90001F8C1 /* detailOilTableViewCell.xib in Resources */,
 				5CF983C7250F8C5A00D56721 /* offerTableViewCell.xib in Resources */,
 				3999F17424DA48B900EAEC56 /* productCellTableViewCell.xib in Resources */,
@@ -1489,13 +1507,15 @@
 				5C4021C32520D5BC002FD3A0 /* addressParser.swift in Sources */,
 				39E4223224D07CED00524591 /* tiresViewController.swift in Sources */,
 				5C433A0A2513A04A00F67552 /* cart.swift in Sources */,
-				5C4021BD2520BFFF002FD3A0 /* AddressViewModel.swift in Sources */,
+				5C4021BD2520BFFF002FD3A0 /* paymentViewModel.swift in Sources */,
 				39F0590324A92D6600CA348F /* carTableViewCell.swift in Sources */,
+				5CD113C42534A7530039CE44 /* confirmAddressTableViewCell.swift in Sources */,
 				391F738825185A0A00A8ECF3 /* methodTableViewCell.swift in Sources */,
 				5CF983D0250FBACF00D56721 /* searchCatTableViewCell.swift in Sources */,
 				5C17EFD6250A82880090C4D2 /* maker.swift in Sources */,
 				5C433A022513995300F67552 /* productDetailsViewModel.swift in Sources */,
 				5C17EFD2250A81700090C4D2 /* vehicle.swift in Sources */,
+				5C97B2C02535070E0068DDCC /* paymentMethodTableViewCell.swift in Sources */,
 				398D311B24ED7B3F0035A00E /* loginViewController.swift in Sources */,
 				5C8902A0251B96D900730869 /* spaceTableViewCell.swift in Sources */,
 				5CF0636825176E8500E73380 /* addressPaymentViewController.swift in Sources */,
@@ -1547,7 +1567,7 @@
 				39AEFF1824E10C0700AE0552 /* homeViewController.swift in Sources */,
 				5CA8BFFA2523848900676B9A /* profileClient.swift in Sources */,
 				390FFD4024A288F9008BD0B0 /* constants.swift in Sources */,
-				5C4021C02520C08C002FD3A0 /* AddressClient.swift in Sources */,
+				5C4021C02520C08C002FD3A0 /* paymentClient.swift in Sources */,
 				5CF0637225177F5200E73380 /* addAddressTableViewCell.swift in Sources */,
 				5C4339F52512581900F67552 /* productDetailsViewController.swift in Sources */,
 				5CF983C6250F8C5A00D56721 /* offerTableViewCell.swift in Sources */,

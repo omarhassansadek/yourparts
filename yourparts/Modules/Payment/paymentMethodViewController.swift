@@ -18,7 +18,11 @@ class paymentMethodViewController: UIViewController, UITableViewDelegate, UITabl
     @IBOutlet weak var saveBtn: UIButton!
     @IBOutlet weak var textViewLbl: UITextView!
     @IBOutlet weak var paymentMethodTableView: UITableView!
-    
+    @IBOutlet var paymentVM: paymentViewModel!
+    var orderId: Int?
+    var orderDic: [String: Any]?
+    var cartId: Int?
+
     override func viewDidLoad() {
         super.viewDidLoad()
       
@@ -96,12 +100,20 @@ class paymentMethodViewController: UIViewController, UITableViewDelegate, UITabl
             
             let addAddressCell = tableView.dequeueReusableCell(withIdentifier: "AddAddressCell") as! addAddressTableViewCell
             addAddressCell.addAddress = {
-                if self.selectedMethod == 1{
-                     self.dimmedView.isHidden = false
-                     self.alertView.isHidden = false
-                }else{
+                
+                //var params: [String: Any] = [:]
+                self.orderDic?["payment_method"] = self.selectedMethod
+                
+                self.paymentVM.patchOrder(id: self.orderId ?? -1, apiParameters: self.orderDic ?? [:] , onSuccess: { (isSuccess) in
+                    //
                     self.performSegue(withIdentifier: "gotoConfirmVC", sender: self)
+
+                }) { (errMsg) in
+                    //
+                    AlertViewer().showAlertView(withMessage: errMsg, onController: self)
                 }
+                
+                
             }
             addAddressCell.addAddressBtn.setTitle("Choose Payment Method".localized, for: .normal)
             return addAddressCell
@@ -128,17 +140,13 @@ class paymentMethodViewController: UIViewController, UITableViewDelegate, UITabl
             
             methodCell.chooseMethodSelect = {
                 //func
-                if indexPath.row == 0{
-                   self.selectedMethod = 1
-                }else{
-                    self.selectedMethod = 0
-                }
+                self.selectedMethod = indexPath.row
+                
                 for (index, box) in self.arrayBox.enumerated(){
                     if index == indexPath.row{
                         self.arrayBox[index] = true
                     }else{
                         self.arrayBox[index] = false
-
                     }
                 }
                 
@@ -196,6 +204,8 @@ class paymentMethodViewController: UIViewController, UITableViewDelegate, UITabl
         print("Ok")
         self.navigationController?.popViewController(animated: true)
     }
+    
+    
     
     /*
     // MARK: - Navigation

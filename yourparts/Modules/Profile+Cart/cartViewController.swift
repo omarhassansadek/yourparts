@@ -12,6 +12,8 @@ import NVActivityIndicatorView
 
 class cartViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    @IBOutlet weak var actind: NVActivityIndicatorView!
+    
     @IBOutlet weak var activityind: NVActivityIndicatorView!
     
     @IBOutlet weak var goShoppingViewPlaceholder: UIView!
@@ -142,6 +144,8 @@ class cartViewController: UIViewController, UITableViewDelegate, UITableViewData
           //cellDelegate.type = "m"
           cell.quantityTf.text = String( self.cartVM.cartArr[indexPath.row].quantity ?? -1 )
 
+        
+          cell.checkBoxView.isHidden = true
 
           return cell
         
@@ -256,13 +260,55 @@ class cartViewController: UIViewController, UITableViewDelegate, UITableViewData
         tabBarController?.selectedIndex = 0
     }   
     
-    
+    var paramsDic: [String: Any] = [:]
+
     
     @IBAction func paymentBtnClicked(_ sender: Any) {
-        self.performSegue(withIdentifier: "gotoPayment", sender: self)
+        
+        self.payBtn.setTitle("", for: .normal)
+        
+        self.actind.startAnimating()
+        
+        var orderDic: [String: Any] = [:]
+        orderDic["status"] = "new"
+        self.cartVM.total = self.cartVM.total.replacingOccurrences(of:  "ج.م", with: "", options: NSString.CompareOptions.literal, range: nil)
+        self.cartVM.total = self.cartVM.total.replacingOccurrences(of:  ",", with: "", options: NSString.CompareOptions.literal, range: nil)
+
+        orderDic["_subtotal"] = self.cartVM.total
+        orderDic["_total"] = self.cartVM.total
+        orderDic["customer"] = UserDefaults.standard.integer(forKey: "userid")
+        self.paramsDic["order"] = orderDic
+        
+        self.cartVM.createOrder(apiParameters: self.paramsDic, onSuccess: { (isSuccess) in
+            if isSuccess{
+                self.actind.stopAnimating()
+
+                self.payBtn.setTitle("Pay".localized, for: .normal)
+
+                self.performSegue(withIdentifier: "gotoPayment", sender: self)
+            }
+        }) { (errMsg) in
+            //
+            self.payBtn.setTitle("Pay".localized, for: .normal)
+
+            self.actind.stopAnimating()
+
+        }
+        
     }
     
     func reloadTableData(){
+        
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "gotoPayment"{
+            let destCont = segue.destination as! addressPaymentViewController
+            destCont.orderId =  self.cartVM.orderId ?? -1
+            destCont.orderDic = self.paramsDic
+            destCont.cartId = self.cartVM.cartId ?? -1
+            //var cartId: Int?
+        }
     }
 
     

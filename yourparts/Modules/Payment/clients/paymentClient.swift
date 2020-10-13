@@ -11,7 +11,7 @@ import Alamofire
 import SwiftyJSON
 
 
-class AddressClient: ParentClient {
+class paymentClient: ParentClient {
 
     
     func getAllCities(url: String, apiMethod: HTTPMethod, parametersOfCall: [String: Any]? , apiEncoding: ParameterEncoding, headers: [String: String]? , completionSuccess: @escaping (JSON) -> Void , completionFailure: @escaping (JSON) -> Void ){
@@ -59,5 +59,37 @@ class AddressClient: ParentClient {
 
             
         }
+    
+    func patchOrderDetails(url: String, apiMethod: HTTPMethod, parametersOfCall: [String: Any]? , apiEncoding: ParameterEncoding , completionSuccess: @escaping (JSON) -> Void , completionFailure: @escaping (JSON) -> Void ){
+        
+        let billingHeaders: [String: String] = ["Authorization" : "JWT \(UserDefaults.standard.string(forKey: "authToken") ?? "")"]
+
+        
+        self.communicateWithApi(url: url, pagingUrl: nil, method: apiMethod, parameters: parametersOfCall, headers: billingHeaders, onSuccess: { (responseSuccess) in
+            //
+            completionSuccess(responseSuccess)
+        }) { (responseFailure) in
+            //
+            completionFailure(responseFailure)
+        }
+
+        
+    }
+    
+    func createOrder(url: String, apiMethod: HTTPMethod, parametersOfCall: [String: Any]? , apiEncoding: ParameterEncoding , completionSuccess: @escaping (JSON) -> Void , completionFailure: @escaping (JSON) -> Void ){
+        
+        let billingHeaders: [String: String] = ["Authorization" : "JWT \(UserDefaults.standard.string(forKey: "authToken") ?? "")"]
+
+        
+        self.communicateWithApi(url: url, pagingUrl: nil, method: apiMethod, parameters: parametersOfCall, headers: billingHeaders, onSuccess: { (responseSuccess) in
+            //
+            completionSuccess(responseSuccess)
+        }) { (responseFailure) in
+            //
+            completionFailure(responseFailure)
+        }
+
+        
+    }
       
 }

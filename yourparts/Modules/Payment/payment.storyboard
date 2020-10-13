@@ -398,7 +398,6 @@
                         <viewLayoutGuide key="safeArea" id="sWQ-kN-f2W"/>
                     </view>
                     <connections>
-                        <outlet property="AddressVM" destination="cvJ-rO-fLi" id="TWb-xP-Odt"/>
                         <outlet property="activityind" destination="35V-xv-ZNG" id="ps7-dA-FST"/>
                         <outlet property="addAddressView" destination="3YC-tF-qZc" id="F6r-b2-wAe"/>
                         <outlet property="addViewBtn" destination="heI-sj-J7X" id="y3W-nh-FDa"/>
@@ -410,18 +409,19 @@
                         <outlet property="indView" destination="yFj-pQ-hua" id="wwN-cE-UKi"/>
                         <outlet property="indviewheightConstraint" destination="Z7Q-2S-ZHS" id="2GM-aA-Wk2"/>
                         <outlet property="noAddressLbl" destination="Kuv-2s-EGW" id="Yqb-ED-33n"/>
+                        <outlet property="paymentVM" destination="cvJ-rO-fLi" id="LLB-Wl-vzv"/>
                         <outlet property="receivingMethodsView" destination="TBN-Cw-ZcV" id="bCJ-Ec-Fez"/>
                         <segue destination="XYr-fH-x3K" kind="presentation" identifier="gotoAddAddress" id="aMO-ti-ak3"/>
                         <segue destination="QPW-jY-lDt" kind="show" identifier="gotoSecondPaymentView" id="N3Z-DP-QfM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="81W-Ve-NQ1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <customObject id="cvJ-rO-fLi" customClass="AddressViewModel" customModule="yourparts" customModuleProvider="target">
+                <customObject id="cvJ-rO-fLi" customClass="paymentViewModel" customModule="yourparts" customModuleProvider="target">
                     <connections>
-                        <outlet property="AddressC" destination="Unm-Tc-UBU" id="eed-bW-kpo"/>
+                        <outlet property="paymentC" destination="Unm-Tc-UBU" id="JqP-59-eVm"/>
                     </connections>
                 </customObject>
-                <customObject id="Unm-Tc-UBU" customClass="AddressClient" customModule="yourparts" customModuleProvider="target"/>
+                <customObject id="Unm-Tc-UBU" customClass="paymentClient" customModule="yourparts" customModuleProvider="target"/>
             </objects>
             <point key="canvasLocation" x="-226.08695652173915" y="120.53571428571428"/>
         </scene>
@@ -932,12 +932,19 @@
                         <outlet property="checkico" destination="7DX-c0-N05" id="ecc-KD-YaU"/>
                         <outlet property="dimmedView" destination="YLJ-nk-kD6" id="tag-td-iFq"/>
                         <outlet property="paymentMethodTableView" destination="trT-cF-nsr" id="g0p-B3-abd"/>
+                        <outlet property="paymentVM" destination="SPb-Xm-Z1b" id="9qH-GV-72b"/>
                         <outlet property="saveBtn" destination="Jaj-eG-Cda" id="emW-xL-Clf"/>
                         <outlet property="textViewLbl" destination="rzO-8E-CZL" id="NuE-NQ-Ula"/>
                         <segue destination="C8v-5Z-UwB" kind="show" identifier="gotoConfirmVC" id="SCF-4J-Y3A"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v01-LF-jjE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <customObject id="SPb-Xm-Z1b" customClass="paymentViewModel" customModule="yourparts" customModuleProvider="target">
+                    <connections>
+                        <outlet property="paymentC" destination="XaE-zt-E8c" id="Sia-eH-VHb"/>
+                    </connections>
+                </customObject>
+                <customObject id="XaE-zt-E8c" customClass="paymentClient" customModule="yourparts" customModuleProvider="target"/>
             </objects>
             <point key="canvasLocation" x="-226.08695652173915" y="801.5625"/>
         </scene>
@@ -950,7 +957,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T7Y-Qp-Qfe">
-                                <rect key="frame" x="50" y="94" width="314" height="75"/>
+                                <rect key="frame" x="50" y="69" width="314" height="75"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="progress3ico" translatesAutoresizingMaskIntoConstraints="NO" id="y8k-yd-kvD">
                                         <rect key="frame" x="0.0" y="0.0" width="314" height="75"/>
@@ -965,20 +972,20 @@
                                     <constraint firstAttribute="height" constant="75" id="r7a-YY-ID3"/>
                                 </constraints>
                             </view>
-                            <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="EgT-jF-UAz">
-                                <rect key="frame" x="0.0" y="209" width="414" height="687"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="EgT-jF-UAz">
+                                <rect key="frame" x="0.0" y="174" width="414" height="722"/>
+                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.93725490199999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.93725490199999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="3RR-t8-0R9" firstAttribute="trailing" secondItem="EgT-jF-UAz" secondAttribute="trailing" id="68l-hU-vLX"/>
-                            <constraint firstItem="EgT-jF-UAz" firstAttribute="top" secondItem="T7Y-Qp-Qfe" secondAttribute="bottom" constant="40" id="Ohc-G3-gzw"/>
+                            <constraint firstItem="EgT-jF-UAz" firstAttribute="top" secondItem="T7Y-Qp-Qfe" secondAttribute="bottom" constant="30" id="Ohc-G3-gzw"/>
                             <constraint firstItem="T7Y-Qp-Qfe" firstAttribute="leading" secondItem="3RR-t8-0R9" secondAttribute="leading" constant="50" id="TgF-0J-j6L"/>
                             <constraint firstAttribute="bottom" secondItem="EgT-jF-UAz" secondAttribute="bottom" id="Vwd-wH-M3U"/>
                             <constraint firstItem="3RR-t8-0R9" firstAttribute="trailing" secondItem="T7Y-Qp-Qfe" secondAttribute="trailing" constant="50" id="bFm-iN-eSS"/>
                             <constraint firstItem="EgT-jF-UAz" firstAttribute="leading" secondItem="3RR-t8-0R9" secondAttribute="leading" id="h8Y-ac-eqj"/>
-                            <constraint firstItem="T7Y-Qp-Qfe" firstAttribute="top" secondItem="3RR-t8-0R9" secondAttribute="top" constant="50" id="ldh-5g-xjZ"/>
+                            <constraint firstItem="T7Y-Qp-Qfe" firstAttribute="top" secondItem="3RR-t8-0R9" secondAttribute="top" constant="25" id="ldh-5g-xjZ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="3RR-t8-0R9"/>
                     </view>

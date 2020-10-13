@@ -23,9 +23,15 @@ class addressPaymentViewController: UIViewController, UITableViewDelegate, UITab
     @IBOutlet weak var noAddressLbl: UILabel!
     @IBOutlet weak var addAddressView: UIView!
     
-    @IBOutlet var AddressVM: AddressViewModel!
+    @IBOutlet var paymentVM: paymentViewModel!
     
     @IBOutlet weak var chooseLocLbl: UILabel!
+    
+    var orderId : Int?
+    
+    var cartId: Int?
+
+    var orderDic: [String: Any]?
     
     override func viewWillAppear(_ animated: Bool) {
         self.getAddresses()
@@ -37,6 +43,8 @@ class addressPaymentViewController: UIViewController, UITableViewDelegate, UITab
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.receivingMethodsView.isHidden = true
+        
         if self.isComingFromProfile ?? false{
             self.receivingMethodsView.isHidden = true
             self.chooseLocLbl.isHidden = false
@@ -111,15 +119,16 @@ class addressPaymentViewController: UIViewController, UITableViewDelegate, UITab
     func getAddresses(){
         self.activityind.startAnimating()
 
-        self.AddressVM.getUserAddress(onSuccess: { (isSuccess) in
+        self.paymentVM.getUserAddress(onSuccess: { (isSuccess) in
             //
+            self.receivingMethodsView.isHidden = false
             
             if isSuccess{
                 
                 self.addressTableView.delegate = self
                 self.addressTableView.dataSource = self
 
-                if self.AddressVM.addressArr.count > 0{
+                if self.paymentVM.addressArr.count > 0{
                     self.addAddressView.isHidden = true
 
                     self.activityind.stopAnimating()
@@ -133,6 +142,9 @@ class addressPaymentViewController: UIViewController, UITableViewDelegate, UITab
             
         }) { (errMsg) in
             //
+            
+            self.receivingMethodsView.isHidden = false
+
             self.addAddressView.isHidden = false
 
             self.activityind.stopAnimating()
@@ -150,13 +162,13 @@ class addressPaymentViewController: UIViewController, UITableViewDelegate, UITab
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.AddressVM.addressArr.count + 1
+        return self.paymentVM.addressArr.count + 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         
-        if indexPath.row == self.AddressVM.addressArr.count{
+        if indexPath.row == self.paymentVM.addressArr.count{
             let addAddressCell = tableView.dequeueReusableCell(withIdentifier: "AddAddressCell") as! addAddressTableViewCell
             addAddressCell.addAddress = {
                 self.performSegue(withIdentifier: "gotoAddAddress", sender: self)
@@ -166,9 +178,9 @@ class addressPaymentViewController: UIViewController, UITableViewDelegate, UITab
         }else{
             let addressCell = tableView.dequeueReusableCell(withIdentifier: "addressCell") as! addressTableViewCell
             //addressCell.chooseAddressCheckBox.On
-            addressCell.buildingNo.text = self.AddressVM.addressArr[indexPath.row].address
+            addressCell.buildingNo.text = self.paymentVM.addressArr[indexPath.row].address
             //addressCell.appartmentNo.text = self.AddressVM.addressArr[indexPath.row - 1].address
-            addressCell.region.text = "\(self.AddressVM.addressArr[indexPath.row].city ?? "") - \(self.AddressVM.addressArr[indexPath.row].region ?? "")"
+            addressCell.region.text = "\(self.paymentVM.addressArr[indexPath.row].city ?? "") - \(self.paymentVM.addressArr[indexPath.row].region ?? "")"
             return addressCell
 
         }
@@ -210,6 +222,18 @@ class addressPaymentViewController: UIViewController, UITableViewDelegate, UITab
         }
         
     }
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "gotoSecondPaymentView"{
+            let destCont = segue.destination as! paymentMethodViewController
+            destCont.orderId =  self.orderId ?? -1
+            destCont.orderDic = self.orderDic ?? [:]
+            destCont.cartId = self.cartId ?? -1
+            //var cartId: Int?
+        }
+    }
+
     
     
     /*
