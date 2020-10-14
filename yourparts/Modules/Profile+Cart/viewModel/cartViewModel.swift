@@ -94,6 +94,8 @@ class cartViewModel: NSObject {
     }
     
     var orderId: Int?
+    
+    var orderItemId: Int?
 
     func createOrder(apiParameters: [String:Any], onSuccess: @escaping(Bool)-> () , onFailure: @escaping(String)-> ()){
          
@@ -104,8 +106,12 @@ class cartViewModel: NSObject {
                print(responseSuccess)
 
             if let id = responseSuccess["id"].int{
-                self.orderId = id
-                onSuccess(true)
+                if let orderId = responseSuccess["order"]["id"].int{
+                    self.orderItemId = orderId
+                    self.orderId = id
+                    onSuccess(true)
+
+                }
             }else{
                 onFailure("We encountered an error. Try again later")
             }

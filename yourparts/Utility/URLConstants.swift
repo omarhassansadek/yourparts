@@ -54,3 +54,5 @@ var getFreqNeeded = "product/category/frequentlyneeded/"
 var createOrderUrl = "order/"
 
 var createOrderItemUrl = "order-items/"
+
+var patchOrderUrl = "orders/"

@@ -17,6 +17,7 @@ class paymentViewModel: NSObject {
     var addressArr: [address] = []
     var ctitiesArr: [city] = []
     var regionArr: [city] = []
+    var itemsArr: [product] = []
 
     func getAllCity( onSuccess: @escaping(Bool)-> () , onFailure: @escaping(String)-> ()){
         self.paymentC.getAllCities(url: baseUrl+getCityUrl, apiMethod: .get, parametersOfCall: nil, apiEncoding: JSONEncoding.default, headers: nil, completionSuccess: { (responseSuccess) in
@@ -90,7 +91,7 @@ class paymentViewModel: NSObject {
 
         print(apiParameters)
         
-        self.paymentC.patchOrderDetails(url: baseUrl+createOrderUrl+"\(id)/", apiMethod: .patch, parametersOfCall: apiParameters, apiEncoding: JSONEncoding.default,  completionSuccess: { (responseSuccess) in
+        self.paymentC.patchOrderDetails(url: baseUrl+patchOrderUrl+"\(id)/", apiMethod: .patch, parametersOfCall: apiParameters, apiEncoding: JSONEncoding.default,  completionSuccess: { (responseSuccess) in
                //
                 print(responseSuccess)
  
@@ -113,8 +114,11 @@ class paymentViewModel: NSObject {
                   //
                    print(responseSuccess)
     
-                   if let id = responseSuccess["id"].int{
-                       onSuccess(true)
+                   if let status = responseSuccess["status"].string{
+                    if status == "status=201_CREATED"{
+                        onSuccess(true)
+
+                    }
                    }else{
                        onFailure("We encountered an error. Try again later")
                    }
@@ -123,6 +127,32 @@ class paymentViewModel: NSObject {
                       onFailure("We encountered an error. Try again later")
                   }
         }
+    
+    
+        func getOrder( id: Int, onSuccess: @escaping(Bool)-> () , onFailure: @escaping(String)-> ()){
+
+              // print(apiParameters)
+               
+               self.paymentC.createOrder(url: baseUrl+createOrderUrl+"\(id)", apiMethod: .get, parametersOfCall: nil, apiEncoding: JSONEncoding.default,  completionSuccess: { (responseSuccess) in
+                      //
+                        print(responseSuccess)
+                        if let id = responseSuccess["id"].int{
+                            productParser().parseProductsResponse(fromOrder: true, fromJSON: responseSuccess) { (productArr) in
+                                //self.itemsArr = productArr
+                                self.itemsArr = productArr.results
+                                onSuccess(true)
+                            }
+
+                        }else{
+                            
+                        }
+                }) { (responseFailure) in
+                        onFailure("We encountered an error. Try again later")
+                }
+                      
+        
+            }
+
        
     
     

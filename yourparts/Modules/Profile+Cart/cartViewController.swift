@@ -305,8 +305,10 @@ class cartViewController: UIViewController, UITableViewDelegate, UITableViewData
         if segue.identifier == "gotoPayment"{
             let destCont = segue.destination as! addressPaymentViewController
             destCont.orderId =  self.cartVM.orderId ?? -1
+            destCont.orderItemId =  self.cartVM.orderItemId ?? -1
             destCont.orderDic = self.paramsDic
             destCont.cartId = self.cartVM.cartId ?? -1
+            //orderItemId
             //var cartId: Int?
         }
     }

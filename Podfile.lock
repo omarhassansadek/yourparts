@@ -2,6 +2,7 @@ PODS:
   - Alamofire (4.9.1)
   - BEMCheckBox (1.4.1)
   - Cosmos (23.0.0)
+  - FINNBottomSheet (4.2.0)
   - IQKeyboardManagerSwift (6.2.1)
   - MOLH (1.4.1)
   - NVActivityIndicatorView (5.1.1):
@@ -18,6 +19,7 @@ DEPENDENCIES:
   - Alamofire (~> 4.4)
   - BEMCheckBox
   - Cosmos
+  - FINNBottomSheet (from `https://github.com/finn-no/bottom-sheet-ios.git`)
   - IQKeyboardManagerSwift (~> 6.2.0)
   - MOLH
   - NVActivityIndicatorView
@@ -39,11 +41,16 @@ SPEC REPOS:
     - SwiftyJSON
 
 EXTERNAL SOURCES:
+  FINNBottomSheet:
+    :git: https://github.com/finn-no/bottom-sheet-ios.git
   Spring:
     :branch: swift5
     :git: https://github.com/MengTo/Spring.git
 
 CHECKOUT OPTIONS:
+  FINNBottomSheet:
+    :commit: 855b55da088876b6fab3c3fa30ab26302bf302c9
+    :git: https://github.com/finn-no/bottom-sheet-ios.git
   Spring:
     :commit: 459b979c4335d4178fb05771019f6dda916f6998
     :git: https://github.com/MengTo/Spring.git
@@ -52,6 +59,7 @@ SPEC CHECKSUMS:
   Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
   BEMCheckBox: 5ba6e37ade3d3657b36caecc35c8b75c6c2b1a4e
   Cosmos: b5c6a9a637e28a061b54c8f8b1d8529d7d4db73f
+  FINNBottomSheet: 429cccf0ed60d3b24308e68c21ca4c1d84178eed
   IQKeyboardManagerSwift: 0f0ae8935360b4003e6ea1ac7c19898f01e2f7c7
   MOLH: 9ea6c0390f5963b2df9827ae64035fbc8598b092
   NVActivityIndicatorView: 1f6c5687f1171810aa27a3296814dc2d7dec3667
@@ -60,6 +68,6 @@ SPEC CHECKSUMS:
   Spring: 3d113f14575ef79aec9c5f906dfa4f5001c03254
   SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
 
-PODFILE CHECKSUM: 06698e6c0241d908c6b1de178de3074ad8d8ba3c
+PODFILE CHECKSUM: 34ecd5fd5afc7a6367803760165545d09709d714
 
 COCOAPODS: 1.9.3

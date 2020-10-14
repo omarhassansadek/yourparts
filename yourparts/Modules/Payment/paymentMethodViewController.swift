@@ -20,6 +20,7 @@ class paymentMethodViewController: UIViewController, UITableViewDelegate, UITabl
     @IBOutlet weak var paymentMethodTableView: UITableView!
     @IBOutlet var paymentVM: paymentViewModel!
     var orderId: Int?
+    var orderItemId: Int?
     var orderDic: [String: Any]?
     var cartId: Int?
 
@@ -102,11 +103,24 @@ class paymentMethodViewController: UIViewController, UITableViewDelegate, UITabl
             addAddressCell.addAddress = {
                 
                 //var params: [String: Any] = [:]
+                self.orderDic?.removeAll()
                 self.orderDic?["payment_method"] = self.selectedMethod
                 
                 self.paymentVM.patchOrder(id: self.orderId ?? -1, apiParameters: self.orderDic ?? [:] , onSuccess: { (isSuccess) in
                     //
-                    self.performSegue(withIdentifier: "gotoConfirmVC", sender: self)
+                    
+                    var createDic: [String: Any] = [:]
+                    createDic["cart_id"] = self.cartId ?? -1
+                    createDic["order_id"] = self.orderItemId ?? -1
+                    
+                    self.paymentVM.createOrderItem(apiParameters: createDic, onSuccess: { (isSucees) in
+                        //
+                        self.performSegue(withIdentifier: "gotoConfirmVC", sender: self)
+
+                    }) { (errMsg) in
+                        AlertViewer().showAlertView(withMessage: errMsg, onController: self)
+
+                    }
 
                 }) { (errMsg) in
                     //
@@ -176,6 +190,12 @@ class paymentMethodViewController: UIViewController, UITableViewDelegate, UITabl
     }
     
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "gotoConfirmVC"{
+            let destCont = segue.destination as! confirmationViewController
+            destCont.orderId = self.orderId ?? -1
+        }
+    }
     @IBAction func saveBtnClicked(_ sender: Any) {
         
      

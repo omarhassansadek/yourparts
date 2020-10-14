@@ -31,7 +31,7 @@ class productViewModel: NSObject {
             
             print(responseSuccess)
             
-            productParser().parseProductsResponse(fromJSON: responseSuccess) { (productResponse) in
+            productParser().parseProductsResponse(fromOrder: false, fromJSON: responseSuccess) { (productResponse) in
                 self.productsResponse = productResponse
                 
                 onSuccess(true)

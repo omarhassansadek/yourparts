@@ -12,7 +12,7 @@ import SwiftyJSON
 class productParser{
 
 
-    func parseProductsResponse( fromJSON: JSON , onSuccess: @escaping (productResponse) -> () ){
+    func parseProductsResponse(fromOrder: Bool, fromJSON: JSON , onSuccess: @escaping (productResponse) -> () ){
         
         var productResponseSuccess = productResponse()
         
@@ -26,7 +26,12 @@ class productParser{
                 productResponseSuccess.previous = previous
         }
         
-        productResponseSuccess.results = parseProducts(fromJSON: fromJSON["results"])
+        if fromOrder{
+            productResponseSuccess.results = parseProducts(fromJSON: fromJSON["order"]["items"])
+
+        }else{
+            productResponseSuccess.results = parseProducts(fromJSON: fromJSON["results"])
+        }
 
        onSuccess(productResponseSuccess)
 //

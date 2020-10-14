@@ -7,16 +7,100 @@
 //
 
 import UIKit
+import FINNBottomSheet
 
-class confirmationViewController: UIViewController , UITableViewDelegate, UITableViewDataSource{
 
+class confirmationViewController: UIViewController , UITableViewDelegate, UITableViewDataSource, BottomSheetPresentationControllerDelegate{
+ 
+    @IBOutlet weak var acceptPromoBtn: UIButton!
+    
+    @IBOutlet weak var roundView: UIView!
+    
+    @IBOutlet weak var bottomView: UIView!
+    
+    @IBOutlet var paymentVM: paymentViewModel!
+    
+    private lazy var bottomSheetTransitioningDelegate = BottomSheetTransitioningDelegate(
+        contentHeights: [.bottomSheetAutomatic, UIScreen.main.bounds.size.height - 200],
+        presentationDelegate: self
+    )
+
+    var orderId: Int?
+
+    
     @IBOutlet weak var confirmTableView: UITableView!
     
+    @IBOutlet weak var promoCodeTitle: UILabel!
+    
+    @IBOutlet weak var acceptBtn: UIButton!
+    
+    @IBOutlet weak var validPromoLbl: UILabel!
+    
+    @IBOutlet weak var orderDetailsLbl: UILabel!
+    
+    @IBOutlet weak var totalCartLbl: UILabel!
+    
+    @IBOutlet weak var shippingLbl: UILabel!
+    
+    @IBOutlet weak var installLbl: UILabel!
+    
+    @IBOutlet weak var promoLbl: UILabel!
+    
+    var orderItemId: Int?
+
     
     override func viewDidLoad() {
-        
 
         super.viewDidLoad()
+        
+        self.promoCodeTitle.text = "Enter Promo Code".localized
+
+        self.promoCodeTitle.font = UIFont(name: "Cairo-SemiBold", size: 18)
+        
+        self.totalCartLbl.text = "Cart Total".localized
+
+        self.totalCartLbl.font = UIFont(name: "Cairo-Bold", size: 12)
+
+        
+        self.shippingLbl.text = "Shipping".localized
+
+        self.shippingLbl.font = UIFont(name: "Cairo-Bold", size: 12)
+               
+        
+        self.installLbl.text = "Install Part".localized
+
+        self.installLbl.font = UIFont(name: "Cairo-Bold", size: 12)
+               
+        
+        self.promoLbl.text = "Promo Code".localized
+
+        self.promoLbl.font = UIFont(name: "Cairo-Bold", size: 12)
+               
+        self.validPromoLbl.text = "xvalid".localized
+
+        self.validPromoLbl.font = UIFont(name: "Cairo-SemiBold", size: 12)
+        
+        self.orderDetailsLbl.text = "Order Details".localized
+
+        self.orderDetailsLbl.font = UIFont(name: "Cairo-SemiBold", size: 18)
+               
+        self.validPromoLbl.textColor = UIColor(displayP3Red: 0/255, green: 186/255, blue: 6/255, alpha: 1.0)
+
+        self.acceptBtn.setTitle("Apply".localized, for: .normal)
+        
+        self.acceptBtn.titleLabel?.font = UIFont(name: "Cairo-Bold", size: 12)
+        
+        self.roundView.layer.cornerRadius = 12.5
+                
+            //self.view.addSubview(self.bottomView)
+        let bottomSheetView = BottomSheetView(
+                    contentView: bottomView,
+                    contentHeights: [250, 450]
+        )
+        bottomSheetView.present(in: self.view )
+
+                
+        self.getOrderDetails()
         
         self.confirmTableView.delegate = self
         
@@ -57,7 +141,7 @@ class confirmationViewController: UIViewController , UITableViewDelegate, UITabl
       }
       
       func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-          return 4
+        return 2 + self.paymentVM.itemsArr.count
       }
       
       
@@ -74,7 +158,8 @@ class confirmationViewController: UIViewController , UITableViewDelegate, UITabl
             return payDetailCell
         }else{
             let cartCell = tableView.dequeueReusableCell(withIdentifier: "cartCell") as! cartTableViewCell
-
+            cartCell.productName.text = self.paymentVM.itemsArr[indexPath.row - 2].product_name
+            cartCell.productPrice.text = self.paymentVM.itemsArr[indexPath.row - 2].unit_price
             return cartCell
 
         }
@@ -90,6 +175,19 @@ class confirmationViewController: UIViewController , UITableViewDelegate, UITabl
         }
     }
 
+    
+    func getOrderDetails(){
+        self.paymentVM.getOrder(id: orderId ?? -1, onSuccess: { (isSuccess) in
+            //
+            if isSuccess{
+                self.confirmTableView.reloadData()
+            }
+        }) { (errMsg) in
+            //
+        }
+    }
+    
+    
     /*
     // MARK: - Navigation
 
@@ -100,4 +198,35 @@ class confirmationViewController: UIViewController , UITableViewDelegate, UITabl
     }
     */
 
+}
+
+extension confirmationViewController {
+    
+    func bottomSheetPresentationController(
+        _ controller: UIPresentationController,
+        shouldDismissBy action: BottomSheetView.DismissAction
+    ) -> Bool {
+        return true
+    }
+
+    func bottomSheetPresentationController(
+        _ controller: UIPresentationController,
+        didCancelDismissBy action: BottomSheetView.DismissAction
+    ) {
+        print("Did cancel dismiss by \(action)")
+    }
+
+    func bottomSheetPresentationController(
+        _ controller: UIPresentationController,
+        willDismissBy action: BottomSheetView.DismissAction?
+    ) {
+        print("Will dismiss dismiss by \(String(describing: action))")
+    }
+
+    func bottomSheetPresentationController(
+        _ controller: UIPresentationController,
+        didDismissBy action: BottomSheetView.DismissAction?
+    ) {
+        print("Did dismiss dismiss by \(String(describing: action))")
+    }
 }

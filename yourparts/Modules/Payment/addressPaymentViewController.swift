@@ -29,6 +29,8 @@ class addressPaymentViewController: UIViewController, UITableViewDelegate, UITab
     
     var orderId : Int?
     
+    var orderItemId : Int?
+
     var cartId: Int?
 
     var orderDic: [String: Any]?
@@ -228,8 +230,10 @@ class addressPaymentViewController: UIViewController, UITableViewDelegate, UITab
         if segue.identifier == "gotoSecondPaymentView"{
             let destCont = segue.destination as! paymentMethodViewController
             destCont.orderId =  self.orderId ?? -1
+            destCont.orderItemId =  self.orderItemId ?? -1
             destCont.orderDic = self.orderDic ?? [:]
             destCont.cartId = self.cartId ?? -1
+            //orderItemId
             //var cartId: Int?
         }
     }

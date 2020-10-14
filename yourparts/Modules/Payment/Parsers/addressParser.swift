@@ -44,6 +44,10 @@ class addressParser{
                          addObj.customer_id = customer_id
                  }
             
+                 if let id = oneAddress["id"].int {
+                        addObj.id = id
+                 }
+                
                 addressArr.append(addObj)
         }
     

@@ -17,6 +17,8 @@ target 'yourparts' do
   pod 'Spring', :git => 'https://github.com/MengTo/Spring.git', :branch => 'swift5'
   pod 'Cosmos'
   pod 'ShadowView'
+  pod 'FINNBottomSheet', :git => 'https://github.com/finn-no/bottom-sheet-ios.git'
+
   target 'yourpartsTests' do
     inherit! :search_paths
     # Pods for testing
