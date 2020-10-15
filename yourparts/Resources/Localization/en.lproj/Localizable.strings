@@ -217,7 +217,7 @@
 
 "Total Price" = "Total Price" ;
 
-"Pay" = "Pay" ;
+"Continue to checkout" = "Continue to checkout" ;
 
 "There is no address saved" = "There is no address saved" ;
 
@@ -328,3 +328,9 @@
 "Install Part" = "Install Part" ;
 
 "Promo Code" = "Promo Code" ;
+
+"Cash on delivery" = "Cash on delivery" ;
+
+"Credit Card" = "Credit Card";
+
+"Valu" = "Valu" ;

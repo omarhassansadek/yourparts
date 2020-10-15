@@ -92,12 +92,14 @@ class ParentClient: NSObject {
         
         Alamofire.request(apiURL!, method: method, parameters: parameters, encoding: JSONEncoding.default, headers: headers).responseJSON { (response) in
             
-            
+            print(response)
+
             print("Request: \(String(describing: response.request))")
             print("Request: \(String(describing: response.request?.allHTTPHeaderFields))")
             print("Response: \(String(describing: response.response))")
             print("Result: \(response.result)")
             
+            print(response.response?.statusCode)
             
             if response.response?.statusCode == 200 ||  response.response?.statusCode == 201 || response.response?.statusCode == 204 {
                 

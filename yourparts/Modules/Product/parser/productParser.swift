@@ -70,9 +70,14 @@ class productParser{
                         productObj.slug = slug
                     }
                    
+            
                    if let unit_price = oneProduct["unit_price"].string {
                         productObj.unit_price = unit_price
                     }
+                if let unit_price_Order = oneProduct["_unit_price"].string {
+                     productObj._unit_price = unit_price_Order
+                 }
+
                    
                    if let product_code = oneProduct["product_code"].string {
                         productObj.product_code = product_code

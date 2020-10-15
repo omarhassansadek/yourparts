@@ -11,7 +11,9 @@ import FINNBottomSheet
 
 
 class confirmationViewController: UIViewController , UITableViewDelegate, UITableViewDataSource, BottomSheetPresentationControllerDelegate{
- 
+    
+    @IBOutlet weak var promoTf: UITextField!
+    
     @IBOutlet weak var acceptPromoBtn: UIButton!
     
     @IBOutlet weak var roundView: UIView!
@@ -26,7 +28,14 @@ class confirmationViewController: UIViewController , UITableViewDelegate, UITabl
     )
 
     var orderId: Int?
-
+    
+    @IBOutlet weak var promoPrice: UILabel!
+    
+    @IBOutlet weak var installationPrice: UILabel!
+    
+    @IBOutlet weak var shippingPrice: UILabel!
+    
+    @IBOutlet weak var totalPrice: UILabel!
     
     @IBOutlet weak var confirmTableView: UITableView!
     
@@ -48,15 +57,46 @@ class confirmationViewController: UIViewController , UITableViewDelegate, UITabl
     
     var orderItemId: Int?
 
+    @IBOutlet weak var payBtn: UIButton!
+    
+    
     
     override func viewDidLoad() {
 
         super.viewDidLoad()
         
+        self.bottomView.isHidden = true
+        
+        self.payBtn.isHidden = true
+
+        Timer.scheduledTimer(timeInterval: 0.0, target: self, selector: #selector(updateCounter), userInfo: nil, repeats: false)
+
+        
+        self.promoTf.attributedPlaceholder = NSAttributedString(string: "Enter Promo Code".localized , attributes: [
+            .foregroundColor: UIColor.darkGray,
+            .font: UIFont(name: "Cairo-Regular", size: 12 )!
+        ])
+
+        
         self.promoCodeTitle.text = "Enter Promo Code".localized
 
         self.promoCodeTitle.font = UIFont(name: "Cairo-SemiBold", size: 18)
         
+
+        self.totalPrice.font = UIFont(name: "Cairo-Regular", size: 13)
+
+        
+
+        self.shippingPrice.font = UIFont(name: "Cairo-Regular", size: 13)
+               
+        
+
+        self.installationPrice.font = UIFont(name: "Cairo-Regular", size: 13)
+               
+    
+        self.promoPrice.font = UIFont(name: "Cairo-Regular", size: 13)
+        
+
         self.totalCartLbl.text = "Cart Total".localized
 
         self.totalCartLbl.font = UIFont(name: "Cairo-Bold", size: 12)
@@ -90,14 +130,17 @@ class confirmationViewController: UIViewController , UITableViewDelegate, UITabl
         
         self.acceptBtn.titleLabel?.font = UIFont(name: "Cairo-Bold", size: 12)
         
+       
+
+         
+         self.payBtn.titleLabel?.font = UIFont(name: "Cairo-Bold", size: 15)
+        
+        self.payBtn.layer.cornerRadius = 12.5
+        
         self.roundView.layer.cornerRadius = 12.5
                 
-            //self.view.addSubview(self.bottomView)
-        let bottomSheetView = BottomSheetView(
-                    contentView: bottomView,
-                    contentHeights: [250, 450]
-        )
-        bottomSheetView.present(in: self.view )
+        
+  
 
                 
         self.getOrderDetails()
@@ -135,6 +178,26 @@ class confirmationViewController: UIViewController , UITableViewDelegate, UITabl
         // Do any additional setup after loading the view.
     }
     
+    @objc func updateCounter() {
+        
+        
+        
+        self.bottomView.isHidden = false
+        
+        self.payBtn.isHidden = false
+
+           let height = self.tabBarController?.tabBar.frame.height ?? 49.0
+
+             let bottomSheetView = BottomSheetView(
+                    contentView: bottomView,
+                    //125 + 50
+                 contentHeights: [height + 202.5, height + 350]
+             )
+             bottomSheetView.present(in: self.view )
+
+             self.view.bringSubviewToFront(payBtn)
+       }
+    
     
     func numberOfSections(in tableView: UITableView) -> Int {
           return 1
@@ -149,17 +212,18 @@ class confirmationViewController: UIViewController , UITableViewDelegate, UITabl
           
         if indexPath.row == 0{
             let confirmCell = tableView.dequeueReusableCell(withIdentifier: "confirmCell") as! confirmAddressTableViewCell
-
+            confirmCell.buildingNo.text = self.paymentVM.shippingAddress.address ?? ""
+            confirmCell.region.text = "\(self.paymentVM.shippingAddress.city ?? "") - \(self.paymentVM.shippingAddress.region ?? "")"
             return confirmCell
 
         }else if indexPath.row == 1{
             let payDetailCell = tableView.dequeueReusableCell(withIdentifier: "payDetailCell") as! paymentMethodTableViewCell
-
+            payDetailCell.methodLbl.text = self.paymentVM.paymentMethod
             return payDetailCell
         }else{
             let cartCell = tableView.dequeueReusableCell(withIdentifier: "cartCell") as! cartTableViewCell
             cartCell.productName.text = self.paymentVM.itemsArr[indexPath.row - 2].product_name
-            cartCell.productPrice.text = self.paymentVM.itemsArr[indexPath.row - 2].unit_price
+            cartCell.productPrice.text = self.paymentVM.itemsArr[indexPath.row - 2]._unit_price
             return cartCell
 
         }
@@ -174,11 +238,38 @@ class confirmationViewController: UIViewController , UITableViewDelegate, UITabl
             return 215.0
         }
     }
+    
+    
+    @IBAction func applyPromoClicked(_ sender: Any) {
+        
+        var doublePrice = Double(self.paymentVM.totalPrice)
 
+        
+        self.paymentVM.applyPromoCode(code: self.promoTf.text ?? "", paymentMethod: 0, total: Int(doublePrice ?? 0.0), apiParameters: [:], onSuccess: { (isSuccess) in
+            
+            if isSuccess{
+                
+            }
+        }) { (errorMsg) in
+            //
+        }
+    }
+    
     
     func getOrderDetails(){
         self.paymentVM.getOrder(id: orderId ?? -1, onSuccess: { (isSuccess) in
             //
+            self.payBtn.setTitle(" دفع \(self.paymentVM.totalPrice) جنيه", for: .normal)
+            
+            self.totalPrice.text = "\(self.paymentVM.totalPrice) جنيه"
+            
+            self.shippingPrice.text = "\(self.paymentVM.shippingValue) جنيه"
+            
+            self.installationPrice.text = "\(self.paymentVM.installationCost) جنيه"
+
+            
+            self.promoPrice.text = "0 جنيه"
+
             if isSuccess{
                 self.confirmTableView.reloadData()
             }

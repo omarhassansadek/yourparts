@@ -8,9 +8,10 @@
 
 import UIKit
 import NVActivityIndicatorView
+import FINNBottomSheet
 
 
-class cartViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class cartViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, BottomSheetPresentationControllerDelegate {
     
     @IBOutlet weak var actind: NVActivityIndicatorView!
     
@@ -45,6 +46,12 @@ class cartViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet var cartVM: cartViewModel!
     
     var refreshControl = UIRefreshControl()
+    
+    
+    private lazy var bottomSheetTransitioningDelegate = BottomSheetTransitioningDelegate(
+        contentHeights: [.bottomSheetAutomatic, UIScreen.main.bounds.size.height - 200],
+        presentationDelegate: self
+    )
 
 
     override func viewDidLoad() {
@@ -179,7 +186,6 @@ class cartViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         if !self.firstLoad {
             self.activityind.startAnimating()
-            self.firstLoad = true
         }
         
         
@@ -197,6 +203,21 @@ class cartViewController: UIViewController, UITableViewDelegate, UITableViewData
                     self.goShoppingViewPlaceholder.isHidden = true
                     self.deliveryPrice.text = self.cartVM.amount
                     self.totalPrice.text = self.cartVM.total
+
+                    if !self.firstLoad {
+                        let height = self.tabBarController?.tabBar.frame.height ?? 49.0
+                        print(height)
+                        let bottomSheetView = BottomSheetView(
+                            contentView: self.paymentView,
+                               //125 + 50
+                               contentHeights: [height + 140, height + 150]
+                        )
+                        bottomSheetView.present(in: self.view)
+                    }
+                    
+                    self.firstLoad = true
+
+                    
 
                     
                 }else{
@@ -219,15 +240,16 @@ class cartViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func configure(){
+
         
-        self.paymentView.layer.cornerRadius = 20.0
-        self.paymentView.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
-        self.paymentView.clipsToBounds = true
-        
-        self.paymentView.layer.shadowColor = UIColor.black.cgColor
-        self.paymentView.layer.shadowOffset = CGSize(width: 3, height: 3)
-        self.paymentView.layer.shadowOpacity = 0.7
-        self.paymentView.layer.shadowRadius = 4.0
+//        self.paymentView.layer.cornerRadius = 20.0
+//        self.paymentView.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
+//        self.paymentView.clipsToBounds = true
+//
+//        self.paymentView.layer.shadowColor = UIColor.black.cgColor
+//        self.paymentView.layer.shadowOffset = CGSize(width: 3, height: 3)
+//        self.paymentView.layer.shadowOpacity = 0.7
+//        self.paymentView.layer.shadowRadius = 4.0
 
         self.roundView1.layer.cornerRadius = 5.0
         
@@ -246,7 +268,7 @@ class cartViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.totalPrice.font = UIFont(name: "Cairo-Bold", size: 13)
         
 
-        self.payBtn.setTitle("Pay".localized, for: .normal)
+        self.payBtn.setTitle("Continue to checkout".localized, for: .normal)
         
         self.payBtn.titleLabel?.font = UIFont(name: "Cairo-Bold", size: 14)
         
@@ -283,13 +305,13 @@ class cartViewController: UIViewController, UITableViewDelegate, UITableViewData
             if isSuccess{
                 self.actind.stopAnimating()
 
-                self.payBtn.setTitle("Pay".localized, for: .normal)
+                self.payBtn.setTitle("Continue to checkout".localized, for: .normal)
 
                 self.performSegue(withIdentifier: "gotoPayment", sender: self)
             }
         }) { (errMsg) in
             //
-            self.payBtn.setTitle("Pay".localized, for: .normal)
+            self.payBtn.setTitle("Continue to checkout".localized, for: .normal)
 
             self.actind.stopAnimating()
 
@@ -306,7 +328,7 @@ class cartViewController: UIViewController, UITableViewDelegate, UITableViewData
             let destCont = segue.destination as! addressPaymentViewController
             destCont.orderId =  self.cartVM.orderId ?? -1
             destCont.orderItemId =  self.cartVM.orderItemId ?? -1
-            destCont.orderDic = self.paramsDic
+            //destCont.orderDic = self.paramsDic
             destCont.cartId = self.cartVM.cartId ?? -1
             //orderItemId
             //var cartId: Int?
@@ -342,4 +364,35 @@ class cartViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     */
 
+}
+
+extension cartViewController {
+    
+    func bottomSheetPresentationController(
+        _ controller: UIPresentationController,
+        shouldDismissBy action: BottomSheetView.DismissAction
+    ) -> Bool {
+        return true
+    }
+
+    func bottomSheetPresentationController(
+        _ controller: UIPresentationController,
+        didCancelDismissBy action: BottomSheetView.DismissAction
+    ) {
+        print("Did cancel dismiss by \(action)")
+    }
+
+    func bottomSheetPresentationController(
+        _ controller: UIPresentationController,
+        willDismissBy action: BottomSheetView.DismissAction?
+    ) {
+        print("Will dismiss dismiss by \(String(describing: action))")
+    }
+
+    func bottomSheetPresentationController(
+        _ controller: UIPresentationController,
+        didDismissBy action: BottomSheetView.DismissAction?
+    ) {
+        print("Did dismiss dismiss by \(String(describing: action))")
+    }
 }

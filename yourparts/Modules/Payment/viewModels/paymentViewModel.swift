@@ -18,6 +18,16 @@ class paymentViewModel: NSObject {
     var ctitiesArr: [city] = []
     var regionArr: [city] = []
     var itemsArr: [product] = []
+    
+    var shippingAddress = address()
+    
+    var paymentMethod = ""
+    
+    var totalPrice = ""
+    
+    var installationCost = 0
+    
+    var shippingValue = 0
 
     func getAllCity( onSuccess: @escaping(Bool)-> () , onFailure: @escaping(String)-> ()){
         self.paymentC.getAllCities(url: baseUrl+getCityUrl, apiMethod: .get, parametersOfCall: nil, apiEncoding: JSONEncoding.default, headers: nil, completionSuccess: { (responseSuccess) in
@@ -129,6 +139,34 @@ class paymentViewModel: NSObject {
         }
     
     
+    var discountAmount = 0
+    
+    func applyPromoCode(code:String, paymentMethod: Int, total: Int, apiParameters: [String:Any], onSuccess: @escaping(Bool)-> () , onFailure: @escaping(String)-> ()){
+
+                  print(apiParameters)
+        
+                  
+                        
+                  self.paymentC.patchOrderDetails(url: baseUrl+applyPromoUrl+"code=\(code)&payment_method=\(paymentMethod)&total_before_shipping=\(total)", apiMethod: .get, parametersOfCall: nil, apiEncoding: JSONEncoding.default,  completionSuccess: { (responseSuccess) in
+                         //
+                          print(responseSuccess)
+           
+                          if let discount = responseSuccess["discount_amount"].int{
+                               self.discountAmount = discount
+                               onSuccess(true)
+                          }else{
+                              onFailure("We encountered an error. Try again later")
+                          }
+                          
+                         }) { (responseFailure) in
+                             onFailure("We encountered an error. Try again later")
+                         }
+               }
+           
+        
+    
+        
+    
         func getOrder( id: Int, onSuccess: @escaping(Bool)-> () , onFailure: @escaping(String)-> ()){
 
               // print(apiParameters)
@@ -137,11 +175,56 @@ class paymentViewModel: NSObject {
                       //
                         print(responseSuccess)
                         if let id = responseSuccess["id"].int{
+                 
+                            
+                            if let paymentMethodKey = responseSuccess["payment_method"].int{
+                                switch paymentMethodKey {
+                                case 0:
+                                    self.paymentMethod = "Cash on delivery".localized
+                                case 1:
+                                    self.paymentMethod = "Credit Card".localized
+                                case 2:
+                                    self.paymentMethod = "Valu".localized
+
+                                default:
+                                    break
+                                }
+                            }
+                            
+                            if let address = responseSuccess["billing_address"]["address"].string{
+                                self.shippingAddress.address = address
+                            }
+                            
+                            if let city = responseSuccess["billing_address"]["city"].string{
+                                self.shippingAddress.city = city
+                            }
+                            
+                            if let region = responseSuccess["billing_address"]["region"].string{
+                                self.shippingAddress.region = region
+                            }
+                            
+                            if let total = responseSuccess["order"]["_total"].string{
+                                self.totalPrice = total
+                            }
+                            
+                            if let shipping_value = responseSuccess["shipping_value"].int{
+                                self.shippingValue = shipping_value
+                            }
+
+        
+                            if let installCost = responseSuccess["installation_cost"].int{
+                                self.installationCost = installCost
+                            }
+
+
                             productParser().parseProductsResponse(fromOrder: true, fromJSON: responseSuccess) { (productArr) in
-                                //self.itemsArr = productArr
+
                                 self.itemsArr = productArr.results
                                 onSuccess(true)
+
                             }
+                                         
+
 
                         }else{
                             

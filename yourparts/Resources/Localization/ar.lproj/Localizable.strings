@@ -218,7 +218,7 @@
 
 "Total Price" = "إجمالى السعر" ;
 
-"Pay" = "الدفع" ;
+"Continue to checkout" = "تابع عملية الشراء" ;
 
 "There is no address saved" = "لا يوجد عنوان مسجل" ;
 
@@ -331,3 +331,9 @@
 "Install Part" = "التركيب" ;
 
 "Promo Code" = "كود الخصم" ;
+
+"Cash on delivery" = "كاش" ;
+
+"Credit Card" = "فيزا";
+
+"Valu" = "تقسيط" ;

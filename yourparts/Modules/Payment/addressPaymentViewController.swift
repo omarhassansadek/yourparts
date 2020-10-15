@@ -33,10 +33,10 @@ class addressPaymentViewController: UIViewController, UITableViewDelegate, UITab
 
     var cartId: Int?
 
-    var orderDic: [String: Any]?
+    //var orderDic: [String: Any]?
     
     override func viewWillAppear(_ animated: Bool) {
-        self.getAddresses()
+        //self.getAddresses()
     }
     
     var isComingFromProfile: Bool?
@@ -45,7 +45,7 @@ class addressPaymentViewController: UIViewController, UITableViewDelegate, UITab
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.receivingMethodsView.isHidden = true
+        //self.receivingMethodsView.isHidden = true
         
         if self.isComingFromProfile ?? false{
             self.receivingMethodsView.isHidden = true
@@ -123,7 +123,7 @@ class addressPaymentViewController: UIViewController, UITableViewDelegate, UITab
 
         self.paymentVM.getUserAddress(onSuccess: { (isSuccess) in
             //
-            self.receivingMethodsView.isHidden = false
+            self.receivingMethodsView.isHidden = true
             
             if isSuccess{
                 
@@ -191,7 +191,21 @@ class addressPaymentViewController: UIViewController, UITableViewDelegate, UITab
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row != 2{
             if !(self.isComingFromProfile ?? false){
-                self.performSegue(withIdentifier: "gotoSecondPaymentView", sender: self)
+                var orderDic: [String: Any] = [:]
+                
+                orderDic["billing_address"] = self.paymentVM.addressArr[indexPath.row].id ?? -1
+                
+                self.paymentVM.patchOrder(id: self.orderId ?? -1, apiParameters: orderDic ?? [:] , onSuccess: { (isSuccess) in
+                  
+                    if isSuccess{
+                        self.performSegue(withIdentifier: "gotoSecondPaymentView", sender: self)
+                    }
+                    
+                }) { (errMsg) in
+                    //
+                    AlertViewer().showAlertView(withMessage: errMsg, onController: self)
+                }
+
             }
         }
     }
@@ -221,6 +235,7 @@ class addressPaymentViewController: UIViewController, UITableViewDelegate, UITab
             self.addressTableView.isHidden = false
 
         }) { _ in
+            self.getAddresses()
         }
         
     }
@@ -231,7 +246,7 @@ class addressPaymentViewController: UIViewController, UITableViewDelegate, UITab
             let destCont = segue.destination as! paymentMethodViewController
             destCont.orderId =  self.orderId ?? -1
             destCont.orderItemId =  self.orderItemId ?? -1
-            destCont.orderDic = self.orderDic ?? [:]
+            //destCont.orderDic = self.orderDic ?? [:]
             destCont.cartId = self.cartId ?? -1
             //orderItemId
             //var cartId: Int?

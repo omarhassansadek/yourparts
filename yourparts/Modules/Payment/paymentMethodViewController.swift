@@ -103,7 +103,7 @@ class paymentMethodViewController: UIViewController, UITableViewDelegate, UITabl
             addAddressCell.addAddress = {
                 
                 //var params: [String: Any] = [:]
-                self.orderDic?.removeAll()
+                self.orderDic = [:]
                 self.orderDic?["payment_method"] = self.selectedMethod
                 
                 self.paymentVM.patchOrder(id: self.orderId ?? -1, apiParameters: self.orderDic ?? [:] , onSuccess: { (isSuccess) in

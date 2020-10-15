@@ -18,6 +18,7 @@ class product{
     var slug: String?
     var size: String?
     var unit_price: String?
+    var _unit_price: String?
     var product_code: String?
     var quantity: Int?
     var image: String?
