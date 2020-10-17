@@ -8,9 +8,11 @@
 
 import UIKit
 import FINNBottomSheet
-
+import NVActivityIndicatorView
 
 class confirmationViewController: UIViewController , UITableViewDelegate, UITableViewDataSource, BottomSheetPresentationControllerDelegate{
+    
+    @IBOutlet weak var payActInd: NVActivityIndicatorView!
     
     @IBOutlet weak var promoTf: UITextField!
     
@@ -241,14 +243,38 @@ class confirmationViewController: UIViewController , UITableViewDelegate, UITabl
     
     
     @IBAction func applyPromoClicked(_ sender: Any) {
-        
+
         var doublePrice = Double(self.paymentVM.totalPrice)
 
-        
+        self.payActInd.startAnimating()
+
         self.paymentVM.applyPromoCode(code: self.promoTf.text ?? "", paymentMethod: 0, total: Int(doublePrice ?? 0.0), apiParameters: [:], onSuccess: { (isSuccess) in
             
             if isSuccess{
+                self.validPromoLbl.text = "تم خصم \(self.paymentVM.discountAmount) جنيه "
+                self.validPromoLbl.isHidden = false
+                self.promoPrice.text = "\(self.paymentVM.discountAmount) جنيه"
                 
+                var calculaterDic: [String:Any] = [:]
+                calculaterDic["total_product"] = Int(doublePrice ?? 0.0)
+                calculaterDic["shipping_fees"] = self.paymentVM.shippingValue
+                calculaterDic["shipping_same_day"] = self.paymentVM.shippingSameDayValue
+                calculaterDic["installation_cost"] = self.paymentVM.installationCost
+                calculaterDic["promo_code"] = self.paymentVM.discountAmount
+                
+                self.paymentVM.calculateOrder(apiParameters: calculaterDic, onSuccess: { (isSuccess) in
+                    
+                    self.payActInd.stopAnimating()
+
+                    if isSuccess{
+                        self.payBtn.setTitle(" دفع \(self.paymentVM.totalPrice) جنيه", for: .normal)
+                    }
+                    
+                }) { (errMsg) in
+                    //
+                    self.payActInd.stopAnimating()
+
+                }
             }
         }) { (errorMsg) in
             //
@@ -276,6 +302,10 @@ class confirmationViewController: UIViewController , UITableViewDelegate, UITabl
         }) { (errMsg) in
             //
         }
+    }
+    
+    @IBAction func goBacktoPaymentVC(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
     }
     
     

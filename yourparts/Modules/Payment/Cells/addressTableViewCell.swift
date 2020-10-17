@@ -27,7 +27,7 @@ class addressTableViewCell: UITableViewCell {
 
         self.buildingNo.text = "ريحانة ريزدينس".localized
         
-        self.buildingNo.font = UIFont(name: "Cairo-Regular", size: 12)
+        self.buildingNo.font = UIFont(name: "Cairo-Bold", size: 12)
         
         self.appartmentNo.text = "شقة 40 الطابق 4".localized
         

@@ -44,6 +44,7 @@ class productListViewController: UIViewController, UICollectionViewDelegate , UI
     
     @IBOutlet weak var filterTitleLbl: UILabel!
     
+    
     override func viewWillAppear(_ animated: Bool) {
         if self.pathToCall != nil {
             self.brandViewConstant.constant = 0

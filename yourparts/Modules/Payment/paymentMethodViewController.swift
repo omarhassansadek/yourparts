@@ -176,7 +176,7 @@ class paymentMethodViewController: UIViewController, UITableViewDelegate, UITabl
     }
     
     
-    var arrayBox: [Bool] = [false, false, false]
+    var arrayBox: [Bool] = [true, false, false]
     
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

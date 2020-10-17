@@ -184,7 +184,11 @@ class cartViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func getCartData(){
         
+        //not(true) -> (false)
+        //not(false) -> (true)
+        print("first load \(firstLoad), if false present view")
         if !self.firstLoad {
+            
             self.activityind.startAnimating()
         }
         
@@ -345,7 +349,7 @@ class cartViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.cartVM.addToCart(id: self.cartVM.cartArr[index].id ?? -1, apiParameters: params, onSuccess: { (isSuccess) in
             //
             if isSuccess{
-                self.firstLoad = false
+                //self.firstLoad = false
                 self.getCartData()
             }
             

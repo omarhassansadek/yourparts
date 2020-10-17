@@ -28,6 +28,8 @@ class paymentViewModel: NSObject {
     var installationCost = 0
     
     var shippingValue = 0
+    
+    var shippingSameDayValue = 0
 
     func getAllCity( onSuccess: @escaping(Bool)-> () , onFailure: @escaping(String)-> ()){
         self.paymentC.getAllCities(url: baseUrl+getCityUrl, apiMethod: .get, parametersOfCall: nil, apiEncoding: JSONEncoding.default, headers: nil, completionSuccess: { (responseSuccess) in
@@ -139,9 +141,9 @@ class paymentViewModel: NSObject {
         }
     
     
-    var discountAmount = 0
+        var discountAmount = 0
     
-    func applyPromoCode(code:String, paymentMethod: Int, total: Int, apiParameters: [String:Any], onSuccess: @escaping(Bool)-> () , onFailure: @escaping(String)-> ()){
+        func applyPromoCode(code:String, paymentMethod: Int, total: Int, apiParameters: [String:Any], onSuccess: @escaping(Bool)-> () , onFailure: @escaping(String)-> ()){
 
                   print(apiParameters)
         
@@ -161,9 +163,28 @@ class paymentViewModel: NSObject {
                          }) { (responseFailure) in
                              onFailure("We encountered an error. Try again later")
                          }
-               }
+        }
            
-        
+
+        func calculateOrder(apiParameters: [String:Any], onSuccess: @escaping(Bool)-> () , onFailure: @escaping(String)-> ()){
+
+                      print(apiParameters)
+            
+                      self.paymentC.patchOrderDetails(url: baseUrl+calculateOrderUrl, apiMethod: .post, parametersOfCall: apiParameters, apiEncoding: JSONEncoding.default,  completionSuccess: { (responseSuccess) in
+                             //
+                              print(responseSuccess)
+               
+                              if let total_order = responseSuccess["total_order"].int{
+                                   self.totalPrice = String(total_order)
+                                   onSuccess(true)
+                              }else{
+                                  onFailure("We encountered an error. Try again later")
+                              }
+                              
+                             }) { (responseFailure) in
+                                 onFailure("We encountered an error. Try again later")
+                             }
+        }
     
         
     
@@ -215,8 +236,14 @@ class paymentViewModel: NSObject {
                             if let installCost = responseSuccess["installation_cost"].int{
                                 self.installationCost = installCost
                             }
+                            
+                            
+                            if let shipping_same_day = responseSuccess["shipping_same_day"].int{
+                                self.shippingSameDayValue = shipping_same_day
+                            }
 
 
+                            //shippingSameDayValue
                             productParser().parseProductsResponse(fromOrder: true, fromJSON: responseSuccess) { (productArr) in
 
                                 self.itemsArr = productArr.results

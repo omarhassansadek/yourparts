@@ -58,3 +58,7 @@ var createOrderItemUrl = "order-items/"
 var patchOrderUrl = "orders/"
 
 var applyPromoUrl = "promo-code?"
+
+var calculateOrderUrl = "calculate-order/"
+
+var filterTyresUrl = "filter/tyres/"

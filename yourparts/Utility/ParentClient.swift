@@ -92,8 +92,6 @@ class ParentClient: NSObject {
         
         Alamofire.request(apiURL!, method: method, parameters: parameters, encoding: JSONEncoding.default, headers: headers).responseJSON { (response) in
             
-            print(response)
-
             print("Request: \(String(describing: response.request))")
             print("Request: \(String(describing: response.request?.allHTTPHeaderFields))")
             print("Response: \(String(describing: response.response))")

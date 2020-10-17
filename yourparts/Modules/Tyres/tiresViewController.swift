@@ -102,11 +102,7 @@ class tiresViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
         
         self.radiusLbl.font = UIFont(name: "Cairo-Regular", size: 12)
 
-        
-      //  self.leftView.roundCorners(corners: [.topLeft , .bottomLeft], radius: 25.0)
-       // self.rightView.roundCorners(corners: [.topLeft , .bottomLeft], radius: 25.0)
-
-        
+                
         self.leftView.clipsToBounds = true
         self.leftView.layer.cornerRadius = 25.0
         self.leftView.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMaxXMaxYCorner]
@@ -133,13 +129,7 @@ class tiresViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
         for oneView in roundViews{
             oneView.layer.cornerRadius = 7.5
         }
-        
-
-        //self.modelTireTf.attributedPlaceholder = NSAttributedString(string: "Manufacture Year".localized , attributes: [
-//                 .foregroundColor: UIColor.darkGray,
-//                 .font: UIFont(name: "Cairo-Regular", size: 12 )!
-//                 ])
-      
+              
         self.modelYearLbl.text = "Manufacture Year".localized
         self.modelYearLbl.font = UIFont(name: "Cairo-Regular", size: 12 )!
         
@@ -188,6 +178,25 @@ class tiresViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
         
     }
     
+    var type = 1
+    @IBAction func typesBtnClicked(_ sender: UIButton) {
+        let dimmedColor = UIColor(displayP3Red: 122/255, green: 122/255, blue: 122/255, alpha: 1.0)
+        
+        if sender.tag == 11{
+            //Na2l
+            self.type = 0
+            self.type1Btn.setTitleColor(primaryColor, for: .normal)
+            self.type2Btn.setTitleColor(dimmedColor, for: .normal)
+        }else{
+            //Malaky
+            self.type = 1
+            self.type1Btn.setTitleColor(dimmedColor, for: .normal)
+            self.type2Btn.setTitleColor(primaryColor, for: .normal)
+        }
+    }
+    
+    
+    
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
@@ -226,13 +235,19 @@ class tiresViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
         }else if  pickerView == rimSizePickerView{
             self.widthTf.text = self.tiresVM.rimSizes[row].size ?? ""
         }else if pickerView == rachoSizePickerView{
-            self.heightTf.text = self.tiresVM.rachoSizes[row].size ?? ""
+            self.radiusTf.text = self.tiresVM.rachoSizes[row].size ?? ""
         }else if pickerView == tireSizePickerView{
-            self.widthTf.text = self.tiresVM.tireSizes[row].size ?? ""
+            self.heightTf.text = self.tiresVM.tireSizes[row].size ?? ""
         }
     }
     
+    
+    var tyresUrlToBeCalled = ""
+    
     @IBAction func searchBtnClicked(_ sender: Any) {
+        
+        self.tyresUrlToBeCalled = baseUrl + filterTyresUrl + "?tyre_size=\(self.heightTf.text!)&rim_size=\(self.widthTf.text!)&racho_size=\(self.radiusTf.text!)&year=\(self.modelTireTf.text!)&types=1"
+        
         self.performSegue(withIdentifier: "gotoTireProduct", sender: self)
         
     }
@@ -241,71 +256,11 @@ class tiresViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
         if segue.identifier == "gotoTireProduct"{
             let destCont = segue.destination as! productListViewController
             destCont.vcTitle = "Tires".localized
+            destCont.pathToCall = self.tyresUrlToBeCalled
         }
     }
     
-//    
 //
-//    func numberOfSections(in tableView: UITableView) -> Int {
-//        return 1
-//    }
-//    
-//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return self.tableArr.count
-//    }
-//    
-//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        
-//        switch tableArr[indexPath.row] {
-//        case "1":
-//            let cell = tableView.dequeueReusableCell(withIdentifier: "searchTireCell") as! searchtiresTableViewCell
-//            return cell
-//            
-//        case "2":
-//            let cell = tableView.dequeueReusableCell(withIdentifier: "searchDetailCell") as! searchDetailsTireTableViewCell
-//            return cell
-//            
-//        case "3":
-//            let cell = tableView.dequeueReusableCell(withIdentifier: "detailOilCell") as! detailOilTableViewCell
-//            cell.cellImage.image = UIImage(named: "goodTire")
-//            return cell
-//            
-//        default:
-//            return UITableViewCell()
-//        }
-//        
-//    }
-//    
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        //self.performSegue(withIdentifier: "gotoDetailOil", sender: self)
-//        if self.tableArr[indexPath.row] == "1"{
-//            self.tableArr[indexPath.row] = "2"
-//        }else if self.tableArr[indexPath.row] == "2"{
-//            self.tableArr[indexPath.row] = "1"
-//        }else{
-//            self.performSegue(withIdentifier: "gotoTireProduct", sender: self)
-//        }
-//        
-//        self.tiresTableView.reloadData()
-//    }
-//    
-//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        switch tableArr[indexPath.row] {
-//        case "1":
-//            return 60.0
-//            
-//        case "2":
-//            return 438.0
-//            
-//        case "3":
-//            return 110.0
-//            
-//        default:
-//            return 0.0
-//        }
-//        
-//    }
-        
     /*
     // MARK: - Navigation
 
