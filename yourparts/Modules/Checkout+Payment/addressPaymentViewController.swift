@@ -44,6 +44,8 @@ class addressPaymentViewController: UIViewController, UITableViewDelegate, UITab
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.navigationController?.navigationBar.isHidden = true
 
         //self.receivingMethodsView.isHidden = true
         

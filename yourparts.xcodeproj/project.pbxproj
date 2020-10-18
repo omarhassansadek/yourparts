@@ -127,6 +127,7 @@
 		5C32520D252627E4001418FC /* vehicleModelsParsers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C32520C252627E4001418FC /* vehicleModelsParsers.swift */; };
 		5C3A29A6253340D900EBE984 /* Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C3A29A5253340D900EBE984 /* Application.swift */; };
 		5C3A29A8253341DE00EBE984 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C3A29A7253341DE00EBE984 /* main.swift */; };
+		5C3D4173253BA9FC00F8ED46 /* paymentOnlineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C3D4172253BA9FC00F8ED46 /* paymentOnlineViewController.swift */; };
 		5C4021BD2520BFFF002FD3A0 /* paymentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C4021BC2520BFFF002FD3A0 /* paymentViewModel.swift */; };
 		5C4021C02520C08C002FD3A0 /* paymentClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C4021BF2520C08C002FD3A0 /* paymentClient.swift */; };
 		5C4021C32520D5BC002FD3A0 /* addressParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C4021C22520D5BC002FD3A0 /* addressParser.swift */; };
@@ -151,6 +152,8 @@
 		5C433A0825139EC800F67552 /* cartClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C433A0725139EC800F67552 /* cartClient.swift */; };
 		5C433A0A2513A04A00F67552 /* cart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C433A092513A04A00F67552 /* cart.swift */; };
 		5C433A0D2513A0B800F67552 /* cartParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C433A0C2513A0B800F67552 /* cartParser.swift */; };
+		5C7433C3253C185700B53C6B /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C7433C2253C185700B53C6B /* WebKit.framework */; };
+		5C7EF615253C8D5A00E29FE7 /* thankyouViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C7EF614253C8D5A00E29FE7 /* thankyouViewController.swift */; };
 		5C890292251A4B6400730869 /* profileHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C890290251A4B6400730869 /* profileHeaderTableViewCell.swift */; };
 		5C890293251A4B6400730869 /* profileHeaderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C890291251A4B6400730869 /* profileHeaderTableViewCell.xib */; };
 		5C890296251B715B00730869 /* profileMenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C890294251B715B00730869 /* profileMenuTableViewCell.swift */; };
@@ -375,6 +378,7 @@
 		5C32520C252627E4001418FC /* vehicleModelsParsers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = vehicleModelsParsers.swift; sourceTree = "<group>"; };
 		5C3A29A5253340D900EBE984 /* Application.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Application.swift; sourceTree = "<group>"; };
 		5C3A29A7253341DE00EBE984 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		5C3D4172253BA9FC00F8ED46 /* paymentOnlineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = paymentOnlineViewController.swift; sourceTree = "<group>"; };
 		5C4021BC2520BFFF002FD3A0 /* paymentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = paymentViewModel.swift; sourceTree = "<group>"; };
 		5C4021BF2520C08C002FD3A0 /* paymentClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = paymentClient.swift; sourceTree = "<group>"; };
 		5C4021C22520D5BC002FD3A0 /* addressParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addressParser.swift; sourceTree = "<group>"; };
@@ -399,6 +403,8 @@
 		5C433A0725139EC800F67552 /* cartClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = cartClient.swift; sourceTree = "<group>"; };
 		5C433A092513A04A00F67552 /* cart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = cart.swift; sourceTree = "<group>"; };
 		5C433A0C2513A0B800F67552 /* cartParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = cartParser.swift; sourceTree = "<group>"; };
+		5C7433C2253C185700B53C6B /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		5C7EF614253C8D5A00E29FE7 /* thankyouViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = thankyouViewController.swift; sourceTree = "<group>"; };
 		5C890290251A4B6400730869 /* profileHeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = profileHeaderTableViewCell.swift; sourceTree = "<group>"; };
 		5C890291251A4B6400730869 /* profileHeaderTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = profileHeaderTableViewCell.xib; sourceTree = "<group>"; };
 		5C890294251B715B00730869 /* profileMenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = profileMenuTableViewCell.swift; sourceTree = "<group>"; };
@@ -478,6 +484,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5C7433C3253C185700B53C6B /* WebKit.framework in Frameworks */,
 				10529DD9AF901447EE0D6C08 /* Pods_yourparts.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -551,7 +558,7 @@
 				39E4222F24D07CC700524591 /* Tyres */,
 				3999F16B24D9ED8700EAEC56 /* Product */,
 				394747BD24B589D600253236 /* My Cars */,
-				5CF0636425176B6600E73380 /* Payment */,
+				5CF0636425176B6600E73380 /* Checkout+Payment */,
 				3969EFB124EC10CB00695277 /* Auth */,
 				3972554924A3B07A0092D1B5 /* Profile+Cart */,
 			);
@@ -1088,7 +1095,7 @@
 			path = ThirdParty;
 			sourceTree = "<group>";
 		};
-		5CF0636425176B6600E73380 /* Payment */ = {
+		5CF0636425176B6600E73380 /* Checkout+Payment */ = {
 			isa = PBXGroup;
 			children = (
 				5C4021C42520D64F002FD3A0 /* Model */,
@@ -1102,8 +1109,10 @@
 				391F73842518599D00A8ECF3 /* paymentMethodViewController.swift */,
 				5CF063762518BD3000E73380 /* confirmationViewController.swift */,
 				5CF063782518C7FB00E73380 /* installmentsViewController.swift */,
+				5C3D4172253BA9FC00F8ED46 /* paymentOnlineViewController.swift */,
+				5C7EF614253C8D5A00E29FE7 /* thankyouViewController.swift */,
 			);
-			path = Payment;
+			path = "Checkout+Payment";
 			sourceTree = "<group>";
 		};
 		5CF06369251777C200E73380 /* Cells */ = {
@@ -1194,6 +1203,7 @@
 		C095EA1A3AAF2C4662F7C41E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5C7433C2253C185700B53C6B /* WebKit.framework */,
 				DEACB84D5B8E5147908423AA /* Pods_yourparts.framework */,
 				ED0BC99C398EF7E0E4B91558 /* Pods_yourparts_yourpartsUITests.framework */,
 				F12ECCCD6509D077C2C6C0ED /* Pods_yourpartsTests.framework */,
@@ -1631,6 +1641,7 @@
 				5CA8BFE32522141400676B9A /* frequentlyNeededTableViewCell.swift in Sources */,
 				39E3B5C624E1944B0042BCAF /* favViewController.swift in Sources */,
 				391F73852518599D00A8ECF3 /* paymentMethodViewController.swift in Sources */,
+				5C7EF615253C8D5A00E29FE7 /* thankyouViewController.swift in Sources */,
 				398D311724ED762F0035A00E /* signupClient.swift in Sources */,
 				5C4339E125121BA600F67552 /* productListViewController.swift in Sources */,
 				5C89029D251B8FCD00730869 /* settingsViewController.swift in Sources */,
@@ -1640,6 +1651,7 @@
 				5CF983BA250F7C8600D56721 /* homeViewModel.swift in Sources */,
 				5CA8BFFC2523854200676B9A /* profileParser.swift in Sources */,
 				391577BA24E7D7AF009C4722 /* spartsCollectionDelegate.swift in Sources */,
+				5C3D4173253BA9FC00F8ED46 /* paymentOnlineViewController.swift in Sources */,
 				5CF983D72510C0E200D56721 /* detailCatVM.swift in Sources */,
 				3990DE3524E9049F00ED3F49 /* detailRowTableViewCell.swift in Sources */,
 				397E8B8824A5CEDB00780312 /* profileInfoTableViewCell.swift in Sources */,

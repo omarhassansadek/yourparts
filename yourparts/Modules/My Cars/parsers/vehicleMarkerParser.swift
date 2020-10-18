@@ -16,7 +16,7 @@ class vehicleMarkerParser{
         
         var makersArr:[maker] = []
             
-        for oneMaker in fromJSON.arrayValue {
+        for oneMaker in fromJSON["results"].arrayValue {
             
             var carMakerObj = maker()
                      

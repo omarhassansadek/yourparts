@@ -12,6 +12,8 @@ import NVActivityIndicatorView
 
 class confirmationViewController: UIViewController , UITableViewDelegate, UITableViewDataSource, BottomSheetPresentationControllerDelegate{
     
+    @IBOutlet weak var dummyWhiteView: UIView!
+    
     @IBOutlet weak var payActInd: NVActivityIndicatorView!
     
     @IBOutlet weak var promoTf: UITextField!
@@ -62,10 +64,44 @@ class confirmationViewController: UIViewController , UITableViewDelegate, UITabl
     @IBOutlet weak var payBtn: UIButton!
     
     
+    @IBOutlet weak var alertView: UIView!
+    
+    @IBOutlet weak var textViewlLbl: UITextView!
+    
+    @IBOutlet weak var saveBtn: UIButton!
+    
+    @IBOutlet weak var cancelBtn: UIButton!
+    
+    @IBOutlet weak var dimmedView: UIView!
+    
+    @IBOutlet weak var checkico: UIImageView!
+    
     
     override func viewDidLoad() {
 
         super.viewDidLoad()
+        
+        
+        self.saveBtn.setTitle("Continue".localized, for: .normal)
+        
+        self.saveBtn.titleLabel?.font = UIFont(name: "Cairo-Bold", size: 14)
+        
+        self.saveBtn.layer.cornerRadius = 12.5
+        
+        
+        self.cancelBtn.setTitle("Cancel".localized, for: .normal)
+        
+        self.cancelBtn.titleLabel?.font = UIFont(name: "Cairo-Bold", size: 14)
+        
+        self.cancelBtn.layer.cornerRadius = 12.5
+
+        
+        self.alertView.layer.cornerRadius = 15.0
+
+        
+        self.textViewlLbl.text = "Click to make sure to pay when received".localized
+        self.textViewlLbl.font = UIFont(name: "Cairo-Regular", size: 14)!
+        
         
         self.bottomView.isHidden = true
         
@@ -197,7 +233,10 @@ class confirmationViewController: UIViewController , UITableViewDelegate, UITabl
              )
              bottomSheetView.present(in: self.view )
 
-             self.view.bringSubviewToFront(payBtn)
+           self.view.bringSubviewToFront(payBtn)
+           self.view.bringSubviewToFront(dummyWhiteView)
+           self.view.bringSubviewToFront(dimmedView)
+           self.view.bringSubviewToFront(alertView)
        }
     
     
@@ -254,6 +293,9 @@ class confirmationViewController: UIViewController , UITableViewDelegate, UITabl
                 self.validPromoLbl.text = "تم خصم \(self.paymentVM.discountAmount) جنيه "
                 self.validPromoLbl.isHidden = false
                 self.promoPrice.text = "\(self.paymentVM.discountAmount) جنيه"
+                self.promoTf.isUserInteractionEnabled = false
+                self.acceptBtn.setTitleColor(greyColor, for: .normal)
+                self.acceptBtn.isUserInteractionEnabled = false
                 
                 var calculaterDic: [String:Any] = [:]
                 calculaterDic["total_product"] = Int(doublePrice ?? 0.0)
@@ -306,6 +348,55 @@ class confirmationViewController: UIViewController , UITableViewDelegate, UITabl
     
     @IBAction func goBacktoPaymentVC(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
+    }
+    
+    
+    @IBAction func payBtnClicked(_ sender: Any) {
+        if self.paymentVM.paymentMethodKey != 0{
+            self.paymentVM.payOnline(paymentMethod: Int(self.paymentVM.paymentMethodKey) ?? 0, id: self.orderId ?? -1, onSuccess: { (isSuccess) in
+                self.performSegue(withIdentifier: "gotoPaymentOnline", sender: self)
+            }) { (errMsg) in
+                AlertViewer().showAlertView(withMessage: errMsg, onController: self)
+            }
+
+        }else{
+            self.dimmedView.isHidden = false
+            self.alertView.isHidden = false
+        }
+    }
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "gotoPaymentOnline"{
+            let destCont = segue.destination as! paymentOnlineViewController
+            destCont.urlToCall = self.paymentVM.paymentUrl
+        
+        }
+    }
+    
+    
+    @IBAction func saveBtnClicked(_ sender: Any) {
+        //self.alertView.isHidden = true
+        //self.dimmedView.isHidden = true
+        DispatchQueue.main.async {
+            UIView.animate(withDuration: 10.5, animations: {
+                self.textViewlLbl.isHidden = true
+                self.saveBtn.isHidden = true
+                self.cancelBtn.isHidden = true
+                self.checkico.isHidden = false
+                //self.alertView.isHidden = true
+            }) { (isSuccess) in
+                //
+                self.alertView.isHidden = true
+                self.dimmedView.isHidden = true
+                self.performSegue(withIdentifier: "gotoThankyouVC", sender: self)
+            }
+        }
+    }
+    
+    @IBAction func cancelBtnClicked(_ sender: Any) {
+         self.alertView.isHidden = true
+         self.dimmedView.isHidden = true
     }
     
     

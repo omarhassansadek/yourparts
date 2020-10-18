@@ -311,7 +311,7 @@
                         <outlet property="roundView1" destination="oMJ-ow-yaM" id="dNQ-Db-55K"/>
                         <outlet property="totalPrice" destination="1EK-gU-6uQ" id="qOK-nj-MiA"/>
                         <outlet property="totalPriceLbl" destination="8nh-tq-Znr" id="ecz-TD-Naf"/>
-                        <segue destination="etK-Oz-2oO" kind="show" identifier="gotoPayment" id="sMI-ul-z63"/>
+                        <segue destination="etK-Oz-2oO" kind="presentation" identifier="gotoPayment" modalPresentationStyle="fullScreen" id="sMI-ul-z63"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zmv-yY-ppM" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -324,10 +324,10 @@
             </objects>
             <point key="canvasLocation" x="-4101.6000000000004" y="1104.6798029556651"/>
         </scene>
-        <!--paymentView1-->
+        <!--paymentNav-->
         <scene sceneID="DwN-5K-939">
             <objects>
-                <viewControllerPlaceholder storyboardName="payment" referencedIdentifier="paymentView1" id="etK-Oz-2oO" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardName="payment" referencedIdentifier="paymentNav" id="etK-Oz-2oO" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="eaR-G9-Rtq"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="A3Z-tx-ZYL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

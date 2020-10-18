@@ -53,10 +53,21 @@ class cartViewController: UIViewController, UITableViewDelegate, UITableViewData
         presentationDelegate: self
     )
 
+    var bottomSheetView: BottomSheetView?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+        let height = self.tabBarController?.tabBar.frame.height ?? 49.0
+        print(height)
+
+        self.bottomSheetView = BottomSheetView(
+            contentView: self.paymentView,
+               //125 + 50
+               contentHeights: [height + 140, height + 150]
+        )
+
         refreshControl.addTarget(self, action: #selector(self.refresh(_:)), for: .valueChanged)
         
         cartTableView.addSubview(refreshControl)
@@ -183,7 +194,7 @@ class cartViewController: UIViewController, UITableViewDelegate, UITableViewData
     var firstLoad = false
     
     func getCartData(){
-        
+
         //not(true) -> (false)
         //not(false) -> (true)
         print("first load \(firstLoad), if false present view")
@@ -202,21 +213,14 @@ class cartViewController: UIViewController, UITableViewDelegate, UITableViewData
                 if self.cartVM.cartArr.count > 0 {
                     self.cartTableView.isHidden = false
                     self.paymentView.isHidden = false
-                    
+                    self.bottomSheetView?.isHidden = false
                     self.emptyCartPlaceholder.isHidden = true
                     self.goShoppingViewPlaceholder.isHidden = true
                     self.deliveryPrice.text = self.cartVM.amount
                     self.totalPrice.text = self.cartVM.total
 
                     if !self.firstLoad {
-                        let height = self.tabBarController?.tabBar.frame.height ?? 49.0
-                        print(height)
-                        let bottomSheetView = BottomSheetView(
-                            contentView: self.paymentView,
-                               //125 + 50
-                               contentHeights: [height + 140, height + 150]
-                        )
-                        bottomSheetView.present(in: self.view)
+                        self.bottomSheetView?.present(in: self.view)
                     }
                     
                     self.firstLoad = true
@@ -225,10 +229,13 @@ class cartViewController: UIViewController, UITableViewDelegate, UITableViewData
 
                     
                 }else{
+                    self.firstLoad = false
                     self.cartTableView.isHidden = true
                     self.paymentView.isHidden = true
+                    self.bottomSheetView?.isHidden = true
                     self.emptyCartPlaceholder.isHidden = false
                     self.goShoppingViewPlaceholder.isHidden = false
+                    //self.bottomSheetView!.dismiss()
 
                 }
                 
@@ -329,11 +336,13 @@ class cartViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "gotoPayment"{
-            let destCont = segue.destination as! addressPaymentViewController
-            destCont.orderId =  self.cartVM.orderId ?? -1
-            destCont.orderItemId =  self.cartVM.orderItemId ?? -1
+            let destinationNavigationController = segue.destination as! UINavigationController
+            let targetController = destinationNavigationController.topViewController as! addressPaymentViewController
+
+            targetController.orderId =  self.cartVM.orderId ?? -1
+            targetController.orderItemId =  self.cartVM.orderItemId ?? -1
             //destCont.orderDic = self.paramsDic
-            destCont.cartId = self.cartVM.cartId ?? -1
+            targetController.cartId = self.cartVM.cartId ?? -1
             //orderItemId
             //var cartId: Int?
         }

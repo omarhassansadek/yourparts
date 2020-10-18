@@ -13,42 +13,16 @@ class paymentMethodViewController: UIViewController, UITableViewDelegate, UITabl
 
     @IBOutlet weak var checkico: UIImageView!
     @IBOutlet weak var dimmedView: UIView!
-    @IBOutlet weak var alertView: UIView!
-    @IBOutlet weak var cancelBtn: UIButton!
-    @IBOutlet weak var saveBtn: UIButton!
-    @IBOutlet weak var textViewLbl: UITextView!
     @IBOutlet weak var paymentMethodTableView: UITableView!
     @IBOutlet var paymentVM: paymentViewModel!
     var orderId: Int?
     var orderItemId: Int?
     var orderDic: [String: Any]?
     var cartId: Int?
+    var selectedMethod = -1
 
     override func viewDidLoad() {
         super.viewDidLoad()
-      
-        self.alertView.layer.cornerRadius = 15.0
-        
-        self.textViewLbl.text = "Click to make sure to pay when received".localized
-        self.textViewLbl.font = UIFont(name: "Cairo-Regular", size: 14)!
-        
-        
-        self.saveBtn.setTitle("Continue".localized, for: .normal)
-        
-        self.saveBtn.titleLabel?.font = UIFont(name: "Cairo-Bold", size: 14)
-        
-        self.saveBtn.layer.cornerRadius = 12.5
-        
-        
-        self.cancelBtn.setTitle("Cancel".localized, for: .normal)
-        
-        self.cancelBtn.titleLabel?.font = UIFont(name: "Cairo-Bold", size: 14)
-        
-        self.cancelBtn.layer.cornerRadius = 12.5
-
-        
-        
-
         
         self.paymentMethodTableView.delegate = self
         self.paymentMethodTableView.dataSource = self
@@ -91,7 +65,6 @@ class paymentMethodViewController: UIViewController, UITableViewDelegate, UITabl
         return 4
     }
     
-    var selectedMethod = 0
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
@@ -101,35 +74,43 @@ class paymentMethodViewController: UIViewController, UITableViewDelegate, UITabl
             
             let addAddressCell = tableView.dequeueReusableCell(withIdentifier: "AddAddressCell") as! addAddressTableViewCell
             addAddressCell.addAddress = {
-                
-                //var params: [String: Any] = [:]
-                self.orderDic = [:]
-                self.orderDic?["payment_method"] = self.selectedMethod
-                
-                self.paymentVM.patchOrder(id: self.orderId ?? -1, apiParameters: self.orderDic ?? [:] , onSuccess: { (isSuccess) in
-                    //
-                    
-                    var createDic: [String: Any] = [:]
-                    createDic["cart_id"] = self.cartId ?? -1
-                    createDic["order_id"] = self.orderItemId ?? -1
-                    
-                    self.paymentVM.createOrderItem(apiParameters: createDic, onSuccess: { (isSucees) in
-                        //
-                        self.performSegue(withIdentifier: "gotoConfirmVC", sender: self)
+                if self.selectedMethod != -1{
+                    //var params: [String: Any] = [:]
+                          self.orderDic = [:]
+                          self.orderDic?["payment_method"] = self.selectedMethod
+                          
+                          self.paymentVM.patchOrder(id: self.orderId ?? -1, apiParameters: self.orderDic ?? [:] , onSuccess: { (isSuccess) in
+                              //
+                              
+                              var createDic: [String: Any] = [:]
+                              createDic["cart_id"] = self.cartId ?? -1
+                              createDic["order_id"] = self.orderItemId ?? -1
+                              
+                              self.paymentVM.createOrderItem(apiParameters: createDic, onSuccess: { (isSucees) in
+                                  //
+                                  self.performSegue(withIdentifier: "gotoConfirmVC", sender: self)
 
-                    }) { (errMsg) in
-                        AlertViewer().showAlertView(withMessage: errMsg, onController: self)
+                              }) { (errMsg) in
+                                  AlertViewer().showAlertView(withMessage: errMsg, onController: self)
 
-                    }
+                              }
 
-                }) { (errMsg) in
-                    //
-                    AlertViewer().showAlertView(withMessage: errMsg, onController: self)
+                          }) { (errMsg) in
+                              //
+                              AlertViewer().showAlertView(withMessage: errMsg, onController: self)
+                          }
                 }
-                
-                
+      
             }
+            
             addAddressCell.addAddressBtn.setTitle("Choose Payment Method".localized, for: .normal)
+
+            if self.selectedMethod != -1{
+                addAddressCell.addAddressBtn.backgroundColor = primaryColor
+            }else{
+                addAddressCell.addAddressBtn.backgroundColor = UIColor.lightGray
+            }
+            
             return addAddressCell
             
         }else{
@@ -176,7 +157,7 @@ class paymentMethodViewController: UIViewController, UITableViewDelegate, UITabl
     }
     
     
-    var arrayBox: [Bool] = [true, false, false]
+    var arrayBox: [Bool] = [false, false, false]
     
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -196,30 +177,8 @@ class paymentMethodViewController: UIViewController, UITableViewDelegate, UITabl
             destCont.orderId = self.orderId ?? -1
         }
     }
-    @IBAction func saveBtnClicked(_ sender: Any) {
-        
-     
-        UIView.animate(withDuration: 1.5, animations: {
-            self.dimmedView.isHidden = true
-            self.alertView.isHidden = true
-        }) { (isSuccess) in
-            //
-            self.performSegue(withIdentifier: "gotoConfirmVC", sender: self)
-        }
-        //self.textViewLbl.isHidden = true
-        
-        //self.saveBtn.isHidden = true
-
-        //self.cancelBtn.isHidden = true
-
-        //self.checkico.isHidden = false
-    }
     
-    @IBAction func cancelBtnClicked(_ sender: Any) {
-        self.dimmedView.isHidden = true
-        self.alertView.isHidden = true
-    }
-    
+
     @IBAction func goBacktoAddress(_ sender: Any) {
         print("Ok")
         self.navigationController?.popViewController(animated: true)

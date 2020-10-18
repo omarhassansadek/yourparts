@@ -23,6 +23,8 @@ class paymentViewModel: NSObject {
     
     var paymentMethod = ""
     
+    var paymentMethodKey = -1
+
     var totalPrice = ""
     
     var installationCost = 0
@@ -186,6 +188,40 @@ class paymentViewModel: NSObject {
                              }
         }
     
+    
+        var paymentUrl = ""
+    
+    func payOnline(paymentMethod:Int, id: Int, onSuccess: @escaping(Bool)-> () , onFailure: @escaping(String)-> ()){
+                   
+            var params: [String:Any] = [:]
+            
+            params["order"] = id
+        
+            var paymentUrl = ""
+            
+            if paymentMethod == 1{
+                paymentUrl = baseUrl + visaPaymentUrl
+            }else if paymentMethod == 2{
+                paymentUrl = baseUrl + valuPaymentUrl
+            }
+                   self.paymentC.createOrder(url: paymentUrl, apiMethod: .post, parametersOfCall: params, apiEncoding: JSONEncoding.default,  completionSuccess: { (responseSuccess) in
+                          //
+                            print(responseSuccess)
+                            
+                            if let url = responseSuccess["iframe"].string{
+                                self.paymentUrl = url
+                            }
+                               
+                            onSuccess(true)
+                            
+                    }) { (responseFailure) in
+                            onFailure("We encountered an error. Try again later")
+                    }
+                          
+
+        
+        }
+    
         
     
         func getOrder( id: Int, onSuccess: @escaping(Bool)-> () , onFailure: @escaping(String)-> ()){
@@ -199,6 +235,9 @@ class paymentViewModel: NSObject {
                  
                             
                             if let paymentMethodKey = responseSuccess["payment_method"].int{
+                                
+                                self.paymentMethodKey = paymentMethodKey
+                                
                                 switch paymentMethodKey {
                                 case 0:
                                     self.paymentMethod = "Cash on delivery".localized
@@ -263,6 +302,8 @@ class paymentViewModel: NSObject {
         
             }
 
+    
+    
        
     
     

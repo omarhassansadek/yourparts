@@ -154,8 +154,10 @@ class addAddressViewController: UIViewController, UIPickerViewDelegate, UIPicker
             //
             if isSuccess{
                 self.cityPickerView.reloadAllComponents()
-                self.cityTf.text = self.paymentVM.ctitiesArr[0].name
-                self.getRegions(id: self.paymentVM.ctitiesArr[0].id ?? -1)
+                if self.paymentVM.ctitiesArr.count > 0 {
+                    self.cityTf.text = self.paymentVM.ctitiesArr[0].name
+                    self.getRegions(id: self.paymentVM.ctitiesArr[0].id ?? -1)
+                }
             }
         }) { (errMsg) in
             //

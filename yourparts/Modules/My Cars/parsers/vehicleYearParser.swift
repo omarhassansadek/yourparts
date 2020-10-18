@@ -16,7 +16,7 @@ class vehicleYearParsers{
         
         var carYearsArr:[carYear] = []
             
-        for oneYear in fromJSON.arrayValue {
+        for oneYear in fromJSON["results"].arrayValue {
             
             var carYearObj = carYear()
                      

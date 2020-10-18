@@ -15,7 +15,7 @@ class vehicleModelsParsers{
         
         var carModelsArr:[carModel] = []
             
-        for oneModel in fromJSON.arrayValue {
+        for oneModel in fromJSON["results"].arrayValue {
             
             var carModelObj = carModel()
                      
