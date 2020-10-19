@@ -303,6 +303,38 @@ class paymentViewModel: NSObject {
             }
 
     
+    var paymentSuccessStatus = false
+    
+    func getOrderPaymentStatus( id: Int, onSuccess: @escaping(Bool)-> () , onFailure: @escaping(String)-> ()){
+
+          // print(apiParameters)
+           
+           self.paymentC.createOrder(url: baseUrl+getPaymentStatus+"?order=\(id)", apiMethod: .get, parametersOfCall: nil, apiEncoding: JSONEncoding.default,  completionSuccess: { (responseSuccess) in
+                  //
+                    print(responseSuccess)
+                    
+
+                    if let msg = responseSuccess["message"].string{
+                        if msg == "تمت العملية بنجاح"{
+                            self.paymentSuccessStatus = true
+                        }else{
+                            self.paymentSuccessStatus = false
+                        }
+                    }
+            
+                    onSuccess(true)
+
+
+
+                   
+            }) { (responseFailure) in
+                    onFailure("We encountered an error. Try again later")
+            }
+                  
+    
+        }
+
+    
     
        
     

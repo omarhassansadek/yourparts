@@ -279,13 +279,23 @@
                                                                     <constraint firstItem="9fQ-lo-mqy" firstAttribute="leading" secondItem="jPe-Ee-46c" secondAttribute="leading" id="bxG-eb-m6v"/>
                                                                 </constraints>
                                                             </view>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fk1-iX-yZD">
+                                                                <rect key="frame" x="0.0" y="0.0" width="105" height="60"/>
+                                                                <connections>
+                                                                    <action selector="gotoCart:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="HzK-5a-4GY"/>
+                                                                </connections>
+                                                            </button>
                                                         </subviews>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
+                                                            <constraint firstAttribute="trailing" secondItem="Fk1-iX-yZD" secondAttribute="trailing" id="5yj-7v-eYj"/>
                                                             <constraint firstAttribute="trailing" secondItem="XNg-WQ-eQn" secondAttribute="trailing" constant="15" id="Dcc-TD-0Wy"/>
                                                             <constraint firstAttribute="trailing" secondItem="jPe-Ee-46c" secondAttribute="trailing" id="KrV-7Q-IOe"/>
+                                                            <constraint firstAttribute="bottom" secondItem="Fk1-iX-yZD" secondAttribute="bottom" id="LXJ-H1-HKb"/>
                                                             <constraint firstItem="XNg-WQ-eQn" firstAttribute="top" secondItem="T5G-M7-wuo" secondAttribute="top" id="RcI-AT-Xr4"/>
+                                                            <constraint firstItem="Fk1-iX-yZD" firstAttribute="top" secondItem="T5G-M7-wuo" secondAttribute="top" id="fUM-7E-LLK"/>
                                                             <constraint firstItem="XNg-WQ-eQn" firstAttribute="leading" secondItem="T5G-M7-wuo" secondAttribute="leading" constant="15" id="gHg-yf-JJj"/>
+                                                            <constraint firstItem="Fk1-iX-yZD" firstAttribute="leading" secondItem="T5G-M7-wuo" secondAttribute="leading" id="gLm-yy-KbL"/>
                                                             <constraint firstItem="jPe-Ee-46c" firstAttribute="top" secondItem="XNg-WQ-eQn" secondAttribute="bottom" id="j4x-J8-iuZ"/>
                                                             <constraint firstAttribute="bottom" secondItem="jPe-Ee-46c" secondAttribute="bottom" id="o6b-6m-6L7"/>
                                                             <constraint firstItem="jPe-Ee-46c" firstAttribute="leading" secondItem="T5G-M7-wuo" secondAttribute="leading" id="pva-Ke-apX"/>

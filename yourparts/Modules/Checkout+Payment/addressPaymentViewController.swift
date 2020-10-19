@@ -45,11 +45,14 @@ class addressPaymentViewController: UIViewController, UITableViewDelegate, UITab
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.navigationController?.navigationBar.isHidden = true
+        self.navigationController?.navigationBar.isHidden = false
 
+
+        
         //self.receivingMethodsView.isHidden = true
         
         if self.isComingFromProfile ?? false{
+            self.getAddresses()
             self.receivingMethodsView.isHidden = true
             self.chooseLocLbl.isHidden = false
             self.addressTableView.isHidden = false
@@ -57,6 +60,13 @@ class addressPaymentViewController: UIViewController, UITableViewDelegate, UITab
             self.indView.layoutIfNeeded()
             self.addressTableViewTopConstraint.constant = 15
             self.addressTableView.layoutIfNeeded()
+            self.navigationController?.navigationBar.tintColor = primaryColor
+
+        }else{
+            let button1 = UIBarButtonItem(image: UIImage(named: "close-1"), style: .plain, target: self, action: Selector("dismissCheckout")) // action:#selector(Class.MethodName) for swift 3
+            self.navigationItem.rightBarButtonItem  = button1
+
+            self.navigationController?.navigationBar.tintColor = UIColor.black
 
         }
         
@@ -70,7 +80,6 @@ class addressPaymentViewController: UIViewController, UITableViewDelegate, UITab
         self.addressTableView.register(nib2, forCellReuseIdentifier: "AddAddressCell")
 
         
-        self.navigationController?.navigationBar.tintColor = primaryColor
 
         self.navigationController?.navigationBar.shadowImage = UIImage()
 
@@ -118,6 +127,11 @@ class addressPaymentViewController: UIViewController, UITableViewDelegate, UITab
         self.addViewBtn.layer.cornerRadius = 15.0
 
         // Do any additional setup after loading the view.
+    }
+    
+    @objc func dismissCheckout(){
+         print("clicked")
+         self.dismiss(animated: true, completion: nil)
     }
     
     func getAddresses(){
@@ -181,6 +195,9 @@ class addressPaymentViewController: UIViewController, UITableViewDelegate, UITab
 
         }else{
             let addressCell = tableView.dequeueReusableCell(withIdentifier: "addressCell") as! addressTableViewCell
+            if (self.isComingFromProfile ?? false) {
+                addressCell.chooseAddressCheckBox.isHidden = true
+            }
             //addressCell.chooseAddressCheckBox.On
             addressCell.buildingNo.text = self.paymentVM.addressArr[indexPath.row].address
             //addressCell.appartmentNo.text = self.AddressVM.addressArr[indexPath.row - 1].address

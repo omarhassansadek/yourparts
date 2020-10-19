@@ -83,6 +83,8 @@ class infoProfileViewController: UIViewController, UITextFieldDelegate {
         self.navigationController?.navigationBar.titleTextAttributes =
             [NSAttributedString.Key.foregroundColor: UIColor.black,
              NSAttributedString.Key.font: UIFont(name: "Cairo-Bold", size: 18)!]
+        
+        
 
 //
 //        self.infoprofileVM.getUserProfile( onSuccess: { (isSuccess) in

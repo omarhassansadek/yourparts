@@ -67,3 +67,4 @@ var visaPaymentUrl = "online-payment/"
 
 var valuPaymentUrl = "valu-online-payment/"
 
+var getPaymentStatus = "payment_status/"

@@ -311,7 +311,8 @@ class cartViewController: UIViewController, UITableViewDelegate, UITableViewData
         orderDic["_total"] = self.cartVM.total
         orderDic["customer"] = UserDefaults.standard.integer(forKey: "userid")
         self.paramsDic["order"] = orderDic
-        
+        self.paramsDic["cart"] = self.cartVM.cartId ?? -1
+
         self.cartVM.createOrder(apiParameters: self.paramsDic, onSuccess: { (isSuccess) in
             if isSuccess{
                 self.actind.stopAnimating()

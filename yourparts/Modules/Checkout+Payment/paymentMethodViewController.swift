@@ -24,6 +24,10 @@ class paymentMethodViewController: UIViewController, UITableViewDelegate, UITabl
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let button1 = UIBarButtonItem(image: UIImage(named: "close-1"), style: .plain, target: self, action: Selector("dismissCheckout")) // action:#selector(Class.MethodName) for swift 3
+        self.navigationItem.rightBarButtonItem  = button1
+
+                
         self.paymentMethodTableView.delegate = self
         self.paymentMethodTableView.dataSource = self
         
@@ -39,8 +43,9 @@ class paymentMethodViewController: UIViewController, UITableViewDelegate, UITabl
             topItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         }
 
-        
-        self.navigationController?.navigationBar.tintColor = primaryColor
+        self.navigationItem.hidesBackButton = true
+
+        self.navigationController?.navigationBar.tintColor = UIColor.black
         
         self.navigationController?.navigationBar.shadowImage = UIImage()
         
@@ -54,6 +59,11 @@ class paymentMethodViewController: UIViewController, UITableViewDelegate, UITabl
         
         //AddAddressCell
         // Do any additional setup after loading the view.
+    }
+    
+    @objc func dismissCheckout(){
+         print("clicked")
+         self.dismiss(animated: true, completion: nil)
     }
     
     
@@ -175,6 +185,7 @@ class paymentMethodViewController: UIViewController, UITableViewDelegate, UITabl
         if segue.identifier == "gotoConfirmVC"{
             let destCont = segue.destination as! confirmationViewController
             destCont.orderId = self.orderId ?? -1
+            destCont.orderItemId = self.orderItemId
         }
     }
     

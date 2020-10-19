@@ -127,6 +127,8 @@
 		5C32520D252627E4001418FC /* vehicleModelsParsers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C32520C252627E4001418FC /* vehicleModelsParsers.swift */; };
 		5C3A29A6253340D900EBE984 /* Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C3A29A5253340D900EBE984 /* Application.swift */; };
 		5C3A29A8253341DE00EBE984 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C3A29A7253341DE00EBE984 /* main.swift */; };
+		5C3C70F0253DE25C0033BBBE /* changePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C3C70EF253DE25C0033BBBE /* changePasswordViewController.swift */; };
+		5C3C70F2253DF1440033BBBE /* forgetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C3C70F1253DF1440033BBBE /* forgetPasswordViewController.swift */; };
 		5C3D4173253BA9FC00F8ED46 /* paymentOnlineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C3D4172253BA9FC00F8ED46 /* paymentOnlineViewController.swift */; };
 		5C4021BD2520BFFF002FD3A0 /* paymentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C4021BC2520BFFF002FD3A0 /* paymentViewModel.swift */; };
 		5C4021C02520C08C002FD3A0 /* paymentClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C4021BF2520C08C002FD3A0 /* paymentClient.swift */; };
@@ -378,6 +380,8 @@
 		5C32520C252627E4001418FC /* vehicleModelsParsers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = vehicleModelsParsers.swift; sourceTree = "<group>"; };
 		5C3A29A5253340D900EBE984 /* Application.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Application.swift; sourceTree = "<group>"; };
 		5C3A29A7253341DE00EBE984 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		5C3C70EF253DE25C0033BBBE /* changePasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = changePasswordViewController.swift; sourceTree = "<group>"; };
+		5C3C70F1253DF1440033BBBE /* forgetPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = forgetPasswordViewController.swift; sourceTree = "<group>"; };
 		5C3D4172253BA9FC00F8ED46 /* paymentOnlineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = paymentOnlineViewController.swift; sourceTree = "<group>"; };
 		5C4021BC2520BFFF002FD3A0 /* paymentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = paymentViewModel.swift; sourceTree = "<group>"; };
 		5C4021BF2520C08C002FD3A0 /* paymentClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = paymentClient.swift; sourceTree = "<group>"; };
@@ -628,6 +632,7 @@
 				3969EFB224EC110400695277 /* Auth.storyboard */,
 				3969EFB424EC142000695277 /* signupViewController.swift */,
 				398D311A24ED7B3F0035A00E /* loginViewController.swift */,
+				5C3C70F1253DF1440033BBBE /* forgetPasswordViewController.swift */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -656,6 +661,7 @@
 				3972554A24A3B09D0092D1B5 /* profileViewController.swift */,
 				5C89029C251B8FCD00730869 /* settingsViewController.swift */,
 				39E05F4624A80E8D00F2C025 /* infoProfileViewController.swift */,
+				5C3C70EF253DE25C0033BBBE /* changePasswordViewController.swift */,
 				393BC01724A7C28700CAB4BE /* favAddressViewController.swift */,
 				39E3B5C524E1944B0042BCAF /* favViewController.swift */,
 				5C42CF84251CEB100032C357 /* requestPickerDelegate.swift */,
@@ -1562,6 +1568,7 @@
 				3990DE3D24E906E600ED3F49 /* addToCartBtnTableViewCell.swift in Sources */,
 				395803D82521C446007FFF5E /* cityParser.swift in Sources */,
 				5CF983C9250F8E2600D56721 /* offersCollectionDelegate.swift in Sources */,
+				5C3C70F0253DE25C0033BBBE /* changePasswordViewController.swift in Sources */,
 				5CF063792518C7FB00E73380 /* installmentsViewController.swift in Sources */,
 				5CA8BFF62523368800676B9A /* offerParser.swift in Sources */,
 				5CA8BFEA252217A700676B9A /* frequentlyCollectionDelegate.swift in Sources */,
@@ -1585,6 +1592,7 @@
 				39AEFF1824E10C0700AE0552 /* homeViewController.swift in Sources */,
 				5CA8BFFA2523848900676B9A /* profileClient.swift in Sources */,
 				390FFD4024A288F9008BD0B0 /* constants.swift in Sources */,
+				5C3C70F2253DF1440033BBBE /* forgetPasswordViewController.swift in Sources */,
 				5C4021C02520C08C002FD3A0 /* paymentClient.swift in Sources */,
 				5CF0637225177F5200E73380 /* addAddressTableViewCell.swift in Sources */,
 				5C4339F52512581900F67552 /* productDetailsViewController.swift in Sources */,

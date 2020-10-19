@@ -28,7 +28,7 @@ class paymentMethodTableViewCell: UITableViewCell {
 
         self.cartLbl.text = "Cart".localized
 
-        self.cartLbl.font = UIFont(name: "Cairo-Bold", size: 18)
+        self.cartLbl.font = UIFont(name: "Cairo-Bold", size: 16)
 
     
     }

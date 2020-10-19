@@ -81,6 +81,9 @@ class confirmationViewController: UIViewController , UITableViewDelegate, UITabl
 
         super.viewDidLoad()
         
+        let button1 = UIBarButtonItem(image: UIImage(named: "close-1"), style: .plain, target: self, action: Selector("dismissCheckout")) // action:#selector(Class.MethodName) for swift 3
+        self.navigationItem.rightBarButtonItem  = button1
+
         
         self.saveBtn.setTitle("Continue".localized, for: .normal)
         
@@ -192,7 +195,10 @@ class confirmationViewController: UIViewController , UITableViewDelegate, UITabl
         }
 
         
-        self.navigationController?.navigationBar.tintColor = primaryColor
+        self.navigationItem.hidesBackButton = true
+
+        
+        self.navigationController?.navigationBar.tintColor = UIColor.black
         
         self.navigationController?.navigationBar.shadowImage = UIImage()
         
@@ -224,12 +230,12 @@ class confirmationViewController: UIViewController , UITableViewDelegate, UITabl
         
         self.payBtn.isHidden = false
 
-           let height = self.tabBarController?.tabBar.frame.height ?? 49.0
+           //let height = self.tabBarController?.tabBar.frame.height ?? 49.0
 
              let bottomSheetView = BottomSheetView(
                     contentView: bottomView,
                     //125 + 50
-                 contentHeights: [height + 202.5, height + 350]
+                 contentHeights: [202.5,  360]
              )
              bottomSheetView.present(in: self.view )
 
@@ -346,6 +352,11 @@ class confirmationViewController: UIViewController , UITableViewDelegate, UITabl
         }
     }
     
+    @objc func dismissCheckout(){
+         print("clicked")
+         self.dismiss(animated: true, completion: nil)
+    }
+    
     @IBAction func goBacktoPaymentVC(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
@@ -353,7 +364,7 @@ class confirmationViewController: UIViewController , UITableViewDelegate, UITabl
     
     @IBAction func payBtnClicked(_ sender: Any) {
         if self.paymentVM.paymentMethodKey != 0{
-            self.paymentVM.payOnline(paymentMethod: Int(self.paymentVM.paymentMethodKey) ?? 0, id: self.orderId ?? -1, onSuccess: { (isSuccess) in
+            self.paymentVM.payOnline(paymentMethod: Int(self.paymentVM.paymentMethodKey) ?? 0, id: self.orderItemId ?? -1, onSuccess: { (isSuccess) in
                 self.performSegue(withIdentifier: "gotoPaymentOnline", sender: self)
             }) { (errMsg) in
                 AlertViewer().showAlertView(withMessage: errMsg, onController: self)
@@ -370,7 +381,7 @@ class confirmationViewController: UIViewController , UITableViewDelegate, UITabl
         if segue.identifier == "gotoPaymentOnline"{
             let destCont = segue.destination as! paymentOnlineViewController
             destCont.urlToCall = self.paymentVM.paymentUrl
-        
+            destCont.orderId = self.orderId ?? -1
         }
     }
     

@@ -66,10 +66,6 @@ class profileViewController: UIViewController, UITableViewDataSource, UITableVie
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        
-        
-   
-        
             if (indexPath.row == 0){
                 let cell = tableView.dequeueReusableCell(withIdentifier: "profileHeader") as! profileHeaderTableViewCell
 
@@ -85,6 +81,9 @@ class profileViewController: UIViewController, UITableViewDataSource, UITableVie
                     self.performSegue(withIdentifier: "gotoSettings", sender: self)
                 }
                 
+                cell.cartBtnClicked = {
+                    self.tabBarController?.selectedIndex = 2
+                }
                 return cell
                 
             }else{
@@ -120,6 +119,9 @@ class profileViewController: UIViewController, UITableViewDataSource, UITableVie
             case 1:
                 //gotoProfileinfo
                 self.performSegue(withIdentifier: "gotoProfileinfo", sender: self)
+            
+           // case 0:
+                //gotoChangePassword
 
 //        case 3:
 //            // self.performSegue(withIdentifier: "gotoFavAddresses", sender: self)
@@ -141,7 +143,7 @@ class profileViewController: UIViewController, UITableViewDataSource, UITableVie
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "gotoPaymentView"{
             let destVC = segue.destination as! addressPaymentViewController
-            destVC.isComingFromProfile = true            
+            destVC.isComingFromProfile = true
         }
     }
     

@@ -89,6 +89,7 @@ class settingsViewController: UIViewController, UITableViewDataSource, UITableVi
     }
 
     
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if (indexPath.row ==  self.settingOptions.count - 1) {
             return 44.0
@@ -98,6 +99,9 @@ class settingsViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.row == 0 {
+            self.performSegue(withIdentifier: "gotoChangePassword", sender: self)
+        }else
         if indexPath.row == settingOptions.count{
             var alertCont = UIAlertController(title: "Yourparts", message: "Are you sure you want to logout?".localized, preferredStyle: .alert)
             
@@ -112,6 +116,8 @@ class settingsViewController: UIViewController, UITableViewDataSource, UITableVi
 
             
             self.present(alertCont, animated: true, completion: nil)
+        }else{
+            
         }
     }
     /*

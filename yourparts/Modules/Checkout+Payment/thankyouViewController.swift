@@ -11,10 +11,19 @@ import UIKit
 class thankyouViewController: UIViewController {
 
     @IBOutlet weak var closeView: UIView!
+    @IBOutlet weak var checkico: UIImageView!
     @IBOutlet weak var roundView: UIView!
+    
+    var success: Bool?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if self.success == true {
+            self.checkico.image = UIImage(named: "checkico")
+        }else{
+            self.checkico.image = UIImage(named: "failureico")
+        }
         
         self.roundView.layer.cornerRadius = 15.0
 

@@ -9,8 +9,16 @@
 import UIKit
 import WebKit
 
-class paymentOnlineViewController: UIViewController {
-
+class paymentOnlineViewController: UIViewController, UIWebViewDelegate {
+    
+    var orderId: Int?
+    
+    
+    
+    @IBOutlet var paymentVM: paymentViewModel!
+    
+    @IBOutlet weak var webView: UIWebView!
+    
     var urlToCall: String?
     
     @IBOutlet weak var paymentWebView: WKWebView!
@@ -25,6 +33,8 @@ class paymentOnlineViewController: UIViewController {
         if let topItem = self.navigationController?.navigationBar.topItem {
                   topItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
               }
+        
+        self.webView.delegate = self
 
               
         self.navigationController?.navigationBar.tintColor = primaryColor
@@ -39,7 +49,8 @@ class paymentOnlineViewController: UIViewController {
                   [NSAttributedString.Key.foregroundColor: UIColor.black,
                    NSAttributedString.Key.font: UIFont(name: "Cairo-Bold", size: 18)!]
 
-        self.paymentWebView.load(URLRequest(url: URL(string: urlToCall ?? "")! ))
+        //self.paymentWebView.load(URLRequest(url: URL(string: urlToCall ?? "")! ))
+        self.webView.loadRequest(URLRequest(url: URL(string: urlToCall ?? "")! ))
         // Do any additional setup after loading the view.
     }
     
@@ -47,6 +58,36 @@ class paymentOnlineViewController: UIViewController {
     @IBAction func dismissVC(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
+    
+    
+    func webViewDidFinishLoad(_ webView: UIWebView) {
+        if let text = webView.request?.url?.absoluteString{
+             print(text)
+            if text.contains("/home") {
+                self.paymentVM.getOrderPaymentStatus(id: self.orderId ?? -1, onSuccess: { (isSuccess) in
+                    //
+                    
+                    //if isSuccess{
+                        self.performSegue(withIdentifier: "gotoThankyouVc", sender: self)
+                    //}
+                    
+                }) { (errMsg) in
+                    //
+                }
+            }
+
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "gotoThankyouVc"{
+            //gotoThankyouVc
+            let destCont = segue.destination as! thankyouViewController
+            destCont.success = self.paymentVM.paymentSuccessStatus 
+        }
+    }
+    
+
     /*
     // MARK: - Navigation
 

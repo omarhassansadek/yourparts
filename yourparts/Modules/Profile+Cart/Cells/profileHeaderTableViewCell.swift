@@ -62,6 +62,13 @@ class profileHeaderTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    var cartBtnClicked : (() -> Void)? = nil
+
+    @IBAction func gotoCart(_ sender: Any) {
+        if let cartClicked = self.cartBtnClicked{
+            cartClicked()
+        }
+    }
     
     var goSettings : (() -> Void)? = nil
 
