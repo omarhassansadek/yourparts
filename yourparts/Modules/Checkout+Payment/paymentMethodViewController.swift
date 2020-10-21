@@ -20,6 +20,14 @@ class paymentMethodViewController: UIViewController, UITableViewDelegate, UITabl
     var orderDic: [String: Any]?
     var cartId: Int?
     var selectedMethod = -1
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+        self.navigationItem.hidesBackButton = true
+
+        self.navigationController?.navigationBar.tintColor = UIColor.black
+        
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -155,7 +163,12 @@ class paymentMethodViewController: UIViewController, UITableViewDelegate, UITabl
                     }
                 }
                 
-                self.paymentMethodTableView.reloadData()
+                if indexPath.row == 2{
+                    self.performSegue(withIdentifier: "gotoInstallmentMethod", sender: self)
+                }else{
+                    self.paymentMethodTableView.reloadData()
+                }
+                
             }
             
             methodCell.methodBox.on = arrayBox[indexPath.row]

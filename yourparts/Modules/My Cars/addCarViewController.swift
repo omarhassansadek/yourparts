@@ -35,6 +35,9 @@ class addCarViewController: UIViewController, UIPickerViewDelegate, UIPickerView
 
     @IBOutlet weak var activityind: NVActivityIndicatorView!
     
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.navigationBar.isHidden = false
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

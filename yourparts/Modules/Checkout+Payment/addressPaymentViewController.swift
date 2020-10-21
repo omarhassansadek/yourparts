@@ -148,14 +148,15 @@ class addressPaymentViewController: UIViewController, UITableViewDelegate, UITab
 
                 if self.paymentVM.addressArr.count > 0{
                     self.addAddressView.isHidden = true
-
-                    self.activityind.stopAnimating()
-
+                    self.chooseLocLbl.isHidden = false
                     self.addressTableView.reloadData()
-
                 }else{
+                    self.chooseLocLbl.isHidden = true
                     self.addAddressView.isHidden = false
                 }
+                
+                self.activityind.stopAnimating()
+
             }
             
         }) { (errMsg) in
@@ -173,6 +174,8 @@ class addressPaymentViewController: UIViewController, UITableViewDelegate, UITab
 
     @IBAction func addViewBtnClicked(_ sender: Any) {
         //self.addAddressView.layer.isHidden = true
+        self.performSegue(withIdentifier: "gotoAddAddress", sender: self)
+
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {

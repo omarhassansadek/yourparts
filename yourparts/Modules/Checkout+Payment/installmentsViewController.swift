@@ -8,52 +8,56 @@
 
 import UIKit
 
-class installmentsViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+class installmentsViewController: UIViewController {
 
-    @IBOutlet weak var brandsCollectionView: UICollectionView!
-  
+    @IBOutlet weak var valuBtn: UIButton!
+    
+    @IBOutlet weak var bankBtn: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        brandsCollectionView.delegate = self
-        brandsCollectionView.dataSource = self
+        self.navigationItem.hidesBackButton = false
+
+        self.navigationController?.navigationBar.tintColor = primaryColor
+        
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        
+        self.navigationController?.navigationBar.barTintColor = anotherGreyColor
+        
+        self.title = "Installment Type".localized
+        
+        self.navigationController?.navigationBar.titleTextAttributes =
+            [NSAttributedString.Key.foregroundColor: UIColor.black,
+             NSAttributedString.Key.font: UIFont(name: "Cairo-Bold", size: 18)!]
+        
+        if let topItem = self.navigationController?.navigationBar.topItem {
+            topItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        }
+
+        self.valuBtn.backgroundColor = primaryColor
+        self.valuBtn.layer.cornerRadius = 12.5
+        self.valuBtn.titleLabel?.font = UIFont(name: "Cairo-Bold", size: 13) 
+        self.valuBtn.setTitleColor(UIColor.white, for: .normal)
+        self.valuBtn.setTitle("Installment using valu".localized, for: .normal)
+
+        self.bankBtn.backgroundColor = primaryColor
+        self.bankBtn.layer.cornerRadius = 12.5
+        self.bankBtn.titleLabel?.font = UIFont(name: "Cairo-Bold", size: 13)
+        self.bankBtn.setTitleColor(UIColor.white, for: .normal)
+        self.bankBtn.setTitle("Installment By Bank".localized, for: .normal)
+
+
         // Do any additional setup after loading the view.
     }
     
     
-    
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 6
-        
-        
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
-            let cellCollection = collectionView.dequeueReusableCell(withReuseIdentifier: "offerSlider", for: indexPath) as! homeSliderCollectionViewCell
-            
-            //cellCollection.roundView.backgroundColor = UIColor.white
-            cellCollection.offerimg.image = UIImage(named:"brand")
-            
-            return cellCollection
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-          return 0.0
-      }
-      
-      func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-          return 15.0
-      }
-      
-      func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 100.0 , height: 50.0)
+    override func viewDidDisappear(_ animated: Bool) {
+        self.navigationItem.hidesBackButton = true
 
-      }
+        self.navigationController?.navigationBar.tintColor = UIColor.black
+
+    }
 
     /*
     // MARK: - Navigation

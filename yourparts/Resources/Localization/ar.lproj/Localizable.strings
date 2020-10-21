@@ -351,3 +351,9 @@
 "Retrieve Password" = "استعادة  كلمة المرور" ;
 
 "Send" = "إرسال" ;
+
+"Installment Type" = "نوع التقسيط";
+
+"Installment using valu" = "تقسيط عن طريق فاليو أو وقتى" ;
+
+"Installment By Bank" = "تقسيط عن طريق البنوك" ;

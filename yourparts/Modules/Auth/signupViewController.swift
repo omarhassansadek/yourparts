@@ -161,7 +161,7 @@ class signupViewController: UIViewController {
                         //gotoHomePage
                         self.activityindicatorView.stopAnimating()
                         self.createAccImg.isHidden = false
-
+                        UserDefaults.standard.set(true, forKey: "isLogged")
 
                         self.performSegue(withIdentifier: "gotoHome", sender: self)
                         
