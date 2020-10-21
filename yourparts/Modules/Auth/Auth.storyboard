@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="gt4-2w-eHM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="gt4-2w-eHM">
     <device id="retina4_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -20,14 +21,14 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="3YS-cR-Sd1"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="STf-SX-2ac" firstAttribute="top" secondItem="MZd-hc-Ntx" secondAttribute="top" id="75i-hf-2cM"/>
                             <constraint firstItem="STf-SX-2ac" firstAttribute="leading" secondItem="3YS-cR-Sd1" secondAttribute="leading" id="yMj-9u-tgY"/>
                             <constraint firstAttribute="trailing" secondItem="STf-SX-2ac" secondAttribute="trailing" id="ytB-1H-rHJ"/>
                             <constraint firstAttribute="bottom" secondItem="STf-SX-2ac" secondAttribute="bottom" id="zS2-N4-gVl"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="3YS-cR-Sd1"/>
                     </view>
                     <connections>
                         <segue destination="iIR-pJ-skI" kind="show" identifier="gotoLogin" id="hWs-dG-uKW"/>
@@ -104,7 +105,7 @@
                                             <constraint firstAttribute="height" constant="35" id="EYe-zH-j3F"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1Na-Eh-aGX">
                                         <rect key="frame" x="0.0" y="249" width="280" height="35"/>
@@ -113,7 +114,7 @@
                                             <constraint firstAttribute="height" constant="35" id="UPk-dh-s6A"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                     </textField>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vY6-Ry-kaP">
                                         <rect key="frame" x="5" y="359" width="270" height="15"/>
@@ -176,7 +177,7 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WmC-3V-Ii0">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WmC-3V-Ii0">
                                                 <rect key="frame" x="0.0" y="0.0" width="280" height="50"/>
                                                 <connections>
                                                     <action selector="signUserUp" destination="2b6-YN-GH9" eventType="touchUpInside" id="4gt-Ir-ow0"/>
@@ -223,7 +224,7 @@
                                             <constraint firstAttribute="height" constant="35" id="LOx-Vu-4hY"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                     </textField>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -270,7 +271,7 @@
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="close" translatesAutoresizingMaskIntoConstraints="NO" id="zck-dM-oWE">
                                         <rect key="frame" x="0.0" y="0.0" width="15" height="15"/>
                                     </imageView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9YT-W4-ZBt">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9YT-W4-ZBt">
                                         <rect key="frame" x="-10" y="-10" width="35" height="35"/>
                                         <connections>
                                             <action selector="closePressedBtn:" destination="2b6-YN-GH9" eventType="touchUpInside" id="GVu-XQ-WfI"/>
@@ -292,6 +293,7 @@
                                 </constraints>
                             </view>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="Va7-Ds-ydn"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="xIZ-WN-UqG" firstAttribute="bottom" secondItem="Va7-Ds-ydn" secondAttribute="bottom" constant="34" id="EE0-hY-hVg"/>
@@ -304,7 +306,6 @@
                             <constraint firstItem="xIZ-WN-UqG" firstAttribute="leading" secondItem="Va7-Ds-ydn" secondAttribute="leading" id="wCJ-8R-iPU"/>
                             <constraint firstItem="xIZ-WN-UqG" firstAttribute="top" secondItem="cyR-lH-Dkg" secondAttribute="top" id="wDx-2f-STJ"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="Va7-Ds-ydn"/>
                     </view>
                     <connections>
                         <outlet property="activityindicatorView" destination="LD1-t1-pdE" id="Jod-di-aoN"/>
@@ -373,7 +374,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                     </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O4A-iA-hWH">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O4A-iA-hWH">
                                         <rect key="frame" x="5" y="137.5" width="275" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="veD-zV-xGr"/>
@@ -388,7 +389,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vVV-gE-ccg">
                                         <rect key="frame" x="0.0" y="185" width="280" height="40"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OFF-c4-4fF">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OFF-c4-4fF">
                                                 <rect key="frame" x="0.0" y="0.0" width="280" height="40"/>
                                                 <color key="backgroundColor" red="0.93725490196078431" green="0.23921568627450979" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <state key="normal">
@@ -422,7 +423,7 @@
                                             <constraint firstItem="OFF-c4-4fF" firstAttribute="leading" secondItem="vVV-gE-ccg" secondAttribute="leading" id="nt0-oz-Sde"/>
                                         </constraints>
                                     </view>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2OL-12-6EH">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2OL-12-6EH">
                                         <rect key="frame" x="0.0" y="240" width="280" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="ijH-51-cma"/>
@@ -459,6 +460,7 @@
                                 </constraints>
                             </view>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="dZo-fw-q9u"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="wYs-Hl-ej3" firstAttribute="leading" secondItem="dZo-fw-q9u" secondAttribute="leading" constant="20" id="7Ta-ZW-qGu"/>
@@ -469,7 +471,6 @@
                             <constraint firstItem="dZo-fw-q9u" firstAttribute="trailing" secondItem="neY-oc-NI6" secondAttribute="trailing" id="bZ3-4b-hZ8"/>
                             <constraint firstItem="dZo-fw-q9u" firstAttribute="trailing" secondItem="wYs-Hl-ej3" secondAttribute="trailing" constant="20" id="mdB-md-fc9"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="dZo-fw-q9u"/>
                     </view>
                     <navigationItem key="navigationItem" id="S3O-8k-7a0"/>
                     <connections>
@@ -517,7 +518,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="Aow-cF-eBc"/>
                                 </constraints>
-                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" systemColor="labelColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
@@ -533,7 +534,7 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="3wj-ox-50k"/>
                                     <constraint firstAttribute="trailing" secondItem="e6B-Nl-ETF" secondAttribute="trailing" constant="15" id="EGu-J6-mek"/>
@@ -541,7 +542,7 @@
                                     <constraint firstItem="e6B-Nl-ETF" firstAttribute="leading" secondItem="zLS-ac-d68" secondAttribute="leading" constant="15" id="aXn-HX-EfQ"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1v5-yY-Sqv">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1v5-yY-Sqv">
                                 <rect key="frame" x="25" y="300" width="270" height="50"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -552,6 +553,7 @@
                                 </state>
                             </button>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="7hf-Aa-Wjk"/>
                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.93725490199999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="7hf-Aa-Wjk" firstAttribute="trailing" secondItem="1v5-yY-Sqv" secondAttribute="trailing" constant="25" id="6qT-hG-zrN"/>
@@ -567,7 +569,6 @@
                             <constraint firstItem="g7y-Ah-NxN" firstAttribute="leading" secondItem="7hf-Aa-Wjk" secondAttribute="leading" constant="25" id="piK-3D-MXW"/>
                             <constraint firstItem="7hf-Aa-Wjk" firstAttribute="trailing" secondItem="g7y-Ah-NxN" secondAttribute="trailing" constant="25" id="xH0-OR-UyE"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="7hf-Aa-Wjk"/>
                     </view>
                     <navigationItem key="navigationItem" id="ccJ-vn-RJA"/>
                     <connections>
@@ -591,13 +592,24 @@
             <point key="canvasLocation" x="-502" y="892"/>
         </scene>
     </scenes>
+    <designables>
+        <designable name="ulF-ce-xQF">
+            <size key="intrinsicContentSize" width="15" height="15"/>
+        </designable>
+    </designables>
     <inferredMetricsTieBreakers>
-        <segue reference="mlD-Qt-lwR"/>
+        <segue reference="98t-8o-tzj"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="authBg" width="375" height="812"/>
         <image name="close" width="256" height="256"/>
         <image name="createAccBtn" width="374" height="60"/>
         <image name="signinFbBtn" width="374" height="63"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>
