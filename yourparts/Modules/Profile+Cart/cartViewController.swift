@@ -142,7 +142,15 @@ class cartViewController: UIViewController, UITableViewDelegate, UITableViewData
           cell.productPrice.text =  self.cartVM.cartArr[indexPath.row].unit_price
           
           
-        
+        cell.productimage.sd_setImage(with: URL(string: self.cartVM.cartArr[indexPath.row].image ?? "") , placeholderImage: nil, completed: { (image, error, cacheType, url) -> Void in
+               if ((error) != nil) {
+                   // set the placeholder image here
+                cell.productimage.image = UIImage(named: "goodTire")
+               } else {
+                   // success ... use the image
+               }
+           })
+
         
           let cellDelegate = quantityPickerDelegate()
         

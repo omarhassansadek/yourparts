@@ -271,6 +271,16 @@ class confirmationViewController: UIViewController , UITableViewDelegate, UITabl
             let cartCell = tableView.dequeueReusableCell(withIdentifier: "cartCell") as! cartTableViewCell
             cartCell.productName.text = self.paymentVM.itemsArr[indexPath.row - 2].product_name
             cartCell.productPrice.text = self.paymentVM.itemsArr[indexPath.row - 2]._unit_price
+            cartCell.productimage.sd_setImage(with: URL(string: self.paymentVM.itemsArr[indexPath.row - 2].image ?? "") , placeholderImage: nil, completed: { (image, error, cacheType, url) -> Void in
+                   if ((error) != nil) {
+                       // set the placeholder image here
+                    cartCell.productimage.image = UIImage(named: "goodTire")
+                   } else {
+                       // success ... use the image
+                   }
+               })
+
+
             return cartCell
 
         }
