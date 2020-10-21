@@ -58,8 +58,8 @@ class offersCollectionDelegate : NSObject ,UICollectionViewDataSource, UICollect
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         //print(self.offersArr[indexPath.row].offer_type)
         if self.offersArr?[indexPath.row].offer_type == "1"{
-            self.targetController?.selectedLevel3Cat = self.offersArr?[indexPath.row].categories_included?[0] ?? Int()
-            self.targetController?.performSegue(withIdentifier: "gotoProductListVC", sender: self.targetController)
+            //self.targetController?.selectedLevel3Cat = self.offersArr?[indexPath.row].categories_included?[0] ?? Int()
+            //self.targetController?.performSegue(withIdentifier: "gotoProductListVC", sender: self.targetController)
         }else{
             //go to product detail page
         }

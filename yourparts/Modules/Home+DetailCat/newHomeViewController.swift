@@ -17,14 +17,14 @@ class newHomeViewController: UIViewController, UITableViewDelegate, UITableViewD
     @IBOutlet weak var tableView: UITableView!
     
     
-    
-   
-    
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.navigationBar.barTintColor = primaryColor
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.isHidden = true
     }
+    
+    
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -78,177 +78,143 @@ class newHomeViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1 + self.catCount
+        return self.homeVm.homeCards.count
     }
     
+//    var homeSections = ["a" , "c" , "d"]
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        switch indexPath.row {
-            case 0:
+        switch self.homeVm.homeCards[indexPath.row] {
+            case "0":
                 let addCarCell = tableView.dequeueReusableCell(withIdentifier: "addCarCell") as! addCarTableViewCell
                 return addCarCell
-            case 1:
+            case "a":
                 let offerCell = tableView.dequeueReusableCell(withIdentifier: "offerCell") as! offerTableViewCell
                 
                 let cellDelegate = offersCollectionDelegate()
-                        //cellDelegate.profilesArray = self.storiesViewModel.commonTagsphotographerResponse?.data ?? [Photographer]()
+                //cellDelegate.profilesArray = self.storiesViewModel.commonTagsphotographerResponse?.data ?? [Photographer]()
                 cellDelegate.targetController = self
                 cellDelegate.row = indexPath.row
                 cellDelegate.offersArr = self.homeVm.offersArr
                 offerCell.row = indexPath.row
-                        //cellDelegate.type = "t"
-//                offerCell.collectionTitle.text = sparts[indexPath.row - 1]
-                        
+                //cellDelegate.type = "t"
+                //                offerCell.collectionTitle.text = sparts[indexPath.row - 1]
+                
                 offerCell.setCollectionViewDataSourceDelegate(cellDelegate, forRow: indexPath.row)
-                      
+                
                 offerCell.selectionStyle = .none
-                      
-                        
+                
+                
                 return offerCell
-                
-            case 2,3:
-                
+            case "b" , "c":
                 let frequentCell = tableView.dequeueReusableCell(withIdentifier: "frequentCell") as! frequentlyNeededTableViewCell
                 
-
-                                           
-                               let cellDelegate = frequentlyCollectionDelegate()
-                                                   //cellDelegate.profilesArray = self.storiesViewModel.commonTagsphotographerResponse?.data ?? [Photographer]()
-                               cellDelegate.targetController = self
-                               cellDelegate.row = indexPath.row
-                               frequentCell.row = indexPath.row
-                                if indexPath.row == 2
-                                {
-                                    cellDelegate.type = "c"
-                                    frequentCell.frequentlyNeededLbl.text = "What your car needs".localized
-                                    frequentCell.frequentlyNeededLbl.font = UIFont(name: "Cairo-Bold", size: 18)
-
-
-                                }else{
-                                    cellDelegate.type = "f"
-                                    frequentCell.frequentlyNeededLbl.text = "Frequently Needed".localized
-                                    frequentCell.frequentlyNeededLbl.font = UIFont(name: "Cairo-Bold", size: 18)
-
-                                }
-                           //                offerCell.collectionTitle.text = sparts[indexPath.row - 1]
-                                                   
-                               frequentCell.setCollectionViewDataSourceDelegate(cellDelegate, forRow: indexPath.row)
-                                                 
-                               frequentCell.selectionStyle = .none
-                                                 
-                                                   
-                return frequentCell
-            
+                let cellDelegate = frequentlyCollectionDelegate()
+                //cellDelegate.profilesArray = self.storiesViewModel.commonTagsphotographerResponse?.data ?? [Photographer]()
+                cellDelegate.targetController = self
+                cellDelegate.row = indexPath.row
+                frequentCell.row = indexPath.row
+                if self.homeVm.homeCards[indexPath.row] == "b"
+                {
+                    cellDelegate.type = "c"
+                    frequentCell.frequentlyNeededLbl.text = "What your car needs".localized
+                    frequentCell.frequentlyNeededLbl.font = UIFont(name: "Cairo-Bold", size: 18)
+                    
+                    
+                }else{
+                    cellDelegate.type = "f"
+                    frequentCell.frequentlyNeededLbl.text = "Frequently Needed".localized
+                    frequentCell.frequentlyNeededLbl.font = UIFont(name: "Cairo-Bold", size: 18)
+                    
+                }
+                //                offerCell.collectionTitle.text = sparts[indexPath.row - 1]
                 
-            case 4:
-               let catCell = tableView.dequeueReusableCell(withIdentifier: "categoryTitleCell") as! CategoryTitleTableViewCell
-                           return catCell
-            
-        case self.catCount - 1 ,self.catCount :
+                frequentCell.setCollectionViewDataSourceDelegate(cellDelegate, forRow: indexPath.row)
+                
+                frequentCell.selectionStyle = .none
+                
+                
+                return frequentCell
+            case "d":
+                let catCell = tableView.dequeueReusableCell(withIdentifier: "categoryTitleCell") as! CategoryTitleTableViewCell
+                return catCell
+            case "e":
+                let categoryCell = tableView.dequeueReusableCell(withIdentifier: "catGridCell") as! catGridTableViewCell
+                //
+                
+                categoryCell.layoutIfNeeded()
+                
+                let cellDelegate = catCollectionDelegate()
+                //cellDelegate.profilesArray = self.storiesViewModel.commonTagsphotographerResponse?.data ?? [Photographer]()
+                cellDelegate.targetController = self
+                cellDelegate.row = indexPath.row
+                categoryCell.row = indexPath.row
+                //            if indexPath.row == self.catCount
+                //            {
+                //                cellDelegate.type = "c"
+                //                brandCell.titleLbl.text = "Spare Parts Brand".localized
+                //
+                //
+                //            }else{
+                //                cellDelegate.type = "f"
+                //                brandCell.titleLbl.text = "Cars Brand".localized
+                //
+                //            }
+                
+                categoryCell.setCollectionViewDataSourceDelegate(cellDelegate, forRow: indexPath.row)
+                
+                categoryCell.selectionStyle = .none
+                
+                return categoryCell
+            case "f" , "g":
                 
                 let brandCell = tableView.dequeueReusableCell(withIdentifier: "brandCell") as! brandsTableViewCell
                 
-
-                                           
-                    let cellDelegate = brandsCollectionDelegate()
-                                                   //cellDelegate.profilesArray = self.storiesViewModel.commonTagsphotographerResponse?.data ?? [Photographer]()
-                                                   //cellDelegate.targetController = self
-                    cellDelegate.row = indexPath.row
-                    brandCell.row = indexPath.row
-                    if indexPath.row == self.catCount
-                    {
-                        cellDelegate.type = "c"
-                        brandCell.titleLbl.text = "Spare Parts Brand".localized
-
-
-                    }else{
-                        cellDelegate.type = "f"
-                        brandCell.titleLbl.text = "Cars Brand".localized
-                        
-                    }
-                                                   
-                    brandCell.setCollectionViewDataSourceDelegate(cellDelegate, forRow: indexPath.row)
-                                                 
-                    brandCell.selectionStyle = .none
-                                                 
-                                                   
+                let cellDelegate = brandsCollectionDelegate()
+                //cellDelegate.profilesArray = self.storiesViewModel.commonTagsphotographerResponse?.data ?? [Photographer]()
+                //cellDelegate.targetController = self
+                cellDelegate.row = indexPath.row
+                brandCell.row = indexPath.row
+                if self.homeVm.homeCards[indexPath.row] == "g"
+                {
+                    cellDelegate.type = "c"
+                    brandCell.titleLbl.text = "Spare Parts Brand".localized
+                    
+                    
+                }else{
+                    cellDelegate.type = "f"
+                    brandCell.titleLbl.text = "Cars Brand".localized
+                    
+                }
+                
+                brandCell.setCollectionViewDataSourceDelegate(cellDelegate, forRow: indexPath.row)
+                
+                brandCell.selectionStyle = .none
+                
+                
                 return brandCell
-            
-        default:
-            let categoryCell = tableView.dequeueReusableCell(withIdentifier: "catGridCell") as! catGridTableViewCell
-//
-
-            categoryCell.layoutIfNeeded()
-                                   
-            let cellDelegate = catCollectionDelegate()
-                                           //cellDelegate.profilesArray = self.storiesViewModel.commonTagsphotographerResponse?.data ?? [Photographer]()
-            cellDelegate.targetController = self
-            cellDelegate.row = indexPath.row
-            categoryCell.row = indexPath.row
-//            if indexPath.row == self.catCount
-//            {
-//                cellDelegate.type = "c"
-//                brandCell.titleLbl.text = "Spare Parts Brand".localized
-//
-//
-//            }else{
-//                cellDelegate.type = "f"
-//                brandCell.titleLbl.text = "Cars Brand".localized
-//
-//            }
-                                           
-            categoryCell.setCollectionViewDataSourceDelegate(cellDelegate, forRow: indexPath.row)
-                                         
-            categoryCell.selectionStyle = .none
-//            switch indexPath.row {
-//            case 5:
-//                categoryCell.catImage.image = UIImage(named: "cat1")
-//            case 6:
-//                categoryCell.catImage.image = UIImage(named: "cat2")
-//            case 7:
-//                categoryCell.catImage.image = UIImage(named: "cat3")
-//            case 8:
-//                categoryCell.catImage.image = UIImage(named: "cat4")
-//            case 9:
-//                categoryCell.catImage.image = UIImage(named: "cat5")
-//            case 10:
-//                categoryCell.catImage.image = UIImage(named: "cat6")
-//
-//            default:
-//                categoryCell.catImage.image = UIImage(named: "teelFramel")
-//
-//            }
-            //categoryCell.catImage.s
-//            categoryCell.catImage.sd_setImage(with: URL(string: self.homeVm.categoriesArr[indexPath.row - 4].image ?? "") , placeholderImage: nil, completed: { (image, error, cacheType, url) -> Void in
-//                if ((error) != nil) {
-//                    // set the placeholder image here
-//                    categoryCell.catImage.image = UIImage(named: "teelFramel")
-//                } else {
-//                    // success ... use the image
-//                }
-//            })
-
-//            print(indexPath.row)
-//            categoryCell.catName.text = self.homeVm.categoriesArr[indexPath.row - 5].name ?? ""
-//
-            return categoryCell
+            default:
+                //
+                return UITableViewCell()
+                
         }
-
     }
+
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
-        switch indexPath.row {
-            case 0:
+        switch self.homeVm.homeCards[indexPath.row] {
+            case "0":
                 return 80.0
-            case 1:
+            case "a":
                 return 300.0
-            case 2,3:
+            case "b", "c" :
                 return 170.0
 
-            case 4:
+            case "d":
                 return 45.0
             
-            case self.catCount - 1, self.catCount:
+            case "f" , "g":
                 return 120.0
         default:
             var countOfRows =  CGFloat(Double(self.homeVm.categoriesArr.count) / 2.0)
@@ -261,18 +227,7 @@ class newHomeViewController: UIViewController, UITableViewDelegate, UITableViewD
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print(indexPath.row)
         
-        if indexPath.row > 4{
-            if indexPath.row != 13 && indexPath.row != 12{
-                self.catIdToGo = self.homeVm.categoriesArr[indexPath.row - 5].id
-                           
-                           if self.catIdToGo == 1 || self.catIdToGo == 737 || self.catIdToGo == 58{
-                               self.performSegue(withIdentifier: "gotoDetailCat", sender: self)
-                           }else if self.catIdToGo == 85{
-                               self.performSegue(withIdentifier: "gotoTires", sender: self)
-                           }
-            }
-        
-        }else if indexPath.row == 0{
+         if self.homeVm.homeCards[indexPath.row] == "0"{
             self.performSegue(withIdentifier: "gotoAddCarVC", sender: self)
         }
    
@@ -292,7 +247,7 @@ class newHomeViewController: UIViewController, UITableViewDelegate, UITableViewD
             if isSuccess{
 
                 //self.catCount = self.homeVm.categoriesArr.count + 2 + 4
-                self.catCount = 1 + 2 + 4
+                //self.catCount = 1 + 2 + 4
                 self.tableView.reloadData()
             }
             

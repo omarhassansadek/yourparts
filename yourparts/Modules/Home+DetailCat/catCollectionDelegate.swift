@@ -32,14 +32,21 @@ class catCollectionDelegate: NSObject ,UICollectionViewDataSource, UICollectionV
 
                 let cellCollection = collectionView.dequeueReusableCell(withReuseIdentifier: "catCell", for: indexPath) as! catGridCollectionViewCell
             
-                    cellCollection.catimage.contentMode = .center
+                    //cellCollection.catimage.contentMode = .center
                     cellCollection.catimage.clipsToBounds = true
             
-                    cellCollection.catimage.image = UIImage(named: self.targetController?.homeVm.categoriesArr[indexPath.row].image ?? "")
+                    cellCollection.catimage.sd_setImage(with: URL(string: self.targetController?.homeVm.categoriesArr[indexPath.row].image ?? "") , placeholderImage: nil, completed: { (image, error, cacheType, url) -> Void in
+                        if ((error) != nil) {
+                            // set the placeholder image here
+                            cellCollection.catimage.image = UIImage(named: "cat1")
+                        } else {
+                            // success ... use the image
+                        }
+                    })
             
                     cellCollection.catLbl.text = self.targetController?.homeVm.categoriesArr[indexPath.row].name ?? ""
            
-                    cellCollection.layoutIfNeeded()
+                    //cellCollection.layoutIfNeeded()
             
 
                     return cellCollection
@@ -52,12 +59,12 @@ class catCollectionDelegate: NSObject ,UICollectionViewDataSource, UICollectionV
             //if indexPath.row != 13 && indexPath.row != 12{
             self.targetController?.catIdToGo = self.targetController?.homeVm.categoriesArr[indexPath.row].id
                            
-            if self.targetController?.catIdToGo == 1 || self.targetController?.catIdToGo == 737 || self.targetController?.catIdToGo == 58{
-                self.targetController?.performSegue(withIdentifier: "gotoDetailCat", sender: self)
-            }else if self.targetController?.catIdToGo == 85{
+             if self.targetController?.catIdToGo == 85{
                 self.targetController?.performSegue(withIdentifier: "gotoTires", sender: self)
+             }else{
+                self.targetController?.performSegue(withIdentifier: "gotoDetailCat", sender: self)
             }
-            //}
+            
         }
  
         
