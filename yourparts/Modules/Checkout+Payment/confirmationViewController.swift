@@ -382,6 +382,10 @@ class confirmationViewController: UIViewController , UITableViewDelegate, UITabl
             let destCont = segue.destination as! paymentOnlineViewController
             destCont.urlToCall = self.paymentVM.paymentUrl
             destCont.orderId = self.orderId ?? -1
+        }else if segue.identifier == "gotoThankyouVC"{
+            let destCont = segue.destination as! thankyouViewController
+            destCont.success = true
+
         }
     }
     
