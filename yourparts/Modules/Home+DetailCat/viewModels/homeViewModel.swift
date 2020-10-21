@@ -59,6 +59,7 @@ class homeViewModel: NSObject {
             
         }) { (responseFailure) in
             //
+            onFailure("We encountered an error. Try again later")
         }
          
      }
