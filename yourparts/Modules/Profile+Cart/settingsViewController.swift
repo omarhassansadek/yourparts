@@ -105,11 +105,11 @@ class settingsViewController: UIViewController, UITableViewDataSource, UITableVi
         if indexPath.row == settingOptions.count{
             var alertCont = UIAlertController(title: "Yourparts", message: "Are you sure you want to logout?".localized, preferredStyle: .alert)
             
-            alertCont.addAction(UIAlertAction(title: "Cancel", style: .destructive, handler: { _ in
+            alertCont.addAction(UIAlertAction(title: "Cancel".localized, style: .destructive, handler: { _ in
                 alertCont.dismiss(animated: true, completion: nil)
             }))
             
-            alertCont.addAction(UIAlertAction(title: "Continue", style: .default, handler: { _ in
+            alertCont.addAction(UIAlertAction(title: "Continue".localized, style: .default, handler: { _ in
                 //go to login
                 UserDefaults.standard.set(false, forKey: "isLogged")
                 self.performSegue(withIdentifier: "gotoAuthModule", sender: self)
