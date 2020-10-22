@@ -54,7 +54,7 @@ class categoryParser{
 
                 var catObj =  self.parseCat(slidingCat: slidingCat, oneCategory: oneCategory)
                 
-                //catObj.image = "cat\(index + 1)"
+                catObj.image = "cat\(index + 1)"
                 
                 catArr.append(catObj)
 
@@ -97,7 +97,7 @@ class categoryParser{
         
                           if slidingCat{
                              if let name = oneCategory["category"]["image"].string {
-                                 catObj.image = name
+                                 //catObj.image = name
                              }
                           }else{
                                
