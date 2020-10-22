@@ -1080,6 +1080,9 @@
                                                         </constraints>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits"/>
+                                                        <connections>
+                                                            <action selector="promoEditingTf:" destination="C8v-5Z-UwB" eventType="editingDidEnd" id="ykR-ZM-w3i"/>
+                                                        </connections>
                                                     </textField>
                                                 </subviews>
                                                 <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.93725490199999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1794,7 +1797,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Q5M-zX-CB8"/>
+        <segue reference="O5y-0t-Qvq"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="checkico" width="165" height="222"/>

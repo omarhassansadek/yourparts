@@ -10,7 +10,7 @@ import UIKit
 import FINNBottomSheet
 import NVActivityIndicatorView
 
-class confirmationViewController: UIViewController , UITableViewDelegate, UITableViewDataSource, BottomSheetPresentationControllerDelegate{
+class confirmationViewController: UIViewController , UITableViewDelegate, UITableViewDataSource, BottomSheetPresentationControllerDelegate, UITextFieldDelegate{
     
     @IBOutlet weak var dummyWhiteView: UIView!
     
@@ -219,6 +219,7 @@ class confirmationViewController: UIViewController , UITableViewDelegate, UITabl
         let nib3 = UINib(nibName: String(describing: cartTableViewCell.self), bundle: nil)
         self.confirmTableView.register(nib3, forCellReuseIdentifier: "cartCell")
 
+        self.promoTf.delegate = self
         // Do any additional setup after loading the view.
     }
     
@@ -271,6 +272,7 @@ class confirmationViewController: UIViewController , UITableViewDelegate, UITabl
             let cartCell = tableView.dequeueReusableCell(withIdentifier: "cartCell") as! cartTableViewCell
             cartCell.productName.text = self.paymentVM.itemsArr[indexPath.row - 2].product_name
             cartCell.productPrice.text = self.paymentVM.itemsArr[indexPath.row - 2]._unit_price
+            cartCell.quantityTf.text = String(self.paymentVM.itemsArr[indexPath.row - 2].quantity ?? 1)
             cartCell.productimage.sd_setImage(with: URL(string: self.paymentVM.itemsArr[indexPath.row - 2].image ?? "") , placeholderImage: nil, completed: { (image, error, cacheType, url) -> Void in
                    if ((error) != nil) {
                        // set the placeholder image here
@@ -330,12 +332,20 @@ class confirmationViewController: UIViewController , UITableViewDelegate, UITabl
                     
                 }) { (errMsg) in
                     //
+
                     self.payActInd.stopAnimating()
 
                 }
             }
         }) { (errorMsg) in
             //
+            self.acceptBtn.isUserInteractionEnabled = true
+            self.validPromoLbl.text = "لا يوجد الكود غير صحيح"
+            self.validPromoLbl.textColor = primaryColor
+            self.validPromoLbl.isHidden = false
+            //self.payActInd.stopAnimating()
+
+
         }
     }
     
@@ -422,6 +432,17 @@ class confirmationViewController: UIViewController , UITableViewDelegate, UITabl
     @IBAction func cancelBtnClicked(_ sender: Any) {
          self.alertView.isHidden = true
          self.dimmedView.isHidden = true
+    }
+    
+    
+  
+    
+    @IBAction func promoEditingTf(_ sender: UITextField) {
+       if sender == self.promoTf {
+            if self.promoTf.text == ""{
+                self.validPromoLbl.isHidden = true
+            }
+       }
     }
     
     

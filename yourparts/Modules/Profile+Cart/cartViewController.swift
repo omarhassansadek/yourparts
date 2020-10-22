@@ -325,6 +325,8 @@ class cartViewController: UIViewController, UITableViewDelegate, UITableViewData
             if isSuccess{
                 self.actind.stopAnimating()
 
+                UserDefaults.standard.set(true, forKey: "inOrder")
+                
                 self.payBtn.setTitle("Continue to checkout".localized, for: .normal)
 
                 self.performSegue(withIdentifier: "gotoPayment", sender: self)
