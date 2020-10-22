@@ -104,14 +104,26 @@ class paymentMethodViewController: UIViewController, UITableViewDelegate, UITabl
                               createDic["cart_id"] = self.cartId ?? -1
                               createDic["order_id"] = self.orderItemId ?? -1
                               
-                              self.paymentVM.createOrderItem(apiParameters: createDic, onSuccess: { (isSucees) in
-                                  //
-                                  self.performSegue(withIdentifier: "gotoConfirmVC", sender: self)
+                              var isInOrder = UserDefaults.standard.bool(forKey: "inOrder") ?? false
+                              
+                             if isInOrder{
+                                
+                                self.paymentVM.createOrderItem(apiParameters: createDic, onSuccess: { (isSucees) in
+                                    //
+                                    
+                                  UserDefaults.standard.set(false, forKey: "inOrder")
 
-                              }) { (errMsg) in
-                                  AlertViewer().showAlertView(withMessage: errMsg, onController: self)
+                                    self.performSegue(withIdentifier: "gotoConfirmVC", sender: self)
 
-                              }
+                                }) { (errMsg) in
+                                    AlertViewer().showAlertView(withMessage: errMsg, onController: self)
+
+                                }
+
+                             }else{
+                                self.performSegue(withIdentifier: "gotoConfirmVC", sender: self)
+                            }
+                            
 
                           }) { (errMsg) in
                               //
