@@ -528,7 +528,6 @@
 		1FD22E762534596900CF0ED8 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				5C97B2C2253741F40068DDCC /* ThirdParty */,
 				1FD22E7825345DB600CF0ED8 /* Assets */,
 				1FD22E7725345D4300CF0ED8 /* Localization */,
 				3972554424A3ABD00092D1B5 /* Fonts */,
@@ -1092,13 +1091,6 @@
 				5CA8BFFB2523854200676B9A /* profileParser.swift */,
 			);
 			path = parsers;
-			sourceTree = "<group>";
-		};
-		5C97B2C2253741F40068DDCC /* ThirdParty */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ThirdParty;
 			sourceTree = "<group>";
 		};
 		5CF0636425176B6600E73380 /* Checkout+Payment */ = {

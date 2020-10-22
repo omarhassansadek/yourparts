@@ -135,45 +135,56 @@ class cartViewController: UIViewController, UITableViewDelegate, UITableViewData
       
       func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-          let cell = tableView.dequeueReusableCell(withIdentifier: "cartCell") as! cartTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cartCell") as! cartTableViewCell
+
+        cell.productName.text = self.cartVM.cartArr[indexPath.row].product_name
+        var neededHeight = self.getHeight(text: self.cartVM.cartArr[indexPath.row].product_name as! NSString, width: cell.productName.frame.width, font: UIFont(name: "Cairo-Bold", size: 14)!)
         
-          cell.productName.text = self.cartVM.cartArr[indexPath.row].product_name
-          cell.productDesc.text = self.cartVM.cartArr[indexPath.row].created_at
-          cell.productPrice.text =  self.cartVM.cartArr[indexPath.row].unit_price
-          
-          
+        if neededHeight > 75.0 {
+            cell.lblTopConstraint.constant = -12.5
+        }else if neededHeight > 50 {
+            cell.lblTopConstraint.constant = -5.0
+        }
+        cell.lblHeightConstraint.constant =  CGFloat(neededHeight)
+        print(cell.lblHeightConstraint.constant)
+        cell.productName.layoutIfNeeded()
+
+        cell.productDesc.text = self.cartVM.cartArr[indexPath.row].created_at
+        cell.productPrice.text =  self.cartVM.cartArr[indexPath.row].unit_price
+        
+        
         cell.productimage.sd_setImage(with: URL(string: self.cartVM.cartArr[indexPath.row].image ?? "") , placeholderImage: nil, completed: { (image, error, cacheType, url) -> Void in
-               if ((error) != nil) {
-                   // set the placeholder image here
+            if ((error) != nil) {
+                // set the placeholder image here
                 cell.productimage.image = UIImage(named: "goodTire")
-               } else {
-                   // success ... use the image
-               }
-           })
+            } else {
+                // success ... use the image
+            }
+        })
+        
+        
+        let cellDelegate = quantityPickerDelegate()
+        
+        cell.quantityTf.tag = indexPath.row
+        
+        cell.quantityTf.inputView = cell.quantityPickerView
+        cell.setPickerViewDataSourceDelegate(cellDelegate, forRow: indexPath.row)
+        
+        cell.quantityTf.addTarget(self, action: #selector(self.textFieldDidChange(_:)), for: .editingDidEnd)
+        
+        //          cellDelegate.carMakersArr = self.carMakersArr
+        //          cellDelegate.carBrandsArr = self.carBrandsArr
+        
+        cellDelegate.targetController = self
+        cellDelegate.row = indexPath.row
+        cell.row = indexPath.row
+        //cellDelegate.type = "m"
+        cell.quantityTf.text = String( self.cartVM.cartArr[indexPath.row].quantity ?? -1 )
+        
 
-        
-          let cellDelegate = quantityPickerDelegate()
-        
-          cell.quantityTf.tag = indexPath.row
-        
-          cell.quantityTf.inputView = cell.quantityPickerView
-          cell.setPickerViewDataSourceDelegate(cellDelegate, forRow: indexPath.row)
-        
-          cell.quantityTf.addTarget(self, action: #selector(self.textFieldDidChange(_:)), for: .editingDidEnd)
-
-//          cellDelegate.carMakersArr = self.carMakersArr
-//          cellDelegate.carBrandsArr = self.carBrandsArr
-       
-          cellDelegate.targetController = self
-          cellDelegate.row = indexPath.row
-          cell.row = indexPath.row
-          //cellDelegate.type = "m"
-          cell.quantityTf.text = String( self.cartVM.cartArr[indexPath.row].quantity ?? -1 )
-
-        
-          cell.checkBoxView.isHidden = true
-
-          return cell
+        cell.checkBoxView.isHidden = true
+        cell.layoutIfNeeded()
+        return cell
         
      }
       
@@ -200,6 +211,14 @@ class cartViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     var firstLoad = false
+    
+    func getHeight(text:  NSString, width:CGFloat, font: UIFont) -> CGFloat
+    {
+        let rect = text.boundingRect(with: CGSize.init(width: width, height: CGFloat.greatestFiniteMagnitude), options: ([NSStringDrawingOptions.usesLineFragmentOrigin,NSStringDrawingOptions.usesFontLeading]), attributes: [NSAttributedString.Key.font:font], context: nil)
+        return rect.size.height
+    }
+
+    
     
     func getCartData(){
 
@@ -420,3 +439,17 @@ extension cartViewController {
         print("Did dismiss dismiss by \(String(describing: action))")
     }
 }
+
+
+extension UILabel {
+    var numberOfVisibleLines: Int {
+//        let maxSize = CGSize(width: frame.size.width, height: CGFloat(MAXFLOAT))
+//        let textHeight = sizeThatFits(maxSize).height
+//        let lineHeight = font.lineHeight
+//        return Int(ceil(textHeight / lineHeight))
+        let zone = CGSize(width: intrinsicContentSize.width, height: CGFloat(MAXFLOAT))
+        let fittingHeight = Float(self.sizeThatFits(zone).height)
+        return lroundf(fittingHeight / Float(font.lineHeight))
+    }
+}
+

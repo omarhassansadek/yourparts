@@ -13,6 +13,8 @@ import BEMCheckBox
 
 class cartTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var lblTopConstraint: NSLayoutConstraint!
+    @IBOutlet weak var lblHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var productimage: UIImageView!
     @IBOutlet weak var checkBoxView: UIView!
     @IBOutlet weak var roundCounterView: UIView!

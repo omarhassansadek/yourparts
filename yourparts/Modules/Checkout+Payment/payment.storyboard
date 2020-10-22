@@ -883,11 +883,11 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1IF-eN-svS">
                                         <rect key="frame" x="0.0" y="0.0" width="364" height="224"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Wyq-tG-0aC">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="installmentPlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="Wyq-tG-0aC">
                                                 <rect key="frame" x="25" y="25" width="314" height="174"/>
                                             </imageView>
                                         </subviews>
-                                        <color key="backgroundColor" systemColor="systemGray5Color" red="0.8980392157" green="0.8980392157" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="Wyq-tG-0aC" firstAttribute="leading" secondItem="1IF-eN-svS" secondAttribute="leading" constant="25" id="08S-YU-YGo"/>
                                             <constraint firstAttribute="trailing" secondItem="Wyq-tG-0aC" secondAttribute="trailing" constant="25" id="BiN-Zo-QN8"/>
@@ -927,7 +927,7 @@
                                                 </constraints>
                                             </view>
                                         </subviews>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="qMG-f6-cS8" firstAttribute="centerY" secondItem="n4z-VW-e6T" secondAttribute="centerY" id="6Mf-FU-wWe"/>
                                             <constraint firstItem="qMG-f6-cS8" firstAttribute="leading" secondItem="n4z-VW-e6T" secondAttribute="leading" constant="35" id="Bvq-PN-fA0"/>
@@ -961,6 +961,7 @@
                     <navigationItem key="navigationItem" id="0az-6l-2Vs"/>
                     <connections>
                         <outlet property="bankBtn" destination="sRN-nu-DIa" id="4My-Nk-UEj"/>
+                        <outlet property="roundView" destination="acH-fI-dU4" id="Erb-Lq-lea"/>
                         <outlet property="valuBtn" destination="OGz-yb-9di" id="cSz-rd-rlF"/>
                     </connections>
                 </viewController>
@@ -1807,6 +1808,7 @@
         <image name="downarrow" width="16.5" height="9.5"/>
         <image name="fixerico" width="32" height="32"/>
         <image name="homeico" width="32" height="32"/>
+        <image name="installmentPlaceholder" width="283" height="155"/>
         <image name="progress1ico" width="293" height="83"/>
         <image name="progress2ico" width="293" height="83"/>
         <image name="progress3ico" width="293" height="83"/>

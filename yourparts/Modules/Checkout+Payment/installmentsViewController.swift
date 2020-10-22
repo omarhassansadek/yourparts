@@ -10,12 +10,17 @@ import UIKit
 
 class installmentsViewController: UIViewController {
 
+    @IBOutlet weak var roundView: UIView!
+    
+    
     @IBOutlet weak var valuBtn: UIButton!
     
     @IBOutlet weak var bankBtn: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.roundView.layer.cornerRadius = 15.0
         
         self.navigationItem.hidesBackButton = false
 
