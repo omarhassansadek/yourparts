@@ -367,6 +367,7 @@
                 <outlet property="productDesc" destination="5w1-fa-ZF2" id="XIa-Lv-suf"/>
                 <outlet property="productName" destination="lty-lE-XA8" id="gLd-lz-zGT"/>
                 <outlet property="productPrice" destination="AKl-FE-pSc" id="dXS-rJ-L0a"/>
+                <outlet property="productimage" destination="2id-Ey-XLs" id="pZu-bw-Emf"/>
                 <outlet property="quantityTf" destination="TwG-42-0kD" id="oRk-Zv-1Yk"/>
                 <outlet property="ratingView" destination="RFq-Go-3cb" id="WlQ-Wk-ZzO"/>
                 <outlet property="roundCounterView" destination="3hY-wk-4Sp" id="ntE-pT-C76"/>

@@ -273,6 +273,16 @@ class confirmationViewController: UIViewController , UITableViewDelegate, UITabl
             cartCell.productName.text = self.paymentVM.itemsArr[indexPath.row - 2].product_name
             cartCell.productPrice.text = self.paymentVM.itemsArr[indexPath.row - 2]._unit_price
             cartCell.quantityTf.text = String(self.paymentVM.itemsArr[indexPath.row - 2].quantity ?? 1)
+            cartCell.productimage.sd_setImage(with: URL(string: self.paymentVM.itemsArr[indexPath.row - 2].image ?? "") , placeholderImage: nil, completed: { (image, error, cacheType, url) -> Void in
+                   if ((error) != nil) {
+                       // set the placeholder image here
+                    cartCell.productimage.image = UIImage(named: "goodTire")
+                   } else {
+                       // success ... use the image
+                   }
+               })
+
+
             return cartCell
 
         }
@@ -392,6 +402,10 @@ class confirmationViewController: UIViewController , UITableViewDelegate, UITabl
             let destCont = segue.destination as! paymentOnlineViewController
             destCont.urlToCall = self.paymentVM.paymentUrl
             destCont.orderId = self.orderId ?? -1
+        }else if segue.identifier == "gotoThankyouVC"{
+            let destCont = segue.destination as! thankyouViewController
+            destCont.success = true
+
         }
     }
     

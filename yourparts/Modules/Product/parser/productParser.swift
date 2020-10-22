@@ -27,10 +27,10 @@ class productParser{
         }
         
         if fromOrder{
-            productResponseSuccess.results = parseProducts(fromJSON: fromJSON["order"]["items"])
+            productResponseSuccess.results = parseProducts(fromOrder: true, fromJSON: fromJSON["order"]["items"])
 
         }else{
-            productResponseSuccess.results = parseProducts(fromJSON: fromJSON["results"])
+            productResponseSuccess.results = parseProducts(fromOrder: false, fromJSON: fromJSON["results"])
         }
 
        onSuccess(productResponseSuccess)
@@ -38,7 +38,7 @@ class productParser{
 //        onSuccess(sizes)
     }
 
-    func parseProducts(fromJSON: JSON) -> [product]{
+    func parseProducts(fromOrder: Bool ,fromJSON: JSON) -> [product]{
         
         var resultsArr : [product] = []
                
@@ -87,9 +87,19 @@ class productParser{
                         productObj.quantity = quantity
                     }
                    
-                   if let image = oneProduct["image"].string {
-                        productObj.image = image
-                    }
+                
+                if fromOrder{
+                    if let image = oneProduct["product"]["image"].string {
+                         productObj.image = image
+                     }
+
+                }else{
+                    if let image = oneProduct["image"].string {
+                         productObj.image = image
+                     }
+
+                }
+                
                    
                    if let thumbnail_image = oneProduct["thumbnail_image"].string {
                         productObj.thumbnail_image = thumbnail_image

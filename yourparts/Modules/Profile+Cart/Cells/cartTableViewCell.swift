@@ -13,6 +13,7 @@ import BEMCheckBox
 
 class cartTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var productimage: UIImageView!
     @IBOutlet weak var checkBoxView: UIView!
     @IBOutlet weak var roundCounterView: UIView!
     @IBOutlet weak var productName: UILabel!
