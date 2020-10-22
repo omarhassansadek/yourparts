@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -27,7 +27,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="35" height="35"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RDc-Ea-ulO">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RDc-Ea-ulO">
                                         <rect key="frame" x="-6" y="-5" width="46" height="45"/>
                                         <connections>
                                             <action selector="gotoSettings:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="rPR-oC-ATS"/>
@@ -50,7 +50,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E4X-pL-UJW">
                                         <rect key="frame" x="0.0" y="0.0" width="90" height="90"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="3afshaico" translatesAutoresizingMaskIntoConstraints="NO" id="rEi-aO-02y">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="rEi-aO-02y">
                                                 <rect key="frame" x="0.0" y="0.0" width="90" height="90"/>
                                             </imageView>
                                         </subviews>
@@ -279,7 +279,7 @@
                                                                     <constraint firstItem="9fQ-lo-mqy" firstAttribute="leading" secondItem="jPe-Ee-46c" secondAttribute="leading" id="bxG-eb-m6v"/>
                                                                 </constraints>
                                                             </view>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fk1-iX-yZD">
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fk1-iX-yZD">
                                                                 <rect key="frame" x="0.0" y="0.0" width="105" height="60"/>
                                                                 <connections>
                                                                     <action selector="gotoCart:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="HzK-5a-4GY"/>
@@ -375,9 +375,9 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="3afshaico" width="60" height="60"/>
         <image name="carticoWhite" width="16.5" height="16"/>
         <image name="favicoWhite" width="16" height="16"/>
+        <image name="profile_placeholder" width="96" height="96"/>
         <image name="settings" width="25" height="24"/>
     </resources>
 </document>
