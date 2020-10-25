@@ -13,6 +13,10 @@ import BEMCheckBox
 
 class cartTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var favico: UIButton!
+    @IBOutlet weak var brandimg: UIImageView!
+    @IBOutlet weak var imgViewConstraint: NSLayoutConstraint!
+    @IBOutlet weak var imgViewContainer: UIView!
     @IBOutlet weak var lblTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var lblHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var productimage: UIImageView!
@@ -44,6 +48,7 @@ class cartTableViewCell: UITableViewCell {
         
         self.quantityTf.tintColor = .clear
         
+        self.favico.isHidden = true
 
         
         self.roundCounterView.layer.cornerRadius = 12.5

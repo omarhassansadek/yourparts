@@ -146,6 +146,7 @@ class tiresViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
             if isSuccess{
                 self.rimSizePickerView.reloadAllComponents()
                 self.widthTf.text = self.tiresVM.rimSizes[0].size ?? ""
+                self.selectedRimSize = 0
             }
             
         }) { (errMsg) in
@@ -157,6 +158,7 @@ class tiresViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
             if isSuccess{
                 self.tireSizePickerView.reloadAllComponents()
                 self.heightTf.text = self.tiresVM.tireSizes[0].size ?? ""
+                self.selectedTireSize = 0
             }
             
         }) { (errMsg) in
@@ -169,6 +171,8 @@ class tiresViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
             if isSuccess{
                 self.rachoSizePickerView.reloadAllComponents()
                 self.radiusTf.text = self.tiresVM.rachoSizes[0].size ?? ""
+                self.selectedRachoSize = 0
+
             }
             
         }) { (errMsg) in
@@ -233,20 +237,28 @@ class tiresViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
         if pickerView == yearPickerView{
             self.modelTireTf.text = self.yearsArr[row]
         }else if  pickerView == rimSizePickerView{
+            self.selectedRimSize = row
             self.widthTf.text = self.tiresVM.rimSizes[row].size ?? ""
         }else if pickerView == rachoSizePickerView{
+            self.selectedRachoSize = row
             self.radiusTf.text = self.tiresVM.rachoSizes[row].size ?? ""
         }else if pickerView == tireSizePickerView{
+            self.selectedTireSize = row
             self.heightTf.text = self.tiresVM.tireSizes[row].size ?? ""
         }
     }
     
+    var selectedTireSize = -1
     
+    var selectedRimSize = -1
+    
+    var selectedRachoSize = -1
+ 
     var tyresUrlToBeCalled = ""
     
     @IBAction func searchBtnClicked(_ sender: Any) {
         
-        self.tyresUrlToBeCalled = baseUrl + filterTyresUrl + "?tyre_size=\(self.heightTf.text!)&rim_size=\(self.widthTf.text!)&racho_size=\(self.radiusTf.text!)&year=\(self.modelTireTf.text!)&types=1"
+        self.tyresUrlToBeCalled = baseUrl + filterTyresUrl + "?tyre_size=\(self.tiresVM.tireSizes[selectedTireSize].id ?? -1)&rim_size=\(self.tiresVM.rimSizes[selectedRimSize].id ?? -1)&racho_size=\(self.tiresVM.rachoSizes[selectedRachoSize].id ?? -1)&year=\(self.modelTireTf.text!)&types=1"
         
         self.performSegue(withIdentifier: "gotoTireProduct", sender: self)
         

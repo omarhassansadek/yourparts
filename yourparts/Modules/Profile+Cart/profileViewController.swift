@@ -16,9 +16,11 @@ class profileViewController: UIViewController, UITableViewDataSource, UITableVie
     
     
     override func viewWillAppear(_ animated: Bool) {
+        self.getProfileData()
         self.navigationController?.navigationBar.isHidden = true
-
+        self.profileTableView.reloadData()
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -77,6 +79,8 @@ class profileViewController: UIViewController, UITableViewDataSource, UITableVie
                     cell.userName.text = userName
                 }
                 
+                cell.favNumberLbl.text = String(self.profileVM.cartCount)
+                
                 cell.goSettings = {
                     self.performSegue(withIdentifier: "gotoSettings", sender: self)
                 }
@@ -126,7 +130,7 @@ class profileViewController: UIViewController, UITableViewDataSource, UITableVie
 //        case 3:
 //            // self.performSegue(withIdentifier: "gotoFavAddresses", sender: self)
 //            
-            case 5:
+            case 3:
                self.performSegue(withIdentifier: "gotoPaymentView", sender: self)
 //            
 //        case 4:
@@ -138,6 +142,16 @@ class profileViewController: UIViewController, UITableViewDataSource, UITableVie
             break
         }
       
+    }
+    
+    func getProfileData(){
+        self.profileVM.getUserProfile(onSuccess: { (isSuccess) in
+            if isSuccess{
+                self.profileTableView.reloadData()
+            }
+        }) { (errMsg) in
+            //
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

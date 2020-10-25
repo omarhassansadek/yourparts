@@ -24,16 +24,17 @@ class profileViewModel: NSObject {
         let obj2 = profileMenu(img: "profileico2", mTitle: "Favourite Cars".localized , sTitle: "")
         self.profileListArr.append(obj2)
 
-        let obj3 = profileMenu(img: "profileico3", mTitle: "Past Orders".localized, sTitle: "")
-        self.profileListArr.append(obj3)
-
-        let obj4 = profileMenu(img: "profileico4", mTitle: "Current Orders".localized, sTitle: "")
-        self.profileListArr.append(obj4)
+//        let obj3 = profileMenu(img: "profileico3", mTitle: "Past Orders".localized, sTitle: "")
+//        self.profileListArr.append(obj3)
+//
+//        let obj4 = profileMenu(img: "profileico4", mTitle: "Current Orders".localized, sTitle: "")
+//        self.profileListArr.append(obj4)
 
         let obj5 = profileMenu(img: "profileico5", mTitle: "Your Addresses".localized, sTitle: "")
         self.profileListArr.append(obj5)
     }
     
+    var cartCount = 0
     
     func getUserProfile(onSuccess: @escaping(Bool)-> () , onFailure: @escaping(String)-> ()){
            var userId = UserDefaults.standard.integer(forKey: "userid")
@@ -43,7 +44,11 @@ class profileViewModel: NSObject {
                
                print(responseJSON)
             
-            
+               if let cart_Count = responseJSON["cart_count"].int{
+                    self.cartCount = cart_Count
+               }
+       
+               onSuccess(true)
                
 //               addressParser().parseAddresses(fromJSON: responseJSON) { (arrAddresses) in
 //                   self.addressArr = arrAddresses

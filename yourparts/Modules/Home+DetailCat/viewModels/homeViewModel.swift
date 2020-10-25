@@ -14,8 +14,11 @@ class homeViewModel: NSObject {
 
     @IBOutlet weak var homeC: homeClient!
     
+    var homeCategoryResponse = categoryResposne()
     var categoriesArr: [category] = []
     
+    var homeFreqCategoryResponse = categoryResposne()
+
     var freqCategoriesArr: [category] = []
 
     var offersArr : [offer] = []
@@ -32,10 +35,11 @@ class homeViewModel: NSObject {
 
          
         self.homeC.requestCategories(url: baseUrl+categoriesUrl, apiMethod: .get, parametersOfCall: nil, apiEncoding: JSONEncoding.default, completionSuccess: { (responseSuccess) in
-            //
-            categoryParser().parseCategories(slidingCat: false, fromJSON: responseSuccess) { catArr in
-                self.categoriesArr = catArr
-                if self.categoriesArr.count > 0 {
+            
+            categoryParser().parseCategories(slidingCat: false, fromResponse: responseSuccess, intoResponse: self.homeCategoryResponse) { (categoryResposne) in
+                
+                //self.categoriesArr = catArr
+                if self.homeCategoryResponse.data?.count ?? 0 > 0 {
                     self.homeCards.append("d")
                     self.homeCards.append("e")
                 }
@@ -44,7 +48,22 @@ class homeViewModel: NSObject {
                 self.homeCards.append("g")
 
                 onSuccess(true)
+
             }
+        
+            //
+//            categoryParser().parseCategories(slidingCat: false, fromJSON: responseSuccess) { catArr in
+//                self.categoriesArr = catArr
+//                if self.categoriesArr.count > 0 {
+//                    self.homeCards.append("d")
+//                    self.homeCards.append("e")
+//                }
+//                //self.categoriesArr[]
+//                self.homeCards.append("f")
+//                self.homeCards.append("g")
+//
+//                onSuccess(true)
+//            }
             
             
         }) { (responseFailure) in
@@ -94,17 +113,20 @@ class homeViewModel: NSObject {
                 
                 print(responseSuccess)
                 
-               
-                  
-                categoryParser().parseCategories(slidingCat: true, fromJSON: responseSuccess) { catArr in
-                    self.freqCategoriesArr = catArr
-                    if self.freqCategoriesArr.count > 0{
+                categoryParser().parseCategories(slidingCat: true, fromResponse: responseSuccess, intoResponse: self.homeFreqCategoryResponse) { (categoryResposne) in
+                    
+                    //self.homeFreqCategoryResponse.da = catArr
+                    if self.homeFreqCategoryResponse.data?.count ?? 0 > 0{
                         self.homeCards.append("b")
                     }
                     self.homeCards.append("c")
 
                     onSuccess(true)
+
                 }
+                  
+//                categoryParser().parseCategories(slidingCat: true, fromJSON: responseSuccess) { catArr in
+//                }
                 
                 
             }) { (responseFailure) in

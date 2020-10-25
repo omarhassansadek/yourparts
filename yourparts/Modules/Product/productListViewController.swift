@@ -123,6 +123,7 @@ class productListViewController: UIViewController, UICollectionViewDelegate , UI
 
               let cellCollection = collectionView.dequeueReusableCell(withReuseIdentifier: "brandCell", for: indexPath) as! brandCollectionViewCell
               
+        
               
               return cellCollection
           
@@ -158,6 +159,52 @@ class productListViewController: UIViewController, UICollectionViewDelegate , UI
       func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
           let cell = tableView.dequeueReusableCell(withIdentifier: "dataCell") as! productCellTableViewCell
           cell.productName.text = self.productVM.productsResponse?.results[indexPath.row].product_name
+          var neededHeight = self.getHeight(text: self.productVM.productsResponse?.results[indexPath.row].product_name as! NSString, width: cell.productName.frame.width, font: UIFont(name: "Cairo-Bold", size: 14)!)
+//        
+           if neededHeight > 75.0 {
+             cell.lblTopConstraint.constant = -12.5
+           }else if neededHeight > 50 {
+             cell.lblTopConstraint.constant = -7.5
+           }else {
+             cell.lblTopConstraint.constant = 2.5
+           }
+//
+           if self.productVM.productsResponse?.results[indexPath.row].brand != nil{
+            
+                if self.productVM.productsResponse?.results[indexPath.row].brand?.image != nil{
+                    
+                    cell.imageViewConstraint.constant = 40.0
+                    
+                    cell.brandSample.sd_setImage(with: URL(string: productVM.productsResponse?.results[indexPath.row].brand?.image ?? "") , placeholderImage: nil, completed: { (image, error, cacheType, url) -> Void in
+                           if ((error) != nil) {
+                               // set the placeholder image here
+                               cell.brandSample.image = UIImage(named: "brandSample")
+                           } else {
+                               // success ... use the image
+                           }
+                    })
+
+
+                
+                }else{
+                
+                    cell.imageViewConstraint.constant = 0.0
+
+                }
+            
+           }else{
+            
+                cell.imageViewConstraint.constant = 0.0
+            
+           }
+        
+           cell.imageViewContainter.layoutIfNeeded()
+        
+           cell.lblHeightConstraint.constant =  CGFloat(neededHeight)
+           print(cell.lblHeightConstraint.constant)
+           cell.productName.layoutIfNeeded()
+ 
+
           cell.productDesc.text = self.productVM.productsResponse?.results[indexPath.row].created_at
           cell.productPrice.text =  "\(self.productVM.productsResponse?.results[indexPath.row].unit_price ?? "") جنيه"
         
@@ -172,7 +219,7 @@ class productListViewController: UIViewController, UICollectionViewDelegate , UI
 
          cell.productPriceDesc.text = "Price for unit".localized
          cell.productDeliveryDesc.text = "Price delivery and spare part price is different from each city".localized
-         
+
          cell.addToCart = {
             
             //cell.addToCart
@@ -216,6 +263,26 @@ class productListViewController: UIViewController, UICollectionViewDelegate , UI
 
             }
          }
+        
+         if self.productVM.productsResponse?.results[indexPath.row].is_in_cart == true ?? false{
+            cell.cartimg.image = UIImage(named: "cartSuccess")
+            
+            cell.cartView.backgroundColor = UIColor(displayP3Red: 138/255, green: 209/255, blue: 97/255, alpha: 1.0)
+
+            cell.cartimg.isHidden = false
+
+         }else{
+            cell.activityind.stopAnimating()
+            
+            cell.cartimg.image = UIImage(named: "cart")
+
+            cell.cartView.backgroundColor = primaryColor
+            
+            cell.cartimg.isHidden = false
+
+        }
+        
+        
           return cell
       }
       
@@ -230,6 +297,12 @@ class productListViewController: UIViewController, UICollectionViewDelegate , UI
         self.performSegue(withIdentifier: "gotoDetailProducts", sender: self)
     }
     
+    func getHeight(text:  NSString, width:CGFloat, font: UIFont) -> CGFloat
+    {
+        let rect = text.boundingRect(with: CGSize.init(width: width, height: CGFloat.greatestFiniteMagnitude), options: ([NSStringDrawingOptions.usesLineFragmentOrigin,NSStringDrawingOptions.usesFontLeading]), attributes: [NSAttributedString.Key.font:font], context: nil)
+        return rect.size.height
+    }
+
     
     func configure(){
         self.filterTitleLbl.text = "Filter Options".localized

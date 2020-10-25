@@ -11,6 +11,7 @@ import BEMCheckBox
 
 class myCarTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var carImage: UIImageView!
     @IBOutlet weak var carCheckbox: BEMCheckBox!
     @IBOutlet weak var carYearModel: UILabel!
     @IBOutlet weak var carYear: UILabel!

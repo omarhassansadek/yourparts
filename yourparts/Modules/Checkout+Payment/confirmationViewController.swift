@@ -33,6 +33,8 @@ class confirmationViewController: UIViewController , UITableViewDelegate, UITabl
 
     var orderId: Int?
     
+    var cartId: Int?
+    
     @IBOutlet weak var promoPrice: UILabel!
     
     @IBOutlet weak var installationPrice: UILabel!
@@ -271,8 +273,52 @@ class confirmationViewController: UIViewController , UITableViewDelegate, UITabl
         }else{
             let cartCell = tableView.dequeueReusableCell(withIdentifier: "cartCell") as! cartTableViewCell
             cartCell.productName.text = self.paymentVM.itemsArr[indexPath.row - 2].product_name
+            var neededHeight = self.getHeight(text: self.paymentVM.itemsArr[indexPath.row - 2].product_name as? NSString ?? "", width: cartCell.productName.frame.width, font: UIFont(name: "Cairo-Bold", size: 14)!)
+            
+            if neededHeight > 75.0 {
+                cartCell.lblTopConstraint.constant = -12.5
+            }else if neededHeight > 50 {
+                cartCell.lblTopConstraint.constant = -7.5
+            }else {
+                cartCell.lblTopConstraint.constant = 2.5
+            }
+            
+            cartCell.lblHeightConstraint.constant =  CGFloat(neededHeight)
+            print(cartCell.lblHeightConstraint.constant)
+            cartCell.productName.layoutIfNeeded()
+
+
             cartCell.productPrice.text = self.paymentVM.itemsArr[indexPath.row - 2]._unit_price
             cartCell.quantityTf.text = String(self.paymentVM.itemsArr[indexPath.row - 2].quantity ?? 1)
+            if self.paymentVM.itemsArr[indexPath.row - 2].brand != nil{
+             
+                 if self.paymentVM.itemsArr[indexPath.row].brand?.image != nil{
+                     
+                     cartCell.imgViewConstraint.constant = 40.0
+                    
+                    cartCell.brandimg.sd_setImage(with: URL(string: self.paymentVM.itemsArr[indexPath.row].brand?.image ?? "") , placeholderImage: nil, completed: { (image, error, cacheType, url) -> Void in
+                            if ((error) != nil) {
+                                // set the placeholder image here
+                                cartCell.productimage.image = UIImage(named: "brandSample")
+                            } else {
+                                // success ... use the image
+                            }
+                     })
+
+                    
+                 
+                 }else{
+                 
+                     cartCell.imgViewConstraint.constant = 0.0
+
+                 }
+             
+            }else{
+             
+                 cartCell.imgViewConstraint.constant = 0.0
+             
+            }
+
             cartCell.productimage.sd_setImage(with: URL(string: self.paymentVM.itemsArr[indexPath.row - 2].image ?? "") , placeholderImage: nil, completed: { (image, error, cacheType, url) -> Void in
                    if ((error) != nil) {
                        // set the placeholder image here
@@ -281,7 +327,8 @@ class confirmationViewController: UIViewController , UITableViewDelegate, UITabl
                        // success ... use the image
                    }
                })
-
+            cartCell.quantityTf.isUserInteractionEnabled = false
+            cartCell.ratingView.rating = Double(self.paymentVM.itemsArr[indexPath.row - 2].average_rating ?? 5)
 
             return cartCell
 
@@ -298,6 +345,13 @@ class confirmationViewController: UIViewController , UITableViewDelegate, UITabl
         }
     }
     
+    
+    func getHeight(text:  NSString, width:CGFloat, font: UIFont) -> CGFloat
+    {
+        let rect = text.boundingRect(with: CGSize.init(width: width, height: CGFloat.greatestFiniteMagnitude), options: ([NSStringDrawingOptions.usesLineFragmentOrigin,NSStringDrawingOptions.usesFontLeading]), attributes: [NSAttributedString.Key.font:font], context: nil)
+        return rect.size.height
+    }
+
     
     @IBAction func applyPromoClicked(_ sender: Any) {
 
@@ -402,6 +456,7 @@ class confirmationViewController: UIViewController , UITableViewDelegate, UITabl
             let destCont = segue.destination as! paymentOnlineViewController
             destCont.urlToCall = self.paymentVM.paymentUrl
             destCont.orderId = self.orderId ?? -1
+            destCont.cartId = self.cartId ?? -1
         }else if segue.identifier == "gotoThankyouVC"{
             let destCont = segue.destination as! thankyouViewController
             destCont.success = true

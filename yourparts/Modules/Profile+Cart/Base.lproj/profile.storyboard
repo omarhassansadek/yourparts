@@ -165,6 +165,7 @@
                         <outlet property="settingsTableView" destination="8QJ-9g-RA9" id="U72-TS-C4I"/>
                         <segue destination="aIW-Gr-qB9" kind="presentation" identifier="gotoAuthModule" modalTransitionStyle="flipHorizontal" id="SOQ-1f-caw"/>
                         <segue destination="BWo-d6-eNV" kind="show" identifier="gotoChangePassword" id="7Ew-SI-nxn"/>
+                        <segue destination="Ocf-tz-WCg" kind="presentation" identifier="gotoPrivacyPolicy" modalPresentationStyle="automatic" id="140-UO-aYZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dyb-Gh-Pr8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -292,6 +293,14 @@
             </objects>
             <point key="canvasLocation" x="1116" y="1850"/>
         </scene>
+        <!--webViewVC-->
+        <scene sceneID="tRL-jb-B4R">
+            <objects>
+                <viewControllerPlaceholder storyboardName="payment" referencedIdentifier="webViewVC" id="Ocf-tz-WCg" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Q2N-zM-N5i" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2057" y="1849"/>
+        </scene>
         <!--Info Profile View Controller-->
         <scene sceneID="AQG-2G-4q4">
             <objects>
@@ -405,23 +414,43 @@
                                                 <state key="normal" title="Button">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="editInfo:" destination="E5I-rZ-JBw" eventType="touchUpInside" id="Pi4-mD-NHH"/>
+                                                </connections>
                                             </button>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tjf-bL-96G" customClass="NVActivityIndicatorView" customModule="NVActivityIndicatorView">
+                                                <rect key="frame" x="25" y="250" width="325" height="50"/>
+                                                <color key="backgroundColor" red="0.93725490199999995" green="0.23921568630000001" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="50" id="ZJI-Cj-Jmw"/>
+                                                </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="typeName" value="ballPulse"/>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="color">
+                                                        <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
                                         </subviews>
                                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.93725490199999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="4jS-rl-A6Z" secondAttribute="trailing" constant="25" id="5Cv-Bk-7eJ"/>
+                                            <constraint firstAttribute="trailing" secondItem="Tjf-bL-96G" secondAttribute="trailing" constant="25" id="88L-9J-X0K"/>
                                             <constraint firstAttribute="trailing" secondItem="RTO-we-keN" secondAttribute="trailing" constant="25" id="RDR-sW-uT6"/>
                                             <constraint firstItem="4jS-rl-A6Z" firstAttribute="top" secondItem="RTO-we-keN" secondAttribute="bottom" constant="50" id="U1r-Kx-1SF"/>
                                             <constraint firstAttribute="height" constant="667" id="fLG-Wj-Xz6"/>
                                             <constraint firstItem="4jS-rl-A6Z" firstAttribute="leading" secondItem="l83-Q4-H04" secondAttribute="leading" constant="25" id="gQe-g9-KH7"/>
                                             <constraint firstAttribute="trailing" secondItem="zAI-sT-O8q" secondAttribute="trailing" constant="25" id="hIW-ZD-zTI"/>
+                                            <constraint firstItem="Tjf-bL-96G" firstAttribute="leading" secondItem="l83-Q4-H04" secondAttribute="leading" constant="25" id="jly-89-YIi"/>
                                             <constraint firstItem="zAI-sT-O8q" firstAttribute="leading" secondItem="l83-Q4-H04" secondAttribute="leading" constant="25" id="n49-z9-bpl"/>
                                             <constraint firstItem="RTO-we-keN" firstAttribute="leading" secondItem="l83-Q4-H04" secondAttribute="leading" constant="25" id="ngf-aR-Qu7"/>
+                                            <constraint firstItem="Tjf-bL-96G" firstAttribute="top" secondItem="RTO-we-keN" secondAttribute="bottom" constant="50" id="t6Y-lH-7en"/>
                                             <constraint firstItem="RTO-we-keN" firstAttribute="top" secondItem="zAI-sT-O8q" secondAttribute="bottom" constant="25" id="wV4-A2-vYs"/>
                                             <constraint firstItem="zAI-sT-O8q" firstAttribute="top" secondItem="l83-Q4-H04" secondAttribute="top" constant="25" id="xLM-Pg-ZPD"/>
                                         </constraints>
                                     </view>
                                 </subviews>
+                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.93725490199999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="l83-Q4-H04" secondAttribute="trailing" id="GJv-Pq-oIn"/>
                                     <constraint firstAttribute="bottom" secondItem="l83-Q4-H04" secondAttribute="bottom" id="Q7r-m6-1TW"/>
@@ -430,7 +459,7 @@
                                 </constraints>
                             </scrollView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.93725490199999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="8My-7b-2iq" firstAttribute="trailing" secondItem="pSo-1B-Yi0" secondAttribute="trailing" id="9Du-4H-aeb"/>
                             <constraint firstItem="8My-7b-2iq" firstAttribute="top" secondItem="KoJ-wI-7Vf" secondAttribute="top" id="D2a-XN-Ywk"/>
@@ -441,6 +470,7 @@
                         <viewLayoutGuide key="safeArea" id="pSo-1B-Yi0"/>
                     </view>
                     <connections>
+                        <outlet property="actind" destination="Tjf-bL-96G" id="a4M-fm-Emy"/>
                         <outlet property="editBtn" destination="4jS-rl-A6Z" id="0TM-FJ-Teo"/>
                         <outlet property="infoprofileVM" destination="p6J-DB-lzd" id="WGN-Ss-4jn"/>
                         <outlet property="mobileLbl" destination="vDn-TC-YmV" id="max-Uf-6Pl"/>
@@ -459,7 +489,7 @@
                 </customObject>
                 <customObject id="8bY-IO-fAG" customClass="infoProfileClient" customModule="yourparts" customModuleProvider="target"/>
             </objects>
-            <point key="canvasLocation" x="2014" y="-1700"/>
+            <point key="canvasLocation" x="2013.5999999999999" y="-1700.5997001499252"/>
         </scene>
         <!--Fav Address View Controller-->
         <scene sceneID="SdG-bv-Occ">

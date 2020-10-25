@@ -65,7 +65,7 @@ class cartViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.bottomSheetView = BottomSheetView(
             contentView: self.paymentView,
                //125 + 50
-               contentHeights: [height + 140, height + 150]
+               contentHeights: [height + 100, height + 110]
         )
 
         refreshControl.addTarget(self, action: #selector(self.refresh(_:)), for: .valueChanged)
@@ -138,13 +138,17 @@ class cartViewController: UIViewController, UITableViewDelegate, UITableViewData
         let cell = tableView.dequeueReusableCell(withIdentifier: "cartCell") as! cartTableViewCell
 
         cell.productName.text = self.cartVM.cartArr[indexPath.row].product_name
+        
         var neededHeight = self.getHeight(text: self.cartVM.cartArr[indexPath.row].product_name as! NSString, width: cell.productName.frame.width, font: UIFont(name: "Cairo-Bold", size: 14)!)
         
         if neededHeight > 75.0 {
             cell.lblTopConstraint.constant = -12.5
         }else if neededHeight > 50 {
-            cell.lblTopConstraint.constant = -5.0
+            cell.lblTopConstraint.constant = -7.5
+        }else {
+            cell.lblTopConstraint.constant = 2.5
         }
+        
         cell.lblHeightConstraint.constant =  CGFloat(neededHeight)
         print(cell.lblHeightConstraint.constant)
         cell.productName.layoutIfNeeded()
@@ -152,6 +156,35 @@ class cartViewController: UIViewController, UITableViewDelegate, UITableViewData
         cell.productDesc.text = self.cartVM.cartArr[indexPath.row].created_at
         cell.productPrice.text =  self.cartVM.cartArr[indexPath.row].unit_price
         
+        if self.cartVM.cartArr[indexPath.row].brand != nil{
+            
+             if self.cartVM.cartArr[indexPath.row].brand?.image != nil{
+                 
+                 cell.imgViewConstraint.constant = 40.0
+                
+                cell.brandimg.sd_setImage(with: URL(string: self.cartVM.cartArr[indexPath.row].brand?.image ?? "") , placeholderImage: nil, completed: { (image, error, cacheType, url) -> Void in
+                        if ((error) != nil) {
+                            // set the placeholder image here
+                            cell.productimage.image = UIImage(named: "brandSample")
+                        } else {
+                            // success ... use the image
+                        }
+                 })
+
+                
+             
+             }else{
+             
+                 cell.imgViewConstraint.constant = 0.0
+
+             }
+         
+        }else{
+         
+             cell.imgViewConstraint.constant = 0.0
+         
+        }
+
         
         cell.productimage.sd_setImage(with: URL(string: self.cartVM.cartArr[indexPath.row].image ?? "") , placeholderImage: nil, completed: { (image, error, cacheType, url) -> Void in
             if ((error) != nil) {
@@ -170,7 +203,7 @@ class cartViewController: UIViewController, UITableViewDelegate, UITableViewData
         cell.quantityTf.inputView = cell.quantityPickerView
         cell.setPickerViewDataSourceDelegate(cellDelegate, forRow: indexPath.row)
         
-        cell.quantityTf.addTarget(self, action: #selector(self.textFieldDidChange(_:)), for: .editingDidEnd)
+        //cell.quantityTf.addTarget(self, action: #selector(self.textFieldDidChange(_:)), for: .valueChanged)
         
         //          cellDelegate.carMakersArr = self.carMakersArr
         //          cellDelegate.carBrandsArr = self.carBrandsArr
@@ -180,7 +213,8 @@ class cartViewController: UIViewController, UITableViewDelegate, UITableViewData
         cell.row = indexPath.row
         //cellDelegate.type = "m"
         cell.quantityTf.text = String( self.cartVM.cartArr[indexPath.row].quantity ?? -1 )
-        
+        cell.ratingView.rating = Double(self.cartVM.cartArr[indexPath.row].average_rating ?? 5)
+
 
         cell.checkBoxView.isHidden = true
         cell.layoutIfNeeded()
@@ -198,14 +232,25 @@ class cartViewController: UIViewController, UITableViewDelegate, UITableViewData
 
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if (editingStyle == .delete) {
+            self.payBtn.setTitle("".localized, for: .normal)
+
+            self.actind.startAnimating()
+
             // handle delete (by removing the data from your array and updating the tableview)
             self.cartVM.deleteFromCart(id: self.cartVM.cartArr[indexPath.row].id ?? -1, onSuccess: { (isSuccess) in
                 if isSuccess{
                     self.cartVM.cartArr.remove(at: indexPath.row)
+                    self.payBtn.setTitle("Continue to checkout".localized, for: .normal)
+
+                    self.actind.stopAnimating()
                     self.getCartData()
                 }
             }) { (errorMsg) in
                 //
+                self.payBtn.setTitle("Continue to checkout".localized, for: .normal)
+                self.actind.stopAnimating()
+                self.getCartData()
+
             }
         }
     }
@@ -272,6 +317,7 @@ class cartViewController: UIViewController, UITableViewDelegate, UITableViewData
             }
         }) { (errMsg) in
             //
+            AlertViewer().showAlertView(withMessage: errMsg, onController: self)
             self.activityind.stopAnimating()
 
         }
@@ -338,7 +384,7 @@ class cartViewController: UIViewController, UITableViewDelegate, UITableViewData
         orderDic["_total"] = self.cartVM.total
         orderDic["customer"] = UserDefaults.standard.integer(forKey: "userid")
         self.paramsDic["order"] = orderDic
-        self.paramsDic["cart"] = self.cartVM.cartId ?? -1
+        //self.paramsDic["cart"] = self.cartVM.cartId ?? -1
 
         self.cartVM.createOrder(apiParameters: self.paramsDic, onSuccess: { (isSuccess) in
             if isSuccess{
@@ -353,15 +399,17 @@ class cartViewController: UIViewController, UITableViewDelegate, UITableViewData
         }) { (errMsg) in
             //
             self.payBtn.setTitle("Continue to checkout".localized, for: .normal)
-
+            
             self.actind.stopAnimating()
 
+            AlertViewer().showAlertView(withMessage: "We encountered an error. Try again later", onController: self)
         }
         
     }
     
-    func reloadTableData(){
-        
+    func reloadTableData(rowChanged: Int){
+        self.cartTableView.reloadRows(at: [IndexPath(row: rowChanged, section: 0)], with: .none)
+        self.updateQuantity(rowChanged: rowChanged)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -377,24 +425,41 @@ class cartViewController: UIViewController, UITableViewDelegate, UITableViewData
             //var cartId: Int?
         }
     }
-
     
-    @objc func textFieldDidChange(_ textField: UITextField) {
-        print("End Editing")
-        var index = textField.tag
+
+    func updateQuantity(rowChanged: Int){
+        print("change Editing")
+        var index = rowChanged
         var params: [String: Any] = [:]
+        self.payBtn.setTitle("".localized, for: .normal)
+
+        self.actind.startAnimating()
+
         //params["id"] = self.cartVM.cartArr[index].id
         params["quantity"] = self.cartVM.cartArr[index].quantity
         self.cartVM.addToCart(id: self.cartVM.cartArr[index].id ?? -1, apiParameters: params, onSuccess: { (isSuccess) in
             //
             if isSuccess{
                 //self.firstLoad = false
+                self.payBtn.setTitle("Continue to checkout".localized, for: .normal)
+
+                self.actind.stopAnimating()
+
                 self.getCartData()
             }
             
         }) { (error) in
             //
+            self.payBtn.setTitle("Continue to checkout".localized, for: .normal)
+
+            self.actind.stopAnimating()
+
+            self.getCartData()
+
         }
+
+    }
+    @objc func textFieldDidChange(_ textField: UITextField) {
         //self.cartTableView.reloadData()
     }
     /*

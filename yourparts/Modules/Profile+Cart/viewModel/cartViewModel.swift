@@ -46,6 +46,7 @@ class cartViewModel: NSObject {
             //
         }) { (responseFailure) in
             //
+            onFailure("We encountered an error. Try again later")
         }
     }
     
@@ -101,7 +102,7 @@ class cartViewModel: NSObject {
          
          print(apiParameters)
 
-         self.cartC.addToCart(url: baseUrl+createOrderUrl, apiMethod: .post, parametersOfCall: apiParameters, apiEncoding: JSONEncoding.default, completionSuccess: { (responseSuccess) in
+         self.cartC.createOrder(url: baseUrl+create_get_OrderUrl, apiMethod: .post, parametersOfCall: apiParameters, apiEncoding: JSONEncoding.default, completionSuccess: { (responseSuccess) in
                //
                print(responseSuccess)
 

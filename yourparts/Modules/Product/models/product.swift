@@ -41,7 +41,6 @@ class product{
     var last_updated: String?
     var polymorphic_ctype: Int?
     var manufacturer: String?
-    var brand: String?
     var category: Int?
     var tyre_size: String?
     var rim_size: String?
@@ -50,5 +49,7 @@ class product{
     var placeholder: String?
     var related_spareParts: String?
     var upseller_spareParts: String?
-
+    var brand: brand?
+    var average_rating: Int?
+    var is_in_cart: Bool?
 }

@@ -80,8 +80,9 @@ class ParentClient: NSObject {
     
     func communicateWithApi(url: String?, pagingUrl:String?, method: HTTPMethod, parameters: [String:Any]?,headers: [String: String]? , onSuccess: @escaping (JSON) -> Void, onFailure: @escaping (JSON) -> Void) {
         
-        var apiURL: URL?
-        if url != nil {
+        var apiURL = URL(string: "")
+       if url != nil {
+            print(url ?? "")
             apiURL = URL(string: url!)
         }else{
             apiURL = URL(string: pagingUrl!)

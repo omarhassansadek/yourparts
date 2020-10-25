@@ -12,6 +12,11 @@ import NVActivityIndicatorView
 
 class productCellTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var brandSample: UIImageView!
+    @IBOutlet weak var imageViewContainter: UIView!
+    @IBOutlet weak var imageViewConstraint: NSLayoutConstraint!
+    @IBOutlet weak var lblTopConstraint: NSLayoutConstraint!
+    @IBOutlet weak var lblHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var cartimg: UIImageView!
     @IBOutlet weak var productImage: UIImageView!
     @IBOutlet weak var productName: UILabel!

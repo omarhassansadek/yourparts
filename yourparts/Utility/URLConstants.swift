@@ -47,11 +47,13 @@ var getAddressUrl = "customer/billingaddress/"
 
 var getCityUrl = "city/"
 
+var getRegionUrl = "region/"
+
 var getOffersUrl = "ads/offeroftheday"
 
 var getFreqNeeded = "product/category/frequentlyneeded/"
 
-var createOrderUrl = "order/"
+var create_get_OrderUrl = "order/"
 
 var createOrderItemUrl = "order-items/"
 

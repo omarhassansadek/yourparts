@@ -104,9 +104,18 @@ class cartParser{
 //            if let manufacturer = oneCart["sparepart"]["manufacturer"].int {
 //                 cartObj.manufacturer = manufacturer
 //            }
-            if let brand = oneCart["sparepart"]["brand"].string {
-                 cartObj.brand = brand
+            
+            
+            if let brandJSON = oneCart["sparepart"]["brand"].dictionary {
+                cartObj.brand = brand()
+                cartObj.brand?.brand_name = brandJSON["brand_name"]?.string
+                cartObj.brand?.id = brandJSON["id"]?.int
+                cartObj.brand?.image = brandJSON["image"]?.string
+                //cartObj.brand = brand
+                
             }
+                
+
             if let polymorphic_ctype = oneCart["sparepart"]["polymorphic_ctype"].int {
                  cartObj.polymorphic_ctype = polymorphic_ctype
             }

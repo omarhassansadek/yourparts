@@ -18,11 +18,18 @@ class infoProfileViewModel: NSObject {
     
     var userProfile = user()
     
-    func getUserProfile( onSuccess: @escaping(Bool)-> () , onFailure: @escaping(String)-> ()){
-        var headersDic : [String: String] = [:]
-        headersDic["Authorization"] = "Token \(self.userDef.string(forKey: "token") ?? "")"
+    func getUserProfile(apiMethod: HTTPMethod, parameter: [String: Any]?, onSuccess: @escaping(Bool)-> () , onFailure: @escaping(String)-> ()){
         
-        self.infoprofileC.requestProfileInfo(url: baseUrl+profileUrl, apiMethod: .get, parametersOfCall: nil, apiEncoding: JSONEncoding.default, headers: headersDic, completionSuccess: { (responseSuccess) in
+        var headersDic : [String: String] = [:]
+        headersDic["Authorization"] = "JWT \(self.userDef.string(forKey: "authToken") ?? "")"
+        
+        var id = ""
+        
+        if let userId = UserDefaults.standard.string(forKey: "userid"){
+            id = userId
+        }
+        
+        self.infoprofileC.requestProfileInfo(url: baseUrl+profileUrl+"\(id)/", apiMethod: apiMethod, parametersOfCall: parameter, apiEncoding: JSONEncoding.default, headers: headersDic, completionSuccess: { (responseSuccess) in
             //
             if let id = responseSuccess["id"].int{
                 print(id)
@@ -31,6 +38,7 @@ class infoProfileViewModel: NSObject {
             }
             
             if let firstname = responseSuccess["firstname"].string{
+                UserDefaults.standard.set(firstname, forKey: "username")
                 self.userProfile.firstname = firstname
             }
             
@@ -39,6 +47,7 @@ class infoProfileViewModel: NSObject {
             }
             
             if let email = responseSuccess["email"].string{
+                UserDefaults.standard.set(email, forKey: "useremail")
                 self.userProfile.email = email
             }
             

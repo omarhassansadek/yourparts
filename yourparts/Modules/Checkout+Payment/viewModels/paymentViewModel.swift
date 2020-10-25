@@ -32,9 +32,11 @@ class paymentViewModel: NSObject {
     var shippingValue = 0
     
     var shippingSameDayValue = 0
+    
+    var cart = -1
 
-    func getAllCity( onSuccess: @escaping(Bool)-> () , onFailure: @escaping(String)-> ()){
-        self.paymentC.getAllCities(url: baseUrl+getCityUrl, apiMethod: .get, parametersOfCall: nil, apiEncoding: JSONEncoding.default, headers: nil, completionSuccess: { (responseSuccess) in
+    func getAllCity(id: Int, onSuccess: @escaping(Bool)-> () , onFailure: @escaping(String)-> ()){
+        self.paymentC.getAllCities(url: baseUrl+getCityUrl+"?region_id=\(id)", apiMethod: .get, parametersOfCall: nil, apiEncoding: JSONEncoding.default, headers: nil, completionSuccess: { (responseSuccess) in
             //
             cityParser().parseCities(fromJSON: responseSuccess, onSuccess: { (cityArr) in
                 //
@@ -46,8 +48,8 @@ class paymentViewModel: NSObject {
         }
     }
     
-    func getAllregions(id: Int, onSuccess: @escaping(Bool)-> () , onFailure: @escaping(String)-> ()){
-        self.paymentC.getAllCities(url: baseUrl+getCityUrl+"?region_id=\(id)", apiMethod: .get, parametersOfCall: nil, apiEncoding: JSONEncoding.default, headers: nil, completionSuccess: { (responseSuccess) in
+    func getAllregions( onSuccess: @escaping(Bool)-> () , onFailure: @escaping(String)-> ()){
+        self.paymentC.getAllCities(url: baseUrl+getRegionUrl, apiMethod: .get, parametersOfCall: nil, apiEncoding: JSONEncoding.default, headers: nil, completionSuccess: { (responseSuccess) in
             //
             cityParser().parseCities(fromJSON: responseSuccess, onSuccess: { (cityArr) in
                 //
@@ -55,6 +57,7 @@ class paymentViewModel: NSObject {
                 onSuccess(true)
 
             })
+            
         }) { (responseFailure) in
             //
         }
@@ -70,7 +73,7 @@ class paymentViewModel: NSObject {
             }
         }) { (responseFailure) in
             //
-            onFailure("We encountered error")
+            onFailure("We encountered error. Try again later")
             
         }
 
@@ -228,7 +231,7 @@ class paymentViewModel: NSObject {
 
               // print(apiParameters)
                
-               self.paymentC.createOrder(url: baseUrl+createOrderUrl+"\(id)", apiMethod: .get, parametersOfCall: nil, apiEncoding: JSONEncoding.default,  completionSuccess: { (responseSuccess) in
+               self.paymentC.createOrder(url: baseUrl+create_get_OrderUrl+"\(id)", apiMethod: .get, parametersOfCall: nil, apiEncoding: JSONEncoding.default,  completionSuccess: { (responseSuccess) in
                       //
                         print(responseSuccess)
                         if let id = responseSuccess["id"].int{
@@ -280,6 +283,10 @@ class paymentViewModel: NSObject {
                             if let shipping_same_day = responseSuccess["shipping_same_day"].int{
                                 self.shippingSameDayValue = shipping_same_day
                             }
+                            
+                            if let cartId = responseSuccess["cart"].int{
+                                //self.cart = cartId
+                            }
 
 
                             //shippingSameDayValue
@@ -305,17 +312,17 @@ class paymentViewModel: NSObject {
     
     var paymentSuccessStatus = false
     
-    func getOrderPaymentStatus( id: Int, onSuccess: @escaping(Bool)-> () , onFailure: @escaping(String)-> ()){
+    func getOrderPaymentStatus( id: Int, cart_id: Int, onSuccess: @escaping(Bool)-> () , onFailure: @escaping(String)-> ()){
 
           // print(apiParameters)
            
-           self.paymentC.createOrder(url: baseUrl+getPaymentStatus+"?order=\(id)", apiMethod: .get, parametersOfCall: nil, apiEncoding: JSONEncoding.default,  completionSuccess: { (responseSuccess) in
+           self.paymentC.createOrder(url: baseUrl+getPaymentStatus+"?order=\(id)&cart=\(cart_id)", apiMethod: .get, parametersOfCall: nil, apiEncoding: JSONEncoding.default,  completionSuccess: { (responseSuccess) in
                   //
                     print(responseSuccess)
                     
 
-                    if let msg = responseSuccess["message"].string{
-                        if msg == "تمت العملية بنجاح"{
+                    if let msg = responseSuccess["status"].string{
+                        if msg == "true"{
                             self.paymentSuccessStatus = true
                         }else{
                             self.paymentSuccessStatus = false
@@ -328,6 +335,8 @@ class paymentViewModel: NSObject {
 
                    
             }) { (responseFailure) in
+                    self.paymentSuccessStatus = false
+                
                     onFailure("We encountered an error. Try again later")
             }
                   

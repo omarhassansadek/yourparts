@@ -7,10 +7,12 @@
 //
 
 import UIKit
+import NVActivityIndicatorView
 
 class infoProfileViewController: UIViewController, UITextFieldDelegate {
 
 
+    @IBOutlet weak var actind: NVActivityIndicatorView!
     @IBOutlet weak var editBtn: UIButton!
     @IBOutlet weak var mobileLbl: UILabel!
     @IBOutlet weak var nameLbl: UILabel!
@@ -78,7 +80,7 @@ class infoProfileViewController: UIViewController, UITextFieldDelegate {
 
         self.navigationController?.navigationBar.barTintColor = anotherGreyColor
 
-        self.title = "Settings".localized
+        self.title = "Edit My Info".localized
         
         self.navigationController?.navigationBar.titleTextAttributes =
             [NSAttributedString.Key.foregroundColor: UIColor.black,
@@ -87,21 +89,50 @@ class infoProfileViewController: UIViewController, UITextFieldDelegate {
         
 
 //
-//        self.infoprofileVM.getUserProfile( onSuccess: { (isSuccess) in
-//            //
-//            self.nameTf.text = "\(self.infoprofileVM.userProfile.firstname) \(self.infoprofileVM.userProfile.lastname)"
-//            self.mobileTf.text = self.infoprofileVM.userProfile.phone_number ?? ""
-//            self.emailTf.text = self.infoprofileVM.userProfile.email ?? ""
-//
-//           // self.jobTf.text = self.infoprofileVM.userProfile.
-//        }) { (errormsg) in
-//            //
-//        }
+        self.infoprofileVM.getUserProfile(apiMethod: .get, parameter: nil,  onSuccess: { (isSuccess) in
+            //
+            self.nameTf.text = "\(self.infoprofileVM.userProfile.firstname ?? "")"
+            self.mobileTf.text = self.infoprofileVM.userProfile.phone_number ?? ""
+
+           // self.jobTf.text = self.infoprofileVM.userProfile.
+        }) { (errormsg) in
+            //
+        }
  
     }
     
     @IBAction func changeInTfs(_ sender: UITextField) {
         self.editBtn.backgroundColor = primaryColor
+    }
+    
+    @IBAction func editInfo(_ sender: Any) {
+        self.actind.startAnimating()
+        
+        self.editBtn.setTitle("".localized, for: .normal)
+
+        self.infoprofileVM.getUserProfile(apiMethod: .patch, parameter: ["firstname" : self.nameTf.text! , "phone_number" : self.mobileTf.text!], onSuccess: { (isSuccess) in
+            
+            self.actind.stopAnimating()
+
+            if isSuccess{
+
+                self.nameTf.text = "\(self.infoprofileVM.userProfile.firstname ?? "")"
+                
+                self.mobileTf.text = self.infoprofileVM.userProfile.phone_number ?? ""
+                
+                self.editBtn.setTitle("Edit your profile".localized, for: .normal)
+
+
+            }
+            
+        }) { (errMsg) in
+            
+            self.actind.stopAnimating()
+            
+            self.editBtn.setTitle("Edit your profile".localized, for: .normal)
+
+            AlertViewer().showAlertView(withMessage: errMsg, onController: self)
+        }
     }
     
     

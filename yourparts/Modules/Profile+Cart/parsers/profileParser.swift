@@ -16,12 +16,15 @@ class profileParser{
         
         var userObj = user()
         
+
         if let id = fromJSON["id"].int {
             userObj.id = id
         }
         
         if let firstname = fromJSON["firstname"].string {
             userObj.firstname = firstname
+            UserDefaults.standard.set(firstname, forKey: "username")
+           
         }
         
         if let lastname = fromJSON["lastname"].string {
@@ -30,6 +33,8 @@ class profileParser{
         
         if let email = fromJSON["email"].string {
             userObj.email = email
+            UserDefaults.standard.set(email, forKey: "useremail")
+
         }
         
         if let phone_number = fromJSON["phone_number"].string {

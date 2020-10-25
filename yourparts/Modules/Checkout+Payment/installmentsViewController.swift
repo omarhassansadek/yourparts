@@ -64,6 +64,11 @@ class installmentsViewController: UIViewController {
 
     }
 
+    @IBAction func chooseInstallmentBtn(_ sender: UIButton) {
+        NotificationCenter.default.post(name: Notification.Name("updateMethod"), object: nil)
+        self.navigationController?.popViewController(animated: true)
+
+    }
     /*
     // MARK: - Navigation
 

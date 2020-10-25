@@ -101,7 +101,8 @@ class addAddressViewController: UIViewController, UIPickerViewDelegate, UIPicker
         self.addAddressBtn.setTitle("Save Address".localized, for: .normal)
         self.addAddressBtn.titleLabel?.font = UIFont(name: "Cairo-Bold", size: 14)
 
-        self.getCities()
+        self.getRegions()
+        //self.getCities()
         
         // Do any additional setup after loading the view.
     }
@@ -135,8 +136,10 @@ class addAddressViewController: UIViewController, UIPickerViewDelegate, UIPicker
             
         }) { (errMsg) in
             //
-            AlertViewer().showAlertView(withMessage: "errMsg", onController: self)
+            AlertViewer().showAlertView(withMessage: errMsg, onController: self)
             self.activityind.stopAnimating()
+            self.addAddressBtn.setTitle("Save Address".localized, for: .normal)
+            self.addAddressBtn.backgroundColor = primaryColor
         }
 
     }
@@ -149,14 +152,14 @@ class addAddressViewController: UIViewController, UIPickerViewDelegate, UIPicker
         self.dismiss(animated: true, completion: nil)
     }
     
-    func getCities(){
-        self.paymentVM.getAllCity(onSuccess: { (isSuccess) in
+    func getCities(id: Int){
+        self.paymentVM.getAllCity(id: id, onSuccess: { (isSuccess) in
             //
             if isSuccess{
                 self.cityPickerView.reloadAllComponents()
                 if self.paymentVM.ctitiesArr.count > 0 {
                     self.cityTf.text = self.paymentVM.ctitiesArr[0].name
-                    self.getRegions(id: self.paymentVM.ctitiesArr[0].id ?? -1)
+                    //self.getRegions(id: self.paymentVM.ctitiesArr[0].id ?? -1)
                 }
             }
         }) { (errMsg) in
@@ -164,12 +167,13 @@ class addAddressViewController: UIViewController, UIPickerViewDelegate, UIPicker
         }
     }
     
-    func getRegions(id: Int){
-        self.paymentVM.getAllregions(id: id, onSuccess: { (isSuccess) in
+    func getRegions(){
+        self.paymentVM.getAllregions( onSuccess: { (isSuccess) in
             if isSuccess{
                 self.regionPickerView.reloadAllComponents()
                 if self.paymentVM.regionArr.count > 0{
                     self.regionTf.text = self.paymentVM.regionArr[0].name
+                    self.getCities(id: self.paymentVM.regionArr[0].id ?? -1)
                 }else{
                     self.regionTf.text = ""
                 }
@@ -205,11 +209,12 @@ class addAddressViewController: UIViewController, UIPickerViewDelegate, UIPicker
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        if pickerView == cityPickerView{
-            self.cityTf.text = self.paymentVM.ctitiesArr[row].name ?? ""
-            self.getRegions(id: self.paymentVM.ctitiesArr[row].id ?? -1)
-        }else{
+        if pickerView == regionPickerView{
             self.regionTf.text = self.paymentVM.regionArr[row].name ?? ""
+            self.getCities(id: self.paymentVM.regionArr[row].id ?? -1)
+            
+        }else{
+            self.cityTf.text = self.paymentVM.ctitiesArr[row].name ?? ""
         }
     }
 

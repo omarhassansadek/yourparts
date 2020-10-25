@@ -98,6 +98,7 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="carCheckbox" destination="1zo-G7-g2x" id="Ybg-cN-uJQ"/>
+                <outlet property="carImage" destination="JX7-Yk-Qi4" id="dhp-KH-k99"/>
                 <outlet property="carNameLbl" destination="FGW-Uh-zzB" id="wzR-Wk-3u6"/>
                 <outlet property="carYear" destination="SWX-FI-e41" id="YaJ-vW-mxJ"/>
                 <outlet property="carYearModel" destination="xkp-mY-si3" id="xWT-Hi-GAk"/>

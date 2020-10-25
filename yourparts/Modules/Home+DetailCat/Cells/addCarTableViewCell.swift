@@ -10,8 +10,11 @@ import UIKit
 
 class addCarTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var carLogo: UIImageView!
     @IBOutlet weak var detailAddCarLbl: UILabel!
     @IBOutlet weak var addCarLbl: UILabel!
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

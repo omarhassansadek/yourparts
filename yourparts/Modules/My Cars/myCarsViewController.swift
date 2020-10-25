@@ -104,6 +104,16 @@ class myCarsViewController: UIViewController, UITableViewDelegate, UITableViewDa
             cell.carYearModel.text = self.myCarsVM.myCars[indexPath.row].model_name ?? ""
             cell.carYear.text = String( self.myCarsVM.myCars[indexPath.row].year ?? Int() ) ?? ""
             
+            cell.carImage.sd_setImage(with: URL(string: self.myCarsVM.myCars[indexPath.row].image ?? "") , placeholderImage: nil, completed: { (image, error, cacheType, url) -> Void in
+                if ((error) != nil) {
+                    // set the placeholder image here
+                    cell.carImage.image = UIImage(named: "carico")
+                } else {
+                    // success ... use the image
+                }
+            })
+
+            
             if self.myCarsVM.myCars[indexPath.row].isChecked == true{
                 cell.carCheckbox.on = true
             }else{
@@ -155,16 +165,27 @@ class myCarsViewController: UIViewController, UITableViewDelegate, UITableViewDa
             }
         }
     }
+    
+    
+    var firstLoad = false
+
 
     func fetchCars(){
         
-        self.actind.startAnimating()
+        if !self.firstLoad {
+            
+            self.actind.startAnimating()
+        }
+
+        
         self.myCarsVM.getMyVehicles(onSuccess: { (isSuccess) in
             //
             if self.myCarsVM.myCars.count != 0{
                 self.carsTableView.isHidden = false
                 self.myCarsPlaceholder.isHidden = true
                 self.addCarBtnView.isHidden = true
+                self.firstLoad = true
+
             }else{
                 self.carsTableView.isHidden = true
                 self.myCarsPlaceholder.isHidden = false

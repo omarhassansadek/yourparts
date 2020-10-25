@@ -44,7 +44,7 @@ class quantityPickerDelegate : NSObject ,UIPickerViewDelegate, UIPickerViewDataS
         print(self.row ?? -1)
         print(self.countArr[row])
         self.targetController?.cartVM.cartArr[self.row ?? -1].quantity = Int(self.countArr[row])
-        //self.targetController?.reloadTableData()
+        self.targetController?.reloadTableData(rowChanged: self.row ?? 0)
             
     }
     

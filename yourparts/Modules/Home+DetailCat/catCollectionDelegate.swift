@@ -24,7 +24,7 @@ class catCollectionDelegate: NSObject ,UICollectionViewDataSource, UICollectionV
          }
           
          func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-            return self.targetController?.homeVm.categoriesArr.count ?? 0
+            return self.targetController?.homeVm.homeCategoryResponse.data?.count ?? 0
           }
     
         func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -35,7 +35,7 @@ class catCollectionDelegate: NSObject ,UICollectionViewDataSource, UICollectionV
                     cellCollection.catimage.contentMode = .center
                     cellCollection.catimage.clipsToBounds = true
             
-            cellCollection.catimage.image = UIImage(named: self.targetController?.homeVm.categoriesArr[indexPath.row].image ?? "")
+            cellCollection.catimage.image = UIImage(named: self.targetController?.homeVm.homeCategoryResponse.data?[indexPath.row].image ?? "")
 //                    cellCollection.catimage.sd_setImage(with: URL(string: self.targetController?.homeVm.categoriesArr[indexPath.row].image ?? "") , placeholderImage: nil, completed: { (image, error, cacheType, url) -> Void in
 //                        if ((error) != nil) {
 //                            // set the placeholder image here
@@ -45,7 +45,7 @@ class catCollectionDelegate: NSObject ,UICollectionViewDataSource, UICollectionV
 //                        }
 //                    })
             
-                    cellCollection.catLbl.text = self.targetController?.homeVm.categoriesArr[indexPath.row].name ?? ""
+            cellCollection.catLbl.text = self.targetController?.homeVm.homeCategoryResponse.data?[indexPath.row].name ?? ""
            
                     //cellCollection.layoutIfNeeded()
             
@@ -58,7 +58,7 @@ class catCollectionDelegate: NSObject ,UICollectionViewDataSource, UICollectionV
             //if indexPath.row == 5{
             //}
             //if indexPath.row != 13 && indexPath.row != 12{
-            self.targetController?.catIdToGo = self.targetController?.homeVm.categoriesArr[indexPath.row].id
+            self.targetController?.catIdToGo = self.targetController?.homeVm.homeCategoryResponse.data?[indexPath.row].id
                            
              if self.targetController?.catIdToGo == 85{
                 self.targetController?.performSegue(withIdentifier: "gotoTires", sender: self)

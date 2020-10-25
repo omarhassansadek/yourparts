@@ -98,26 +98,52 @@ class settingsViewController: UIViewController, UITableViewDataSource, UITableVi
         }
     }
     
+    var selectedIndex = 0
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.row == 0 {
-            self.performSegue(withIdentifier: "gotoChangePassword", sender: self)
-        }else
-        if indexPath.row == settingOptions.count{
-            var alertCont = UIAlertController(title: "Yourparts", message: "Are you sure you want to logout?".localized, preferredStyle: .alert)
-            
-            alertCont.addAction(UIAlertAction(title: "Cancel".localized, style: .destructive, handler: { _ in
-                alertCont.dismiss(animated: true, completion: nil)
-            }))
-            
-            alertCont.addAction(UIAlertAction(title: "Continue".localized, style: .default, handler: { _ in
-                //go to login
-                UserDefaults.standard.set(false, forKey: "isLogged")
-                self.performSegue(withIdentifier: "gotoAuthModule", sender: self)
-            }))
+        
+        switch indexPath.row {
+            case 0:
+                self.performSegue(withIdentifier: "gotoChangePassword", sender: self)
 
-            
-            self.present(alertCont, animated: true, completion: nil)
-        }else{
+            case 1,2:
+                self.selectedIndex = indexPath.row
+                if indexPath.row == 1{
+                    
+                }
+                self.performSegue(withIdentifier: "gotoPrivacyPolicy", sender: self)
+            case settingOptions.count:
+                var alertCont = UIAlertController(title: "Yourparts", message: "Are you sure you want to logout?".localized, preferredStyle: .alert)
+                
+                alertCont.addAction(UIAlertAction(title: "Cancel".localized, style: .destructive, handler: { _ in
+                    alertCont.dismiss(animated: true, completion: nil)
+                }))
+                
+                alertCont.addAction(UIAlertAction(title: "Continue".localized, style: .default, handler: { _ in
+                    //go to login
+                    UserDefaults.standard.set(false, forKey: "isLogged")
+                    self.performSegue(withIdentifier: "gotoAuthModule", sender: self)
+                }))
+
+                
+                self.present(alertCont, animated: true, completion: nil)
+
+            default:
+                break
+        }
+
+        
+        
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "gotoPrivacyPolicy"{
+            let destCont = segue.destination as! paymentOnlineViewController
+            if selectedIndex == 1{
+                destCont.urlToCall = "https://yourparts.com/terms"
+            }else{
+                destCont.urlToCall = "https://yourparts.com/aboutus"
+            }
             
         }
     }

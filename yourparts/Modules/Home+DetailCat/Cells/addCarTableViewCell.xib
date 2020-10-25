@@ -58,6 +58,7 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="addCarLbl" destination="HrI-Xo-E2q" id="O6E-Ir-k9y"/>
+                <outlet property="carLogo" destination="jFD-KF-XAy" id="pTS-6I-ome"/>
                 <outlet property="detailAddCarLbl" destination="6dJ-IS-vyc" id="pra-Oe-hav"/>
             </connections>
             <point key="canvasLocation" x="137.68115942028987" y="141.96428571428569"/>

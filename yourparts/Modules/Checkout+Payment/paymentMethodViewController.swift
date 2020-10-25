@@ -65,6 +65,9 @@ class paymentMethodViewController: UIViewController, UITableViewDelegate, UITabl
             [NSAttributedString.Key.foregroundColor: UIColor.black,
              NSAttributedString.Key.font: UIFont(name: "Cairo-Bold", size: 18)!]
         
+        NotificationCenter.default.addObserver(self, selector: #selector(self.updatePaymentMethod), name: Notification.Name("updateMethod"), object: nil)
+
+        
         //AddAddressCell
         // Do any additional setup after loading the view.
     }
@@ -176,11 +179,11 @@ class paymentMethodViewController: UIViewController, UITableViewDelegate, UITabl
                 }
                 
                 if indexPath.row == 2{
-                    self.performSegue(withIdentifier: "gotoInstallmentMethod", sender: self)
-                }else{
-                    self.paymentMethodTableView.reloadData()
+                    //self.performSegue(withIdentifier: "gotoInstallmentMethod", sender: self)
+                //}else{
                 }
-                
+                self.paymentMethodTableView.reloadData()
+
             }
             
             methodCell.methodBox.on = arrayBox[indexPath.row]
@@ -211,6 +214,7 @@ class paymentMethodViewController: UIViewController, UITableViewDelegate, UITabl
             let destCont = segue.destination as! confirmationViewController
             destCont.orderId = self.orderId ?? -1
             destCont.orderItemId = self.orderItemId
+            destCont.cartId = self.cartId ?? -1
         }
     }
     
@@ -220,6 +224,16 @@ class paymentMethodViewController: UIViewController, UITableViewDelegate, UITabl
         self.navigationController?.popViewController(animated: true)
     }
     
+    
+    @objc func updatePaymentMethod(notification: Notification) {
+        //self.getAddresses()
+        //
+        self.selectedMethod = 2
+        self.arrayBox[2] = true
+        self.paymentMethodTableView.reloadData()
+
+    }
+
     
     
     /*

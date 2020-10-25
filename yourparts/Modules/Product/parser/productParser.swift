@@ -74,11 +74,11 @@ class productParser{
                    if let unit_price = oneProduct["unit_price"].string {
                         productObj.unit_price = unit_price
                     }
-                if let unit_price_Order = oneProduct["_unit_price"].string {
+                
+                    if let unit_price_Order = oneProduct["_unit_price"].string {
                      productObj._unit_price = unit_price_Order
-                 }
-
-                   
+                    }
+                
                    if let product_code = oneProduct["product_code"].string {
                         productObj.product_code = product_code
                     }
@@ -88,17 +88,17 @@ class productParser{
                     }
                    
                 
-                if fromOrder{
-                    if let image = oneProduct["product"]["image"].string {
-                         productObj.image = image
-                     }
+                    if fromOrder{
+                        if let image = oneProduct["product"]["image"].string {
+                             productObj.image = image
+                         }
 
-                }else{
-                    if let image = oneProduct["image"].string {
-                         productObj.image = image
-                     }
+                    }else{
+                        if let image = oneProduct["image"].string {
+                             productObj.image = image
+                         }
 
-                }
+                    }
                 
                    
                    if let thumbnail_image = oneProduct["thumbnail_image"].string {
@@ -156,6 +156,10 @@ class productParser{
                    if let is_in_stock = oneProduct["is_in_stock"].bool {
                            productObj.is_in_stock = is_in_stock
                    }
+                
+                   if let is_in_cart = oneProduct["is_in_cart"].bool {
+                            productObj.is_in_cart = is_in_cart
+                   }
                    
                    if let most_on_demand = oneProduct["most_on_demand"].bool  {
                            productObj.most_on_demand = most_on_demand
@@ -173,9 +177,7 @@ class productParser{
                            productObj.manufacturer = manufacturer
                    }
                    
-                   if let brand = oneProduct["brand"].string {
-                           productObj.brand = brand
-                   }
+
                    
                    if let category = oneProduct["category"].int {
                            productObj.category = category
@@ -189,6 +191,7 @@ class productParser{
                            productObj.rim_size = rim_size
                    }
                    
+                
                    if let racho_size = oneProduct["racho_size"].string {
                            productObj.racho_size = racho_size
                    }
@@ -200,6 +203,17 @@ class productParser{
                    
                    if let placeholder = oneProduct["placeholder"].string {
                            productObj.placeholder = placeholder
+                   }
+
+                   if let average_rating = oneProduct["average_rating"].int {
+                            productObj.average_rating = average_rating
+                   }
+
+                   if let brandObj = oneProduct["brand"].dictionary{
+                        productObj.brand = brand()
+                        productObj.brand?.brand_name = brandObj["brand_name"]?.string
+                        productObj.brand?.id = brandObj["id"]?.int
+                        productObj.brand?.image = brandObj["image"]?.string
                    }
                    
                    resultsArr.append(productObj)

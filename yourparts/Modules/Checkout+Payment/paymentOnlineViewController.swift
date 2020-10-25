@@ -13,6 +13,7 @@ class paymentOnlineViewController: UIViewController, UIWebViewDelegate {
     
     var orderId: Int?
     
+    var cartId: Int?
     
     
     @IBOutlet var paymentVM: paymentViewModel!
@@ -64,7 +65,7 @@ class paymentOnlineViewController: UIViewController, UIWebViewDelegate {
         if let text = webView.request?.url?.absoluteString{
              print(text)
             if text.contains("/home") {
-                self.paymentVM.getOrderPaymentStatus(id: self.orderId ?? -1, onSuccess: { (isSuccess) in
+                self.paymentVM.getOrderPaymentStatus(id: self.orderId ?? -1, cart_id: self.cartId ?? -1, onSuccess: { (isSuccess) in
                     //
                     
                     //if isSuccess{
@@ -73,6 +74,7 @@ class paymentOnlineViewController: UIViewController, UIWebViewDelegate {
                     
                 }) { (errMsg) in
                     //
+                    self.performSegue(withIdentifier: "gotoThankyouVc", sender: self)
                 }
             }
 

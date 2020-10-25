@@ -217,7 +217,7 @@ class newHomeViewController: UIViewController, UITableViewDelegate, UITableViewD
             case "f" , "g":
                 return 120.0
         default:
-            var countOfRows =  CGFloat(Double(self.homeVm.categoriesArr.count) / 2.0)
+            var countOfRows =  CGFloat(Double(self.homeVm.homeCategoryResponse.data?.count ?? 0) / 2.0)
             
             return ((self.view.frame.width / 2.0) * 0.60 ) * countOfRows
         }
@@ -239,7 +239,6 @@ class newHomeViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     func reqHomeCats(){
         
-        self.activityind.startAnimating()
         self.homeVm.getHomeCategories(apiParameters: [:], onSuccess: { isSuccess in
             //
             self.activityind.stopAnimating()
@@ -293,6 +292,8 @@ class newHomeViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     
     func getOffers(){
+        self.activityind.startAnimating()
+
         self.homeVm.getOffersFromApi(onSuccess: { (isSuccess) in
             //
             

@@ -724,11 +724,11 @@
                         <outlet property="addAddressLbl" destination="PfG-Z7-hFP" id="3lN-N0-8f7"/>
                         <outlet property="appartmentTf" destination="hAv-On-vrF" id="Zgi-6m-gSE"/>
                         <outlet property="buildingNoTf" destination="TDH-SG-Kja" id="cxE-bo-3ND"/>
-                        <outlet property="cityTf" destination="5l6-jz-HfU" id="VFg-wC-Scv"/>
+                        <outlet property="cityTf" destination="mbh-5n-7CB" id="GHU-s9-7ZK"/>
                         <outlet property="floorNoTf" destination="kgM-bu-Ao8" id="7K5-Lt-2Ds"/>
                         <outlet property="handlerView" destination="NMg-DJ-U88" id="sj7-Z4-Pld"/>
                         <outlet property="paymentVM" destination="cXQ-bG-os9" id="TdP-Cb-ZhE"/>
-                        <outlet property="regionTf" destination="mbh-5n-7CB" id="eSq-fz-HM4"/>
+                        <outlet property="regionTf" destination="5l6-jz-HfU" id="Ik1-U1-Fhu"/>
                         <outlet property="streetTf" destination="ARX-G2-UHp" id="wCs-20-9oT"/>
                         <outletCollection property="roundViews" destination="5Hg-Yc-ebr" collectionClass="NSMutableArray" id="UFd-MK-Kwz"/>
                         <outletCollection property="roundViews" destination="TK8-wx-zDw" collectionClass="NSMutableArray" id="LsB-gD-U0U"/>
@@ -907,6 +907,9 @@
                                                             <constraint firstAttribute="height" constant="45" id="ZeA-eH-96Z"/>
                                                         </constraints>
                                                         <state key="normal" title="Button"/>
+                                                        <connections>
+                                                            <action selector="chooseInstallmentBtn:" destination="GXp-5X-aOs" eventType="touchUpInside" id="M4q-4V-X1k"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sRN-nu-DIa">
                                                         <rect key="frame" x="0.0" y="83" width="294" height="45"/>
@@ -914,6 +917,9 @@
                                                             <constraint firstAttribute="height" constant="45" id="JkX-ae-hbb"/>
                                                         </constraints>
                                                         <state key="normal" title="Button"/>
+                                                        <connections>
+                                                            <action selector="chooseInstallmentBtn:" destination="GXp-5X-aOs" eventType="touchUpInside" id="rKE-69-KTb"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -1695,7 +1701,7 @@
         <!--Payment Online View Controller-->
         <scene sceneID="hwX-To-jUC">
             <objects>
-                <viewController modalPresentationStyle="fullScreen" id="Qzc-wE-yrL" customClass="paymentOnlineViewController" customModule="yourparts" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="webViewVC" modalPresentationStyle="fullScreen" id="Qzc-wE-yrL" customClass="paymentOnlineViewController" customModule="yourparts" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Dex-IE-cuW">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1709,7 +1715,7 @@
                                 </wkWebViewConfiguration>
                             </wkWebView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="t5B-46-UEc">
-                                <rect key="frame" x="25" y="49" width="30" height="30"/>
+                                <rect key="frame" x="25" y="69" width="30" height="30"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="close" translatesAutoresizingMaskIntoConstraints="NO" id="Zen-mq-cNq">
                                         <rect key="frame" x="7.5" y="7.5" width="15" height="15"/>
@@ -1752,7 +1758,7 @@
                             <constraint firstItem="t5B-46-UEc" firstAttribute="leading" secondItem="DTq-v9-4Yp" secondAttribute="leading" constant="25" id="Eud-HT-m29"/>
                             <constraint firstAttribute="bottom" secondItem="6rr-Vc-ESZ" secondAttribute="bottom" id="KYe-ka-1N9"/>
                             <constraint firstItem="6rr-Vc-ESZ" firstAttribute="leading" secondItem="DTq-v9-4Yp" secondAttribute="leading" id="a9y-u5-Egj"/>
-                            <constraint firstItem="t5B-46-UEc" firstAttribute="top" secondItem="DTq-v9-4Yp" secondAttribute="top" constant="5" id="dQr-tQ-uym"/>
+                            <constraint firstItem="t5B-46-UEc" firstAttribute="top" secondItem="DTq-v9-4Yp" secondAttribute="top" constant="25" id="dQr-tQ-uym"/>
                             <constraint firstItem="DTq-v9-4Yp" firstAttribute="trailing" secondItem="XvL-40-AN1" secondAttribute="trailing" id="phT-cP-au4"/>
                             <constraint firstItem="DTq-v9-4Yp" firstAttribute="trailing" secondItem="6rr-Vc-ESZ" secondAttribute="trailing" id="xBL-xA-08r"/>
                         </constraints>
@@ -1798,7 +1804,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="O5y-0t-Qvq"/>
+        <segue reference="Q5M-zX-CB8"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="checkico" width="165" height="222"/>
