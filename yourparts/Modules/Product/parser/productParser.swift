@@ -12,35 +12,29 @@ import SwiftyJSON
 class productParser{
 
 
-    func parseProductsResponse(fromOrder: Bool, fromJSON: JSON , onSuccess: @escaping (productResponse) -> () ){
+    func parseProductsResponse(fromOrder: Bool, fromResponse jsonResponse: JSON , intoResponse resultResponse: productResponse, onSuccess: @escaping (productResponse) -> () ){
         
-        var productResponseSuccess = productResponse()
-        
-        if let count = fromJSON["count"].int {
-                productResponseSuccess.count = count
-        }
-        if let next = fromJSON["next"].string {
-                productResponseSuccess.next = next
-        }
-        if let previous = fromJSON["previous"].string {
-                productResponseSuccess.previous = previous
-        }
+        var filledResponse = resultResponse
+
+//        var productResponseSuccess = productResponse()
         
         if fromOrder{
-            productResponseSuccess.results = parseProducts(fromOrder: true, fromJSON: fromJSON["order"]["items"])
+            filledResponse.data = parseProducts(fromOrder: true, fromJSON: jsonResponse["order"]["items"], intoResponseArr: filledResponse.data)
 
         }else{
-            productResponseSuccess.results = parseProducts(fromOrder: false, fromJSON: fromJSON["results"])
+            filledResponse.data = parseProducts(fromOrder: false, fromJSON: jsonResponse["results"], intoResponseArr: filledResponse.data)
         }
 
-       onSuccess(productResponseSuccess)
+        filledResponse = PagingResponseParser().parseDataWithPaging(fromResponse: jsonResponse, intoResponse: filledResponse) as! productResponse
+
+        onSuccess(filledResponse)
 //
 //        onSuccess(sizes)
     }
 
-    func parseProducts(fromOrder: Bool ,fromJSON: JSON) -> [product]{
+    func parseProducts(fromOrder: Bool ,fromJSON: JSON, intoResponseArr: [product] ) -> [product]{
         
-        var resultsArr : [product] = []
+        var resultsArr = intoResponseArr
                
                for oneProduct in fromJSON.arrayValue{
 

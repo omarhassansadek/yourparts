@@ -106,7 +106,7 @@ class ParentClient: NSObject {
                     //let responseJson = try JSON(data: response.data!)
                     let responseJson = try JSON(data: response.data!, options: .allowFragments)
 
-                    print(responseJson)
+                    //print(responseJson)
                     onSuccess(responseJson)
                 }catch let error{
                     print(error)

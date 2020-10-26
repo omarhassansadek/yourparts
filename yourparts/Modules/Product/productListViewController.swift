@@ -152,75 +152,75 @@ class productListViewController: UIViewController, UICollectionViewDelegate , UI
       }
       
       func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.productVM.productsResponse?.results.count ?? 0
+        return self.productVM.productsResponse.data.count
       }
       
       
-      func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-          let cell = tableView.dequeueReusableCell(withIdentifier: "dataCell") as! productCellTableViewCell
-          cell.productName.text = self.productVM.productsResponse?.results[indexPath.row].product_name
-          var neededHeight = self.getHeight(text: self.productVM.productsResponse?.results[indexPath.row].product_name as! NSString, width: cell.productName.frame.width, font: UIFont(name: "Cairo-Bold", size: 14)!)
-//        
-           if neededHeight > 75.0 {
-             cell.lblTopConstraint.constant = -12.5
-           }else if neededHeight > 50 {
-             cell.lblTopConstraint.constant = -7.5
-           }else {
-             cell.lblTopConstraint.constant = 2.5
-           }
-//
-           if self.productVM.productsResponse?.results[indexPath.row].brand != nil{
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "dataCell") as! productCellTableViewCell
+        cell.productName.text = self.productVM.productsResponse.data[indexPath.row].product_name
+        var neededHeight = self.getHeight(text: self.productVM.productsResponse.data[indexPath.row].product_name as! NSString, width: cell.productName.frame.width, font: UIFont(name: "Cairo-Bold", size: 14)!)
+        //
+        if neededHeight > 75.0 {
+            cell.lblTopConstraint.constant = -12.5
+        }else if neededHeight > 50 {
+            cell.lblTopConstraint.constant = -7.5
+        }else {
+            cell.lblTopConstraint.constant = 2.5
+        }
+        //
+        if self.productVM.productsResponse.data[indexPath.row].brand != nil{
             
-                if self.productVM.productsResponse?.results[indexPath.row].brand?.image != nil{
-                    
-                    cell.imageViewConstraint.constant = 40.0
-                    
-                    cell.brandSample.sd_setImage(with: URL(string: productVM.productsResponse?.results[indexPath.row].brand?.image ?? "") , placeholderImage: nil, completed: { (image, error, cacheType, url) -> Void in
-                           if ((error) != nil) {
-                               // set the placeholder image here
-                               cell.brandSample.image = UIImage(named: "brandSample")
-                           } else {
-                               // success ... use the image
-                           }
-                    })
-
-
+            if self.productVM.productsResponse.data[indexPath.row].brand?.image != nil{
                 
-                }else{
+                cell.imageViewConstraint.constant = 40.0
                 
-                    cell.imageViewConstraint.constant = 0.0
-
-                }
-            
-           }else{
-            
+                cell.brandSample.sd_setImage(with: URL(string: productVM.productsResponse.data[indexPath.row].brand?.image ?? "") , placeholderImage: nil, completed: { (image, error, cacheType, url) -> Void in
+                    if ((error) != nil) {
+                        // set the placeholder image here
+                        cell.brandSample.image = UIImage(named: "brandSample")
+                    } else {
+                        // success ... use the image
+                    }
+                })
+                
+                
+                
+            }else{
+                
                 cell.imageViewConstraint.constant = 0.0
+                
+            }
             
-           }
+        }else{
+            
+            cell.imageViewConstraint.constant = 0.0
+            
+        }
         
-           cell.imageViewContainter.layoutIfNeeded()
+        cell.imageViewContainter.layoutIfNeeded()
         
-           cell.lblHeightConstraint.constant =  CGFloat(neededHeight)
-           print(cell.lblHeightConstraint.constant)
-           cell.productName.layoutIfNeeded()
- 
-
-          cell.productDesc.text = self.productVM.productsResponse?.results[indexPath.row].created_at
-          cell.productPrice.text =  "\(self.productVM.productsResponse?.results[indexPath.row].unit_price ?? "") جنيه"
+        cell.lblHeightConstraint.constant =  CGFloat(neededHeight)
+        //print(cell.lblHeightConstraint.constant)
+        cell.productName.layoutIfNeeded()
         
-         cell.productImage.sd_setImage(with: URL(string: self.productVM.productsResponse?.results[indexPath.row].image ?? "") , placeholderImage: nil, completed: { (image, error, cacheType, url) -> Void in
-                if ((error) != nil) {
-                    // set the placeholder image here
-                    cell.productImage.image = UIImage(named: "goodTire")
-                } else {
-                    // success ... use the image
-                }
-            })
-
-         cell.productPriceDesc.text = "Price for unit".localized
-         cell.productDeliveryDesc.text = "Price delivery and spare part price is different from each city".localized
-
-         cell.addToCart = {
+        
+        cell.productDesc.text = self.productVM.productsResponse.data[indexPath.row].created_at
+        cell.productPrice.text =  "\(self.productVM.productsResponse.data[indexPath.row].unit_price ?? "") جنيه"
+        
+        cell.productImage.sd_setImage(with: URL(string: self.productVM.productsResponse.data[indexPath.row].image ?? "") , placeholderImage: nil, completed: { (image, error, cacheType, url) -> Void in
+            if ((error) != nil) {
+                // set the placeholder image here
+                cell.productImage.image = UIImage(named: "goodTire")
+            } else {
+                // success ... use the image
+            }
+        })
+        
+        cell.productPriceDesc.text = "Price for unit".localized
+        cell.productDeliveryDesc.text = "Price delivery and spare part price is different from each city".localized
+        
+        cell.addToCart = {
             
             //cell.addToCart
             cell.activityind.startAnimating()
@@ -229,24 +229,24 @@ class productListViewController: UIViewController, UICollectionViewDelegate , UI
             
             var paramsDic : [String: Any] = [:]
             
-//            paramsDic["product_code"] = String(self.productVM.productsResponse?.results[indexPath.row].id ?? -1)
+            //            paramsDic["product_code"] = String(self.productVM.productsResponse?.results[indexPath.row].id ?? -1)
             paramsDic["quantity"] = 1
-//            paramsDic["cart"] = UserDefaults.standard.integer(forKey: "cartid")
-            paramsDic["sparepart_id"] = self.productVM.productsResponse?.results[indexPath.row].id
-//            paramsDic["extra"] = ""
-
+            //            paramsDic["cart"] = UserDefaults.standard.integer(forKey: "cartid")
+            paramsDic["sparepart_id"] = self.productVM.productsResponse.data[indexPath.row].id
+            //            paramsDic["extra"] = ""
+            
             self.productVM.addToCart(apiParameters: paramsDic, onSuccess: { (isSuccess) in
                 //
                 //AlertViewer().showAlertView(withMessage: "Added to Cart" , onController: self)
-
+                
                 cell.cartimg.image = UIImage(named: "cartSuccess")
                 
                 cell.cartView.backgroundColor = UIColor(displayP3Red: 138/255, green: 209/255, blue: 97/255, alpha: 1.0)
-
+                
                 cell.cartimg.isHidden = false
                 
                 
-
+                
                 
                 cell.activityind.stopAnimating()
             }) { (err) in
@@ -254,41 +254,48 @@ class productListViewController: UIViewController, UICollectionViewDelegate , UI
                 cell.activityind.stopAnimating()
                 
                 cell.cartimg.image = UIImage(named: "cart")
-
+                
                 cell.cartView.backgroundColor = primaryColor
                 
                 cell.cartimg.isHidden = false
-
+                
                 AlertViewer().showAlertView(withMessage: err , onController: self)
-
+                
             }
-         }
+        }
         
-         if self.productVM.productsResponse?.results[indexPath.row].is_in_cart == true ?? false{
+        if self.productVM.productsResponse.data[indexPath.row].is_in_cart == true ?? false{
             cell.cartimg.image = UIImage(named: "cartSuccess")
             
             cell.cartView.backgroundColor = UIColor(displayP3Red: 138/255, green: 209/255, blue: 97/255, alpha: 1.0)
-
+            
             cell.cartimg.isHidden = false
-
-         }else{
+            
+        }else{
             cell.activityind.stopAnimating()
             
             cell.cartimg.image = UIImage(named: "cart")
-
+            
             cell.cartView.backgroundColor = primaryColor
             
             cell.cartimg.isHidden = false
-
+            
         }
         
         
-          return cell
-      }
+        return cell
+    }
       
-     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 240.0
-     }
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if indexPath.row + 1 == self.productVM.productsResponse.data.count {
+            print("do something")
+        }
+    }
+
     
     var indexChoosed = 0
     
@@ -337,9 +344,12 @@ class productListViewController: UIViewController, UICollectionViewDelegate , UI
                 self.activityindicator.stopAnimating()
                 self.productsTableView.isHidden = false
                 self.productsTableView.reloadData()
+                self.loadMoreProducts = true
             }
         }) { (errorMsg) in
             //
+            self.loadMoreProducts = true
+
         }
     }
 
@@ -347,8 +357,8 @@ class productListViewController: UIViewController, UICollectionViewDelegate , UI
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "gotoDetailProducts"{
             let destCont = segue.destination as! productDetailsViewController
-            destCont.vcTitle = self.productVM.productsResponse?.results[self.indexChoosed].product_name
-            destCont.product = self.productVM.productsResponse?.results[self.indexChoosed]
+            destCont.vcTitle = self.productVM.productsResponse.data[self.indexChoosed].product_name
+            destCont.product = self.productVM.productsResponse.data[self.indexChoosed]
         }
         
     }
@@ -357,7 +367,7 @@ class productListViewController: UIViewController, UICollectionViewDelegate , UI
     var filterOpened = false
     
     @objc func filterProducts(){
-        print("clicked")
+        //print("clicked")
         
         
         if !self.filterOpened {
@@ -403,6 +413,41 @@ class productListViewController: UIViewController, UICollectionViewDelegate , UI
         self.filterView.backgroundColor = UIColor.clear
 
     }
+    
+    var loadMoreProducts = false
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+
+        let scrollViewHeight = scrollView.frame.size.height
+        let scrollContentSizeHeight = scrollView.contentSize.height
+        
+        if (scrollView.contentOffset.y + scrollViewHeight >= scrollContentSizeHeight - 10){
+            if self.productVM.productsResponse.next != "" && self.productVM.productsResponse.next != nil {
+                
+                if self.loadMoreProducts{
+                    self.loadMoreProducts = false
+                    print(self.productVM.productsResponse.next)
+                    
+                    self.productVM.getProductList(url: self.productVM.productsResponse.next ?? "", apiParameters: [:], onSuccess: { (isSuccess) in
+                        self.loadMoreProducts = true
+                        self.productsTableView.reloadData()
+                        
+                        //
+                    }) { (errMsg) in
+                        //
+                        self.loadMoreProducts = true
+                        
+                    }
+                    
+                    
+                }
+            }
+        }else{
+            //self.loadMoreProducts = true
+        }
+
+    }
+    
     
     /*
     // MARK: - Navigation

@@ -16,7 +16,7 @@ class productViewModel: NSObject {
     
     var cart_id = 0
 
-    var productsResponse: productResponse?
+    var productsResponse =  productResponse()
     
     func getProductList(url: String, apiParameters: [String:String], onSuccess: @escaping(Bool)-> () , onFailure: @escaping(String)-> ()){
          
@@ -29,13 +29,19 @@ class productViewModel: NSObject {
         
         self.productC.requestProductList(url: urlPath, apiMethod: .get, parametersOfCall: nil, apiEncoding: JSONEncoding.default, completionSuccess: { (responseSuccess) in
             
-            print(responseSuccess)
+            //print(responseSuccess)
             
-            productParser().parseProductsResponse(fromOrder: false, fromJSON: responseSuccess) { (productResponse) in
-                self.productsResponse = productResponse
+            productParser().parseProductsResponse(fromOrder: false, fromResponse: responseSuccess, intoResponse: self.productsResponse) { (productResponse) in
                 
+                self.productsResponse = productResponse
                 onSuccess(true)
             }
+            
+//            productParser().parseProductsResponse(fromOrder: false, fromJSON: responseSuccess) { (productResponse) in
+//                self.productsResponse = productResponse
+//
+//                onSuccess(true)
+//            }
 //            rimsizeParser().parserRimSize(fromJSON: responseSuccess) { (rimSizes) in
 //                self.rimSizes = rimSizes
 //                onSuccess(true)

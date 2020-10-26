@@ -253,6 +253,8 @@ class newHomeViewController: UIViewController, UITableViewDelegate, UITableViewD
         }) { (errorMsg) in
             //
             //self.activityind.startAnimating()
+            self.tableView.reloadData()
+
 
         }
     }

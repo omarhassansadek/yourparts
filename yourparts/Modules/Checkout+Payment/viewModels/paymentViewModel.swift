@@ -287,15 +287,22 @@ class paymentViewModel: NSObject {
                             if let cartId = responseSuccess["cart"].int{
                                 //self.cart = cartId
                             }
-
+                            
+                            
+                            var productsResponse = productResponse()
 
                             //shippingSameDayValue
-                            productParser().parseProductsResponse(fromOrder: true, fromJSON: responseSuccess) { (productArr) in
-
-                                self.itemsArr = productArr.results
+                            productParser().parseProductsResponse(fromOrder: true, fromResponse: responseSuccess, intoResponse: productsResponse) { (productResponse) in
+                                self.itemsArr = productsResponse.data
                                 onSuccess(true)
-
                             }
+                            
+//                            productParser().parseProductsResponse(fromOrder: true, fromJSON: responseSuccess) { (productArr) in
+//
+//                                self.itemsArr = productArr.results
+//                                onSuccess(true)
+//
+//                            }
                                          
 
 

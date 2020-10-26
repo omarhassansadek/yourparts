@@ -8,11 +8,22 @@
 
 import Foundation
 
-class productResponse{
+class productResponse: PagingResponse{
     
-    var count: Int?
-    var next: String?
-    var previous: String?
-    var results: [product] = []
+    override init() {
+        super.init()
+        data = [product]()
+    }
+       
+    var data: [product] = []
+
+    init(data: [product],previous: String ,next : String,count : Int ) {
+        
+        super.init(previous: previous, next: next, count: count)
+        
+        self.data = data
+    }
 
 }
+
+

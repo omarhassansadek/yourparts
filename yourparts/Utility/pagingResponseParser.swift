@@ -13,11 +13,16 @@ class PagingResponseParser {
 
     func parseDataWithPaging(fromResponse jsonResponse: JSON, intoResponse resultResponse: PagingResponse) -> PagingResponse {
         
+        print(jsonResponse)
+        
         if let count = jsonResponse["count"].int{
             resultResponse.count = count
         }
         if let next = jsonResponse["next"].string{
             resultResponse.next = next
+        }else{
+            resultResponse.next = ""
+
         }
         if let previous = jsonResponse["previous"].string{
             resultResponse.previous = previous
