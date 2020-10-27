@@ -24,15 +24,15 @@
                                 <rect key="frame" x="12.5" y="0.0" width="86.5" height="238"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KVZ-a6-NJb">
-                                        <rect key="frame" x="2.5" y="10" width="81.5" height="40"/>
+                                        <rect key="frame" x="2.5" y="10" width="81.5" height="0.0"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="brandSample" translatesAutoresizingMaskIntoConstraints="NO" id="uEp-rS-oxa">
-                                                <rect key="frame" x="0.0" y="0.0" width="81.5" height="40"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="81.5" height="0.0"/>
                                             </imageView>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="40" id="EWU-z8-7nl"/>
+                                            <constraint firstAttribute="height" id="EWU-z8-7nl"/>
                                             <constraint firstItem="uEp-rS-oxa" firstAttribute="leading" secondItem="KVZ-a6-NJb" secondAttribute="leading" id="Iwt-d3-qwr"/>
                                             <constraint firstAttribute="trailing" secondItem="uEp-rS-oxa" secondAttribute="trailing" id="Wbz-u7-owW"/>
                                             <constraint firstItem="uEp-rS-oxa" firstAttribute="top" secondItem="KVZ-a6-NJb" secondAttribute="top" id="mYA-SP-jyU"/>
@@ -40,10 +40,10 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3qG-R6-ZNZ">
-                                        <rect key="frame" x="2.5" y="50" width="81.5" height="188"/>
+                                        <rect key="frame" x="2.5" y="10" width="81.5" height="228"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="goodTire" translatesAutoresizingMaskIntoConstraints="NO" id="4Gc-Bg-KfH">
-                                                <rect key="frame" x="0.0" y="0.0" width="81.5" height="188"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="81.5" height="228"/>
                                             </imageView>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

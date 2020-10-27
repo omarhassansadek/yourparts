@@ -21,10 +21,8 @@ class addCarTableViewCell: UITableViewCell {
         
         
         
-        self.addCarLbl.text = "Add car now".localized
         self.addCarLbl.font = UIFont(name: "Cairo-Bold", size: 14)
         
-        self.detailAddCarLbl.text = "Add car to see parts for your car".localized
         self.detailAddCarLbl.font = UIFont(name: "Cairo-SemiBold", size: 12)
 
     }

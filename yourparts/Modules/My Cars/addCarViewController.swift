@@ -10,6 +10,8 @@ import UIKit
 import NVActivityIndicatorView
 
 class addCarViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
+    
+    var autoSelect: Bool?
 
     @IBOutlet weak var yearModel: UILabel!
     @IBOutlet weak var typeLbl: UILabel!
@@ -400,6 +402,8 @@ class addCarViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     
     
     @IBAction func addNewCarBtnClicked(_ sender: Any) {
+        
+        
         self.addNewCarBtn.setTitle("", for: .normal)
         self.activityind.startAnimating()
         var paramsDic: [String: Any] = [:]
@@ -409,15 +413,40 @@ class addCarViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         }
         paramsDic["vehicle"] = self.selectedCarId
 
-       
         
-        self.addCarVM.addCar(params: paramsDic, onSuccess: { (isSuccess) in
-            if isSuccess{
-                self.activityind.stopAnimating()
-                self.addNewCarBtn.setTitle("Add Car Successfully".localized, for: .normal)
-                self.addNewCarBtn.backgroundColor = UIColor(displayP3Red: 138/255, green: 209/255, blue: 97/255, alpha: 1.0)
-                Timer.scheduledTimer(timeInterval: 1.5, target: self, selector: #selector(self.carAddedSuccess), userInfo: nil, repeats: false)
+        self.addCarVM.addCar(params: paramsDic, onSuccess: { (vehicleDic) in
+            //
+            self.activityind.stopAnimating()
+            self.addNewCarBtn.setTitle("Add Car Successfully".localized, for: .normal)
+            self.addNewCarBtn.backgroundColor = UIColor(displayP3Red: 138/255, green: 209/255, blue: 97/255, alpha: 1.0)
+            Timer.scheduledTimer(timeInterval: 1.5, target: self, selector: #selector(self.carAddedSuccess), userInfo: nil, repeats: false)
+            //let carSelected = UserDefaults.standard.bool(forKey: "carChecked")
+            
 
+            if self.autoSelect ?? false{
+                UserDefaults.standard.set(true, forKey: "carChecked")
+                
+                if let vehicle_id = vehicleDic["id"]{
+                    UserDefaults.standard.set(vehicle_id, forKey: "vehicle_id")
+                }
+
+                if let vehicle_name = vehicleDic["vehicle_name"]{
+                    UserDefaults.standard.set(vehicle_name, forKey: "vehicle_name")
+                }
+
+                if let model_name = vehicleDic["model_name"]{
+                    UserDefaults.standard.set(model_name, forKey: "model_name")
+                }
+
+                if let year = vehicleDic["year"]{
+                    UserDefaults.standard.set(year, forKey: "year")
+                }
+
+                if let image = vehicleDic["image"]{
+                    UserDefaults.standard.set(image, forKey: "image")
+                }else{
+                    UserDefaults.standard.set("", forKey: "image")
+                }
             }
         }) { (errMsg) in
             //
@@ -426,6 +455,7 @@ class addCarViewController: UIViewController, UIPickerViewDelegate, UIPickerView
             AlertViewer().showAlertView(withMessage: errMsg, onController: self)
 
         }
+      
     }
     
     

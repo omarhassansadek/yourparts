@@ -96,26 +96,64 @@ class addCarViewModel: NSObject {
     }
     
     
-    func addCar(params: [String: Any] ,  onSuccess: @escaping(Bool)-> () , onFailure: @escaping(String)-> () ){
+    func addCar(params: [String: Any] ,  onSuccess: @escaping([String: Any])-> () , onFailure: @escaping(String)-> () ){
         
         self.addCarC.getCarTypesFromApi(url: baseUrl+add_get_VehicleUrl, apiMethod: .post, parametersOfCall: params, apiEncoding: JSONEncoding.default, completionSuccess: { (responseSuccess) in
-                  //
-                  
-                print(responseSuccess)
+            //
             
-                if let id = responseSuccess["vehicle"].int {
-                    //
-                    onSuccess(true)
-                }
-                  
-//                vehicleYearParsers().vehicleYearParsers(fromJSON: responseSuccess) { (carYearsArr) in
-//                    self.carYears = carYearsArr
-//                    onSuccess(true)
-//                }
+            print(responseSuccess)
+            
+            var vehicleDic: [String: Any] = [:]
+            
+            if let id = responseSuccess["vehicle"].int {
+                //
+                vehicleDic["id"] = id
+            }
+            
+            if let vehicle_name = responseSuccess["vehicle_name"].string {
+                //
+                vehicleDic["vehicle_name"] = vehicle_name
+            }
+            
+            
+            if let image = responseSuccess["image"].string {
+                //
+                vehicleDic["image"] = image
+            }
+            
+            
+            if let year = responseSuccess["year"].int {
+                //
+                vehicleDic["year"] = year
+            }
+            
+            
+            if let customer = responseSuccess["customer"].int {
+                //
+                vehicleDic["customer"] = customer
+            }
+            
+            if let model_name = responseSuccess["model_name"].string {
+                //
+                vehicleDic["model_name"] = model_name
+            }
 
-          }) { (responseFailure) in
-                  //
-                  onFailure("We encountered an error. Try agian later")
+            if let vehicle = responseSuccess["vehicle"].int {
+                 //
+                 vehicleDic["vehicle"] = vehicle
+             }
+
+            
+            onSuccess(vehicleDic)
+            
+            //                vehicleYearParsers().vehicleYearParsers(fromJSON: responseSuccess) { (carYearsArr) in
+            //                    self.carYears = carYearsArr
+            //                    onSuccess(true)
+            //                }
+            
+        }) { (responseFailure) in
+            //
+            onFailure("We encountered an error. Try agian later")
         }
     }
 

@@ -39,7 +39,7 @@ class profileViewModel: NSObject {
     func getUserProfile(onSuccess: @escaping(Bool)-> () , onFailure: @escaping(String)-> ()){
            var userId = UserDefaults.standard.integer(forKey: "userid")
            
-           self.profileC.getProfileData(url: baseUrl+profileUrl+"\(userId)", apiMethod: .get, parametersOfCall: nil, apiEncoding: JSONEncoding.default, headers: nil, completionSuccess: { (responseJSON) in
+           self.profileC.getProfileData(url: baseUrl+profileUrl+"\(userId)/", apiMethod: .get, parametersOfCall: nil, apiEncoding: JSONEncoding.default, headers: nil, completionSuccess: { (responseJSON) in
                //
                
                print(responseJSON)

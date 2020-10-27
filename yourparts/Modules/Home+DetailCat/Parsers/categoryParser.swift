@@ -144,6 +144,14 @@ class categoryParser{
             catObj.category_level = category_level
         }
         
+        if let user_has_car = oneCategory["user_has_car"].bool {
+            catObj.user_has_car = user_has_car
+        }
+        
+        if let category_needed_car = oneCategory["category_needed_car"].bool {
+            catObj.category_needed_car = category_needed_car
+        }
+
         //for oneDetailCat in fromJSON[""]
         
         return catObj

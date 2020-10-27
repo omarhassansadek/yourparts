@@ -35,6 +35,8 @@
                         <outlet property="detailCatVM" destination="wlw-hh-3bw" id="BWN-9f-dKd"/>
                         <segue destination="5VY-OK-cND" kind="show" identifier="gotoDetailCat" id="QdS-zW-dom"/>
                         <segue destination="Bgy-ar-1aM" kind="show" identifier="gotoProductList" id="IpP-xp-BmO"/>
+                        <segue destination="4C8-1W-yS0" kind="show" identifier="gotoCarsVC" id="Otz-O7-tep"/>
+                        <segue destination="Y6f-rR-oCA" kind="show" identifier="gotoAddCarVC" id="WbO-oG-rnu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="T8m-fr-Sfv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -56,6 +58,26 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="E9R-ly-9gj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1132" y="-396"/>
+        </scene>
+        <!--myCarsVC-->
+        <scene sceneID="4Hn-c0-wrW">
+            <objects>
+                <viewControllerPlaceholder storyboardName="myCars" referencedIdentifier="myCarsVC" id="4C8-1W-yS0" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="Bll-9y-j0p"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Hqp-IC-1RM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1101" y="-208"/>
+        </scene>
+        <!--addCarVC-->
+        <scene sceneID="OZO-QA-PVL">
+            <objects>
+                <viewControllerPlaceholder storyboardName="myCars" referencedIdentifier="addCarVC" id="Y6f-rR-oCA" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="bvl-eJ-3fA"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xIk-5F-efU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1420" y="-208"/>
         </scene>
         <!--detailCat-->
         <scene sceneID="oGW-JG-Q7c">

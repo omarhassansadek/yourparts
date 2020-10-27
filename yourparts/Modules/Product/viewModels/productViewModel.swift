@@ -19,12 +19,19 @@ class productViewModel: NSObject {
     var productsResponse =  productResponse()
     
     func getProductList(url: String, apiParameters: [String:String], onSuccess: @escaping(Bool)-> () , onFailure: @escaping(String)-> ()){
-         
         
         var urlPath = baseUrl+productsUrl
+
+         
+        // urlPath = baseUrl+productsUrl+vehicle_id
+        
+        
         
         if url != ""{
             urlPath = url
+            if let vehicle_id = UserDefaults.standard.string(forKey: "vehicle_id"){
+                urlPath = url + "&vehicle_id=\(vehicle_id)"
+            }
         }
         
         self.productC.requestProductList(url: urlPath, apiMethod: .get, parametersOfCall: nil, apiEncoding: JSONEncoding.default, completionSuccess: { (responseSuccess) in

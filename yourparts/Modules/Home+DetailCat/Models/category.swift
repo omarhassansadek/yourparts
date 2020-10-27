@@ -19,6 +19,8 @@ class category{
     var most_on_demand: Bool?
     var parent: String?
     var category_level: String?
+    var user_has_car: Bool?
+    var category_needed_car: Bool?
     var detailCat : [category] = []
 
 }

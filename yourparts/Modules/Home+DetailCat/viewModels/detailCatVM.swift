@@ -21,7 +21,7 @@ class detailCatVM: NSObject {
     func getDetailCategory(id: Int, apiParameters: [String:String], onSuccess: @escaping(Bool)-> () , onFailure: @escaping(String)-> ()){
          
          
-        self.detailCatC.requestDetailCat(url: baseUrl+categoriesUrl+"/\(id)", apiMethod: .get, parametersOfCall: nil, apiEncoding: JSONEncoding.default, completionSuccess: { (responseSuccess) in
+        self.detailCatC.requestDetailCat(url: baseUrl+categoriesUrl+"/\(id)/", apiMethod: .get, parametersOfCall: nil, apiEncoding: JSONEncoding.default, completionSuccess: { (responseSuccess) in
             
             print(responseSuccess)
             
@@ -43,7 +43,7 @@ class detailCatVM: NSObject {
             
            self.path = baseUrl+categoriesUrl+"/\(id)?sub_id=\(subId)"
     
-           self.detailCatC.requestDetailCat(url: baseUrl+categoriesUrl+"/\(id)?sub_id=\(subId)", apiMethod: .get, parametersOfCall: nil, apiEncoding: JSONEncoding.default, completionSuccess: { (responseSuccess) in
+           self.detailCatC.requestDetailCat(url: baseUrl+categoriesUrl+"/\(id)/?sub_id=\(subId)", apiMethod: .get, parametersOfCall: nil, apiEncoding: JSONEncoding.default, completionSuccess: { (responseSuccess) in
                
                print(responseSuccess)
                

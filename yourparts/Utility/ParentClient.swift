@@ -51,30 +51,103 @@ class ParentClient: NSObject {
     
     func communicateWithApiSetHeaders(url: String?, method: HTTPMethod, parameters: [String:Any]?,headers: [String: String]?, onSuccess: @escaping (JSON) -> Void, onFailure: @escaping (JSON) -> Void){
         
+        
+//        amanager.session.configuration.HTTPAdditionalHeaders = [
+//            "Authorization": "Bearer " ]
+
         var urlRequest = URLRequest(url: URL(string: url ?? "")!)
         urlRequest.httpMethod = HTTPMethod.get.rawValue
-        urlRequest = try! URLEncoding.default.encode(urlRequest, with: nil)
-        urlRequest.setValue(headers?["Authorization"], forHTTPHeaderField: "Authorization")
-        
+        urlRequest = try! JSONEncoding.default.encode(urlRequest, with: nil)
+//
+        var JWTx = ""
+        var JWTData: Data?
+        if let JWT = headers?["Authorization"]{
+            JWTData = JWT.data(using: String.Encoding.utf8)
+            JWTx = JWT
+            print(JWTx)
+        }
+            
+//        let aManager = SessionManager.default
+//        aManager.session.configuration.httpAdditionalHeaders = ["Authorization" : JWTx]
+//        aManager.request(urlRequest).responseJSON { (response) in
+//            //
+//            print("Request: \(String(describing: response.request))")
+//            print("Request: \(String(describing: response.request?.allHTTPHeaderFields))")
+//            print("Response: \(String(describing: response.response))")
+//            print("Result: \(response.result)")
+//
+//             do{
+//                //let responseJson = try JSON(data: response.data!)
+//                let responseJson = try JSON(data: response.data!, options: .allowFragments)
+//
+//                print(responseJson)
+//                onSuccess(responseJson)
+//             }catch let error{
+//                print(error)
+//                //onSuccess(JSON.null)
+//            }
+//
+//        }
+//        //print(headers!["Authorization"])
+//        urlRequest.setValue("application/json", forHTTPHeaderField: "Accept")
+//        urlRequest.cachePolicy = .reloadIgnoringLocalCacheData
+//
+        urlRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        urlRequest.setValue(JWTx, forHTTPHeaderField: "Authorization")
+//
+//        URLCache.shared.removeAllCachedResponses()
+//
+//        let cookieStore = HTTPCookieStorage.shared
+//        for cookie in cookieStore.cookies ?? [] {
+//            cookieStore.deleteCookie(cookie)
+//        }
+//
+//        let url = NSURL(string: url ?? "")
+//        var mutableRequest = NSMutableURLRequest(url: url! as URL)
+//        mutableRequest.setValue(JWTx, forHTTPHeaderField: "Authorization")
+
+        //Alamofire.req
+        //var urlRequest = URLConvertible(
+        //Alamofire.SessionManager.head["Authorization"] = JWTx
+       // Alamofire.req
+//        Alamofire.request(mutableRequest as! URLRequestConvertible).responseJSON { (response) in
+//            //
+//            print("Request: \(String(describing: response.request))")
+//            print("Request: \(String(describing: response.request?.allHTTPHeaderFields))")
+//            print("Response: \(String(describing: response.response))")
+//            print("Result: \(response.result)")
+//
+//            do{
+//                //let responseJson = try JSON(data: response.data!)
+//                let responseJson = try JSON(data: response.data!, options: .allowFragments)
+//
+//                print(responseJson)
+//                onSuccess(responseJson)
+//            }catch let error{
+//                print(error)
+//                //onSuccess(JSON.null)
+//            }
+//
+//        }
         Alamofire.request(urlRequest).responseJSON(completionHandler: {
             response in
-            
+
             print("Request: \(String(describing: response.request))")
             print("Request: \(String(describing: response.request?.allHTTPHeaderFields))")
             print("Response: \(String(describing: response.response))")
             print("Result: \(response.result)")
-            
+
             do{
                 //let responseJson = try JSON(data: response.data!)
                 let responseJson = try JSON(data: response.data!, options: .allowFragments)
-                
+
                 print(responseJson)
                 onSuccess(responseJson)
             }catch let error{
                 print(error)
                 //onSuccess(JSON.null)
             }
-            //code below
+//            //code below
         })
     }
     
@@ -90,13 +163,34 @@ class ParentClient: NSObject {
         
         //print(self.headers as Any)
         //print(parameters as Any)
+//        let headers: HTTPHeaders = [
+//            "Authorization": "JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxMzA4OCwidXNlcm5hbWUiOiJzYXNhQGJhcmFrYS5jb20iLCJleHAiOjE2Mjk2NTM4NDAsImVtYWlsIjoic2FzYUBiYXJha2EuY29tIiwib3JpZ19pYXQiOjE2MDM3MzM4NDB9.6L_VrsAgD0oxp8nAJfS0sAoqc3ND6fUMMOezUEVlWmE",
+//            "Accept": "application/json"
+//        ]
+//
+//        Alamofire.request(apiURL!, headers: headers).responseJSON { response in
+//            debugPrint("HEADERS: \(headers)")
+//            debugPrint(response)
+//        }
+//
+//
+
+        var headerApi : HTTPHeaders?
         
+        //HTTPHeader.auth
+        
+
         Alamofire.request(apiURL!, method: method, parameters: parameters, encoding: JSONEncoding.default, headers: headers).responseJSON { (response) in
-            
+
             print("Request: \(String(describing: response.request))")
-            print("Request: \(String(describing: response.request?.allHTTPHeaderFields))")
+            print("Request Header: \(String(describing: response.request!.allHTTPHeaderFields!))")
             print("Response: \(String(describing: response.response))")
             print("Result: \(response.result)")
+            
+//            if let headers = response.response?.allHeaderFields as? [String: String]{
+//               let header = headers
+//                print("HEADER: \(header)")
+//            }
             
             print(response.response?.statusCode)
             

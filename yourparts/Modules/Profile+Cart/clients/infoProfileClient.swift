@@ -15,6 +15,17 @@ class infoProfileClient: ParentClient {
 
     func requestProfileInfo(url: String, apiMethod: HTTPMethod, parametersOfCall: [String: Any]? , apiEncoding: ParameterEncoding, headers: [String: String]? , completionSuccess: @escaping (JSON) -> Void , completionFailure: @escaping (JSON) -> Void ){
         
+        var profileHeaders = ["Authorization" : "JWT \(UserDefaults.standard.string(forKey: "authToken")!)"]
+
+        
+        self.communicateWithApiSetHeaders(url: url, method: apiMethod, parameters: parametersOfCall, headers: profileHeaders, onSuccess: { (responseSuccess) in
+            //
+            
+            
+        }) { (responseFailure) in
+            //
+        }
+        
         
         self.communicateWithApi(url: url, pagingUrl: nil, method: apiMethod, parameters: parametersOfCall, headers: headers, onSuccess: { (responseSuccess) in
             //

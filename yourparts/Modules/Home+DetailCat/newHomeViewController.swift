@@ -21,7 +21,16 @@ class newHomeViewController: UIViewController, UITableViewDelegate, UITableViewD
         self.navigationController?.navigationBar.barTintColor = primaryColor
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.isHidden = true
+        
+        if finishLoad{
+            //var firstIndexPath = IndexPath(row: 0, section: 0)
+            //self.tableView.reloadRows(at: [firstIndexPath], with: .none)
+            self.tableView.reloadData()
+        }
     }
+    
+    
+
     
     
 
@@ -87,6 +96,45 @@ class newHomeViewController: UIViewController, UITableViewDelegate, UITableViewD
         switch self.homeVm.homeCards[indexPath.row] {
             case "0":
                 let addCarCell = tableView.dequeueReusableCell(withIdentifier: "addCarCell") as! addCarTableViewCell
+                
+                let carSelected = UserDefaults.standard.bool(forKey: "carChecked") 
+       
+                if carSelected{
+                    
+                    if let image = UserDefaults.standard.string(forKey: "image"){
+                        addCarCell.carLogo.sd_setImage(with: URL(string: image) , placeholderImage: nil, completed: { (image, error, cacheType, url) -> Void in
+                            if ((error) != nil) {
+                                // set the placeholder image here
+                                addCarCell.carLogo.image = UIImage(named: "carico")
+                            } else {
+                                // success ... use the image
+                            }
+                        })                    }
+
+                    
+                    if let vehicle_name = UserDefaults.standard.string(forKey: "vehicle_name"){
+                        addCarCell.addCarLbl.text = vehicle_name
+                    }
+                    
+                    if let model_name = UserDefaults.standard.string(forKey: "model_name"){
+                        if let year = UserDefaults.standard.string(forKey: "year"){
+                            addCarCell.detailAddCarLbl.text = model_name + " " + year
+                        }
+                    }
+                    
+//                        addCarCell.detailAddCarLbl.text = year
+                    
+
+                    //
+
+
+                }else{
+                    addCarCell.carLogo.image = UIImage(named: "add")
+                    addCarCell.addCarLbl.text = "Add car now".localized
+                    addCarCell.detailAddCarLbl.text = "Add car to see parts for your car".localized
+
+                }
+
                 return addCarCell
             case "a":
                 let offerCell = tableView.dequeueReusableCell(withIdentifier: "offerCell") as! offerTableViewCell
@@ -236,6 +284,7 @@ class newHomeViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     var catCount = 0
     
+    var finishLoad = false
     
     func reqHomeCats(){
         
@@ -247,12 +296,16 @@ class newHomeViewController: UIViewController, UITableViewDelegate, UITableViewD
 
                 //self.catCount = self.homeVm.categoriesArr.count + 2 + 4
                 //self.catCount = 1 + 2 + 4
+                self.finishLoad = true
+
                 self.tableView.reloadData()
             }
             
         }) { (errorMsg) in
             //
             //self.activityind.startAnimating()
+            self.finishLoad = true
+            
             self.tableView.reloadData()
 
 

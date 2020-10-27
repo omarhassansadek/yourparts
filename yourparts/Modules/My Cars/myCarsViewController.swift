@@ -28,8 +28,10 @@ class myCarsViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     override func viewWillAppear(_ animated: Bool) {
         self.fetchCars()
+        self.navigationController?.navigationBar.isHidden = false
 
     }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -114,12 +116,18 @@ class myCarsViewController: UIViewController, UITableViewDelegate, UITableViewDa
             })
 
             
-            if self.myCarsVM.myCars[indexPath.row].isChecked == true{
-                cell.carCheckbox.on = true
-            }else{
-                cell.carCheckbox.on = false
+            if let vehicle_id = UserDefaults.standard.string(forKey: "vehicle"){
+                //addCarCell.addCarLbl.text = vehicle_name
+                if self.myCarsVM.myCars[indexPath.row].vehicle == Int(vehicle_id) {
+                    cell.carCheckbox.on = true
+                }else{
+                    cell.carCheckbox.on = false
+
+                }
             }
             return cell
+
+            
         }
     }
     
@@ -127,12 +135,41 @@ class myCarsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         if indexPath.row != self.myCarsVM.myCars.count{
 
             self.myCarsVM.myCars[indexPath.row].isChecked = true
-            for (index, oneCar) in self.myCarsVM.myCars.enumerated(){
-                //if oneCar.isChecked
-                if index != indexPath.row{
-                    oneCar.isChecked = false
-                }
+            
+            UserDefaults.standard.set(true, forKey: "carChecked")
+            
+            if let vehicle_id = self.myCarsVM.myCars[indexPath.row].id{
+                UserDefaults.standard.set(vehicle_id, forKey: "vehicle_id")
             }
+
+            if let vehicle_name = self.myCarsVM.myCars[indexPath.row].vehicle_name{
+                UserDefaults.standard.set(vehicle_name, forKey: "vehicle_name")
+            }
+            
+            if let model_name = self.myCarsVM.myCars[indexPath.row].model_name{
+                UserDefaults.standard.set(model_name, forKey: "model_name")
+            }
+
+            if let year = self.myCarsVM.myCars[indexPath.row].year{
+                UserDefaults.standard.set(year, forKey: "year")
+            }
+
+            if let vehicle = self.myCarsVM.myCars[indexPath.row].vehicle{
+                UserDefaults.standard.set(vehicle, forKey: "vehicle")
+            }
+
+            if let image = self.myCarsVM.myCars[indexPath.row].image{
+                UserDefaults.standard.set(image, forKey: "image")
+            }else{
+                UserDefaults.standard.set("", forKey: "image")
+            }
+
+//            for (index, oneCar) in self.myCarsVM.myCars.enumerated(){
+//                //if oneCar.isChecked
+//                if index != indexPath.row{
+//                    oneCar.isChecked = false
+//                }
+//            }
             self.carsTableView.reloadData()
             
         }
@@ -190,6 +227,11 @@ class myCarsViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 self.carsTableView.isHidden = true
                 self.myCarsPlaceholder.isHidden = false
                 self.addCarBtnView.isHidden = false
+                UserDefaults.standard.set(false, forKey: "carChecked")
+                UserDefaults.standard.removeObject(forKey: "vehicle")
+                //vehicle
+                self.firstLoad = true
+
 
             }
             self.carsTableView.reloadData()
@@ -198,6 +240,9 @@ class myCarsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }) { (errMsg) in
             //
             self.actind.stopAnimating()
+            
+            //UserDefaults.standard.set(false, forKey: "carChecked")
+
 
             AlertViewer().showAlertView(withMessage: errMsg, onController: self)
         }

@@ -63,8 +63,8 @@ class productListViewController: UIViewController, UICollectionViewDelegate , UI
         
         self.getProducts()
         
-        let button1 = UIBarButtonItem(image: UIImage(named: "filter"), style: .plain, target: self, action: Selector("filterProducts")) // action:#selector(Class.MethodName) for swift 3
-        self.navigationItem.rightBarButtonItem  = button1
+//        let button1 = UIBarButtonItem(image: UIImage(named: "filter"), style: .plain, target: self, action: Selector("filterProducts")) // action:#selector(Class.MethodName) for swift 3
+//        self.navigationItem.rightBarButtonItem  = button1
         
         
         self.navigationController?.navigationBar.isHidden = false

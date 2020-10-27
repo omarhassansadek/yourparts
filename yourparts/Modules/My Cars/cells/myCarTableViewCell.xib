@@ -18,7 +18,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FGW-Uh-zzB">
-                        <rect key="frame" x="105" y="15" width="190" height="21"/>
+                        <rect key="frame" x="115" y="15" width="180" height="21"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="awm-SX-A6P"/>
                         </constraints>
@@ -27,7 +27,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xkp-mY-si3">
-                        <rect key="frame" x="105" y="46" width="140" height="21"/>
+                        <rect key="frame" x="115" y="46" width="130" height="21"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="h5N-kJ-WAC"/>
                         </constraints>
@@ -36,7 +36,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SWX-FI-e41">
-                        <rect key="frame" x="105" y="77" width="190" height="21"/>
+                        <rect key="frame" x="115" y="77" width="180" height="21"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="eTT-lI-HeK"/>
                         </constraints>
@@ -69,16 +69,16 @@
                         </userDefinedRuntimeAttributes>
                     </view>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="carico" translatesAutoresizingMaskIntoConstraints="NO" id="JX7-Yk-Qi4">
-                        <rect key="frame" x="30" y="30" width="50" height="50"/>
+                        <rect key="frame" x="25" y="22.5" width="65" height="65"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="50" id="4Eg-CP-WWF"/>
-                            <constraint firstAttribute="width" constant="50" id="jdv-wX-DJm"/>
+                            <constraint firstAttribute="height" constant="65" id="4Eg-CP-WWF"/>
+                            <constraint firstAttribute="width" constant="65" id="jdv-wX-DJm"/>
                         </constraints>
                     </imageView>
                 </subviews>
                 <constraints>
                     <constraint firstItem="xkp-mY-si3" firstAttribute="leading" secondItem="JX7-Yk-Qi4" secondAttribute="trailing" constant="25" id="3zT-Ir-htW"/>
-                    <constraint firstItem="JX7-Yk-Qi4" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="30" id="68N-mD-0hP"/>
+                    <constraint firstItem="JX7-Yk-Qi4" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="25" id="68N-mD-0hP"/>
                     <constraint firstItem="1zo-G7-g2x" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="7Fg-ev-v1u"/>
                     <constraint firstAttribute="trailing" secondItem="FGW-Uh-zzB" secondAttribute="trailing" constant="25" id="BMM-kY-JQE"/>
                     <constraint firstAttribute="bottom" secondItem="gDI-yC-edj" secondAttribute="bottom" id="JFc-uP-AVh"/>
@@ -86,7 +86,7 @@
                     <constraint firstItem="FGW-Uh-zzB" firstAttribute="leading" secondItem="JX7-Yk-Qi4" secondAttribute="trailing" constant="25" id="M7O-e2-3vZ"/>
                     <constraint firstAttribute="trailing" secondItem="gDI-yC-edj" secondAttribute="trailing" id="NjY-8C-x4T"/>
                     <constraint firstItem="SWX-FI-e41" firstAttribute="top" secondItem="xkp-mY-si3" secondAttribute="bottom" constant="10" id="Q7j-hD-BDU"/>
-                    <constraint firstItem="SWX-FI-e41" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="105" id="WBt-dp-5I8"/>
+                    <constraint firstItem="SWX-FI-e41" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="115" id="WBt-dp-5I8"/>
                     <constraint firstItem="xkp-mY-si3" firstAttribute="top" secondItem="FGW-Uh-zzB" secondAttribute="bottom" constant="10" id="XUc-Lf-pdb"/>
                     <constraint firstItem="gDI-yC-edj" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="fDx-US-w9M"/>
                     <constraint firstItem="1zo-G7-g2x" firstAttribute="leading" secondItem="xkp-mY-si3" secondAttribute="trailing" constant="25" id="kb8-pV-dnJ"/>
@@ -107,6 +107,6 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="carico" width="54" height="54"/>
+        <image name="carico" width="614" height="614"/>
     </resources>
 </document>
