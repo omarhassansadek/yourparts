@@ -166,46 +166,93 @@ class detailCatViewController: UIViewController , UITableViewDelegate, UITableVi
             
             if indexPath.row > 1{
                 
-                if self.subCat != -1{
+                if self.subCat != -1{   
                     //
                     
-                    if self.detailCatVM.detailCategory?.detailCat[indexPath.row].category_needed_car == true && self.detailCatVM.detailCategory?.detailCat[indexPath.row].user_has_car == true {
-                        
-                        if carSelected{
-                            self.indexChoosed = indexPath.row - 2
-                            self.performSegue(withIdentifier: "gotoProductList", sender: self)
-                            
+                    if self.detailCatVM.detailCategory?.detailCat[indexPath.row - 2].category_needed_car == true{
+                        if self.detailCatVM.detailCategory?.detailCat[indexPath.row - 2].user_has_car == true{
+                            if carSelected{
+                                self.indexChoosed = indexPath.row - 2
+                                self.performSegue(withIdentifier: "gotoProductList", sender: self)
+
+                            }else{
+                                self.performSegue(withIdentifier: "gotoCarsVC", sender: self)
+
+                            }
+
                         }else{
-                            //
-                            self.performSegue(withIdentifier: "gotoCarsVC", sender: self)
-                            
+                            self.performSegue(withIdentifier: "gotoAddCarVC", sender: self)
+
                         }
                         
                     }else{
-                        //gotoAddCarVC
-                        self.performSegue(withIdentifier: "gotoAddCarVC", sender: self)
-                        
+                        self.indexChoosed = indexPath.row - 2
+                        self.performSegue(withIdentifier: "gotoProductList", sender: self)
+
                     }
+
+                    
+                    //start logic
+//                    if self.detailCatVM.detailCategory?.detailCat[indexPath.row - 2].category_needed_car == true && self.detailCatVM.detailCategory?.detailCat[indexPath.row - 2].user_has_car == true {
+//
+//                        if carSelected{
+//                            self.indexChoosed = indexPath.row - 2
+//                            self.performSegue(withIdentifier: "gotoProductList", sender: self)
+//
+//                        }else{
+//                            //
+//                            self.performSegue(withIdentifier: "gotoCarsVC", sender: self)
+//
+//                        }
+//
+//                    }else{
+//                        //gotoAddCarVC
+//                        self.performSegue(withIdentifier: "gotoAddCarVC", sender: self)
+//
+//                    }
+                    //end logic
                 }else{
                     //level 2 clicked
-                    
-                    if self.detailCatVM.detailCategory?.detailCat[indexPath.row].category_needed_car == true && self.detailCatVM.detailCategory?.detailCat[indexPath.row].user_has_car == true {
-                        
-                        if carSelected{
-                            self.indexChoosed = indexPath.row - 2
-                            self.performSegue(withIdentifier: "gotoDetailCat", sender: self)
+                    if self.detailCatVM.detailCategory?.detailCat[indexPath.row - 2].category_needed_car == true{
+                        if self.detailCatVM.detailCategory?.detailCat[indexPath.row - 2].user_has_car == true{
+                            if carSelected{
+                                self.indexChoosed = indexPath.row - 2
+                                self.performSegue(withIdentifier: "gotoDetailCat", sender: self)
+
+                            }else{
+                                self.performSegue(withIdentifier: "gotoCarsVC", sender: self)
+
+                            }
 
                         }else{
-                            self.performSegue(withIdentifier: "gotoCarsVC", sender: self)
+                            self.performSegue(withIdentifier: "gotoAddCarVC", sender: self)
 
                         }
-
-
+                        
                     }else{
-                        self.performSegue(withIdentifier: "gotoAddCarVC", sender: self)
+                        self.indexChoosed = indexPath.row - 2
+                        self.performSegue(withIdentifier: "gotoDetailCat", sender: self)
 
                     }
                     
+                    //start logic
+//                    if self.detailCatVM.detailCategory?.detailCat[indexPath.row - 2].category_needed_car == true && self.detailCatVM.detailCategory?.detailCat[indexPath.row - 2].user_has_car == true {
+//
+//                        if carSelected{
+//                            self.indexChoosed = indexPath.row - 2
+//                            self.performSegue(withIdentifier: "gotoDetailCat", sender: self)
+//
+//                        }else{
+//                            self.performSegue(withIdentifier: "gotoCarsVC", sender: self)
+//
+//                        }
+//
+//
+//                    }else{
+//                        self.performSegue(withIdentifier: "gotoAddCarVC", sender: self)
+//
+//                    }
+                    //end logic
                     
                 }
                 

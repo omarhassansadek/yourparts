@@ -53,6 +53,7 @@ class productListViewController: UIViewController, UICollectionViewDelegate , UI
     @IBOutlet weak var filterTitleLbl: UILabel!
     
     override func viewWillDisappear(_ animated: Bool) {
+        //stops paging please find another solution
         self.loadMoreProducts = false
     }
     
