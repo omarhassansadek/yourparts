@@ -70,7 +70,7 @@ class categoryParser{
         for (index,oneCategory) in jsonResponse["results"].arrayValue.enumerated() {
 
             var catObj =  self.parseCat(slidingCat: slidingCat, oneCategory: oneCategory)
-            if jsonResponse["count"].int != nil{
+            if !slidingCat{    
                 catObj.image = "cat\(index + 1)"
 
             }
@@ -117,8 +117,8 @@ class categoryParser{
         }
         
         if slidingCat{
-            if let name = oneCategory["category"]["image"].string {
-                //catObj.image = name
+            if let img = oneCategory["category"]["image"].string {
+                catObj.image = img
             }
         }else{
             

@@ -52,7 +52,7 @@ class frequentlyCollectionDelegate: NSObject ,UICollectionViewDataSource, UIColl
                 }else{
                     cellCollection.roundView.backgroundColor = UIColor.clear
                     cellCollection.catImage.layer.cornerRadius = 17.5
-                    cellCollection.catLbl.text = self.targetController?.homeVm.homeFreqCategoryResponse.data?[indexPath.row].name ?? ""
+                        cellCollection.catLbl.text = self.targetController?.homeVm.homeFreqCategoryResponse.data?[indexPath.row].name ?? ""
                     cellCollection.catLbl.font = UIFont(name: "Cairo-Regular", size: 14)
 
 
@@ -68,10 +68,10 @@ class frequentlyCollectionDelegate: NSObject ,UICollectionViewDataSource, UIColl
                     //cellCollection.catImage.image = UIImage(named:self.cat2Arr[indexPath.row].image ?? "")
                     cellCollection.imgTopConstraint.constant = 0
                     cellCollection.imgBottomConstraint.constant = 5
-                    cellCollection.imgLeadingConstraint.constant = 0
-                    cellCollection.imgTrailingConstraint.constant = 0
+                    cellCollection.imgLeadingConstraint.constant = 5
+                    cellCollection.imgTrailingConstraint.constant = 5
                     cellCollection.catImage.layoutIfNeeded()
-                    cellCollection.catImage.contentMode = .scaleAspectFill
+                    cellCollection.catImage.contentMode = .scaleAspectFit
                     cellCollection.imgTopConstraint.constant = 0
                     cellCollection.roundView.layoutIfNeeded()
                 }
