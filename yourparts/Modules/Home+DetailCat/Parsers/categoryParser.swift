@@ -70,8 +70,10 @@ class categoryParser{
         for (index,oneCategory) in jsonResponse["results"].arrayValue.enumerated() {
 
             var catObj =  self.parseCat(slidingCat: slidingCat, oneCategory: oneCategory)
-            
-            catObj.image = "cat\(index + 1)"
+            if jsonResponse["count"].int != nil{
+                catObj.image = "cat\(index + 1)"
+
+            }
             
             filledResponse.data?.append(catObj)
             

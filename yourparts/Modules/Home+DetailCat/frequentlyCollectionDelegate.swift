@@ -26,7 +26,7 @@ class frequentlyCollectionDelegate: NSObject ,UICollectionViewDataSource, UIColl
             if type == "f"{
                 return self.catArrs.count
             }else{
-                return self.targetController?.homeVm.freqCategoriesArr.count ?? 0
+                return self.targetController?.homeVm.homeFreqCategoryResponse.data?.count ?? 0
             }
         }
         
@@ -52,12 +52,12 @@ class frequentlyCollectionDelegate: NSObject ,UICollectionViewDataSource, UIColl
                 }else{
                     cellCollection.roundView.backgroundColor = UIColor.clear
                     cellCollection.catImage.layer.cornerRadius = 17.5
-                    cellCollection.catLbl.text = self.targetController?.homeVm.freqCategoriesArr[indexPath.row].name ?? ""
+                    cellCollection.catLbl.text = self.targetController?.homeVm.homeFreqCategoryResponse.data?[indexPath.row].name ?? ""
                     cellCollection.catLbl.font = UIFont(name: "Cairo-Regular", size: 14)
 
 
                     // cellCollection.catLbl.font = UIFont(name: <#T##String#>, size: <#T##CGFloat#>)
-                    cellCollection.catImage.sd_setImage(with: URL(string: self.targetController?.homeVm.freqCategoriesArr[indexPath.row].image ?? "") , placeholderImage: nil, completed: { (image, error, cacheType, url) -> Void in
+                    cellCollection.catImage.sd_setImage(with: URL(string: self.targetController?.homeVm.homeFreqCategoryResponse.data?[indexPath.row].image ?? "") , placeholderImage: nil, completed: { (image, error, cacheType, url) -> Void in
                         if ((error) != nil) {
                             // set the placeholder image here
                             cellCollection.catImage.image = UIImage(named: "c2")
@@ -88,14 +88,14 @@ class frequentlyCollectionDelegate: NSObject ,UICollectionViewDataSource, UIColl
         func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
             if type == "f"{
             }else{
-                var level = self.targetController?.homeVm.freqCategoriesArr[indexPath.row].category_level ?? ""
+                var level = self.targetController?.homeVm.homeFreqCategoryResponse.data?[indexPath.row].category_level ?? ""
                 switch level {
                 case "1":
                     //
-                    self.targetController?.catIdToGo = self.targetController?.homeVm.freqCategoriesArr[indexPath.row].id
+                    self.targetController?.catIdToGo = self.targetController?.homeVm.homeFreqCategoryResponse.data?[indexPath.row].id
                     self.targetController?.performSegue(withIdentifier: "gotoDetailCat", sender: self.targetController)
                  case "3":
-                    self.targetController?.selectedLevel3Cat = self.targetController?.homeVm.freqCategoriesArr[indexPath.row].id
+                    self.targetController?.selectedLevel3Cat = self.targetController?.homeVm.homeFreqCategoryResponse.data?[indexPath.row].id
                     self.targetController?.performSegue(withIdentifier: "gotoProductListVC", sender: self.targetController)
 
                 default:

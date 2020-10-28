@@ -12,6 +12,14 @@ import Spring
 
 class productListViewController: UIViewController, UICollectionViewDelegate , UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UITableViewDelegate , UITableViewDataSource {
     
+    @IBOutlet weak var emptyStateView: UIView!
+    
+    @IBOutlet weak var callView: UIView!
+    
+    @IBOutlet weak var numberLbl: UILabel!
+    
+    @IBOutlet weak var emptyStatetextView: UITextView!
+    
     @IBOutlet weak var doneFilterBtn: UIButton!
     
     @IBOutlet weak var deleteFilterBtn: UIButton!
@@ -44,6 +52,9 @@ class productListViewController: UIViewController, UICollectionViewDelegate , UI
     
     @IBOutlet weak var filterTitleLbl: UILabel!
     
+    override func viewWillDisappear(_ animated: Bool) {
+        self.loadMoreProducts = false
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         if self.pathToCall != nil {
@@ -329,8 +340,15 @@ class productListViewController: UIViewController, UICollectionViewDelegate , UI
         self.doneFilterBtn.titleLabel?.font = UIFont(name: "Cairo-SemiBold", size: 13)
         self.doneFilterBtn.setTitleColor(primaryColor, for: .normal)
 
+        self.emptyStatetextView.text = "No product found. Please contact the call center".localized
 
+        self.emptyStatetextView.font = UIFont(name: "Cairo-Bold", size: 18)
         
+        self.numberLbl.font = UIFont(name: "Cairo-Bold", size: 18)
+        
+        self.callView.layer.cornerRadius = 15.0
+        
+
     }
     
     
@@ -342,9 +360,16 @@ class productListViewController: UIViewController, UICollectionViewDelegate , UI
             //
             if isSuccess{
                 self.activityindicator.stopAnimating()
-                self.productsTableView.isHidden = false
-                self.productsTableView.reloadData()
-                self.loadMoreProducts = true
+                if self.productVM.productsResponse.data.count != 0 {
+                    self.productsTableView.isHidden = false
+                    self.productsTableView.reloadData()
+                    self.emptyStatetextView.isHidden = true
+
+                    self.loadMoreProducts = true
+                }else{
+                    self.productsTableView.isHidden = true
+                    self.emptyStateView.isHidden = false
+                }
             }
         }) { (errorMsg) in
             //

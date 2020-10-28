@@ -442,6 +442,10 @@ class addCarViewController: UIViewController, UIPickerViewDelegate, UIPickerView
                     UserDefaults.standard.set(year, forKey: "year")
                 }
 
+                if let vehicle = vehicleDic["vehicle"]{
+                    UserDefaults.standard.set(vehicle, forKey: "vehicle")
+                }
+
                 if let image = vehicleDic["image"]{
                     UserDefaults.standard.set(image, forKey: "image")
                 }else{
