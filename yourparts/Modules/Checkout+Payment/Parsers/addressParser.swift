@@ -47,7 +47,19 @@ class addressParser{
                  if let id = oneAddress["id"].int {
                         addObj.id = id
                  }
+            
+                 if let flat = oneAddress["flat"].string {
+                        addObj.flat = flat
+                 }
                 
+                 if let building = oneAddress["building"].string {
+                        addObj.building = building
+                 }
+                
+                 if let floor = oneAddress["floor"].string {
+                        addObj.floor = floor
+                 }
+            
                 addressArr.append(addObj)
         }
     

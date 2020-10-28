@@ -16,6 +16,9 @@ class address{
     var region: String?
     var city: String?
     var customer_id: Int?
+    var floor: String?
     var id: Int?
+    var building: String?
+    var flat: String?
 
 }

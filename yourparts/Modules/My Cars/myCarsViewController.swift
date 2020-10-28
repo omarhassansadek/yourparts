@@ -124,6 +124,9 @@ class myCarsViewController: UIViewController, UITableViewDelegate, UITableViewDa
                     cell.carCheckbox.on = false
 
                 }
+            }else{
+                cell.carCheckbox.on = false
+
             }
             return cell
 

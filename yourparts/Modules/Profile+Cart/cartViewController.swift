@@ -267,6 +267,8 @@ class cartViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func getCartData(){
 
+        self.emptyCartPlaceholder.isHidden = true
+
         //not(true) -> (false)
         //not(false) -> (true)
         print("first load \(firstLoad), if false present view")
@@ -324,6 +326,7 @@ class cartViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func configure(){
+
 
         
 //        self.paymentView.layer.cornerRadius = 20.0

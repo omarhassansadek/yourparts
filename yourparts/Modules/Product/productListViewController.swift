@@ -354,11 +354,11 @@ extension productListViewController{
         return 240.0
     }
     
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        if indexPath.row + 1 == self.productVM.productsResponse.data.count {
-            print("do something")
-        }
-    }
+//    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+//        if indexPath.row + 1 == self.productVM.productsResponse.data.count {
+//            print("do something")
+//        }
+//    }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.indexChoosed = indexPath.row

@@ -29,7 +29,14 @@ class productViewModel: NSObject {
             urlPath = url
             if self.productsResponse.next == nil || self.productsResponse.next == ""{
                 if let vehicle_id = UserDefaults.standard.string(forKey: "vehicle"){
-                    urlPath = url + "&vehicle_id=\(vehicle_id)"
+                    if url.contains("/subcategory") {
+                        //vehicle id as query parameter
+                        urlPath = url + "/?vehicle_id=\(vehicle_id)"
+
+                    }else{
+                        urlPath = url + "&vehicle_id=\(vehicle_id)"
+                    }
+
                 }
             }
             

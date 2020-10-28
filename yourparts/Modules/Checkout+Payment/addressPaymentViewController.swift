@@ -203,7 +203,7 @@ class addressPaymentViewController: UIViewController, UITableViewDelegate, UITab
             }
             //addressCell.chooseAddressCheckBox.On
             addressCell.buildingNo.text = self.paymentVM.addressArr[indexPath.row].address
-            //addressCell.appartmentNo.text = self.AddressVM.addressArr[indexPath.row - 1].address
+            addressCell.appartmentNo.text = "شقة \(self.paymentVM.addressArr[indexPath.row].flat ?? "") - طابق \(self.paymentVM.addressArr[indexPath.row].floor ?? "") - مبني\(self.paymentVM.addressArr[indexPath.row].building ?? "") "
             addressCell.region.text = "\(self.paymentVM.addressArr[indexPath.row].city ?? "") - \(self.paymentVM.addressArr[indexPath.row].region ?? "")"
             return addressCell
 

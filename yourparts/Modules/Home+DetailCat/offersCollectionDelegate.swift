@@ -61,6 +61,7 @@ class offersCollectionDelegate : NSObject ,UICollectionViewDataSource, UICollect
             if self.offersArr?[indexPath.row].categories_included?.count ?? 0 > 0{
                 self.targetController?.selectedLevel3Cat = self.offersArr?[indexPath.row].categories_included?[0] ?? Int()
                 self.targetController?.performSegue(withIdentifier: "gotoProductListVC", sender: self.targetController)
+                self.targetController?.titleToGo = "Offers Today".localized
             }
         }else{
             //go to product detail page

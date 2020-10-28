@@ -121,6 +121,10 @@ class addAddressViewController: UIViewController, UIPickerViewDelegate, UIPicker
         parametersToBeSend["region"] = self.cityTf.text
         parametersToBeSend["city"] = self.regionTf.text
         parametersToBeSend["address"] = self.streetTf.text
+        parametersToBeSend["building"] = self.buildingNoTf.text
+        parametersToBeSend["floor"] = self.floorNoTf.text
+        parametersToBeSend["appartment"] = self.appartmentTf.text
+    
         
         self.paymentVM.addUserAddress(addressParameters: parametersToBeSend, onSuccess: { (isSuccess) in
             //

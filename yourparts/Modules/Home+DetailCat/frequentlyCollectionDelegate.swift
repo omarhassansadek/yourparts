@@ -96,6 +96,7 @@ class frequentlyCollectionDelegate: NSObject ,UICollectionViewDataSource, UIColl
                     self.targetController?.performSegue(withIdentifier: "gotoDetailCat", sender: self.targetController)
                  case "3":
                     self.targetController?.selectedLevel3Cat = self.targetController?.homeVm.homeFreqCategoryResponse.data?[indexPath.row].id
+                    self.targetController?.titleToGo = self.targetController?.homeVm.homeFreqCategoryResponse.data?[indexPath.row].name ?? ""
                     self.targetController?.performSegue(withIdentifier: "gotoProductListVC", sender: self.targetController)
 
                 default:

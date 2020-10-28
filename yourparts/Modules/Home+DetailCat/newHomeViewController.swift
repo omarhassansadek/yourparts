@@ -315,6 +315,8 @@ class newHomeViewController: UIViewController, UITableViewDelegate, UITableViewD
     var catIdToGo: Int?
 
     var selectedLevel3Cat: Int?
+    
+    var titleToGo = ""
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
@@ -323,7 +325,7 @@ class newHomeViewController: UIViewController, UITableViewDelegate, UITableViewD
             destVC.catId = self.catIdToGo
         }else if segue.identifier == "gotoProductListVC"{
             let destCont = segue.destination as! productListViewController
-            destCont.vcTitle = "Offers Today".localized
+            destCont.vcTitle = self.titleToGo
             //var subs_id = self.detailCatVM.detailCategory?.detailCat[self.indexChoosed].id ?? -1
             var pathtoGo = baseUrl+catLevel3Url+"\(self.selectedLevel3Cat! )"
             destCont.pathToCall = pathtoGo
