@@ -42,15 +42,18 @@ class productDetailsViewController: UIViewController, UITableViewDelegate, UITab
 
         self.addToCartBtn.setTitle("Add to Cart".localized, for: .normal)
         self.addToCartBtn.titleLabel?.font = UIFont(name: "Cairo-Bold", size: 12 )
-
-
-        productDetailsArr.append(detailProduct(dname: "العرض", dvalue: "201"))
-        productDetailsArr.append(detailProduct(dname: "الارتفاع", dvalue: "50"))
-        productDetailsArr.append(detailProduct(dname: "النوع", dvalue: "R"))
-        productDetailsArr.append(detailProduct(dname: "القطر", dvalue: "16"))
-        productDetailsArr.append(detailProduct(dname: "مؤشر الحمل", dvalue: "91 = to 615 kg"))
-        productDetailsArr.append(detailProduct(dname: "معدل السرعة", dvalue: "H = to 210km/h"))
         
+        self.parseDicDetails(DicDetails: self.product?.specific_detail ?? [:])
+
+        //self.product?.sep
+//
+//        productDetailsArr.append(detailProduct(dname: "العرض", dvalue: "201"))
+//        productDetailsArr.append(detailProduct(dname: "الارتفاع", dvalue: "50"))
+//        productDetailsArr.append(detailProduct(dname: "النوع", dvalue: "R"))
+//        productDetailsArr.append(detailProduct(dname: "القطر", dvalue: "16"))
+//        productDetailsArr.append(detailProduct(dname: "مؤشر الحمل", dvalue: "91 = to 615 kg"))
+//        productDetailsArr.append(detailProduct(dname: "معدل السرعة", dvalue: "H = to 210km/h"))
+//
         self.navigationController?.navigationBar.titleTextAttributes =
         [NSAttributedString.Key.foregroundColor: UIColor.black,
          NSAttributedString.Key.font: UIFont(name: "Cairo-Bold", size: 18)!]
@@ -146,8 +149,13 @@ class productDetailsViewController: UIViewController, UITableViewDelegate, UITab
                           
                       }else{
                           cell3.leftLbl.text = self.productDetailsArr[indexPath.row - 3].name
+                        
+                        if let val = self.productDetailsArr[indexPath.row - 3].value as? String{
+                            cell3.rightLbl.text = val as? String
+                        }else if let val = self.productDetailsArr[indexPath.row - 3].value as? Int{
+                            cell3.rightLbl.text = "\(val)"
+                        }
 
-                          cell3.rightLbl.text = self.productDetailsArr[indexPath.row - 3].value
 
                           cell3.leftLbl.font = UIFont(name: "Cairo-Regular", size: 12 )
                           
@@ -200,6 +208,18 @@ class productDetailsViewController: UIViewController, UITableViewDelegate, UITab
             AlertViewer().showAlertView(withMessage: errMsg , onController: self)
 
         }
+    }
+    
+    func parseDicDetails(DicDetails : [String: Any]) {
+        for (key,value) in DicDetails {
+            print("\(key) = \(value)")
+            var oneDetail = detailProduct(dname: key, dvalue: value)
+            //oneDetail.name
+            self.productDetailsArr.append(oneDetail)
+        }
+        
+        self.productinfoTableView.reloadData()
+
     }
     
     /*

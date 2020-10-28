@@ -24,7 +24,7 @@ class frequentlyCollectionDelegate: NSObject ,UICollectionViewDataSource, UIColl
         
         func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
             if type == "f"{
-                return self.catArrs.count
+                return self.targetController?.homeVm.mostWantedCategoryResponse.data?.count ?? 0
             }else{
                 return self.targetController?.homeVm.homeFreqCategoryResponse.data?.count ?? 0
             }
@@ -39,8 +39,17 @@ class frequentlyCollectionDelegate: NSObject ,UICollectionViewDataSource, UIColl
                 //cellCollection.offerimg.image = UIImage(named:"offerSample")
                 
                 if type == "f"{
-                    cellCollection.catLbl.text = self.catArrs[indexPath.row].mainTitle
-                    cellCollection.catImage.image = UIImage(named:self.catArrs[indexPath.row].image ?? "")
+//                    cellCollection.roundView.backgroundColor = UIColor.clear
+                    cellCollection.catLbl.text = self.targetController?.homeVm.mostWantedCategoryResponse.data?[indexPath.row].name
+                    cellCollection.catImage.sd_setImage(with: URL(string: self.targetController?.homeVm.mostWantedCategoryResponse.data?[indexPath.row].image ?? "") , placeholderImage: nil, completed: { (image, error, cacheType, url) -> Void in
+                           if ((error) != nil) {
+                               // set the placeholder image here
+                               cellCollection.catImage.image = UIImage(named: "c2")
+                           } else {
+                               // success ... use the image
+                           }
+                       })
+                   // cellCollection.catImage.image = UIImage(named:self.targetController?.homeVm.mostWantedCategoryResponse.data?[indexPath.row].image ?? "")
                     cellCollection.catImage.contentMode = .scaleAspectFit
                     cellCollection.imgTopConstraint.constant = 15
                     cellCollection.imgBottomConstraint.constant = 5
@@ -67,9 +76,9 @@ class frequentlyCollectionDelegate: NSObject ,UICollectionViewDataSource, UIColl
                     })
                     //cellCollection.catImage.image = UIImage(named:self.cat2Arr[indexPath.row].image ?? "")
                     cellCollection.imgTopConstraint.constant = 0
-                    cellCollection.imgBottomConstraint.constant = 5
-                    cellCollection.imgLeadingConstraint.constant = 5
-                    cellCollection.imgTrailingConstraint.constant = 5
+                    cellCollection.imgBottomConstraint.constant = -2.5
+                    cellCollection.imgLeadingConstraint.constant = 0
+                    cellCollection.imgTrailingConstraint.constant = 0
                     cellCollection.catImage.layoutIfNeeded()
                     cellCollection.catImage.contentMode = .scaleAspectFit
                     cellCollection.imgTopConstraint.constant = 0
@@ -152,7 +161,7 @@ class frequentlyCollectionDelegate: NSObject ,UICollectionViewDataSource, UIColl
         
         func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
             if self.type == "f"{
-                return CGSize(width: (  (collectionView.frame.width ?? 0.0)  / 3.5), height: collectionView.frame.height)
+                return CGSize(width: (  (collectionView.frame.width ?? 0.0)  / 3.25), height: collectionView.frame.height)
             }else{
                 return CGSize(width: (  (collectionView.frame.width ?? 0.0)  / 2.5), height: collectionView.frame.height)
             }

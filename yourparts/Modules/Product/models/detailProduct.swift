@@ -10,9 +10,9 @@ import Foundation
 
 class detailProduct{
     var name: String?
-    var value: String?
+    var value: Any?
     
-    init(dname: String , dvalue: String){
+    init(dname: String , dvalue: Any){
         self.name = dname
         self.value = dvalue
     }

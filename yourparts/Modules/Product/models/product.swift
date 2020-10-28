@@ -52,4 +52,5 @@ class product{
     var brand: brand?
     var average_rating: Int?
     var is_in_cart: Bool?
-}
+    var specific_detail: [String: Any]?
+    }

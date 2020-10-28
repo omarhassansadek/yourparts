@@ -53,6 +53,8 @@ var getOffersUrl = "ads/offeroftheday"
 
 var getFreqNeeded = "product/category/frequentlyneeded/"
 
+var getMostCatUrl = "most-category/"
+
 var create_get_OrderUrl = "order/"
 
 var createOrderItemUrl = "order-items/"

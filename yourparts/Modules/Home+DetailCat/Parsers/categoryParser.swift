@@ -71,7 +71,7 @@ class categoryParser{
 
             var catObj =  self.parseCat(slidingCat: slidingCat, oneCategory: oneCategory)
             if !slidingCat{    
-                catObj.image = "cat\(index + 1)"
+                //catObj.image = "cat\(index + 1)"
 
             }
             

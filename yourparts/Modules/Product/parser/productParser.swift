@@ -202,6 +202,10 @@ class productParser{
                    if let average_rating = oneProduct["average_rating"].int {
                             productObj.average_rating = average_rating
                    }
+                
+                    if let productDetails = oneProduct["specific_detail"].dictionaryObject{
+                        productObj.specific_detail = productDetails
+                    }
 
                    if let brandObj = oneProduct["brand"].dictionary{
                         productObj.brand = brand()

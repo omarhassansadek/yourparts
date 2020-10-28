@@ -257,7 +257,7 @@ class newHomeViewController: UIViewController, UITableViewDelegate, UITableViewD
             case "a":
                 return 300.0
             case "b", "c" :
-                return 170.0
+                return 185.0
 
             case "d":
                 return 45.0
@@ -293,10 +293,11 @@ class newHomeViewController: UIViewController, UITableViewDelegate, UITableViewD
             self.activityind.stopAnimating()
 
             if isSuccess{
-
+                //self.getMostCats()
                 //self.catCount = self.homeVm.categoriesArr.count + 2 + 4
                 //self.catCount = 1 + 2 + 4
                 self.finishLoad = true
+                
 
                 self.tableView.reloadData()
             }
@@ -304,9 +305,24 @@ class newHomeViewController: UIViewController, UITableViewDelegate, UITableViewD
         }) { (errorMsg) in
             //
             //self.activityind.startAnimating()
+            //self.getMostCats()
+
             self.finishLoad = true
             
             self.tableView.reloadData()
+
+
+        }
+    }
+    
+    
+    func getMostCats(){
+        self.homeVm.getMostCategories(onSuccess: { (isSuccess) in
+            //
+            self.reqHomeCats()
+
+        }) { (errMsg) in
+            self.reqHomeCats()
 
 
         }
@@ -337,12 +353,12 @@ class newHomeViewController: UIViewController, UITableViewDelegate, UITableViewD
         self.homeVm.getFreqNeededFromApi(onSuccess: { (isSuccess) in
            
             if isSuccess{
-                self.reqHomeCats()
+                self.getMostCats()
             }
             
         }) { (errMsg) in
             //
-            self.reqHomeCats()
+            self.getMostCats()
 
         }
     }

@@ -35,15 +35,15 @@ class catCollectionDelegate: NSObject ,UICollectionViewDataSource, UICollectionV
                     cellCollection.catimage.contentMode = .center
                     cellCollection.catimage.clipsToBounds = true
             
-            cellCollection.catimage.image = UIImage(named: self.targetController?.homeVm.homeCategoryResponse.data?[indexPath.row].image ?? "")
-//                    cellCollection.catimage.sd_setImage(with: URL(string: self.targetController?.homeVm.categoriesArr[indexPath.row].image ?? "") , placeholderImage: nil, completed: { (image, error, cacheType, url) -> Void in
-//                        if ((error) != nil) {
-//                            // set the placeholder image here
-//                            cellCollection.catimage.image = UIImage(named: "cat1")
-//                        } else {
-//                            // success ... use the image
-//                        }
-//                    })
+            //cellCollection.catimage.image = UIImage(named: self.targetController?.homeVm.homeCategoryResponse.data?[indexPath.row].image ?? "")
+                    cellCollection.catimage.sd_setImage(with: URL(string: self.targetController?.homeVm.homeCategoryResponse.data?[indexPath.row].image ?? "") , placeholderImage: nil, completed: { (image, error, cacheType, url) -> Void in
+                        if ((error) != nil) {
+                            // set the placeholder image here
+                            cellCollection.catimage.image = UIImage(named: "cat1")
+                        } else {
+                            // success ... use the image
+                        }
+                    })
             
             cellCollection.catLbl.text = self.targetController?.homeVm.homeCategoryResponse.data?[indexPath.row].name ?? ""
            

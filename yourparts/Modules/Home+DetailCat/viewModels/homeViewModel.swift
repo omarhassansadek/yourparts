@@ -19,6 +19,8 @@ class homeViewModel: NSObject {
     
     var homeFreqCategoryResponse = categoryResposne()
 
+    var mostWantedCategoryResponse = categoryResposne()
+
     var freqCategoriesArr: [category] = []
 
     var offersArr : [offer] = []
@@ -119,7 +121,7 @@ class homeViewModel: NSObject {
                     if self.homeFreqCategoryResponse.data?.count ?? 0 > 0{
                         self.homeCards.append("b")
                     }
-                    self.homeCards.append("c")
+                    //self.homeCards.append("c")
 
                     onSuccess(true)
 
@@ -137,4 +139,38 @@ class homeViewModel: NSObject {
              
     }
 
+    func getMostCategories( onSuccess: @escaping(Bool)-> () , onFailure: @escaping(String)-> ()){
+        
+        //frequently needed -> type "b"
+        //Most Wanted -> type "c"
+        //Cat Title -> type "d"
+        
+        self.homeC.requestOffers(url: baseUrl+getMostCatUrl, apiMethod: .get, parametersOfCall: nil, apiEncoding: JSONEncoding.default, completionSuccess: { (responseSuccess) in
+            
+            
+            print(responseSuccess)
+            
+            categoryParser().parseCategories(slidingCat: false, fromResponse: responseSuccess, intoResponse: self.mostWantedCategoryResponse) { (categoryResposne) in
+                
+                //self.homeFreqCategoryResponse.da = catArr
+                if self.mostWantedCategoryResponse.data?.count ?? 0 > 0{
+                    self.homeCards.append("c")
+                }
+                //self.homeCards.append("c")
+                
+                onSuccess(true)
+                
+            }
+            
+            //                categoryParser().parseCategories(slidingCat: true, fromJSON: responseSuccess) { catArr in
+            //                }
+            
+            
+        }) { (responseFailure) in
+            //
+            onFailure("We encountered an error. Try again later")
+            
+        }
+        
+        }
 }
