@@ -4,9 +4,9 @@
 target 'yourparts' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
-
+  
   # Pods for yourparts
-
+  
   pod 'MOLH'
   pod 'BEMCheckBox'
   pod 'IQKeyboardManagerSwift’ , '~> 6.2.0'
@@ -18,14 +18,19 @@ target 'yourparts' do
   pod 'Cosmos'
   pod 'ShadowView'
   pod 'FINNBottomSheet', :git => 'https://github.com/finn-no/bottom-sheet-ios.git'
-
+  pod 'FBAudienceNetwork'
+  pod 'SmartlookConsentSDK'
+  pod 'FBSDKCoreKit'
+  pod 'FBSDKLoginKit'
+  pod 'FBSDKShareKit'
+  
   target 'yourpartsTests' do
     inherit! :search_paths
     # Pods for testing
   end
-
+  
   target 'yourpartsUITests' do
     # Pods for testing
   end
-
+  
 end

@@ -2,6 +2,22 @@ PODS:
   - Alamofire (4.9.1)
   - BEMCheckBox (1.4.1)
   - Cosmos (23.0.0)
+  - FBAudienceNetwork (6.2.0):
+    - FBSDKCoreKit/Basics (>= 7.0.1)
+  - FBSDKCoreKit (8.0.0):
+    - FBSDKCoreKit/Basics (= 8.0.0)
+    - FBSDKCoreKit/Core (= 8.0.0)
+  - FBSDKCoreKit/Basics (8.0.0)
+  - FBSDKCoreKit/Core (8.0.0):
+    - FBSDKCoreKit/Basics
+  - FBSDKLoginKit (8.0.0):
+    - FBSDKLoginKit/Login (= 8.0.0)
+  - FBSDKLoginKit/Login (8.0.0):
+    - FBSDKCoreKit (~> 8.0.0)
+  - FBSDKShareKit (8.0.0):
+    - FBSDKShareKit/Share (= 8.0.0)
+  - FBSDKShareKit/Share (8.0.0):
+    - FBSDKCoreKit (~> 8.0.0)
   - FINNBottomSheet (4.2.0)
   - IQKeyboardManagerSwift (6.2.1)
   - MOLH (1.4.1)
@@ -12,6 +28,7 @@ PODS:
     - SDWebImage/Core (= 4.4.8)
   - SDWebImage/Core (4.4.8)
   - ShadowView (1.4.3)
+  - SmartlookConsentSDK (1.3.0)
   - Spring (1.0.6)
   - SwiftyJSON (5.0.0)
 
@@ -19,12 +36,17 @@ DEPENDENCIES:
   - Alamofire (~> 4.4)
   - BEMCheckBox
   - Cosmos
+  - FBAudienceNetwork
+  - FBSDKCoreKit
+  - FBSDKLoginKit
+  - FBSDKShareKit
   - FINNBottomSheet (from `https://github.com/finn-no/bottom-sheet-ios.git`)
   - IQKeyboardManagerSwift (~> 6.2.0)
   - MOLH
   - NVActivityIndicatorView
   - SDWebImage (~> 4.0)
   - ShadowView
+  - SmartlookConsentSDK
   - Spring (from `https://github.com/MengTo/Spring.git`, branch `swift5`)
   - SwiftyJSON
 
@@ -33,11 +55,16 @@ SPEC REPOS:
     - Alamofire
     - BEMCheckBox
     - Cosmos
+    - FBAudienceNetwork
+    - FBSDKCoreKit
+    - FBSDKLoginKit
+    - FBSDKShareKit
     - IQKeyboardManagerSwift
     - MOLH
     - NVActivityIndicatorView
     - SDWebImage
     - ShadowView
+    - SmartlookConsentSDK
     - SwiftyJSON
 
 EXTERNAL SOURCES:
@@ -59,15 +86,20 @@ SPEC CHECKSUMS:
   Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
   BEMCheckBox: 5ba6e37ade3d3657b36caecc35c8b75c6c2b1a4e
   Cosmos: b5c6a9a637e28a061b54c8f8b1d8529d7d4db73f
+  FBAudienceNetwork: 69193f0362accc40305703fb3265342416971446
+  FBSDKCoreKit: 9d27fe97a2fa2abe5eeefea8240e837623ab88e0
+  FBSDKLoginKit: 2cbaf5405379731b22f2ebc224f7c30f62378171
+  FBSDKShareKit: bf3705fc42b660c3da9f15223db791b3c9c2acde
   FINNBottomSheet: 429cccf0ed60d3b24308e68c21ca4c1d84178eed
   IQKeyboardManagerSwift: 0f0ae8935360b4003e6ea1ac7c19898f01e2f7c7
   MOLH: 9ea6c0390f5963b2df9827ae64035fbc8598b092
   NVActivityIndicatorView: 1f6c5687f1171810aa27a3296814dc2d7dec3667
   SDWebImage: 783af2c3fa36291a250030c4752ee370a9a51d13
   ShadowView: d2d92fd2706b3f6a182be2147149db0b1cf7700d
+  SmartlookConsentSDK: e2240b990e04481985f03f5e00436e588cc602b8
   Spring: 3d113f14575ef79aec9c5f906dfa4f5001c03254
   SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
 
-PODFILE CHECKSUM: 34ecd5fd5afc7a6367803760165545d09709d714
+PODFILE CHECKSUM: bf5c9aeea6dbb00ae0838fcbcdf30165dfa7b32b
 
 COCOAPODS: 1.9.3

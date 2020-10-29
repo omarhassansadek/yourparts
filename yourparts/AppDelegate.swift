@@ -9,13 +9,30 @@
 import UIKit
 import MOLH
 import IQKeyboardManagerSwift
-import FacebookCore
 import FBSDKCoreKit
+import FBAudienceNetwork
+import SmartlookConsentSDK
 
 //@UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, MOLHResetable {
     
     var window: UIWindow?
+    
+    func checkConsentStates() {
+        var consentsSettingsDefaults = SmartlookConsentSDK.ConsentsSettings()
+        consentsSettingsDefaults.append((.privacy, .provided))
+        consentsSettingsDefaults.append((.analytics, .provided))
+        consentsSettingsDefaults.append(("gdpr", .notProvided))   // adding a custom consent
+        SmartlookConsentSDK.check(with: consentsSettingsDefaults) {
+            if SmartlookConsentSDK.consentState(for: .analytics) == .provided {
+                // start analytics tools
+                // Smartlook.start(withKey: "1a2b3c4e5f60")
+                FBAdSettings.setAdvertiserTrackingEnabled(true)
+            }else{
+                FBAdSettings.setAdvertiserTrackingEnabled(false)
+            }
+        }
+    }
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
@@ -31,6 +48,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MOLHResetable {
             application,
             didFinishLaunchingWithOptions: launchOptions
         )
+        
+        checkConsentStates()
         
         return true
     }
@@ -70,7 +89,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MOLHResetable {
     }
     
     func applicationWillEnterForeground(_ application: UIApplication) {
-        // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
+        checkConsentStates()
     }
     
     func applicationDidBecomeActive(_ application: UIApplication) {
