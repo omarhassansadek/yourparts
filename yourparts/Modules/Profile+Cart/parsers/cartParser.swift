@@ -23,6 +23,11 @@ class cartParser{
             if let id = oneCart["id"].int {
                     cartObj.id = id
             }
+            
+            if let is_installation_cost = oneCart["is_installation_cost"].bool {
+                    cartObj.is_installation_cost = is_installation_cost
+            }
+            
             if let created_at = oneCart["sparepart"]["created_at"].string {
                     cartObj.created_at = created_at
             }

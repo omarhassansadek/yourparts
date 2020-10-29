@@ -9,7 +9,7 @@
 import UIKit
 import NVActivityIndicatorView
 import FINNBottomSheet
-
+import BEMCheckBox
 
 class cartViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, BottomSheetPresentationControllerDelegate {
     
@@ -154,7 +154,7 @@ class cartViewController: UIViewController, UITableViewDelegate, UITableViewData
         cell.productName.layoutIfNeeded()
 
         cell.productDesc.text = self.cartVM.cartArr[indexPath.row].created_at
-        cell.productPrice.text =  self.cartVM.cartArr[indexPath.row].unit_price
+        cell.productPrice.text =  "\(self.cartVM.cartArr[indexPath.row].unit_price ?? "") جنيه "
         
         if self.cartVM.cartArr[indexPath.row].brand != nil{
             
@@ -215,9 +215,91 @@ class cartViewController: UIViewController, UITableViewDelegate, UITableViewData
         cell.quantityTf.text = String( self.cartVM.cartArr[indexPath.row].quantity ?? -1 )
         cell.ratingView.rating = Double(self.cartVM.cartArr[indexPath.row].average_rating ?? 5)
 
+        cell.fixPrice.text = "\(self.cartVM.cartArr[indexPath.row].installation_cost ?? "") جنيه"
+        cell.fixPrice.setLineSpacing(lineSpacing: 0.5, lineHeightMultiple: 0.5)
+        cell.fixPrice.textAlignment = .center
+        //cell.checkBoxView.isHidden = true
+        
+        //remove shipping in the same day
+        //cell.shippingViewHeightConstraint.constant = 0.0
+        if let isInstallation =  self.cartVM.cartArr[indexPath.row].is_installation_cost{
+            if isInstallation{
+                cell.fixCheckBox.on = true
+            }else{
+                cell.fixCheckBox.on = false
 
-        cell.checkBoxView.isHidden = true
+            }
+        }
+
+        cell.addInstallation = {
+            if let isInstall =  self.cartVM.cartArr[indexPath.row].is_installation_cost{
+                
+                self.payBtn.setTitle("".localized, for: .normal)
+
+                self.actind.startAnimating()
+                
+                var patchDic : [String: Any] = [:]
+
+                var is_add = false
+                
+                if isInstall{
+                    
+                    if let installation_cost = self.cartVM.cartArr[indexPath.row].installation_cost{
+                        print(Double(installation_cost)!)
+                        patchDic["extra"] = ["installation_cost" : 0.0]
+                    }
+
+                    is_add = false
+                }else{
+                    //checkbox
+                    
+                    if let installation_cost = self.cartVM.cartArr[indexPath.row].installation_cost{
+                        print(Double(installation_cost)!)
+                        patchDic["extra"] = ["installation_cost" : Double(installation_cost)!]
+                    }
+                    
+                    is_add = true
+                }
+                
+                self.cartVM.patchOnCartItem(id: self.cartVM.cartArr[indexPath.row].id ?? -1, apiParameters: patchDic , onSuccess: { (isSuccess) in
+                    //
+                    if isSuccess{
+                        //call calculate cart
+                        if is_add{
+                            cell.fixCheckBox.on = true
+                            self.cartVM.cartArr[indexPath.row].is_installation_cost = true
+                        }else{
+                            cell.fixCheckBox.on = false
+                            self.cartVM.cartArr[indexPath.row].is_installation_cost = false
+
+                        }
+                        
+                        self.cartVM.calculateCart(id: self.cartVM.cartId ?? -1, apiParameters: [:], onSuccess: { (isSuccess) in
+                            if isSuccess{
+                        
+                                self.actind.stopAnimating()
+                                
+                                self.payBtn.setTitle("Continue to checkout".localized, for: .normal)
+
+                                
+                                self.totalPrice.text = self.cartVM.total
+                                
+                            }
+                        }) { (errMsg) in
+                            //
+                        }
+                    }
+                }) { (errMsg) in
+                    //
+                }
+                
+                
+            }
+            
+        }
+        cell.shippingView.isHidden = true
         cell.layoutIfNeeded()
+        
         return cell
         
      }
@@ -242,13 +324,11 @@ class cartViewController: UIViewController, UITableViewDelegate, UITableViewData
                     self.cartVM.cartArr.remove(at: indexPath.row)
                     self.payBtn.setTitle("Continue to checkout".localized, for: .normal)
 
-                    self.actind.stopAnimating()
                     self.getCartData()
                 }
             }) { (errorMsg) in
                 //
                 self.payBtn.setTitle("Continue to checkout".localized, for: .normal)
-                self.actind.stopAnimating()
                 self.getCartData()
 
             }
@@ -521,3 +601,32 @@ extension UILabel {
     }
 }
 
+
+extension UILabel {
+
+    func setLineSpacing(lineSpacing: CGFloat = 0.0, lineHeightMultiple: CGFloat = 0.0) {
+
+        guard let labelText = self.text else { return }
+
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.lineSpacing = lineSpacing
+        paragraphStyle.lineHeightMultiple = lineHeightMultiple
+
+        let attributedString:NSMutableAttributedString
+        if let labelattributedText = self.attributedText {
+            attributedString = NSMutableAttributedString(attributedString: labelattributedText)
+        } else {
+            attributedString = NSMutableAttributedString(string: labelText)
+        }
+
+        // (Swift 4.2 and above) Line spacing attribute
+        attributedString.addAttribute(NSAttributedString.Key.paragraphStyle, value:paragraphStyle, range:NSMakeRange(0, attributedString.length))
+
+
+        // (Swift 4.1 and 4.0) Line spacing attribute
+        attributedString.addAttribute(NSAttributedString.Key.paragraphStyle, value:paragraphStyle, range:NSMakeRange(0, attributedString.length))
+
+        //attributedString
+        self.attributedText = attributedString
+    }
+}

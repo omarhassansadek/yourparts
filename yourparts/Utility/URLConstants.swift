@@ -65,6 +65,8 @@ var applyPromoUrl = "promo-code?"
 
 var calculateOrderUrl = "calculate-order/"
 
+var calculateCartUrl = "calculate-cart/"
+
 var filterTyresUrl = "filter/tyres/"
 
 var visaPaymentUrl = "online-payment/"
