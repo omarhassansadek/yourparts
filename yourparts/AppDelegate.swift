@@ -9,6 +9,8 @@
 import UIKit
 import MOLH
 import IQKeyboardManagerSwift
+import FacebookCore
+import FBSDKCoreKit
 
 //@UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, MOLHResetable {
@@ -25,7 +27,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MOLHResetable {
         IQKeyboardManager.shared.enable = true
         IQKeyboardManager.shared.toolbarDoneBarButtonItemText = "Dismiss"
         
+        ApplicationDelegate.shared.application(
+            application,
+            didFinishLaunchingWithOptions: launchOptions
+        )
+        
         return true
+    }
+    
+    func application(
+        _ app: UIApplication,
+        open url: URL,
+        options: [UIApplication.OpenURLOptionsKey : Any] = [:]
+    ) -> Bool {
+        
+        ApplicationDelegate.shared.application(
+            app,
+            open: url,
+            sourceApplication: options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String,
+            annotation: options[UIApplication.OpenURLOptionsKey.annotation]
+        )
+        
     }
     
     func reset() {
@@ -59,9 +81,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MOLHResetable {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
     
-    
 }
-
 
 extension String{
     
