@@ -65,7 +65,7 @@ class cartViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.bottomSheetView = BottomSheetView(
             contentView: self.paymentView,
                //125 + 50
-               contentHeights: [height + 100, height + 110]
+               contentHeights: [height + 140, height + 150]
         )
 
         refreshControl.addTarget(self, action: #selector(self.refresh(_:)), for: .valueChanged)
@@ -280,10 +280,8 @@ class cartViewController: UIViewController, UITableViewDelegate, UITableViewData
                                 self.actind.stopAnimating()
                                 
                                 self.payBtn.setTitle("Continue to checkout".localized, for: .normal)
-
                                 
-                                self.totalPrice.text = self.cartVM.total
-                                
+                                self.deliveryPrice.text = "\(self.cartVM.total_install)"
                             }
                         }) { (errMsg) in
                             //
@@ -322,13 +320,12 @@ class cartViewController: UIViewController, UITableViewDelegate, UITableViewData
             self.cartVM.deleteFromCart(id: self.cartVM.cartArr[indexPath.row].id ?? -1, onSuccess: { (isSuccess) in
                 if isSuccess{
                     self.cartVM.cartArr.remove(at: indexPath.row)
-                    self.payBtn.setTitle("Continue to checkout".localized, for: .normal)
 
                     self.getCartData()
                 }
             }) { (errorMsg) in
                 //
-                self.payBtn.setTitle("Continue to checkout".localized, for: .normal)
+                //self.payBtn.setTitle("Continue to checkout".localized, for: .normal)
                 self.getCartData()
 
             }
@@ -362,6 +359,7 @@ class cartViewController: UIViewController, UITableViewDelegate, UITableViewData
             //
 
             self.activityind.stopAnimating()
+            self.actind.stopAnimating()
 
             if isSuccess{
                 if self.cartVM.cartArr.count > 0 {
@@ -370,8 +368,9 @@ class cartViewController: UIViewController, UITableViewDelegate, UITableViewData
                     self.bottomSheetView?.isHidden = false
                     self.emptyCartPlaceholder.isHidden = true
                     self.goShoppingViewPlaceholder.isHidden = true
-                    self.deliveryPrice.text = self.cartVM.amount
+                    self.deliveryPrice.text = self.cartVM.total_install
                     self.totalPrice.text = self.cartVM.total
+                    self.payBtn.setTitle("Continue to checkout".localized, for: .normal)
 
                     if !self.firstLoad {
                         self.bottomSheetView?.present(in: self.view)
@@ -389,6 +388,8 @@ class cartViewController: UIViewController, UITableViewDelegate, UITableViewData
                     self.bottomSheetView?.isHidden = true
                     self.emptyCartPlaceholder.isHidden = false
                     self.goShoppingViewPlaceholder.isHidden = false
+                    self.payBtn.setTitle("Continue to checkout".localized, for: .normal)
+
                     //self.bottomSheetView!.dismiss()
 
                 }
@@ -400,6 +401,8 @@ class cartViewController: UIViewController, UITableViewDelegate, UITableViewData
         }) { (errMsg) in
             //
             AlertViewer().showAlertView(withMessage: errMsg, onController: self)
+            self.payBtn.setTitle("Continue to checkout".localized, for: .normal)
+
             self.activityind.stopAnimating()
 
         }
@@ -422,7 +425,7 @@ class cartViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         self.deliveryLbl.font = UIFont(name: "Cairo-Regular", size: 13)
 
-        self.deliveryLbl.text = "Vat".localized
+        self.deliveryLbl.text = "Installation Service".localized
         
         self.deliveryPrice.font = UIFont(name: "Cairo-Regular", size: 13)
         

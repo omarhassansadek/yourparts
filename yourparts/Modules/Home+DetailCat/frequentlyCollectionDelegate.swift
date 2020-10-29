@@ -96,30 +96,47 @@ class frequentlyCollectionDelegate: NSObject ,UICollectionViewDataSource, UIColl
         
         func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
             if type == "f"{
-                var level = self.targetController?.homeVm.mostWantedCategoryResponse.data?[indexPath.row].category_level ?? ""
+                let level = self.targetController?.homeVm.mostWantedCategoryResponse.data?[indexPath.row].category_level ?? ""
                   switch level {
                   case "1":
                       //
                       self.targetController?.catIdToGo = self.targetController?.homeVm.mostWantedCategoryResponse.data?[indexPath.row].id
                       self.targetController?.performSegue(withIdentifier: "gotoDetailCat", sender: self.targetController)
-                   case "3":
-                      self.targetController?.selectedLevel3Cat = self.targetController?.homeVm.mostWantedCategoryResponse.data?[indexPath.row].id
+                  case "2":
+                    let parentCat = self.targetController?.homeVm.mostWantedCategoryResponse.data?[indexPath.row].parent ?? -1
+
+                    let selectedLevel2Cat = self.targetController?.homeVm.mostWantedCategoryResponse.data?[indexPath.row].id ?? -1
+                    self.targetController?.titleToGo = self.targetController?.homeVm.mostWantedCategoryResponse.data?[indexPath.row].name ?? ""
+                    self.targetController?.catIdToGo = parentCat
+                    self.targetController?.selectedLevel2Cat = selectedLevel2Cat
+
+                    self.targetController?.performSegue(withIdentifier: "gotoDetailCat", sender: self.targetController)
+                    
+                  case "3":
+                    let selectedLevel3Cat = self.targetController?.homeVm.mostWantedCategoryResponse.data?[indexPath.row].id ?? -1
+
                       self.targetController?.titleToGo = self.targetController?.homeVm.mostWantedCategoryResponse.data?[indexPath.row].name ?? ""
+                      self.targetController?.pathToGo = baseUrl+catLevel3Url+"\(selectedLevel3Cat)"
+
                       self.targetController?.performSegue(withIdentifier: "gotoProductListVC", sender: self.targetController)
 
                   default:
                       break
                   }
             }else{
-                var level = self.targetController?.homeVm.homeFreqCategoryResponse.data?[indexPath.row].category_level ?? ""
+                let level = self.targetController?.homeVm.homeFreqCategoryResponse.data?[indexPath.row].category_level ?? ""
                 switch level {
                 case "1":
                     //
                     self.targetController?.catIdToGo = self.targetController?.homeVm.homeFreqCategoryResponse.data?[indexPath.row].id
                     self.targetController?.performSegue(withIdentifier: "gotoDetailCat", sender: self.targetController)
+                
+
                  case "3":
-                    self.targetController?.selectedLevel3Cat = self.targetController?.homeVm.homeFreqCategoryResponse.data?[indexPath.row].id
+                    let selectedLevel3Cat = self.targetController?.homeVm.homeFreqCategoryResponse.data?[indexPath.row].id ?? -1
                     self.targetController?.titleToGo = self.targetController?.homeVm.homeFreqCategoryResponse.data?[indexPath.row].name ?? ""
+                    self.targetController?.pathToGo = baseUrl+catLevel3Url+"\(selectedLevel3Cat)"
+
                     self.targetController?.performSegue(withIdentifier: "gotoProductListVC", sender: self.targetController)
 
                 default:

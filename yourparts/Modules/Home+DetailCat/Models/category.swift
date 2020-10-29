@@ -17,7 +17,7 @@ class category{
     var most_important: Bool?
     var image: String?
     var most_on_demand: Bool?
-    var parent: String?
+    var parent: Int?
     var category_level: String?
     var user_has_car: Bool?
     var category_needed_car: Bool?

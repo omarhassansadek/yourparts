@@ -21,7 +21,7 @@ class newHomeViewController: UIViewController, UITableViewDelegate, UITableViewD
         self.navigationController?.navigationBar.barTintColor = primaryColor
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.isHidden = true
-        
+        self.selectedLevel2Cat = -1 
         if finishLoad{
             //var firstIndexPath = IndexPath(row: 0, section: 0)
             //self.tableView.reloadRows(at: [firstIndexPath], with: .none)
@@ -330,21 +330,27 @@ class newHomeViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     var catIdToGo: Int?
 
+    var selectedLevel2Cat: Int?
+
     var selectedLevel3Cat: Int?
     
     var titleToGo = ""
+    
+    var pathToGo = ""
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == "gotoDetailCat"{
             var destVC = segue.destination as! detailCatViewController
             destVC.catId = self.catIdToGo
+            destVC.detailCat = self.catIdToGo ?? -1
+            destVC.subCat = self.selectedLevel2Cat ?? -1
         }else if segue.identifier == "gotoProductListVC"{
             let destCont = segue.destination as! productListViewController
             destCont.vcTitle = self.titleToGo
             //var subs_id = self.detailCatVM.detailCategory?.detailCat[self.indexChoosed].id ?? -1
-            var pathtoGo = baseUrl+catLevel3Url+"\(self.selectedLevel3Cat! )"
-            destCont.pathToCall = pathtoGo
+            //var pathtoGo = baseUrl+catLevel3Url+"\(self.selectedLevel3Cat! )"
+            destCont.pathToCall = self.pathToGo
 
         }
     }

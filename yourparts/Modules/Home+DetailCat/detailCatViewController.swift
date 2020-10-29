@@ -13,12 +13,16 @@ class detailCatViewController: UIViewController , UITableViewDelegate, UITableVi
     @IBOutlet weak var catTableView: UITableView!
     @IBOutlet weak var detailCatVM: detailCatVM!
     
+    //call level2 categories using this id
     var catId: Int?
-    
+    //call level3 categories using this id
+
+    var subCat: Int = -1
+
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.navigationBar.isHidden = true
         
-        if self.subCat != -1{
+        if self.subCat != -1 {
             self.getSubDetailCat()
         }else{
             self.getDetailCat()
@@ -316,7 +320,6 @@ class detailCatViewController: UIViewController , UITableViewDelegate, UITableVi
     }
     
     
-    var subCat: Int = -1
     
     var detailCat: Int = -1
     

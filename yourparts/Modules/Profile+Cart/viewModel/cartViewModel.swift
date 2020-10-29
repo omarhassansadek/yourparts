@@ -35,6 +35,8 @@ class cartViewModel: NSObject {
             self.total = responseSuccess["total"].string ?? ""
             
             self.cartId = responseSuccess["id"].int ?? -1
+            
+            self.total_install = String(responseSuccess["installation_cost"].int ?? -1) + " ج.م"
 
             cartParser().parseCartData(fromJSON: responseSuccess) { (cartDataArr) in
                 self.cartArr = cartDataArr
