@@ -265,7 +265,7 @@ class confirmationViewController: UIViewController , UITableViewDelegate, UITabl
             let confirmCell = tableView.dequeueReusableCell(withIdentifier: "confirmCell") as! confirmAddressTableViewCell
             confirmCell.buildingNo.text = self.paymentVM.shippingAddress.address ?? ""
             confirmCell.region.text = "\(self.paymentVM.shippingAddress.city ?? "") - \(self.paymentVM.shippingAddress.region ?? "")"
-            confirmCell.appartmentNo.text = "شقة \(self.paymentVM.addressArr[indexPath.row].flat ?? "") - طابق \(self.paymentVM.addressArr[indexPath.row].floor ?? "") - مبني\(self.paymentVM.addressArr[indexPath.row].building ?? "") "
+            confirmCell.appartmentNo.text = "شقة \(self.paymentVM.shippingAddress.flat ?? "") - طابق \(self.paymentVM.shippingAddress.floor ?? "") - مبني\(self.paymentVM.shippingAddress.building ?? "") "
 
             return confirmCell
 
