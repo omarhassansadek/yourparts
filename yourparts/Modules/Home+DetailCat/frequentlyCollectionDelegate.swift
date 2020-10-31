@@ -101,6 +101,7 @@ class frequentlyCollectionDelegate: NSObject ,UICollectionViewDataSource, UIColl
                   case "1":
                       //
                       self.targetController?.catIdToGo = self.targetController?.homeVm.mostWantedCategoryResponse.data?[indexPath.row].id
+                      self.targetController?.titleToGo = self.targetController?.homeVm.mostWantedCategoryResponse.data?[indexPath.row].name ?? ""
                       self.targetController?.performSegue(withIdentifier: "gotoDetailCat", sender: self.targetController)
                   case "2":
                     let parentCat = self.targetController?.homeVm.mostWantedCategoryResponse.data?[indexPath.row].parent ?? -1
@@ -127,9 +128,10 @@ class frequentlyCollectionDelegate: NSObject ,UICollectionViewDataSource, UIColl
                 let level = self.targetController?.homeVm.homeFreqCategoryResponse.data?[indexPath.row].category_level ?? ""
                 switch level {
                 case "1":
+                    break
                     //
-                    self.targetController?.catIdToGo = self.targetController?.homeVm.homeFreqCategoryResponse.data?[indexPath.row].id
-                    self.targetController?.performSegue(withIdentifier: "gotoDetailCat", sender: self.targetController)
+                    //self.targetController?.catIdToGo = self.targetController?.homeVm.homeFreqCategoryResponse.data?[indexPath.row].id
+                    //self.targetController?.performSegue(withIdentifier: "gotoDetailCat", sender: self.targetController)
                 
 
                  case "3":

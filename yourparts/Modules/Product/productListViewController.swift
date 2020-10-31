@@ -327,6 +327,12 @@ extension productListViewController{
                 
                 cell.cartimg.isHidden = false
                 cell.activityind.stopAnimating()
+                if let tabItems = self.tabBarController?.tabBar.items {
+                    // In this case we want to modify the badge number of the third tab:
+                    let tabItem = tabItems[2]
+                    tabItem.badgeValue = String((Int(tabItem.badgeValue ?? "0") ?? 0) + 1)
+                }
+
             }) { (err) in
                 //
                 cell.activityind.stopAnimating()

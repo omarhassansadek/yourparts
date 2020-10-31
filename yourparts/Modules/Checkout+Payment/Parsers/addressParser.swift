@@ -18,7 +18,7 @@ class addressParser{
         var addressArr : [address] = []
     
         for oneAddress in fromJSON["billing_addresses"].arrayValue{
-                 var addObj = address()
+                 let addObj = address()
 
                   if let priority = oneAddress["priority"].int {
                         addObj.priority = priority

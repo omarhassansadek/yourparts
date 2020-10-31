@@ -59,6 +59,8 @@ var create_get_OrderUrl = "order/"
 
 var createOrderItemUrl = "order-items/"
 
+var patchOrderItemsUrl = "orderitems/"
+
 var patchOrderUrl = "orders/"
 
 var applyPromoUrl = "promo-code?"

@@ -13,6 +13,7 @@ class product{
     var id: Int?
     var cartItemId: Int?
     var is_installation_cost: Bool?
+    var is_ship_same_day: Bool?
     var created_at: String?
     var updated_at: String?
     var active: Bool?

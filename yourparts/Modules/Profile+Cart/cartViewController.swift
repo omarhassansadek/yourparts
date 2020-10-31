@@ -115,6 +115,12 @@ class cartViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        if let tabItems = tabBarController?.tabBar.items {
+            // In this case we want to modify the badge number of the third tab:
+            let tabItem = tabItems[2]
+            tabItem.badgeValue = nil
+        }
+
         self.getCartData()
     }
 
@@ -139,7 +145,7 @@ class cartViewController: UIViewController, UITableViewDelegate, UITableViewData
 
         cell.productName.text = self.cartVM.cartArr[indexPath.row].product_name
         
-        var neededHeight = self.getHeight(text: self.cartVM.cartArr[indexPath.row].product_name as! NSString, width: cell.productName.frame.width, font: UIFont(name: "Cairo-Bold", size: 14)!)
+        let neededHeight = self.getHeight(text: self.cartVM.cartArr[indexPath.row].product_name as! NSString, width: cell.productName.frame.width, font: UIFont(name: "Cairo-Bold", size: 14)!)
         
         if neededHeight > 75.0 {
             cell.lblTopConstraint.constant = -12.5
@@ -515,7 +521,7 @@ class cartViewController: UIViewController, UITableViewDelegate, UITableViewData
 
     func updateQuantity(rowChanged: Int){
         print("change Editing")
-        var index = rowChanged
+        let index = rowChanged
         var params: [String: Any] = [:]
         self.payBtn.setTitle("".localized, for: .normal)
 

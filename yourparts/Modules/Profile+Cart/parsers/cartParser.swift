@@ -18,7 +18,7 @@ class cartParser{
 
         for oneCart in fromJSON["items"].arrayValue{
             
-            var cartObj = product()
+            let cartObj = product()
 
             if let id = oneCart["id"].int {
                     cartObj.id = id
@@ -26,6 +26,10 @@ class cartParser{
             
             if let is_installation_cost = oneCart["is_installation_cost"].bool {
                     cartObj.is_installation_cost = is_installation_cost
+            }
+            
+            if let is_ship_same_day = oneCart["is_ship_same_day"].bool {
+                    cartObj.is_ship_same_day = is_ship_same_day
             }
             
             if let created_at = oneCart["sparepart"]["created_at"].string {

@@ -39,7 +39,7 @@ class confirmAddressTableViewCell: UITableViewCell {
 
         self.buildingNo.font = UIFont(name: "Cairo-Regular", size: 12)
         
-        self.appartmentNo.text = "شقة 40 الطابق 4".localized
+        //self.appartmentNo.text = "شقة 40 الطابق 4".localized
         
         self.appartmentNo.font = UIFont(name: "Cairo-Regular", size: 12)
 

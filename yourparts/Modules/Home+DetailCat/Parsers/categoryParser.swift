@@ -88,7 +88,7 @@ class categoryParser{
     
     func parseCat(slidingCat:Bool , oneCategory : JSON) -> category{
         
-        var catObj = category()
+        let catObj = category()
         
         
         

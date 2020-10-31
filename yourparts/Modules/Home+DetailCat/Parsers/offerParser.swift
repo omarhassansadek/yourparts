@@ -20,7 +20,7 @@ class offerParser{
          
          for oneOffer in fromJSON["results"].arrayValue{
              
-             var offerObj  = offer()
+             let offerObj  = offer()
 
              if let id = oneOffer["id"].int {
                     offerObj.id = id

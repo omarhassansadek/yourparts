@@ -13,6 +13,7 @@ import BEMCheckBox
 
 class cartTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var shipCheckBox: BEMCheckBox!
     @IBOutlet weak var fixCheckBox: BEMCheckBox!
     @IBOutlet weak var fixPrice: UILabel!
     @IBOutlet weak var favico: UIButton!
@@ -67,7 +68,7 @@ class cartTableViewCell: UITableViewCell {
         
         self.productPrice.font = UIFont(name: "Cairo-Bold", size: 17)
 
-        self.shipLbl.font = UIFont(name: "Cairo-SemiBold", size: 12)
+        self.shipLbl.font = UIFont(name: "Cairo-SemiBold", size: 15)
 
         self.fixLbl.font = UIFont(name: "Cairo-SemiBold", size: 15)
 
@@ -92,6 +93,14 @@ class cartTableViewCell: UITableViewCell {
     @IBAction func updateInstallationCost(_ sender: Any) {
         if let updateInstallClicked = self.addInstallation{
             updateInstallClicked()
+        }
+    }
+    
+    var addShippingOnSameDay : (() -> Void)? = nil
+
+    @IBAction func updateShippingSameDay(_ sender: Any) {
+        if let updateShipping = self.addShippingOnSameDay{
+            updateShipping()
         }
     }
     

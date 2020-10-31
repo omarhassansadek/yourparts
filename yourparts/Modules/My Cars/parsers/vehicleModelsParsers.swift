@@ -17,7 +17,7 @@ class vehicleModelsParsers{
             
         for oneModel in fromJSON["results"].arrayValue {
             
-            var carModelObj = carModel()
+            let carModelObj = carModel()
                      
             if let id = oneModel["id"].int {
                 carModelObj.id = id

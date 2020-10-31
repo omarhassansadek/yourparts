@@ -102,6 +102,27 @@ class paymentViewModel: NSObject {
         }
     }
     
+    //orderitems
+    
+       func patchOrderItems(id: Int, apiParameters: [String:Any], onSuccess: @escaping(Bool)-> () , onFailure: @escaping(String)-> ()){
+
+           print(apiParameters)
+           
+           self.paymentC.patchOrderDetails(url: baseUrl+patchOrderItemsUrl+"\(id)/", apiMethod: .patch, parametersOfCall: apiParameters, apiEncoding: JSONEncoding.default,  completionSuccess: { (responseSuccess) in
+                  //
+                   print(responseSuccess)
+    
+                   if let id = responseSuccess["id"].int{
+                       onSuccess(true)
+                   }else{
+                       onFailure("We encountered an error. Try again later")
+                   }
+                   
+                  }) { (responseFailure) in
+                      onFailure("We encountered an error. Try again later")
+                  }
+        }
+
     
     
     func patchOrder(id: Int, apiParameters: [String:Any], onSuccess: @escaping(Bool)-> () , onFailure: @escaping(String)-> ()){
@@ -265,7 +286,21 @@ class paymentViewModel: NSObject {
                             if let region = responseSuccess["billing_address"]["region"].string{
                                 self.shippingAddress.region = region
                             }
+
+                            if let building = responseSuccess["billing_address"]["building"].string{
+                                self.shippingAddress.building = building
+                            }
+
                             
+                            if let floor = responseSuccess["billing_address"]["floor"].string{
+                                self.shippingAddress.floor = floor
+                            }
+
+                            
+                            if let flat = responseSuccess["billing_address"]["flat"].string{
+                                self.shippingAddress.flat = flat
+                            }
+
                             if let total = responseSuccess["order"]["_total"].string{
                                 self.totalPrice = total
                             }

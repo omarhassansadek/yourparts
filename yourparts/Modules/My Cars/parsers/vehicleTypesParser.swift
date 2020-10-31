@@ -18,7 +18,7 @@ class vehicleTypesParser{
             
         for oneType in fromJSON["results"].arrayValue {
             
-            var carTypeObj = carType()
+            let carTypeObj = carType()
                      
             if let id = oneType["id"].int {
                 carTypeObj.id = id

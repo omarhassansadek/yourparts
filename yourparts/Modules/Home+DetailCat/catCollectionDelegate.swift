@@ -63,6 +63,8 @@ class catCollectionDelegate: NSObject ,UICollectionViewDataSource, UICollectionV
              if self.targetController?.catIdToGo == 85{
                 self.targetController?.performSegue(withIdentifier: "gotoTires", sender: self)
              }else{
+                self.targetController?.titleToGo = self.targetController?.homeVm.homeCategoryResponse.data?[indexPath.row].name ?? ""
+                
                 self.targetController?.performSegue(withIdentifier: "gotoDetailCat", sender: self)
             }
             
