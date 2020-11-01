@@ -9,6 +9,7 @@
 import UIKit
 import Alamofire
 import SwiftyJSON
+import FBSDKLoginKit
 
 class productViewModel: NSObject {
     
@@ -32,11 +33,11 @@ class productViewModel: NSObject {
                     if url.contains("/subcategory") {
                         //vehicle id as query parameter
                         urlPath = url + "/?vehicle_id=\(vehicle_id)"
-
+                        
                     }else{
                         urlPath = url + "&vehicle_id=\(vehicle_id)"
                     }
-
+                    
                 }
             }
             

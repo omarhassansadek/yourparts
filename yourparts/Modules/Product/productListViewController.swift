@@ -9,6 +9,7 @@
 import UIKit
 import NVActivityIndicatorView
 import Spring
+import FBSDKLoginKit
 
 class productListViewController: UIViewController, UICollectionViewDelegate , UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UITableViewDelegate , UITableViewDataSource {
     
@@ -36,7 +37,7 @@ class productListViewController: UIViewController, UICollectionViewDelegate , UI
     var vcTitle: String?
     var pathToCall: String?
     var indexChoosed = 0
-
+    
     //MARK:- Methods
     override func viewWillDisappear(_ animated: Bool) {
         //stops paging please find another solution
@@ -84,6 +85,17 @@ class productListViewController: UIViewController, UICollectionViewDelegate , UI
             topItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         }
         
+    }
+    
+    func logAddToCartEvent(contentData: String, contentId: String, contentType: String, currency: String, price: Double) {
+        let parameters = [
+            AppEvents.ParameterName.content.rawValue: contentData,
+            AppEvents.ParameterName.contentID.rawValue: contentId,
+            AppEvents.ParameterName.contentType.rawValue: contentType,
+            AppEvents.ParameterName.currency.rawValue: currency
+        ]
+        
+        AppEvents.logEvent(.addedToCart, valueToSum: price, parameters: parameters)
     }
     
     func configure(){
@@ -314,8 +326,12 @@ extension productListViewController{
             //            paramsDic["product_code"] = String(self.productVM.productsResponse?.results[indexPath.row].id ?? -1)
             paramsDic["quantity"] = 1
             //            paramsDic["cart"] = UserDefaults.standard.integer(forKey: "cartid")
-            paramsDic["sparepart_id"] = self.productVM.productsResponse.data[indexPath.row].id
-            //            paramsDic["extra"] = ""
+            paramsDic["sparepart_id"] = (self.productVM.productsResponse.data[indexPath.row].id)
+            
+            var fbDic : [String:String]=[:]
+            fbDic["sparepart_id"] = "\(self.productVM.productsResponse.data[indexPath.row].id!)"
+            fbDic["product_price"] = self.productVM.productsResponse.data[indexPath.row].unit_price
+            fbDic["product_name"] = self.productVM.productsResponse.data[indexPath.row].product_name
             
             self.productVM.addToCart(apiParameters: paramsDic, onSuccess: { (isSuccess) in
                 //
@@ -327,6 +343,8 @@ extension productListViewController{
                 
                 cell.cartimg.isHidden = false
                 cell.activityind.stopAnimating()
+                
+                self.logAddToCartEvent(contentData: fbDic["product_name"]!, contentId: fbDic["sparepart_id"]!, contentType: "product", currency: "EGP", price: Double("") ?? 0.0)
             }) { (err) in
                 //
                 cell.activityind.stopAnimating()
@@ -354,13 +372,33 @@ extension productListViewController{
         return 240.0
     }
     
-//    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-//        if indexPath.row + 1 == self.productVM.productsResponse.data.count {
-//            print("do something")
-//        }
-//    }
+    //    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+    //        if indexPath.row + 1 == self.productVM.productsResponse.data.count {
+    //            print("do something")
+    //        }
+    //
+    
+    func logViewContentEvent(
+        contentType: String,
+        contentData: String,
+        contentId: String,
+        currency: String,
+        price: Double
+    ) {
+        let parameters = [
+            AppEvents.ParameterName.contentType.rawValue: contentType,
+            AppEvents.ParameterName.content.rawValue: contentData,
+            AppEvents.ParameterName.contentID.rawValue: contentId,
+            AppEvents.ParameterName.currency.rawValue: currency
+        ]
+        
+        AppEvents.logEvent(.viewedContent, valueToSum: price, parameters: parameters)
+    }
+    
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.logViewContentEvent(contentType: "Product Content" , contentData: self.productVM.productsResponse.data[indexPath.row].product_name ?? "", contentId: "\(self.productVM.productsResponse.data[indexPath.row].id)", currency: "EGP", price: Double(self.productVM.productsResponse.data[indexPath.row].unit_price ?? "0.0") ?? 0.0)
+        
         self.indexChoosed = indexPath.row
         self.performSegue(withIdentifier: "gotoDetailProducts", sender: self)
     }

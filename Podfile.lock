@@ -4,21 +4,21 @@ PODS:
   - Cosmos (23.0.0)
   - FBAudienceNetwork (6.2.0):
     - FBSDKCoreKit/Basics (>= 7.0.1)
-  - FBSDKCoreKit (8.0.0):
-    - FBSDKCoreKit/Basics (= 8.0.0)
-    - FBSDKCoreKit/Core (= 8.0.0)
-  - FBSDKCoreKit/Basics (8.0.0)
-  - FBSDKCoreKit/Core (8.0.0):
+  - FBSDKCoreKit (8.1.0):
+    - FBSDKCoreKit/Basics (= 8.1.0)
+    - FBSDKCoreKit/Core (= 8.1.0)
+  - FBSDKCoreKit/Basics (8.1.0)
+  - FBSDKCoreKit/Core (8.1.0):
     - FBSDKCoreKit/Basics
-  - FBSDKLoginKit (8.0.0):
-    - FBSDKLoginKit/Login (= 8.0.0)
-  - FBSDKLoginKit/Login (8.0.0):
-    - FBSDKCoreKit (~> 8.0.0)
-  - FBSDKShareKit (8.0.0):
-    - FBSDKShareKit/Share (= 8.0.0)
-  - FBSDKShareKit/Share (8.0.0):
-    - FBSDKCoreKit (~> 8.0.0)
-  - FINNBottomSheet (4.2.0)
+  - FBSDKLoginKit (8.1.0):
+    - FBSDKLoginKit/Login (= 8.1.0)
+  - FBSDKLoginKit/Login (8.1.0):
+    - FBSDKCoreKit (~> 8.1.0)
+  - FBSDKShareKit (8.1.0):
+    - FBSDKShareKit/Share (= 8.1.0)
+  - FBSDKShareKit/Share (8.1.0):
+    - FBSDKCoreKit (~> 8.1.0)
+  - FINNBottomSheet (5.0.0)
   - IQKeyboardManagerSwift (6.2.1)
   - MOLH (1.4.1)
   - NVActivityIndicatorView (5.1.1):
@@ -76,7 +76,7 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   FINNBottomSheet:
-    :commit: 855b55da088876b6fab3c3fa30ab26302bf302c9
+    :commit: 7d0e341029e0e1d2cf41f9afe2d7386df8d876de
     :git: https://github.com/finn-no/bottom-sheet-ios.git
   Spring:
     :commit: 459b979c4335d4178fb05771019f6dda916f6998
@@ -87,10 +87,10 @@ SPEC CHECKSUMS:
   BEMCheckBox: 5ba6e37ade3d3657b36caecc35c8b75c6c2b1a4e
   Cosmos: b5c6a9a637e28a061b54c8f8b1d8529d7d4db73f
   FBAudienceNetwork: 69193f0362accc40305703fb3265342416971446
-  FBSDKCoreKit: 9d27fe97a2fa2abe5eeefea8240e837623ab88e0
-  FBSDKLoginKit: 2cbaf5405379731b22f2ebc224f7c30f62378171
-  FBSDKShareKit: bf3705fc42b660c3da9f15223db791b3c9c2acde
-  FINNBottomSheet: 429cccf0ed60d3b24308e68c21ca4c1d84178eed
+  FBSDKCoreKit: b3ca27e124dae67122d3bb47c8f96800b39986a6
+  FBSDKLoginKit: a3a92ba9380759cd0c1aa8319465fb5f2857c602
+  FBSDKShareKit: cb48f5b736946de0609c509dfb546b317bff832c
+  FINNBottomSheet: 4f28df6c7105fa471132ca48b4930aeeb6dfc869
   IQKeyboardManagerSwift: 0f0ae8935360b4003e6ea1ac7c19898f01e2f7c7
   MOLH: 9ea6c0390f5963b2df9827ae64035fbc8598b092
   NVActivityIndicatorView: 1f6c5687f1171810aa27a3296814dc2d7dec3667
@@ -100,6 +100,6 @@ SPEC CHECKSUMS:
   Spring: 3d113f14575ef79aec9c5f906dfa4f5001c03254
   SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
 
-PODFILE CHECKSUM: bf5c9aeea6dbb00ae0838fcbcdf30165dfa7b32b
+PODFILE CHECKSUM: d5c64ddef9b3046d1bd48270ac973123f3907853
 
-COCOAPODS: 1.9.3
+COCOAPODS: 1.10.0
