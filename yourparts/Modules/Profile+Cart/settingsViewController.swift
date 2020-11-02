@@ -121,8 +121,11 @@ class settingsViewController: UIViewController, UITableViewDataSource, UITableVi
                 
                 alertCont.addAction(UIAlertAction(title: "Continue".localized, style: .default, handler: { _ in
                     //go to login
+                    UserDefaults.standard.set(false, forKey: "carChecked")
                     UserDefaults.standard.set(false, forKey: "isLogged")
                     UserDefaults.standard.set("", forKey: "authToken")
+                    UserDefaults.standard.removeObject(forKey: "vehicle")
+
                     self.performSegue(withIdentifier: "gotoAuthModule", sender: self)
                 }))
 
