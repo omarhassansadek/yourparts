@@ -392,7 +392,7 @@ class addCarViewController: UIViewController, UIPickerViewDelegate, UIPickerView
                 }
         
         
-        self.view.endEditing(true)
+        //self.view.endEditing(true)
         //        }else if pickerView == self.carModelsPickerView{
         //            //return self.addCarVM.carModels.count
         //        }else{

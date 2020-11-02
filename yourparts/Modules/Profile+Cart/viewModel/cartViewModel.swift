@@ -176,7 +176,8 @@ class cartViewModel: NSObject {
             AppEvents.ParameterName.contentType.rawValue: contentType,
             AppEvents.ParameterName.numItems.rawValue: NSNumber(value:numItems),
             AppEvents.ParameterName.paymentInfoAvailable.rawValue: NSNumber(value: paymentInfoAvailable ? 1 : 0),
-            AppEvents.ParameterName.currency.rawValue: currency
+            AppEvents.ParameterName.currency.rawValue: currency,
+            "a7a" : ["1" , "2"]
         ] as [String : Any]
         
         AppEvents.logEvent(.initiatedCheckout, valueToSum: totalPrice, parameters: parameters)

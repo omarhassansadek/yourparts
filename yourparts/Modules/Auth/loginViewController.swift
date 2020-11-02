@@ -12,6 +12,7 @@ import  NVActivityIndicatorView
 
 class loginViewController: UIViewController {
     
+    @IBOutlet weak var skipBtn: UIButton!
     @IBOutlet weak var activityindicator: NVActivityIndicatorView!
     @IBOutlet weak var signupBtn: UIButton!
     @IBOutlet weak var signinBtn: UIButton!
@@ -22,8 +23,18 @@ class loginViewController: UIViewController {
     
     @IBOutlet weak var forgetPassBtn: UIButton!
     
+    var isDismissLoginVC = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
+
+        //Uncomment the line below if you want the tap not not interfere and cancel other interactions.
+        //tap.cancelsTouchesInView = false
+
+        view.addGestureRecognizer(tap)
+
         
         self.setNeedsStatusBarAppearanceUpdate()
         
@@ -52,6 +63,21 @@ class loginViewController: UIViewController {
         self.forgetPassBtn.setTitle("Forget Password?".localized, for: .normal)
         self.forgetPassBtn.titleLabel?.font = UIFont(name: "Cairo-Bold", size: 14 )
         
+        var attrs = [
+            NSAttributedString.Key.font :  UIFont(name: "Cairo-Bold", size: 16),
+            NSAttributedString.Key.foregroundColor : UIColor.white,
+            NSAttributedString.Key.underlineStyle : 1] as [NSAttributedString.Key : Any]
+
+        var attributedString = NSMutableAttributedString(string:"".localized)
+
+        let buttonTitleStr = NSMutableAttributedString(string:"Skip and sign in later".localized, attributes:attrs)
+        attributedString.append(buttonTitleStr)
+        self.skipBtn.setAttributedTitle(attributedString, for: .normal)
+
+        //self.skipBtn.setTitle("Skip".localized, for: .normal)
+        //self.skipBtn.titleLabel?.font = UIFont(name: "Cairo-Bold", size: 14 )
+
+        
         self.emailTf.setLeftPaddingPoints(10)
         self.emailTf.setRightPaddingPoints(10)
         self.passwordTf.setLeftPaddingPoints(10)
@@ -67,6 +93,23 @@ class loginViewController: UIViewController {
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
+    }
+    
+
+    @objc func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
+    }
+
+    
+    @IBAction func skipBtnClicked(_ sender: Any) {
+        if isDismissLoginVC ?? false{
+            //true
+            self.dismiss(animated: true, completion: nil)
+        }else{
+            //false
+            self.performSegue(withIdentifier: "gotoHomeFromLogin", sender: self)
+        }
     }
     
     

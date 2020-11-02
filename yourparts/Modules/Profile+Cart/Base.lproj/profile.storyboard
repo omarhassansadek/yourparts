@@ -40,6 +40,7 @@
                         <segue destination="YCt-t2-osj" kind="show" identifier="gotoCart" id="tFe-3L-yFr"/>
                         <segue destination="G0p-bQ-Ekc" kind="show" identifier="gotoSettings" id="ObQ-da-O0h"/>
                         <segue destination="s8p-2E-Lvz" kind="show" identifier="gotoPaymentView" id="SDm-es-XGh"/>
+                        <segue destination="aIW-Gr-qB9" kind="presentation" identifier="gotoLogoutVC" id="BnS-XC-dUN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Z6b-in-YOp" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -571,6 +572,9 @@
             <point key="canvasLocation" x="2014" y="-794"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="BnS-XC-dUN"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="addressico" width="40" height="40"/>
         <image name="cartico" width="40" height="40"/>

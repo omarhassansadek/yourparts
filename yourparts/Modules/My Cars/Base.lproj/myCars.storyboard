@@ -121,6 +121,7 @@
                                         </state>
                                         <connections>
                                             <action selector="addCarBtnClicked:" destination="DwL-i4-eJA" eventType="touchUpInside" id="7IL-e7-l8S"/>
+                                            <segue destination="Qyk-uz-jye" kind="presentation" identifier="gotoLoginVC" modalPresentationStyle="fullScreen" id="N5N-LE-ghx"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -436,6 +437,16 @@
                 <customObject id="ufG-7b-O9u" customClass="addCarClient" customModule="yourparts" customModuleProvider="target"/>
             </objects>
             <point key="canvasLocation" x="2859.375" y="386.61971830985914"/>
+        </scene>
+        <!--loginScreen-->
+        <scene sceneID="jLI-xr-bZS">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Auth" referencedIdentifier="loginScreen" id="Qyk-uz-jye" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="uB1-E7-GW4"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2Ap-vx-ngN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2014" y="921"/>
         </scene>
     </scenes>
     <resources>

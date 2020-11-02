@@ -122,6 +122,7 @@ class settingsViewController: UIViewController, UITableViewDataSource, UITableVi
                 alertCont.addAction(UIAlertAction(title: "Continue".localized, style: .default, handler: { _ in
                     //go to login
                     UserDefaults.standard.set(false, forKey: "isLogged")
+                    UserDefaults.standard.set("", forKey: "authToken")
                     self.performSegue(withIdentifier: "gotoAuthModule", sender: self)
                 }))
 

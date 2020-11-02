@@ -403,6 +403,7 @@
                         <outlet property="view1Btn" destination="iLg-O3-vCd" id="XdQ-gq-6oQ"/>
                         <outlet property="view2Btn" destination="1dB-a3-jxX" id="1gF-83-nwi"/>
                         <segue destination="mB4-kE-2DA" kind="show" identifier="gotoDetailProducts" id="7nO-mv-E62"/>
+                        <segue destination="54Z-Zc-orZ" kind="presentation" identifier="gotoLoginVC" id="PVS-ge-V12"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oyh-cd-27K" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -414,6 +415,14 @@
                 <customObject id="AoH-fK-Rik" customClass="productClient" customModule="yourparts" customModuleProvider="target"/>
             </objects>
             <point key="canvasLocation" x="-1519.2" y="-672.41379310344837"/>
+        </scene>
+        <!--loginScreen-->
+        <scene sceneID="8yO-qO-zwW">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Auth" referencedIdentifier="loginScreen" id="54Z-Zc-orZ" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hzc-4N-Sig" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1519" y="-200"/>
         </scene>
         <!--Product Details View Controller-->
         <scene sceneID="5sV-Ah-Q70">

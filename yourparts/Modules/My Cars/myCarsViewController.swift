@@ -242,6 +242,7 @@ class myCarsViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 self.firstLoad = true
 
             }else{
+                
                 self.carsTableView.isHidden = true
                 self.myCarsPlaceholder.isHidden = false
                 self.addCarBtnView.isHidden = false
@@ -250,24 +251,55 @@ class myCarsViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 //vehicle
                 self.firstLoad = true
 
-
             }
             self.carsTableView.reloadData()
             self.actind.stopAnimating()
 
         }) { (errMsg) in
+            
             //
             self.actind.stopAnimating()
             
             //UserDefaults.standard.set(false, forKey: "carChecked")
 
+            let isLogged = UserDefaults.standard.bool(forKey: "isLogged")
+            
+            if isLogged{
+                AlertViewer().showAlertView(withMessage: errMsg, onController: self)
 
-            AlertViewer().showAlertView(withMessage: errMsg, onController: self)
+                //self.performSegue(withIdentifier: "gotoHomeScreen", sender: self)
+            }else{
+                self.carsTableView.isHidden = true
+                self.myCarsPlaceholder.isHidden = false
+                self.addCarBtnView.isHidden = false
+                UserDefaults.standard.set(false, forKey: "carChecked")
+                UserDefaults.standard.removeObject(forKey: "vehicle")
+                //vehicle
+                self.firstLoad = true
+
+                //self.performSegue(withIdentifier: "gotoLogin", sender: self)
+            }
         }
     }
     
     @IBAction func addCarBtnClicked(_ sender: Any) {
-        self.performSegue(withIdentifier: "gotoAddCarVC", sender: self)
+        
+        let isLogged = UserDefaults.standard.bool(forKey: "isLogged")
+        
+        if isLogged{
+            self.performSegue(withIdentifier: "gotoAddCarVC", sender: self)
+        }else{
+            
+            self.performSegue(withIdentifier: "gotoLoginVC", sender: self)
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "gotoLoginVC"{
+            let destCont = segue.destination as! loginViewController
+            destCont.isDismissLoginVC = true
+            
+        }
     }
     
     /*

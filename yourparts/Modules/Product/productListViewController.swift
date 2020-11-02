@@ -153,6 +153,9 @@ class productListViewController: UIViewController, UICollectionViewDelegate , UI
             let destCont = segue.destination as! productDetailsViewController
             destCont.vcTitle = self.productVM.productsResponse.data[self.indexChoosed].product_name
             destCont.product = self.productVM.productsResponse.data[self.indexChoosed]
+        }else if segue.identifier == "gotoLoginVC"{
+            let destCont = segue.destination as! loginViewController
+            destCont.isDismissLoginVC = true
         }
         
     }
@@ -320,7 +323,6 @@ extension productListViewController{
         cell.productDeliveryDesc.text = "Price delivery and spare part price is different from each city".localized
         cell.addToCart = {
             //cell.addToCart
-            cell.activityind.startAnimating()
             cell.cartimg.isHidden = true
             var paramsDic : [String: Any] = [:]
             //            paramsDic["product_code"] = String(self.productVM.productsResponse?.results[indexPath.row].id ?? -1)
@@ -337,34 +339,46 @@ extension productListViewController{
             let jsonString = String(data: jsonDt!, encoding: .utf8)!
             print(jsonString)
 
+            
+            let isLogged = UserDefaults.standard.bool(forKey: "isLogged")
+            
+            if isLogged{
+                cell.activityind.startAnimating()
 
-
-            self.productVM.addToCart(apiParameters: paramsDic, onSuccess: { (isSuccess) in
-                //
-                //AlertViewer().showAlertView(withMessage: "Added to Cart" , onController: self)
-                
-                cell.cartimg.image = UIImage(named: "cartSuccess")
-                
-                cell.cartView.backgroundColor = UIColor(displayP3Red: 138/255, green: 209/255, blue: 97/255, alpha: 1.0)
-                
-                cell.cartimg.isHidden = false
-                cell.activityind.stopAnimating()
-                
-                self.logAddToCartEvent(contentData: fbDic["product_name"]!, contentId: fbDic["sparepart_id"]!, contentType: "product", currency: "EGP", price: Double("") ?? 0.0)
-                if let tabItems = self.tabBarController?.tabBar.items {
-                    // In this case we want to modify the badge number of the third tab:
-                    let tabItem = tabItems[2]
-                    tabItem.badgeValue = String((Int(tabItem.badgeValue ?? "0") ?? 0) + 1)
+                self.productVM.addToCart(apiParameters: paramsDic, onSuccess: { (isSuccess) in
+                    
+                    cell.cartimg.image = UIImage(named: "cartSuccess")
+                    
+                    cell.cartView.backgroundColor = UIColor(displayP3Red: 138/255, green: 209/255, blue: 97/255, alpha: 1.0)
+                    
+                    cell.cartimg.isHidden = false
+                    cell.activityind.stopAnimating()
+                    
+                    self.logAddToCartEvent(contentData: fbDic["product_name"]!, contentId: fbDic["sparepart_id"]!, contentType: "product", currency: "EGP", price: Double("") ?? 0.0)
+                    if let tabItems = self.tabBarController?.tabBar.items {
+                        // In this case we want to modify the badge number of the third tab:
+                        let tabItem = tabItems[2]
+                        tabItem.badgeValue = String((Int(tabItem.badgeValue ?? "0") ?? 0) + 1)
+                    }
+                    
+                    //
+                    //AlertViewer().showAlertView(withMessage: "Added to Cart" , onController: self)
+                    
+                    
+                    
+                }) { (err) in
+                    //
+                    cell.activityind.stopAnimating()
+                    cell.cartimg.image = UIImage(named: "cart")
+                    cell.cartView.backgroundColor = primaryColor
+                    cell.cartimg.isHidden = false
+                    AlertViewer().showAlertView(withMessage: err , onController: self)
                 }
 
-            }) { (err) in
-                //
-                cell.activityind.stopAnimating()
-                cell.cartimg.image = UIImage(named: "cart")
-                cell.cartView.backgroundColor = primaryColor
-                cell.cartimg.isHidden = false
-                AlertViewer().showAlertView(withMessage: err , onController: self)
+            }else{
+                self.performSegue(withIdentifier: "gotoLoginVC", sender: self)
             }
+
         }
         
         if self.productVM.productsResponse.data[indexPath.row].is_in_cart == true ?? false{
@@ -420,4 +434,6 @@ extension productListViewController{
         let rect = text.boundingRect(with: CGSize.init(width: width, height: CGFloat.greatestFiniteMagnitude), options: ([NSStringDrawingOptions.usesLineFragmentOrigin,NSStringDrawingOptions.usesFontLeading]), attributes: [NSAttributedString.Key.font:font], context: nil)
         return rect.size.height
     }
+    
+    
 }

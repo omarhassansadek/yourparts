@@ -145,12 +145,19 @@ class profileViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     func getProfileData(){
-        self.profileVM.getUserProfile(onSuccess: { (isSuccess) in
-            if isSuccess{
-                self.profileTableView.reloadData()
+        let isLogged = UserDefaults.standard.bool(forKey: "isLogged")
+        
+        if isLogged{
+            self.profileVM.getUserProfile(onSuccess: { (isSuccess) in
+                if isSuccess{
+                    self.profileTableView.reloadData()
+                }
+            }) { (errMsg) in
+                //
             }
-        }) { (errMsg) in
+        }else{
             //
+            self.performSegue(withIdentifier: "gotoLogoutVC", sender: self)
         }
     }
     
@@ -158,6 +165,9 @@ class profileViewController: UIViewController, UITableViewDataSource, UITableVie
         if segue.identifier == "gotoPaymentView"{
             let destVC = segue.destination as! addressPaymentViewController
             destVC.isComingFromProfile = true
+        }else if segue.identifier == "gotoLogoutVC"{
+            let destVC = segue.destination as! loginViewController
+            destVC.isDismissLoginVC = false
         }
     }
     

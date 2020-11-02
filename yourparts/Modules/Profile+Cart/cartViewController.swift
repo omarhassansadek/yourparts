@@ -406,10 +406,26 @@ class cartViewController: UIViewController, UITableViewDelegate, UITableViewData
             }
         }) { (errMsg) in
             //
-            AlertViewer().showAlertView(withMessage: errMsg, onController: self)
-            self.payBtn.setTitle("Continue to checkout".localized, for: .normal)
+            
+            let isLogged = UserDefaults.standard.bool(forKey: "isLogged")
+            
+            if isLogged{
+                AlertViewer().showAlertView(withMessage: errMsg, onController: self)
+                self.payBtn.setTitle("Continue to checkout".localized, for: .normal)
 
-            self.activityind.stopAnimating()
+                self.activityind.stopAnimating()
+
+            }else{
+                self.firstLoad = false
+                self.cartTableView.isHidden = true
+                self.paymentView.isHidden = true
+                self.bottomSheetView?.isHidden = true
+                self.emptyCartPlaceholder.isHidden = false
+                self.goShoppingViewPlaceholder.isHidden = false
+                self.payBtn.setTitle("Continue to checkout".localized, for: .normal)
+                self.activityind.stopAnimating()
+
+            }
 
         }
     }
