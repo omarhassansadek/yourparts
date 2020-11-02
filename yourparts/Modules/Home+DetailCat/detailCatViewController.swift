@@ -195,7 +195,10 @@ class detailCatViewController: UIViewController , UITableViewDelegate, UITableVi
                                 self.performSegue(withIdentifier: "gotoAddCarVC", sender: self)
 
                             }else{
-                                self.performSegue(withIdentifier: "gotoCarsVC", sender: self)
+                                
+                                self.indexChoosed = indexPath.row - 2
+                                self.performSegue(withIdentifier: "gotoProductList", sender: self)
+
 
                             }
 
@@ -248,7 +251,11 @@ class detailCatViewController: UIViewController , UITableViewDelegate, UITableVi
                                 self.performSegue(withIdentifier: "gotoAddCarVC", sender: self)
 
                             }else{
-                                self.performSegue(withIdentifier: "gotoCarsVC", sender: self)
+                                
+                                self.indexChoosed = indexPath.row - 2
+                                self.titleCatToGo = self.detailCatVM.detailCategory?.detailCat[indexPath.row - 2].name ?? ""
+
+                                self.performSegue(withIdentifier: "gotoDetailCat", sender: self)
 
                             }
 

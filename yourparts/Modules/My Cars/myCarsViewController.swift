@@ -285,11 +285,11 @@ class myCarsViewController: UIViewController, UITableViewDelegate, UITableViewDa
     @IBAction func addCarBtnClicked(_ sender: Any) {
         
         let isLogged = UserDefaults.standard.bool(forKey: "isLogged")
-        
+
         if isLogged{
             self.performSegue(withIdentifier: "gotoAddCarVC", sender: self)
         }else{
-            
+
             self.performSegue(withIdentifier: "gotoLoginVC", sender: self)
         }
     }

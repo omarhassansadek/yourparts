@@ -121,7 +121,6 @@
                                         </state>
                                         <connections>
                                             <action selector="addCarBtnClicked:" destination="DwL-i4-eJA" eventType="touchUpInside" id="7IL-e7-l8S"/>
-                                            <segue destination="Qyk-uz-jye" kind="presentation" identifier="gotoLoginVC" modalPresentationStyle="fullScreen" id="N5N-LE-ghx"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -178,6 +177,7 @@
                         <outlet property="myCarsVM" destination="BXR-H7-CaV" id="7Wl-Hz-lUI"/>
                         <outlet property="noCarsLbl" destination="W43-8A-wxN" id="ndx-Iz-XMf"/>
                         <segue destination="JDh-dK-t9z" kind="show" identifier="gotoAddCarVC" id="mGp-Y1-Ucv"/>
+                        <segue destination="Qyk-uz-jye" kind="presentation" identifier="gotoLoginVC" id="6Sj-P2-RdG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GyA-zD-99k" userLabel="First Responder" sceneMemberID="firstResponder"/>
