@@ -21,7 +21,7 @@ class addCarViewModel: NSObject {
     var carYears: [carYear] = []
 
     func getCarTypes( onSuccess: @escaping(Bool)-> () , onFailure: @escaping(String)-> () ){
-        var headersDic : [String: String] = [:]
+        let headersDic : [String: String] = [:]
         //headersDic["Authorization"] = "Token \(self.userDef.string(forKey: "token") ?? "")"
         
         self.addCarC.getCarTypesFromApi(url: baseUrl+myVehiclesTypeUrl, apiMethod: .get, parametersOfCall: nil, apiEncoding: JSONEncoding.default, completionSuccess: { (responseSuccess) in

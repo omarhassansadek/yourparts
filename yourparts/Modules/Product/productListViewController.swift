@@ -333,6 +333,12 @@ extension productListViewController{
             fbDic["product_price"] = self.productVM.productsResponse.data[indexPath.row].unit_price
             fbDic["product_name"] = self.productVM.productsResponse.data[indexPath.row].product_name
             
+            let jsonDt = try? JSONSerialization.data(withJSONObject: paramsDic, options: [])
+            let jsonString = String(data: jsonDt!, encoding: .utf8)!
+            print(jsonString)
+
+
+
             self.productVM.addToCart(apiParameters: paramsDic, onSuccess: { (isSuccess) in
                 //
                 //AlertViewer().showAlertView(withMessage: "Added to Cart" , onController: self)
@@ -345,6 +351,12 @@ extension productListViewController{
                 cell.activityind.stopAnimating()
                 
                 self.logAddToCartEvent(contentData: fbDic["product_name"]!, contentId: fbDic["sparepart_id"]!, contentType: "product", currency: "EGP", price: Double("") ?? 0.0)
+                if let tabItems = self.tabBarController?.tabBar.items {
+                    // In this case we want to modify the badge number of the third tab:
+                    let tabItem = tabItems[2]
+                    tabItem.badgeValue = String((Int(tabItem.badgeValue ?? "0") ?? 0) + 1)
+                }
+
             }) { (err) in
                 //
                 cell.activityind.stopAnimating()

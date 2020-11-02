@@ -197,6 +197,22 @@ class confirmationViewController: UIViewController , UITableViewDelegate, UITabl
         self.view.bringSubviewToFront(dimmedView)
         self.view.bringSubviewToFront(alertView)
     }
+
+           //let height = self.tabBarController?.tabBar.frame.height ?? 49.0
+
+             let bottomSheetView = BottomSheetView(
+                    contentView: bottomView,
+                    //125 + 50
+                 contentHeights: [202.5,  360]
+             )
+             bottomSheetView.present(in: self.view )
+
+           self.view.bringSubviewToFront(payBtn)
+           self.view.bringSubviewToFront(payActInd)
+           self.view.bringSubviewToFront(dummyWhiteView)
+           self.view.bringSubviewToFront(dimmedView)
+           self.view.bringSubviewToFront(alertView)
+       }
     
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -213,6 +229,8 @@ class confirmationViewController: UIViewController , UITableViewDelegate, UITabl
             let confirmCell = tableView.dequeueReusableCell(withIdentifier: "confirmCell") as! confirmAddressTableViewCell
             confirmCell.buildingNo.text = self.paymentVM.shippingAddress.address ?? ""
             confirmCell.region.text = "\(self.paymentVM.shippingAddress.city ?? "") - \(self.paymentVM.shippingAddress.region ?? "")"
+            confirmCell.appartmentNo.text = "شقة \(self.paymentVM.shippingAddress.flat ?? "") - طابق \(self.paymentVM.shippingAddress.floor ?? "") - مبني\(self.paymentVM.shippingAddress.building ?? "") "
+
             return confirmCell
             
         }else if indexPath.row == 1{
@@ -222,7 +240,7 @@ class confirmationViewController: UIViewController , UITableViewDelegate, UITabl
         }else{
             let cartCell = tableView.dequeueReusableCell(withIdentifier: "cartCell") as! cartTableViewCell
             cartCell.productName.text = self.paymentVM.itemsArr[indexPath.row - 2].product_name
-            var neededHeight = self.getHeight(text: self.paymentVM.itemsArr[indexPath.row - 2].product_name as? NSString ?? "", width: cartCell.productName.frame.width, font: UIFont(name: "Cairo-Bold", size: 14)!)
+            let neededHeight = self.getHeight(text: self.paymentVM.itemsArr[indexPath.row - 2].product_name as? NSString ?? "", width: cartCell.productName.frame.width, font: UIFont(name: "Cairo-Bold", size: 14)!)
             
             if neededHeight > 75.0 {
                 cartCell.lblTopConstraint.constant = -12.5
@@ -270,7 +288,110 @@ class confirmationViewController: UIViewController , UITableViewDelegate, UITabl
             })
             cartCell.quantityTf.isUserInteractionEnabled = false
             cartCell.ratingView.rating = Double(self.paymentVM.itemsArr[indexPath.row - 2].average_rating ?? 5)
+
+            if let isInstallation =  self.paymentVM.itemsArr[indexPath.row - 2].is_installation_cost{
+                if isInstallation{
+                    cartCell.fixCheckBox.on = true
+                }else{
+                    cartCell.fixCheckBox.on = false
+
+                }
+            }
             
+            if self.isShippingSameDay == true{
+                cartCell.shippingView.isHidden = false
+            }else{
+                cartCell.shippingView.isHidden = true
+            }
+            
+            cartCell.addShippingOnSameDay = {
+                if self.paymentVM.itemsArr[indexPath.row - 2].is_ship_same_day == true{
+                    cartCell.shipCheckBox.on = false
+                    self.paymentVM.itemsArr[indexPath.row - 2].is_ship_same_day = false
+                }else{
+                    cartCell.shipCheckBox.on = true
+                    self.paymentVM.itemsArr[indexPath.row - 2].is_ship_same_day = true
+                }
+            }
+
+            
+            cartCell.addInstallation = {
+                
+                if let isInstall =  self.paymentVM.itemsArr[indexPath.row - 2].is_installation_cost{
+                    self.payBtn.setTitle("".localized, for: .normal)
+                    self.payActInd.startAnimating()
+
+                    var patchDic : [String: Any] = [:]
+
+                    var is_add = false
+                    
+
+                    if isInstall{
+                        
+                        if let installation_cost = self.paymentVM.itemsArr[indexPath.row - 2].installation_cost{
+                            print(Double(installation_cost)!)
+                            patchDic["extra"] = ["installation_cost" : 0.0]
+                        }
+
+                        is_add = false
+                    }else{
+                        //checkbox
+                        
+                        if let installation_cost = self.paymentVM.itemsArr[indexPath.row - 2].installation_cost{
+                            print(Double(installation_cost)!)
+                            patchDic["extra"] = ["installation_cost" : Double(installation_cost)!]
+                        }
+                        
+                        is_add = true
+                    }
+                    
+                    self.paymentVM.patchOrderItems(id: self.paymentVM.itemsArr[indexPath.row - 2].id ?? -1, apiParameters: patchDic, onSuccess: { (isSuccess) in
+                        //
+                        
+                        if is_add{
+                            cartCell.fixCheckBox.on = true
+                            self.paymentVM.itemsArr[indexPath.row - 2].is_installation_cost = true
+                        }else{
+                            cartCell.fixCheckBox.on = false
+                            self.paymentVM.itemsArr[indexPath.row - 2].is_installation_cost = false
+
+                        }
+                        
+                        var calculaterDic: [String:Any] = [:]
+                        //calculaterDic["total_product"] = Int(doublePrice ?? 0.0)
+                        calculaterDic["shipping_fees"] = 50.0
+                        //calculaterDic["shipping_same_day"] = self.paymentVM.shippingSameDayValue
+                        calculaterDic["order"] = self.orderItemId ?? -1
+                        calculaterDic["promo_code"] = self.paymentVM.discountAmount
+                        
+                        self.paymentVM.calculateOrder(apiParameters: calculaterDic, onSuccess: { (isSuccess) in
+                            
+                            self.payActInd.stopAnimating()
+
+                            if isSuccess{
+                                self.payBtn.setTitle(" دفع \(self.paymentVM.totalPrice) جنيه", for: .normal)
+                            }
+                            
+                        }) { (errMsg) in
+                            //
+
+                            self.payActInd.stopAnimating()
+
+                        }
+
+
+                    }) { (errMsg) in
+                        //
+                    }
+                }//end ifinstall
+                
+
+            }//end func
+            
+            cartCell.fixPrice.text = "\(self.paymentVM.itemsArr[indexPath.row - 2].installation_cost ?? "") جنيه"
+            cartCell.fixPrice.setLineSpacing(lineSpacing: 0.5, lineHeightMultiple: 0.5)
+            cartCell.fixPrice.textAlignment = .center
+
             return cartCell
         }
     }
@@ -281,7 +402,11 @@ class confirmationViewController: UIViewController , UITableViewDelegate, UITabl
         }else if indexPath.row == 1{
             return 125.0
         }else{
-            return 215.0
+            if self.isShippingSameDay == true{
+                return 215.0
+            }else{
+                return 185.0
+            }
         }
     }
     
@@ -330,6 +455,10 @@ class confirmationViewController: UIViewController , UITableViewDelegate, UITabl
     @IBAction func applyPromoClicked(_ sender: Any) {
         
         var doublePrice = Double(self.paymentVM.totalPrice)
+
+        let doublePrice = Double(self.paymentVM.totalPrice)
+
+        self.payBtn.setTitle("", for: .normal)
         
         self.payActInd.startAnimating()
         
@@ -344,10 +473,10 @@ class confirmationViewController: UIViewController , UITableViewDelegate, UITabl
                 self.acceptBtn.isUserInteractionEnabled = false
                 
                 var calculaterDic: [String:Any] = [:]
-                calculaterDic["total_product"] = Int(doublePrice ?? 0.0)
-                calculaterDic["shipping_fees"] = self.paymentVM.shippingValue
-                calculaterDic["shipping_same_day"] = self.paymentVM.shippingSameDayValue
-                calculaterDic["installation_cost"] = self.paymentVM.installationCost
+                calculaterDic["order"] = self.orderItemId
+                //calculaterDic["shipping_fees"] = self.paymentVM.shippingValue
+                calculaterDic["shipping_same_day"] = 50.00
+                //calculaterDic["installation_cost"] = self.paymentVM.installationCost
                 calculaterDic["promo_code"] = self.paymentVM.discountAmount
                 
                 self.paymentVM.calculateOrder(apiParameters: calculaterDic, onSuccess: { (isSuccess) in
@@ -372,6 +501,38 @@ class confirmationViewController: UIViewController , UITableViewDelegate, UITabl
             self.validPromoLbl.textColor = primaryColor
             self.validPromoLbl.isHidden = false
             //self.payActInd.stopAnimating()
+            self.payActInd.stopAnimating()
+
+
+        }
+    }
+    
+    var isShippingSameDay = false
+    
+    func getOrderDetails(){
+        self.paymentVM.getOrder(id: orderId ?? -1, onSuccess: { (isSuccess) in
+            //
+            
+            if self.paymentVM.shippingAddress.city == "القاهرة"{
+                self.isShippingSameDay = true
+            }
+            
+            self.payBtn.setTitle(" دفع \(self.paymentVM.totalPrice) جنيه", for: .normal)
+            
+            self.totalPrice.text = "\(self.paymentVM.totalPrice) جنيه"
+            
+            self.shippingPrice.text = "\(self.paymentVM.shippingValue) جنيه"
+            
+            self.installationPrice.text = "\(self.paymentVM.installationCost) جنيه"
+
+            
+            self.promoPrice.text = "0 جنيه"
+
+            if isSuccess{
+                self.confirmTableView.reloadData()
+            }
+        }) { (errMsg) in
+            //
         }
     }
     

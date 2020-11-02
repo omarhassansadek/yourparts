@@ -59,9 +59,11 @@ class offersCollectionDelegate : NSObject ,UICollectionViewDataSource, UICollect
         //print(self.offersArr[indexPath.row].offer_type)
         if self.offersArr?[indexPath.row].offer_type == "1"{
             if self.offersArr?[indexPath.row].categories_included?.count ?? 0 > 0{
-                self.targetController?.selectedLevel3Cat = self.offersArr?[indexPath.row].categories_included?[0] ?? Int()
-                self.targetController?.performSegue(withIdentifier: "gotoProductListVC", sender: self.targetController)
+                var selectedLevel3Id = self.offersArr?[indexPath.row].categories_included?[0] ?? Int()
+                self.targetController?.selectedLevel3Cat = selectedLevel3Id
                 self.targetController?.titleToGo = "Offers Today".localized
+                self.targetController?.pathToGo = baseUrl+catLevel3Url+"\(selectedLevel3Id)"
+                self.targetController?.performSegue(withIdentifier: "gotoProductListVC", sender: self.targetController)
             }
         }else{
             //go to product detail page

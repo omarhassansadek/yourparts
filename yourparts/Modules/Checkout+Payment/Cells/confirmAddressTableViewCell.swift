@@ -31,19 +31,19 @@ class confirmAddressTableViewCell: UITableViewCell {
 
         self.detailsLbl.font = UIFont(name: "Cairo-Bold", size: 16)
 
-        self.buildingNo.text = "ريحانة ريزدينس".localized
+        //self.buildingNo.text = "ريحانة ريزدينس".localized
         
         self.addressLbl.text = "Shipping Address".localized
 
-        self.addressLbl.font = UIFont(name: "Cairo-SemiBold", size: 14)
+        self.addressLbl.font = UIFont(name: "Cairo-Bold", size: 12)
 
-        self.buildingNo.font = UIFont(name: "Cairo-Regular", size: 12)
+        self.buildingNo.font = UIFont(name: "Cairo-Bold", size: 12)
         
-        self.appartmentNo.text = "شقة 40 الطابق 4".localized
+        //self.appartmentNo.text = "شقة 40 الطابق 4".localized
         
         self.appartmentNo.font = UIFont(name: "Cairo-Regular", size: 12)
 
-        self.region.text = "زهراء المعادى - المعادى - القاهرة".localized
+        //self.region.text = "زهراء المعادى - المعادى - القاهرة".localized
         
         self.region.font = UIFont(name: "Cairo-Regular", size: 12)
 

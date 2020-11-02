@@ -107,7 +107,7 @@ class paymentMethodViewController: UIViewController, UITableViewDelegate, UITabl
                               createDic["cart_id"] = self.cartId ?? -1
                               createDic["order_id"] = self.orderItemId ?? -1
                               
-                              var isInOrder = UserDefaults.standard.bool(forKey: "inOrder") ?? false
+                              let isInOrder = UserDefaults.standard.bool(forKey: "inOrder") ?? false
                               
                              if isInOrder{
                                 

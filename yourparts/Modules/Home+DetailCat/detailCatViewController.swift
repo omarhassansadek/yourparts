@@ -13,12 +13,18 @@ class detailCatViewController: UIViewController , UITableViewDelegate, UITableVi
     @IBOutlet weak var catTableView: UITableView!
     @IBOutlet weak var detailCatVM: detailCatVM!
     
+    //call level2 categories using this id
     var catId: Int?
+    //call level3 categories using this id
+
+    var subCat: Int = -1
     
+    var catTitle: String?
+
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.navigationBar.isHidden = true
         
-        if self.subCat != -1{
+        if self.subCat != -1 {
             self.getSubDetailCat()
         }else{
             self.getDetailCat()
@@ -109,7 +115,7 @@ class detailCatViewController: UIViewController , UITableViewDelegate, UITableVi
         case 1:
             let searchCell = tableView.dequeueReusableCell(withIdentifier: "searchCell") as! searchCatTableViewCell
             //
-            searchCell.catName.text = self.detailCatVM.detailCategory?.name ?? ""
+            searchCell.catName.text = self.catTitle ?? ""
             
             //                    let cellDelegate = offersCollectionDelegate()
             //                            //cellDelegate.profilesArray = self.storiesViewModel.commonTagsphotographerResponse?.data ?? [Photographer]()
@@ -154,6 +160,8 @@ class detailCatViewController: UIViewController , UITableViewDelegate, UITableVi
     
     
     var indexChoosed: Int = -1
+    
+    var titleCatToGo = ""
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
@@ -217,6 +225,7 @@ class detailCatViewController: UIViewController , UITableViewDelegate, UITableVi
                         if self.detailCatVM.detailCategory?.detailCat[indexPath.row - 2].user_has_car == true{
                             if carSelected{
                                 self.indexChoosed = indexPath.row - 2
+                                self.titleCatToGo = self.detailCatVM.detailCategory?.detailCat[indexPath.row - 2].name ?? ""
                                 self.performSegue(withIdentifier: "gotoDetailCat", sender: self)
 
                             }else{
@@ -231,7 +240,10 @@ class detailCatViewController: UIViewController , UITableViewDelegate, UITableVi
                         
                     }else{
                         self.indexChoosed = indexPath.row - 2
+                        self.titleCatToGo = self.detailCatVM.detailCategory?.detailCat[indexPath.row - 2].name ?? ""
+
                         self.performSegue(withIdentifier: "gotoDetailCat", sender: self)
+                        
 
                     }
                     
@@ -316,7 +328,6 @@ class detailCatViewController: UIViewController , UITableViewDelegate, UITableVi
     }
     
     
-    var subCat: Int = -1
     
     var detailCat: Int = -1
     
@@ -329,13 +340,14 @@ class detailCatViewController: UIViewController , UITableViewDelegate, UITableVi
                 let destCont = segue.destination as! detailCatViewController
                 destCont.subCat = self.detailCatVM.detailCategory?.detailCat[self.indexChoosed].id ?? -1
                 destCont.detailCat = self.detailCatVM.detailCategory?.id ?? -1
+                destCont.catTitle = self.titleCatToGo
             }
             
         }else if segue.identifier == "gotoProductList"{
             let destCont = segue.destination as! productListViewController
             destCont.vcTitle = self.detailCatVM.detailCategory?.detailCat[self.indexChoosed].name ?? ""
-            var subs_id = self.detailCatVM.detailCategory?.detailCat[self.indexChoosed].id ?? -1
-            var pathtoGo = self.detailCatVM.path + "&subs_id=\(subs_id)"
+            let subs_id = self.detailCatVM.detailCategory?.detailCat[self.indexChoosed].id ?? -1
+            let pathtoGo = self.detailCatVM.path + "&subs_id=\(subs_id)"
             destCont.pathToCall = pathtoGo
         }else if segue.identifier == "gotoAddCarVC"{
             let destCont = segue.destination as! addCarViewController

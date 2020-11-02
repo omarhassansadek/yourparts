@@ -199,6 +199,13 @@ class productDetailsViewController: UIViewController, UITableViewDelegate, UITab
                 self.activityind.stopAnimating()
                 
                 self.addToCartBtn.setTitle("Added to cart".localized, for: .normal)
+                
+                if let tabItems = self.tabBarController?.tabBar.items {
+                    // In this case we want to modify the badge number of the third tab:
+                    let tabItem = tabItems[2]
+                    tabItem.badgeValue = String((Int(tabItem.badgeValue ?? "0") ?? 0) + 1)
+                }
+
 
                 self.addToCartBtn.backgroundColor = UIColor(displayP3Red: 138/255, green: 209/255, blue: 97/255, alpha: 1.0)
                 

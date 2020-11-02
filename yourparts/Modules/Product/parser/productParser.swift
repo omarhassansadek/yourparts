@@ -38,12 +38,13 @@ class productParser{
                
                for oneProduct in fromJSON.arrayValue{
 
-                   var productObj = product()
+                   let productObj = product()
 
                    if let id = oneProduct["id"].int {
                        productObj.id = id
                    }
                    
+                
                    if let created_at = oneProduct["created_at"].string {
                         productObj.created_at = created_at
                     }
@@ -130,18 +131,29 @@ class productParser{
                    if let unit_cost = oneProduct["unit_cost"].string {
                         productObj.unit_cost = unit_cost
                     }
-                   
-                   if let installation_cost = oneProduct["installation_cost"].string {
-                        productObj.installation_cost = installation_cost
+                
+                    if fromOrder{
+                        if let installation_cost = oneProduct["product"]["installation_cost"].string {
+                             productObj.installation_cost = installation_cost
+                        }
+
+                    }else{
+                        if let installation_cost = oneProduct["installation_cost"].string {
+                             productObj.installation_cost = installation_cost
+                        }
+
                     }
+                   
+                
+                   if let is_installation_cost = oneProduct["is_installation_cost"].bool {
+                        productObj.is_installation_cost = is_installation_cost
+                   }
+                   
 
                    if let is_new = oneProduct["is_new"].bool {
                         productObj.is_new = is_new
                    }
                    
-                   if let installation_cost = oneProduct["installation_cost"].string {
-                        productObj.installation_cost = installation_cost
-                   }
                    
                    if let min_quantity = oneProduct["min_quantity"].int {
                            productObj.min_quantity = min_quantity

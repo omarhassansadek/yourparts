@@ -95,6 +95,27 @@ class paymentViewModel: NSObject {
         
     }
     
+    //orderitems
+    
+       func patchOrderItems(id: Int, apiParameters: [String:Any], onSuccess: @escaping(Bool)-> () , onFailure: @escaping(String)-> ()){
+
+           print(apiParameters)
+           
+           self.paymentC.patchOrderDetails(url: baseUrl+patchOrderItemsUrl+"\(id)/", apiMethod: .patch, parametersOfCall: apiParameters, apiEncoding: JSONEncoding.default,  completionSuccess: { (responseSuccess) in
+                  //
+                   print(responseSuccess)
+    
+                   if let id = responseSuccess["id"].int{
+                       onSuccess(true)
+                   }else{
+                       onFailure("We encountered an error. Try again later")
+                   }
+                   
+                  }) { (responseFailure) in
+                      onFailure("We encountered an error. Try again later")
+                  }
+        }
+    
     func patchOrder(id: Int, apiParameters: [String:Any], onSuccess: @escaping(Bool)-> () , onFailure: @escaping(String)-> ()){
         
         print(apiParameters)

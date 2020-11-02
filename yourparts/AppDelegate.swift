@@ -42,7 +42,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MOLHResetable {
         
         //MARK:- IQKeyboard Manager Configuration
         IQKeyboardManager.shared.enable = true
-        IQKeyboardManager.shared.toolbarDoneBarButtonItemText = "Dismiss"
+        IQKeyboardManager.shared.toolbarDoneBarButtonItemText = "Dismiss".localized
         
         ApplicationDelegate.shared.application(
             application,

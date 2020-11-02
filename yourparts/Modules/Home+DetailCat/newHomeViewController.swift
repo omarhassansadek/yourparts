@@ -21,19 +21,14 @@ class newHomeViewController: UIViewController, UITableViewDelegate, UITableViewD
         self.navigationController?.navigationBar.barTintColor = primaryColor
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.isHidden = true
-        
+        self.selectedLevel2Cat = -1
+        self.titleToGo = ""
         if finishLoad{
             //var firstIndexPath = IndexPath(row: 0, section: 0)
             //self.tableView.reloadRows(at: [firstIndexPath], with: .none)
             self.tableView.reloadData()
         }
     }
-    
-    
-
-    
-    
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -265,7 +260,7 @@ class newHomeViewController: UIViewController, UITableViewDelegate, UITableViewD
             case "f" , "g":
                 return 120.0
         default:
-            var countOfRows =  CGFloat(Double(self.homeVm.homeCategoryResponse.data?.count ?? 0) / 2.0)
+            let countOfRows =  CGFloat(Double(self.homeVm.homeCategoryResponse.data?.count ?? 0) / 2.0)
             
             return ((self.view.frame.width / 2.0) * 0.60 ) * countOfRows
         }
@@ -319,6 +314,9 @@ class newHomeViewController: UIViewController, UITableViewDelegate, UITableViewD
     func getMostCats(){
         self.homeVm.getMostCategories(onSuccess: { (isSuccess) in
             //
+            self.tableView.reloadData()
+            self.activityind.stopAnimating()
+        
             self.reqHomeCats()
 
         }) { (errMsg) in
@@ -330,21 +328,28 @@ class newHomeViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     var catIdToGo: Int?
 
+    var selectedLevel2Cat: Int?
+
     var selectedLevel3Cat: Int?
     
     var titleToGo = ""
+    
+    var pathToGo = ""
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == "gotoDetailCat"{
             var destVC = segue.destination as! detailCatViewController
             destVC.catId = self.catIdToGo
+            destVC.detailCat = self.catIdToGo ?? -1
+            destVC.subCat = self.selectedLevel2Cat ?? -1
+            destVC.catTitle = self.titleToGo
         }else if segue.identifier == "gotoProductListVC"{
             let destCont = segue.destination as! productListViewController
             destCont.vcTitle = self.titleToGo
             //var subs_id = self.detailCatVM.detailCategory?.detailCat[self.indexChoosed].id ?? -1
-            var pathtoGo = baseUrl+catLevel3Url+"\(self.selectedLevel3Cat! )"
-            destCont.pathToCall = pathtoGo
+            //var pathtoGo = baseUrl+catLevel3Url+"\(self.selectedLevel3Cat! )"
+             destCont.pathToCall = self.pathToGo
 
         }
     }

@@ -25,15 +25,15 @@ class addressTableViewCell: UITableViewCell {
         
         //self.mainAddressLbl.font = UIFont(name: "Cairo-Bold", size: 12)
 
-        self.buildingNo.text = "ريحانة ريزدينس".localized
+        //self.buildingNo.text = "ريحانة ريزدينس".localized
         
         self.buildingNo.font = UIFont(name: "Cairo-Bold", size: 12)
         
-        self.appartmentNo.text = "شقة 40 الطابق 4".localized
+        //self.appartmentNo.text = "شقة 40 الطابق 4".localized
         
         self.appartmentNo.font = UIFont(name: "Cairo-Regular", size: 12)
 
-        self.region.text = "زهراء المعادى - المعادى - القاهرة".localized
+        //self.region.text = "زهراء المعادى - المعادى - القاهرة".localized
         
         self.region.font = UIFont(name: "Cairo-Regular", size: 12)
 

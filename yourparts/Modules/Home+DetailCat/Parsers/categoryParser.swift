@@ -88,7 +88,7 @@ class categoryParser{
     
     func parseCat(slidingCat:Bool , oneCategory : JSON) -> category{
         
-        var catObj = category()
+        let catObj = category()
         
         
         
@@ -138,7 +138,7 @@ class categoryParser{
             catObj.most_on_demand = most_on_demand
         }
         
-        if let parent = oneCategory["parent"].string {
+        if let parent = oneCategory["parent"].int {
             catObj.parent = parent
         }
         

@@ -13,6 +13,9 @@ import BEMCheckBox
 
 class cartTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var shipCheckBox: BEMCheckBox!
+    @IBOutlet weak var fixCheckBox: BEMCheckBox!
+    @IBOutlet weak var fixPrice: UILabel!
     @IBOutlet weak var favico: UIButton!
     @IBOutlet weak var brandimg: UIImageView!
     @IBOutlet weak var imgViewConstraint: NSLayoutConstraint!
@@ -31,7 +34,11 @@ class cartTableViewCell: UITableViewCell {
     @IBOutlet weak var shipLbl: UILabel!
     @IBOutlet weak var fixLbl: UILabel!
     
-   var pickerDataSourceDelegate : quantityPickerDelegate?
+    @IBOutlet weak var shippingView: UIView!
+    @IBOutlet weak var installationView: UIView!
+    @IBOutlet weak var shippingViewHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var installationViewHeightConstraint: NSLayoutConstraint!
+    var pickerDataSourceDelegate : quantityPickerDelegate?
 
     var row: Int?
     
@@ -59,15 +66,17 @@ class cartTableViewCell: UITableViewCell {
         self.productDesc.font = UIFont(name: "Cairo-SemiBold", size: 13)
         
         
-        self.productPrice.font = UIFont(name: "Cairo-Bold", size: 16)
+        self.productPrice.font = UIFont(name: "Cairo-Bold", size: 17)
 
-        self.shipLbl.font = UIFont(name: "Cairo-Regular", size: 10)
+        self.shipLbl.font = UIFont(name: "Cairo-SemiBold", size: 15)
 
-        self.fixLbl.font = UIFont(name: "Cairo-Regular", size: 10)
-        
+        self.fixLbl.font = UIFont(name: "Cairo-SemiBold", size: 15)
+
+        self.fixPrice.font = UIFont(name: "Cairo-SemiBold", size: 15)
+
         self.shipLbl.text = "Ship in the same day".localized
 
-        self.fixLbl.text = "Fix Service".localized
+        self.fixLbl.text = "Installation Service From".localized
         
 
     }
@@ -76,6 +85,23 @@ class cartTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    var addInstallation : (() -> Void)? = nil
+
+    
+    @IBAction func updateInstallationCost(_ sender: Any) {
+        if let updateInstallClicked = self.addInstallation{
+            updateInstallClicked()
+        }
+    }
+    
+    var addShippingOnSameDay : (() -> Void)? = nil
+
+    @IBAction func updateShippingSameDay(_ sender: Any) {
+        if let updateShipping = self.addShippingOnSameDay{
+            updateShipping()
+        }
     }
     
 }

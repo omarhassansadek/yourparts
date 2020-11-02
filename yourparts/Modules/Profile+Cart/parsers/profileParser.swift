@@ -14,7 +14,7 @@ class profileParser{
 
     func parseProfiles( fromJSON: JSON , onSuccess: @escaping (user) -> () ){
         
-        var userObj = user()
+        let userObj = user()
         
 
         if let id = fromJSON["id"].int {

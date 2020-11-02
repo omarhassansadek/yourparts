@@ -15,7 +15,7 @@ class ViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         
-        var isLogged = UserDefaults.standard.bool(forKey: "isLogged")
+        let isLogged = UserDefaults.standard.bool(forKey: "isLogged")
         
         if isLogged{
             self.performSegue(withIdentifier: "gotoHomeScreen", sender: self)

@@ -19,6 +19,7 @@ class cartViewModel: NSObject {
     var cartArr : [product] = []
     var amount : String = ""
     var total : String = ""
+    var total_install : String = ""
     var cartId: Int?
     var orderId: Int?
     var orderItemId: Int?
@@ -36,6 +37,8 @@ class cartViewModel: NSObject {
             
             self.cartId = responseSuccess["id"].int ?? -1
             
+            self.total_install = String(responseSuccess["installation_cost"].int ?? -1) + " ج.م"
+
             cartParser().parseCartData(fromJSON: responseSuccess) { (cartDataArr) in
                 self.cartArr = cartDataArr
                 
@@ -88,6 +91,54 @@ class cartViewModel: NSObject {
         }
     }
     
+    func patchOnCartItem(id: Int, apiParameters: [String:Any], onSuccess: @escaping(Bool)-> () , onFailure: @escaping(String)-> ()){
+        
+        
+        self.cartC.patchToCart(url: baseUrl+cartItemUrl+"\(id)/", apiMethod: .patch, parametersOfCall: apiParameters, apiEncoding: JSONEncoding.default, completionSuccess: { (responseSuccess) in
+            //
+            print(responseSuccess)
+            //if responseSuccess["cart"].int == UserDefaults.standard.integer(forKey: "cartid"){
+            if let cartId = responseSuccess["id"].int{
+                //self.cart_id = cartId
+                print(cartId)
+                onSuccess(true)
+            }
+            //}
+            
+        }) { (responseFailure) in
+            onFailure("We encountered an error. Try again later")
+        }
+    }
+    
+    func calculateCart(id: Int, apiParameters: [String:Any], onSuccess: @escaping(Bool)-> () , onFailure: @escaping(String)-> ()){
+        
+        
+        self.cartC.calculateCartTotal(url: baseUrl+calculateCartUrl+"?cart=\(self.cartId ?? -1)", apiMethod: .get, parametersOfCall: apiParameters, apiEncoding: JSONEncoding.default, completionSuccess: { (responseSuccess) in
+            //
+            print(responseSuccess)
+            //if responseSuccess["cart"].int == UserDefaults.standard.integer(forKey: "cartid"){
+            if let totalProduct = responseSuccess["Total_Product"].int{
+                if let totalInstall = responseSuccess["total_install"].int{
+                    //self.total = "\(totalProduct) ج.م"
+                    self.total_install = "\(totalInstall) ج.م"
+                    //print(cartId)
+                    onSuccess(true)
+
+                }
+            }
+            
+            //}
+            
+        }) { (responseFailure) in
+            onFailure("We encountered an error. Try again later")
+        }
+    }
+    
+    
+    var orderId: Int?
+    
+    var orderItemId: Int?
+
     func createOrder(apiParameters: [String:Any], onSuccess: @escaping(Bool)-> () , onFailure: @escaping(String)-> ()){
         
         print(apiParameters)

@@ -93,6 +93,8 @@ class myCarsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         if indexPath.row == self.myCarsVM.myCars.count{
             let cell = tableView.dequeueReusableCell(withIdentifier: "AddAddressCell") as! addAddressTableViewCell
             
+            //cell.editingStyle = cell.editingStyle.rawValue
+            
             cell.addAddressBtn.setTitle("Add new car".localized, for: .normal)
 
             cell.addAddress = {
@@ -187,23 +189,36 @@ class myCarsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
     }
     
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        if indexPath.row == self.myCarsVM.myCars.count{
+            return false
+        }else{
+            return true
+        }
+    }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if (editingStyle == .delete) {
-
-            self.myCarsVM.deleteMyVehicle(id: self.myCarsVM.myCars[indexPath.row].id ?? -1, onSuccess: { (isSuccess) in
-                //
-                if isSuccess{
-                  self.myCarsVM.myCars.remove(at: indexPath.row)
-                  self.fetchCars()
+        if indexPath.row != self.myCarsVM.myCars.count{
+            if (editingStyle == .delete)   {
+                
+              
+                    self.myCarsVM.deleteMyVehicle(id: self.myCarsVM.myCars[indexPath.row].id ?? -1, onSuccess: { (isSuccess) in
+                        //
+                        if isSuccess{
+                            self.myCarsVM.myCars.remove(at: indexPath.row)
+                            self.fetchCars()
+                            
+                        }
+                        
+                    }) { (errMsg) in
+                        //
+                        AlertViewer().showAlertView(withMessage: errMsg, onController: self)
+                    }
                     
-                }
-
-            }) { (errMsg) in
-                //
-                AlertViewer().showAlertView(withMessage: errMsg, onController: self)
+                
             }
         }
+
     }
     
     
