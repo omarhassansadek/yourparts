@@ -258,9 +258,17 @@ class tiresViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
     
     @IBAction func searchBtnClicked(_ sender: Any) {
         
-        self.tyresUrlToBeCalled = baseUrl + filterTyresUrl + "?tyre_size=\(self.tiresVM.tireSizes[selectedTireSize].id ?? -1)&rim_size=\(self.tiresVM.rimSizes[selectedRimSize].id ?? -1)&racho_size=\(self.tiresVM.rachoSizes[selectedRachoSize].id ?? -1)&year=\(self.modelTireTf.text!)&types=1"
+        let isLogged = UserDefaults.standard.bool(forKey: "isLogged")
         
-        self.performSegue(withIdentifier: "gotoTireProduct", sender: self)
+        if isLogged{
+            self.tyresUrlToBeCalled = baseUrl + filterTyresUrl + "?tyre_size=\(self.tiresVM.tireSizes[selectedTireSize].id ?? -1)&rim_size=\(self.tiresVM.rimSizes[selectedRimSize].id ?? -1)&racho_size=\(self.tiresVM.rachoSizes[selectedRachoSize].id ?? -1)&year=\(self.modelTireTf.text!)&types=1"
+            
+            self.performSegue(withIdentifier: "gotoTireProduct", sender: self)
+
+        }else{
+            self.performSegue(withIdentifier: "gotoLoginVC", sender: self)
+        }
+        
         
     }
     
@@ -269,6 +277,9 @@ class tiresViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
             let destCont = segue.destination as! productListViewController
             destCont.vcTitle = "Tires".localized
             destCont.pathToCall = self.tyresUrlToBeCalled
+        }else if segue.identifier == "gotoLoginVC"{
+            let destCont = segue.destination as! loginViewController
+            destCont.isDismissLoginVC = true
         }
     }
     
