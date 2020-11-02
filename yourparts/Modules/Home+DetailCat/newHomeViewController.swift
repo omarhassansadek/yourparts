@@ -314,6 +314,9 @@ class newHomeViewController: UIViewController, UITableViewDelegate, UITableViewD
     func getMostCats(){
         self.homeVm.getMostCategories(onSuccess: { (isSuccess) in
             //
+            self.tableView.reloadData()
+            self.activityind.stopAnimating()
+        
             self.reqHomeCats()
 
         }) { (errMsg) in

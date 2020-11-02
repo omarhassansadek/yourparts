@@ -317,6 +317,12 @@ extension productListViewController{
             paramsDic["sparepart_id"] = self.productVM.productsResponse.data[indexPath.row].id
             //            paramsDic["extra"] = ""
             
+            let jsonDt = try? JSONSerialization.data(withJSONObject: paramsDic, options: [])
+            let jsonString = String(data: jsonDt!, encoding: .utf8)!
+            print(jsonString)
+
+
+
             self.productVM.addToCart(apiParameters: paramsDic, onSuccess: { (isSuccess) in
                 //
                 //AlertViewer().showAlertView(withMessage: "Added to Cart" , onController: self)
