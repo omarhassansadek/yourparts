@@ -134,10 +134,6 @@ class cartViewModel: NSObject {
         }
     }
     
-    
-    var orderId: Int?
-    
-    var orderItemId: Int?
 
     func createOrder(apiParameters: [String:Any], onSuccess: @escaping(Bool)-> () , onFailure: @escaping(String)-> ()){
         

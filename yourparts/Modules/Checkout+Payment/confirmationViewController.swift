@@ -198,21 +198,7 @@ class confirmationViewController: UIViewController , UITableViewDelegate, UITabl
         self.view.bringSubviewToFront(alertView)
     }
 
-           //let height = self.tabBarController?.tabBar.frame.height ?? 49.0
 
-             let bottomSheetView = BottomSheetView(
-                    contentView: bottomView,
-                    //125 + 50
-                 contentHeights: [202.5,  360]
-             )
-             bottomSheetView.present(in: self.view )
-
-           self.view.bringSubviewToFront(payBtn)
-           self.view.bringSubviewToFront(payActInd)
-           self.view.bringSubviewToFront(dummyWhiteView)
-           self.view.bringSubviewToFront(dimmedView)
-           self.view.bringSubviewToFront(alertView)
-       }
     
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -456,7 +442,7 @@ class confirmationViewController: UIViewController , UITableViewDelegate, UITabl
         
         var doublePrice = Double(self.paymentVM.totalPrice)
 
-        let doublePrice = Double(self.paymentVM.totalPrice)
+        //let doublePrice = Double(self.paymentVM.totalPrice)
 
         self.payBtn.setTitle("", for: .normal)
         
@@ -509,32 +495,6 @@ class confirmationViewController: UIViewController , UITableViewDelegate, UITabl
     
     var isShippingSameDay = false
     
-    func getOrderDetails(){
-        self.paymentVM.getOrder(id: orderId ?? -1, onSuccess: { (isSuccess) in
-            //
-            
-            if self.paymentVM.shippingAddress.city == "القاهرة"{
-                self.isShippingSameDay = true
-            }
-            
-            self.payBtn.setTitle(" دفع \(self.paymentVM.totalPrice) جنيه", for: .normal)
-            
-            self.totalPrice.text = "\(self.paymentVM.totalPrice) جنيه"
-            
-            self.shippingPrice.text = "\(self.paymentVM.shippingValue) جنيه"
-            
-            self.installationPrice.text = "\(self.paymentVM.installationCost) جنيه"
-
-            
-            self.promoPrice.text = "0 جنيه"
-
-            if isSuccess{
-                self.confirmTableView.reloadData()
-            }
-        }) { (errMsg) in
-            //
-        }
-    }
     
     @objc func dismissCheckout(){
         print("clicked")
