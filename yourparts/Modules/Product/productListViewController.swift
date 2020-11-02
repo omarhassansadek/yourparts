@@ -376,6 +376,10 @@ extension productListViewController{
                 }
 
             }else{
+                cell.cartimg.image = UIImage(named: "cart")
+                cell.cartView.backgroundColor = primaryColor
+                cell.cartimg.isHidden = false
+
                 self.performSegue(withIdentifier: "gotoLoginVC", sender: self)
             }
 

@@ -189,7 +189,15 @@ class detailCatViewController: UIViewController , UITableViewDelegate, UITableVi
                             }
 
                         }else{
-                            self.performSegue(withIdentifier: "gotoAddCarVC", sender: self)
+                            let isLogged = UserDefaults.standard.bool(forKey: "isLogged")
+                            
+                            if isLogged{
+                                self.performSegue(withIdentifier: "gotoAddCarVC", sender: self)
+
+                            }else{
+                                self.performSegue(withIdentifier: "gotoCarsVC", sender: self)
+
+                            }
 
                         }
                         
@@ -234,7 +242,15 @@ class detailCatViewController: UIViewController , UITableViewDelegate, UITableVi
                             }
 
                         }else{
-                            self.performSegue(withIdentifier: "gotoAddCarVC", sender: self)
+                            let isLogged = UserDefaults.standard.bool(forKey: "isLogged")
+                            
+                            if isLogged{
+                                self.performSegue(withIdentifier: "gotoAddCarVC", sender: self)
+
+                            }else{
+                                self.performSegue(withIdentifier: "gotoCarsVC", sender: self)
+
+                            }
 
                         }
                         

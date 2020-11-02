@@ -137,7 +137,11 @@ class loginViewController: UIViewController {
                         self.activityindicator.stopAnimating()
                         self.signinBtn.setTitle( "Sign in".localized, for: .normal)
                         UserDefaults.standard.set(true, forKey: "isLogged")
-                        self.performSegue(withIdentifier: "gotoHomeFromLogin", sender: self)
+                        if self.isDismissLoginVC{
+                            self.dismiss(animated: true, completion: nil)
+                        }else{
+                            self.performSegue(withIdentifier: "gotoHomeFromLogin", sender: self)
+                        }
                     }
                     
                 }) { (errMsg) in

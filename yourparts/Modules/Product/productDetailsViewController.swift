@@ -193,28 +193,37 @@ class productDetailsViewController: UIViewController, UITableViewDelegate, UITab
         //paramsDic["cart"] = UserDefaults.standard.integer(forKey: "cartid")
         paramsDic["sparepart_id"] = self.product?.id ?? ""
         //paramsDic["extra"] = ""
+        
+        let isLogged = UserDefaults.standard.bool(forKey: "isLogged")
+        
+        if isLogged{
+            self.productDetailsVM.addProductToCart(apiParameters: paramsDic, onSuccess: { (isSuccess) in
+                if isSuccess{
+                    self.activityind.stopAnimating()
+                    
+                    self.addToCartBtn.setTitle("Added to cart".localized, for: .normal)
+                    
+                    if let tabItems = self.tabBarController?.tabBar.items {
+                        // In this case we want to modify the badge number of the third tab:
+                        let tabItem = tabItems[2]
+                        tabItem.badgeValue = String((Int(tabItem.badgeValue ?? "0") ?? 0) + 1)
+                    }
 
-        self.productDetailsVM.addProductToCart(apiParameters: paramsDic, onSuccess: { (isSuccess) in
-            if isSuccess{
-                self.activityind.stopAnimating()
-                
-                self.addToCartBtn.setTitle("Added to cart".localized, for: .normal)
-                
-                if let tabItems = self.tabBarController?.tabBar.items {
-                    // In this case we want to modify the badge number of the third tab:
-                    let tabItem = tabItems[2]
-                    tabItem.badgeValue = String((Int(tabItem.badgeValue ?? "0") ?? 0) + 1)
+
+                    self.addToCartBtn.backgroundColor = UIColor(displayP3Red: 138/255, green: 209/255, blue: 97/255, alpha: 1.0)
+                    
                 }
+            }) { (errMsg) in
+                //
+                AlertViewer().showAlertView(withMessage: errMsg , onController: self)
 
-
-                self.addToCartBtn.backgroundColor = UIColor(displayP3Red: 138/255, green: 209/255, blue: 97/255, alpha: 1.0)
-                
             }
-        }) { (errMsg) in
+        }else{
             //
-            AlertViewer().showAlertView(withMessage: errMsg , onController: self)
-
+            
+            self.performSegue(withIdentifier: "gotoLoginVC", sender: self)
         }
+
     }
     
     func parseDicDetails(DicDetails : [String: Any]) {
@@ -227,6 +236,15 @@ class productDetailsViewController: UIViewController, UITableViewDelegate, UITab
         
         self.productinfoTableView.reloadData()
 
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        //
+        if segue.identifier == "gotoLoginVC"{
+            let destCont = segue.destination as! loginViewController
+            destCont.isDismissLoginVC = true
+        }
+ 
     }
     
     /*

@@ -147,41 +147,6 @@ class frequentlyCollectionDelegate: NSObject ,UICollectionViewDataSource, UIColl
             }
         }
         
-        //joiningCampaign
-    //    @objc func joinCampaign(button:UIButton){
-    //        button.isEnabled = false
-    //        let indexPath = IndexPath(row: button.tag, section: 0)
-    //        let cell = self.campaignsTableView.cellForRow(at: indexPath) as? campaignTableViewCell
-    //        cell?.joinBtn.setTitle("", for: .normal)
-    //        cell?.joinActivityIndicator.isHidden = false
-    //        cell?.joinActivityIndicator.startAnimating()
-    //        self.campaignsViewModel.joinCampaign(atIndex: button.tag, onSuccess: { (success) in
-    //            cell?.joinActivityIndicator.isHidden = true
-    //            cell?.joinActivityIndicator.stopAnimating()
-    //            if success{
-    //                self.campaignsViewModel.runningCampaignsResponse.data?[button.tag].isJoined = true
-    //                self.campaignsTableView.reloadRows(at: [indexPath], with: .none)
-    //                self.indexSelected = indexPath.row
-    //                self.performSegue(withIdentifier: "gotoDetailCampaign", sender: self)
-    //
-    //            }else{
-    //                button.isEnabled = true
-    //                cell?.joinBtn.setTitle("Join", for: .normal)
-    //                ErrorHandler.sharedInstance().handleUIViewControllerError(errMsg: nil, viewController: self)
-    //
-    //            }
-    //        }, onFailure: { (errMsg) in
-    //            button.isEnabled = true
-    //            cell?.joinActivityIndicator.isHidden = true
-    //            cell?.joinActivityIndicator.stopAnimating()
-    //            cell?.joinBtn.setTitle("Join", for: .normal)
-    //            ErrorHandler.sharedInstance().handleUIViewControllerError(errMsg: errMsg, viewController: self)
-    //        })
-            
-     //   }
-        
-        
-     
         func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
             return 0.0
         }

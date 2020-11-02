@@ -21,7 +21,8 @@ class detailCatClient: ParentClient {
         let isLogged = UserDefaults.standard.bool(forKey: "isLogged")
         
         if isLogged{
-            let productHeaders: [String: String] = ["Authorization" : "JWT \(UserDefaults.standard.string(forKey: "authToken") ?? "")"]
+            print(UserDefaults.standard.string(forKey: "authToken") ?? "")
+            productHeaders = ["Authorization" : "JWT \(UserDefaults.standard.string(forKey: "authToken") ?? "")"]
 
         }
         //print(detailCatHeaders)
