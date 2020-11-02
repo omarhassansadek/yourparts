@@ -234,10 +234,21 @@ class detailCatViewController: UIViewController , UITableViewDelegate, UITableVi
                             if carSelected{
                                 self.indexChoosed = indexPath.row - 2
                                 self.titleCatToGo = self.detailCatVM.detailCategory?.detailCat[indexPath.row - 2].name ?? ""
+                                
+                                
                                 self.performSegue(withIdentifier: "gotoDetailCat", sender: self)
 
                             }else{
-                                self.performSegue(withIdentifier: "gotoCarsVC", sender: self)
+                                
+                                let isLogged = UserDefaults.standard.bool(forKey: "isLogged")
+                                
+                                if isLogged{
+                                    self.performSegue(withIdentifier: "gotoCarsVC", sender: self)
+
+                                }else{
+                                    self.performSegue(withIdentifier: "gotoDetailCat", sender: self)
+
+                                }
 
                             }
 
@@ -248,7 +259,7 @@ class detailCatViewController: UIViewController , UITableViewDelegate, UITableVi
                                 self.performSegue(withIdentifier: "gotoAddCarVC", sender: self)
 
                             }else{
-                                self.performSegue(withIdentifier: "gotoCarsVC", sender: self)
+                                self.performSegue(withIdentifier: "gotoDetailCat", sender: self)
 
                             }
 
