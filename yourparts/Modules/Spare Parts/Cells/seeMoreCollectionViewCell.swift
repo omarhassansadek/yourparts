@@ -9,16 +9,17 @@
 import UIKit
 
 class seeMoreCollectionViewCell: UICollectionViewCell {
-
+    
+    //MARK:- Outlets
     @IBOutlet weak var seeMoreText: UITextView!
     @IBOutlet weak var borderView: UIView!
+    
+    //MARK:- Methods
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
         borderView.layer.borderWidth = 1.0
         borderView.layer.borderColor = UIColor(displayP3Red: 238/255, green: 238/255, blue: 238/255, alpha: 1.0).cgColor
-
-        
     }
-
+    
 }

@@ -9,39 +9,36 @@
 import UIKit
 
 class SparePartCategoryTableViewCell: UITableViewCell {
-
+    
+    //MARK:- Outlets
     @IBOutlet weak var partsCollectionView: UICollectionView!
     @IBOutlet weak var collectionTitle: UILabel!
+    
+    //MARK:- Variables
     var collectionDataSourceDelegate : spartsCollectionDelegate?
-
     var row: Int?
     
+    //MARK:- Methods
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
         self.collectionTitle.font = UIFont(name: "Cairo-SemiBold", size: 14)
-
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
         
         let nib1 = UINib.init(nibName: String(describing: seeMoreCollectionViewCell.self), bundle: nil)
         partsCollectionView.register(nib1, forCellWithReuseIdentifier: "seeMoreCollection")
-        
         let nib2 = UINib.init(nibName: String(describing: productCollectionViewCell.self), bundle: nil)
         partsCollectionView.register(nib2, forCellWithReuseIdentifier: "productCollection")
-        
-        
-
     }
     
 }
 
+//MARK:- SpareParts TableViewCell Extension
 extension SparePartCategoryTableViewCell{
-
+    
     func setCollectionViewDataSourceDelegate(_ dataSourceDelegate: spartsCollectionDelegate , forRow row:Int ){
         self.collectionDataSourceDelegate = dataSourceDelegate
         self.row = row
@@ -49,6 +46,6 @@ extension SparePartCategoryTableViewCell{
         partsCollectionView.dataSource = self.collectionDataSourceDelegate
         partsCollectionView.reloadData()
     }
-
+    
 }
 

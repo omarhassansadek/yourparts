@@ -10,15 +10,16 @@
 import UIKit
 
 class sparePartsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-
-    @IBOutlet weak var spartsCollectionView: UICollectionView!
     
+    //MARK:- Outlets
+    @IBOutlet weak var spartsCollectionView: UICollectionView!
     @IBOutlet weak var headerTableView: UITableView!
     
+    //MARK:- Variables
     var sparts = ["العفشة" , "الفرامل" , "الموتور" , "الفتيس"]
-
     var spartName: String = ""
     
+    //MARK:- Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -26,36 +27,20 @@ class sparePartsViewController: UIViewController, UITableViewDelegate, UITableVi
             topItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         }
         
-        
         self.navigationController?.navigationBar.tintColor = primaryColor
-
+        
         let nib = UINib(nibName: String(describing: headerTableViewCell.self), bundle: nil)
         self.headerTableView.register(nib, forCellReuseIdentifier: "headerCell")
         
         let nib2 = UINib(nibName: String(describing: SparePartCategoryTableViewCell.self), bundle: nil)
         self.headerTableView.register(nib2, forCellReuseIdentifier: "spartCartegoryCollection")
-
+        
         self.headerTableView.delegate = self
         self.headerTableView.dataSource = self
-//
-//        self.spartsCollectionView.delegate = self
-//        self.spartsCollectionView.dataSource = self
-
-
-        // Do any additional setup after loading the view.
+        
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-    
+    //MARK:- TableView Delegates
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -73,38 +58,34 @@ class sparePartsViewController: UIViewController, UITableViewDelegate, UITableVi
             cell.searchTf.layer.opacity = 1.0
             
             return cell
+            
         }else{
             let cell = tableView.dequeueReusableCell(withIdentifier: "spartCartegoryCollection") as! SparePartCategoryTableViewCell
-
+            
             let cellDelegate = spartsCollectionDelegate()
-            //cellDelegate.profilesArray = self.storiesViewModel.commonTagsphotographerResponse?.data ?? [Photographer]()
-            //cellDelegate.targetController = self
             cellDelegate.row = indexPath.row
             cell.row = indexPath.row
-            //cellDelegate.type = "t"
             cell.collectionTitle.text = sparts[indexPath.row - 1]
-            
             cell.setCollectionViewDataSourceDelegate(cellDelegate, forRow: indexPath.row)
-          
             cell.selectionStyle = .none
-          
             
             return cell
+            
         }
-
         
     }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.row == 0{
             return 100.0
-
+            
         }else{
             return 350.0
-
+            
         }
     }
     
-  
+    //MARK:- Helper Methods
     func gotoDetailspart(){
         self.performSegue(withIdentifier: "gotoDetailSpart", sender: self)
         
@@ -116,5 +97,5 @@ class sparePartsViewController: UIViewController, UITableViewDelegate, UITableVi
             destVC.spartName = self.spartName
         }
     }
-
+    
 }
