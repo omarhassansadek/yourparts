@@ -9,28 +9,20 @@
 import UIKit
 
 class CategoryTitleTableViewCell: UITableViewCell {
-
+    
+    //MARK:- Outlets
     @IBOutlet weak var categoryLbl: UILabel!
     @IBOutlet weak var roundView: UIView!
+    
+    //MARK:- Methods
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
-        //self.roundView.roundCorners(corners: [.topLeft, .topRight], radius: 15.0)
-        //
-        //let view = UIView()
+        
         roundView.clipsToBounds = true
         roundView.layer.cornerRadius = 10
         roundView.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
         self.categoryLbl.text = "Categories".localized
         self.categoryLbl.font = UIFont(name: "Cairo-Bold", size: 18)
-
-    }
-
-    
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
     
 }

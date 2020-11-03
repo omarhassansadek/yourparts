@@ -9,7 +9,8 @@
 import UIKit
 
 class frequentCollectionViewCell: UICollectionViewCell {
-
+    
+    //MARK:- Outlets
     @IBOutlet weak var topConstraintView: NSLayoutConstraint!
     @IBOutlet weak var imgBottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var imgTrailingConstraint: NSLayoutConstraint!
@@ -19,13 +20,13 @@ class frequentCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var catLbl: UILabel!
     @IBOutlet weak var catImage: UIImageView!
     
+    //MARK:- Methods
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
         
         self.roundView.layer.cornerRadius = 17.5
         self.catLbl.font = UIFont(name: "Cairo-Bold", size: 12)
-
+        
     }
-
+    
 }

@@ -9,37 +9,30 @@
 import UIKit
 
 class frequentlyNeededTableViewCell: UITableViewCell {
-
+    
+    //MARK:- Outlets
     @IBOutlet weak var frequentlyCollectionView: UICollectionView!
     @IBOutlet weak var frequentlyNeededLbl: UILabel!
     
+    //MARK:- Variables
     var collectionDataSourceDelegate : frequentlyCollectionDelegate?
-
     var row: Int?
     
-
+    //MARK:- Methods
     override func awakeFromNib() {
         super.awakeFromNib()
         
         self.frequentlyNeededLbl.text = "Frequently Needed".localized
         self.frequentlyNeededLbl.font = UIFont(name: "Cairo-Bold", size: 18)
-
         let nib1 = UINib.init(nibName: String(describing: frequentCollectionViewCell.self), bundle: nil)
         frequentlyCollectionView.register(nib1, forCellWithReuseIdentifier: "frequentCell")
-
-        // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
     
 }
 
+//MARK:- Frequently Needed TableView Cell Extension
 extension frequentlyNeededTableViewCell{
-
+    
     func setCollectionViewDataSourceDelegate(_ dataSourceDelegate: frequentlyCollectionDelegate , forRow row:Int ){
         self.collectionDataSourceDelegate = dataSourceDelegate
         self.row = row
@@ -47,6 +40,6 @@ extension frequentlyNeededTableViewCell{
         frequentlyCollectionView.dataSource = self.collectionDataSourceDelegate
         frequentlyCollectionView.reloadData()
     }
-
+    
 }
 

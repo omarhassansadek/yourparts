@@ -10,14 +10,14 @@ import UIKit
 
 class brandsCollectionDelegate: NSObject ,UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
+    //MARK:- Variables
     var targetController : newHomeViewController?
     var row: Int?
     var type: String?
-    
     var brands1Arr = ["brand1" , "brand2" , "brand3" , "brand4"]
-    
     var brands2Arr = ["brand5" , "brand6" , "brand7" , "brand8"]
     
+    //MARK:- CollectionView Delegates
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
@@ -28,20 +28,12 @@ class brandsCollectionDelegate: NSObject ,UICollectionViewDataSource, UICollecti
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell{
         
-        
         let cellCollection = collectionView.dequeueReusableCell(withReuseIdentifier: "brandCollectionCell", for: indexPath) as! brandimgCollectionViewCell
         
-        //cellCollection.roundView.backgroundColor = UIColor.white
-        //cellCollection.offerimg.image = UIImage(named:"offerSample")
-        
         if type == "f"{
-            
             cellCollection.brandimg.image = UIImage(named: brands1Arr[indexPath.row])
-            
         }else{
-            
             cellCollection.brandimg.image = UIImage(named: brands2Arr[indexPath.row])
-            
         }
         
         return cellCollection
@@ -53,41 +45,6 @@ class brandsCollectionDelegate: NSObject ,UICollectionViewDataSource, UICollecti
         }
     }
     
-    //joiningCampaign
-    //    @objc func joinCampaign(button:UIButton){
-    //        button.isEnabled = false
-    //        let indexPath = IndexPath(row: button.tag, section: 0)
-    //        let cell = self.campaignsTableView.cellForRow(at: indexPath) as? campaignTableViewCell
-    //        cell?.joinBtn.setTitle("", for: .normal)
-    //        cell?.joinActivityIndicator.isHidden = false
-    //        cell?.joinActivityIndicator.startAnimating()
-    //        self.campaignsViewModel.joinCampaign(atIndex: button.tag, onSuccess: { (success) in
-    //            cell?.joinActivityIndicator.isHidden = true
-    //            cell?.joinActivityIndicator.stopAnimating()
-    //            if success{
-    //                self.campaignsViewModel.runningCampaignsResponse.data?[button.tag].isJoined = true
-    //                self.campaignsTableView.reloadRows(at: [indexPath], with: .none)
-    //                self.indexSelected = indexPath.row
-    //                self.performSegue(withIdentifier: "gotoDetailCampaign", sender: self)
-    //
-    //            }else{
-    //                button.isEnabled = true
-    //                cell?.joinBtn.setTitle("Join", for: .normal)
-    //                ErrorHandler.sharedInstance().handleUIViewControllerError(errMsg: nil, viewController: self)
-    //
-    //            }
-    //        }, onFailure: { (errMsg) in
-    //            button.isEnabled = true
-    //            cell?.joinActivityIndicator.isHidden = true
-    //            cell?.joinActivityIndicator.stopAnimating()
-    //            cell?.joinBtn.setTitle("Join", for: .normal)
-    //            ErrorHandler.sharedInstance().handleUIViewControllerError(errMsg: errMsg, viewController: self)
-    //        })
-    
-    //   }
-    
-    
-    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 0.0
     }
@@ -96,11 +53,8 @@ class brandsCollectionDelegate: NSObject ,UICollectionViewDataSource, UICollecti
         return 0.0
     }
     
-    
-    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: (  (collectionView.frame.width ?? 0.0)  / 3.5), height: collectionView.frame.height)
-        
     }
     
 }

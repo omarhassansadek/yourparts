@@ -9,22 +9,17 @@
 import UIKit
 
 class detailCatTableViewCell: UITableViewCell {
-
+    
+    //MARK:- Outlets
     @IBOutlet weak var detailImg: UIImageView!
     @IBOutlet weak var catName: UILabel!
+    
+    //MARK:- Methods
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
         self.catName.text = "Tire for your car".localized
-
         self.catName.font = UIFont(name: "Cairo-Bold", size: 14)
-
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
     
 }

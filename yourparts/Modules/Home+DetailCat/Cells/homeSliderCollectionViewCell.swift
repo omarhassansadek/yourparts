@@ -9,16 +9,19 @@
 import UIKit
 
 class homeSliderCollectionViewCell: UICollectionViewCell {
+    
+    //MARK:- Outlets
     @IBOutlet weak var roundView: UIView!
     @IBOutlet weak var offerimg: UIImageView!
+    
+    //MARK:- Methods
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
         self.roundView.layer.cornerRadius = 15.0
         self.offerimg.layer.cornerRadius = 15.0
         self.offerimg.contentMode = .scaleAspectFill
         self.offerimg.clipsToBounds = true
-
     }
-
+    
 }

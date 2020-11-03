@@ -9,44 +9,36 @@
 import UIKit
 
 class searchCatTableViewCell: UITableViewCell {
-
+    
+    //MARK:- Outlets
     @IBOutlet weak var catName: UILabel!
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var backView: UIView!
+    
+    //MARK:- Variables
+    var goBack : (() -> Void)? = nil
+    
+    //MARK:- Methods
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
         self.contentView.clipsToBounds = true
         self.contentView.layer.cornerRadius = 10
         self.contentView.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
-
         backView.transform = CGAffineTransform(scaleX: -1, y: 1)
-
         catName.font = UIFont(name: "Cairo-Bold", size: 15)
         
         if #available(iOS 13.0, *) {
             searchBar.searchTextField.placeholder = "Search with part name".localized
             searchBar.searchTextField.font = UIFont(name: "Cairo-SemiBold", size: 11)
-            
-
-        } else {
-            // Fallback on earlier versions
-        }
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+        }else{}
+        
     }
     
-    var goBack : (() -> Void)? = nil
-    
-    
-    
+    //MARK:- Actions
     @IBAction func goBackClicked(_ sender: Any) {
         if let addAddressClicked = self.goBack{
-                 addAddressClicked()
+            addAddressClicked()
         }
     }
     

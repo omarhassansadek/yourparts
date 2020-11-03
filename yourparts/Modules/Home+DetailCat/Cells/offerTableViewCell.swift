@@ -9,39 +9,33 @@
 import UIKit
 
 class offerTableViewCell: UITableViewCell {
-
+    
+    //MARK:- Outlets
     @IBOutlet weak var collectionTitle: UILabel!
     @IBOutlet weak var offerCollectionView: UICollectionView!
+    
+    //MARK:- Variables
     var collectionDataSourceDelegate : offersCollectionDelegate?
-
     var row: Int?
     
+    //MARK:- Methods
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
         self.collectionTitle.text = "Offers Today".localized
         self.collectionTitle.font = UIFont(name: "Cairo-Bold", size: 18)
-
         let nib1 = UINib.init(nibName: String(describing: homeSliderCollectionViewCell.self), bundle: nil)
         offerCollectionView.register(nib1, forCellWithReuseIdentifier: "offerSlider")
-        
         self.contentView.clipsToBounds = true
         self.contentView.layer.cornerRadius = 15.0
         self.contentView.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
-
-
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
     
 }
 
+//MARK:- Offer TableView Cell Extension
 extension offerTableViewCell{
-
+    
     func setCollectionViewDataSourceDelegate(_ dataSourceDelegate: offersCollectionDelegate , forRow row:Int ){
         self.collectionDataSourceDelegate = dataSourceDelegate
         self.row = row
@@ -49,6 +43,6 @@ extension offerTableViewCell{
         offerCollectionView.dataSource = self.collectionDataSourceDelegate
         offerCollectionView.reloadData()
     }
-
+    
 }
 

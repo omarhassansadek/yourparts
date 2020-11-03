@@ -9,35 +9,28 @@
 import UIKit
 
 class catGridTableViewCell: UITableViewCell {
-
+    
+    //MARK:- Outlets
     @IBOutlet weak var catCollection: UICollectionView!
     
-    
+    //MARK:- Variables
     var catCollectionDataSourceDelegate : catCollectionDelegate?
-    
     var row: Int?
-
+    
+    //MARK:- Methods
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
-        
-        
         
         let nib1 = UINib.init(nibName: String(describing: catGridCollectionViewCell.self), bundle: nil)
         catCollection.register(nib1, forCellWithReuseIdentifier: "catCell")
-
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+        
     }
     
 }
 
+//MARK:- Grid Category TableView Cell Extension
 extension catGridTableViewCell{
-
+    
     func setCollectionViewDataSourceDelegate(_ dataSourceDelegate: catCollectionDelegate , forRow row:Int ){
         self.catCollectionDataSourceDelegate = dataSourceDelegate
         self.row = row
@@ -45,6 +38,6 @@ extension catGridTableViewCell{
         catCollection.dataSource = self.catCollectionDataSourceDelegate
         catCollection.reloadData()
     }
-
+    
 }
 

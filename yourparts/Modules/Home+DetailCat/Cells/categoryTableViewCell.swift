@@ -9,23 +9,18 @@
 import UIKit
 
 class categoryTableViewCell: UITableViewCell {
-
+    
+    //MARK:- Outlets
     @IBOutlet weak var catImage: UIImageView!
     @IBOutlet weak var catName: UILabel!
     @IBOutlet weak var roundView: UIView!
+    
+    //MARK:- Methods
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
-        self.roundView.layer.cornerRadius = 15.0
         
+        self.roundView.layer.cornerRadius = 15.0
         self.catName.font = UIFont(name: "Cairo-Bold", size: 18)
-
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
     
 }

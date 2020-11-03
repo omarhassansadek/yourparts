@@ -10,17 +10,20 @@ import UIKit
 
 class detailCatViewController: UIViewController , UITableViewDelegate, UITableViewDataSource{
     
+    //MARK:- Outlets
     @IBOutlet weak var catTableView: UITableView!
     @IBOutlet weak var detailCatVM: detailCatVM!
     
-    //call level2 categories using this id
+    //MARK:- Variables
     var catId: Int?
-    //call level3 categories using this id
-
     var subCat: Int = -1
-    
     var catTitle: String?
-
+    var indexChoosed: Int = -1
+    var titleCatToGo = ""
+    var finishLoad = false
+    var detailCat: Int = -1
+    
+    //MARK:- Methods
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.navigationBar.isHidden = true
         
@@ -32,7 +35,6 @@ class detailCatViewController: UIViewController , UITableViewDelegate, UITableVi
         
         if self.finishLoad {
             self.catTableView.reloadData()
-            
         }
         
     }
@@ -40,20 +42,14 @@ class detailCatViewController: UIViewController , UITableViewDelegate, UITableVi
     override func viewDidLoad() {
         super.viewDidLoad()
         
-      
-        
         let statusBarView = UIView(frame: UIApplication.shared.statusBarFrame)
         statusBarView.backgroundColor = UIColor.white
         view.addSubview(statusBarView)
         
-        
-        
         self.catTableView.delegate = self
         self.catTableView.dataSource = self
-        // Do any additional setup after loading the view.
         
-        
-        
+        //MARK:- Cells Registration
         let nib = UINib(nibName: String(describing: addCarTableViewCell.self), bundle: nil)
         self.catTableView.register(nib, forCellReuseIdentifier: "addCarCell")
         
@@ -65,6 +61,7 @@ class detailCatViewController: UIViewController , UITableViewDelegate, UITableVi
         
     }
     
+    //MARK:- TableView Delegates
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -85,13 +82,12 @@ class detailCatViewController: UIViewController , UITableViewDelegate, UITableVi
                 if let image = UserDefaults.standard.string(forKey: "image"){
                     addCarCell.carLogo.sd_setImage(with: URL(string: image) , placeholderImage: nil, completed: { (image, error, cacheType, url) -> Void in
                         if ((error) != nil) {
-                            // set the placeholder image here
                             addCarCell.carLogo.image = UIImage(named: "carico")
                         } else {
-                            // success ... use the image
                         }
-                    })                    }
-                
+                    })
+                    
+                }
                 
                 if let vehicle_name = UserDefaults.standard.string(forKey: "vehicle_name"){
                     addCarCell.addCarLbl.text = vehicle_name
@@ -102,66 +98,38 @@ class detailCatViewController: UIViewController , UITableViewDelegate, UITableVi
                         addCarCell.detailAddCarLbl.text = model_name + " " + year
                     }
                 }
-                
-                
             }else{
                 addCarCell.carLogo.image = UIImage(named: "add")
                 addCarCell.addCarLbl.text = "Add car now".localized
                 addCarCell.detailAddCarLbl.text = "Add car to see parts for your car".localized
-                
             }
             
             return addCarCell
+            
         case 1:
             let searchCell = tableView.dequeueReusableCell(withIdentifier: "searchCell") as! searchCatTableViewCell
-            //
             searchCell.catName.text = self.catTitle ?? ""
-            
-            //                    let cellDelegate = offersCollectionDelegate()
-            //                            //cellDelegate.profilesArray = self.storiesViewModel.commonTagsphotographerResponse?.data ?? [Photographer]()
-            //                            //cellDelegate.targetController = self
-            //                    cellDelegate.row = indexPath.row
-            //                    offerCell.row = indexPath.row
-            //                            //cellDelegate.type = "t"
-            //    //                offerCell.collectionTitle.text = sparts[indexPath.row - 1]
-            //
-            //                    offerCell.setCollectionViewDataSourceDelegate(cellDelegate, forRow: indexPath.row)
-            //
-            //                    offerCell.selectionStyle = .none
-            
             searchCell.goBack = {
                 self.navigationController?.popViewController(animated: true)
             }
             
-            
             return searchCell
-            
             
         default:
             let categoryCell = tableView.dequeueReusableCell(withIdentifier: "detailCatCell") as! detailCatTableViewCell
             
-            
-            //categoryCell.catImage.s
             categoryCell.detailImg.sd_setImage(with: URL(string: self.detailCatVM.detailCategory?.detailCat[indexPath.row - 2].image ?? "") , placeholderImage: nil, completed: { (image, error, cacheType, url) -> Void in
                 if ((error) != nil) {
-                    // set the placeholder image here
                     categoryCell.detailImg.image = UIImage(named: "teelFramel")
                 } else {
-                    // success ... use the image
                 }
             })
-            
             categoryCell.catName.text = self.detailCatVM.detailCategory?.detailCat[indexPath.row - 2].name
             
             return categoryCell
         }
         
     }
-    
-    
-    var indexChoosed: Int = -1
-    
-    var titleCatToGo = ""
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
@@ -171,124 +139,62 @@ class detailCatViewController: UIViewController , UITableViewDelegate, UITableVi
             
             let carSelected = UserDefaults.standard.bool(forKey: "carChecked")
             
-            
             if indexPath.row > 1{
-                
-                if self.subCat != -1{   
-                    //
+                if self.subCat != -1{
                     
                     if self.detailCatVM.detailCategory?.detailCat[indexPath.row - 2].category_needed_car == true{
                         if self.detailCatVM.detailCategory?.detailCat[indexPath.row - 2].user_has_car == true{
                             if carSelected{
                                 self.indexChoosed = indexPath.row - 2
                                 self.performSegue(withIdentifier: "gotoProductList", sender: self)
-
+                                
                             }else{
                                 self.performSegue(withIdentifier: "gotoCarsVC", sender: self)
-
+                                
                             }
-
                         }else{
                             let isLogged = UserDefaults.standard.bool(forKey: "isLogged")
                             
                             if isLogged{
                                 self.performSegue(withIdentifier: "gotoAddCarVC", sender: self)
-
-                            }else{
                                 
+                            }else{
                                 self.indexChoosed = indexPath.row - 2
                                 self.performSegue(withIdentifier: "gotoProductList", sender: self)
-
-
                             }
-
+                            
                         }
-                        
                     }else{
                         self.indexChoosed = indexPath.row - 2
                         self.performSegue(withIdentifier: "gotoProductList", sender: self)
-
                     }
-
-                    
-                    //start logic
-//                    if self.detailCatVM.detailCategory?.detailCat[indexPath.row - 2].category_needed_car == true && self.detailCatVM.detailCategory?.detailCat[indexPath.row - 2].user_has_car == true {
-//
-//                        if carSelected{
-//                            self.indexChoosed = indexPath.row - 2
-//                            self.performSegue(withIdentifier: "gotoProductList", sender: self)
-//
-//                        }else{
-//                            //
-//                            self.performSegue(withIdentifier: "gotoCarsVC", sender: self)
-//
-//                        }
-//
-//                    }else{
-//                        //gotoAddCarVC
-//                        self.performSegue(withIdentifier: "gotoAddCarVC", sender: self)
-//
-//                    }
-                    //end logic
                 }else{
-                    //level 2 clicked
                     if self.detailCatVM.detailCategory?.detailCat[indexPath.row - 2].category_needed_car == true{
                         if self.detailCatVM.detailCategory?.detailCat[indexPath.row - 2].user_has_car == true{
                             if carSelected{
                                 self.indexChoosed = indexPath.row - 2
                                 self.titleCatToGo = self.detailCatVM.detailCategory?.detailCat[indexPath.row - 2].name ?? ""
                                 self.performSegue(withIdentifier: "gotoDetailCat", sender: self)
-
+                                
                             }else{
                                 self.performSegue(withIdentifier: "gotoCarsVC", sender: self)
-
+                                
                             }
-
                         }else{
                             let isLogged = UserDefaults.standard.bool(forKey: "isLogged")
-                            
                             if isLogged{
                                 self.performSegue(withIdentifier: "gotoAddCarVC", sender: self)
-
                             }else{
-                                
                                 self.indexChoosed = indexPath.row - 2
                                 self.titleCatToGo = self.detailCatVM.detailCategory?.detailCat[indexPath.row - 2].name ?? ""
-
                                 self.performSegue(withIdentifier: "gotoDetailCat", sender: self)
-
                             }
-
                         }
-                        
                     }else{
                         self.indexChoosed = indexPath.row - 2
                         self.titleCatToGo = self.detailCatVM.detailCategory?.detailCat[indexPath.row - 2].name ?? ""
-
                         self.performSegue(withIdentifier: "gotoDetailCat", sender: self)
-                        
-
                     }
-                    
-                    //start logic
-//                    if self.detailCatVM.detailCategory?.detailCat[indexPath.row - 2].category_needed_car == true && self.detailCatVM.detailCategory?.detailCat[indexPath.row - 2].user_has_car == true {
-//
-//                        if carSelected{
-//                            self.indexChoosed = indexPath.row - 2
-//                            self.performSegue(withIdentifier: "gotoDetailCat", sender: self)
-//
-//                        }else{
-//                            self.performSegue(withIdentifier: "gotoCarsVC", sender: self)
-//
-//                        }
-//
-//
-//                    }else{
-//                        self.performSegue(withIdentifier: "gotoAddCarVC", sender: self)
-//
-//                    }
-                    //end logic
-                    
                 }
                 
             }
@@ -311,20 +217,15 @@ class detailCatViewController: UIViewController , UITableViewDelegate, UITableVi
         
     }
     
-    var finishLoad = false
-    
+    //MARK:- Category Details Methods
     func getDetailCat(){
         self.finishLoad = false
         
         self.detailCatVM.getDetailCategory(id: self.catId ?? -1, apiParameters: [:], onSuccess: { (isSuccess) in
-            //
             self.finishLoad = true
-            
             self.catTableView.reloadData()
         }) { (errMsg) in
-            //
             self.finishLoad = true
-            
         }
     }
     
@@ -334,27 +235,15 @@ class detailCatViewController: UIViewController , UITableViewDelegate, UITableVi
         if self.detailCat != -1 && self.subCat != -1{
             self.detailCatVM.getSubDetailCategory(id: self.detailCat, subId: self.subCat, apiParameters: [:], onSuccess: { (isSuccess) in
                 self.finishLoad = true
-                
                 if isSuccess{
                     self.catTableView.reloadData()
-                    
                 }
             }) { (errMsg) in
-                //
                 self.finishLoad = true
-                
             }
-            
         }
         
-        
     }
-    
-    
-    
-    var detailCat: Int = -1
-    
-    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
@@ -365,7 +254,6 @@ class detailCatViewController: UIViewController , UITableViewDelegate, UITableVi
                 destCont.detailCat = self.detailCatVM.detailCategory?.id ?? -1
                 destCont.catTitle = self.titleCatToGo
             }
-            
         }else if segue.identifier == "gotoProductList"{
             let destCont = segue.destination as! productListViewController
             destCont.vcTitle = self.detailCatVM.detailCategory?.detailCat[self.indexChoosed].name ?? ""
@@ -375,18 +263,7 @@ class detailCatViewController: UIViewController , UITableViewDelegate, UITableVi
         }else if segue.identifier == "gotoAddCarVC"{
             let destCont = segue.destination as! addCarViewController
             destCont.autoSelect = true
-            
         }
     }
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
     
 }

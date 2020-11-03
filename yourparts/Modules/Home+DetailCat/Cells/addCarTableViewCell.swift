@@ -9,28 +9,18 @@
 import UIKit
 
 class addCarTableViewCell: UITableViewCell {
-
+    
+    //MARK:- Outlets
     @IBOutlet weak var carLogo: UIImageView!
     @IBOutlet weak var detailAddCarLbl: UILabel!
     @IBOutlet weak var addCarLbl: UILabel!
     
-    
+    //MARK:- Methods
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
-        
-        
         
         self.addCarLbl.font = UIFont(name: "Cairo-Bold", size: 14)
-        
         self.detailAddCarLbl.font = UIFont(name: "Cairo-SemiBold", size: 12)
-
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
     
 }
