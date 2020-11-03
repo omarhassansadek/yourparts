@@ -37,10 +37,11 @@ class productListViewController: UIViewController, UICollectionViewDelegate , UI
     var vcTitle: String?
     var pathToCall: String?
     var indexChoosed = 0
+    var filterOpened = false
+    var loadMoreProducts = false
     
     //MARK:- Methods
     override func viewWillDisappear(_ animated: Bool) {
-        //stops paging please find another solution
         self.loadMoreProducts = false
     }
     
@@ -56,10 +57,10 @@ class productListViewController: UIViewController, UICollectionViewDelegate , UI
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         self.configure()
         self.getProducts()
-        //        let button1 = UIBarButtonItem(image: UIImage(named: "filter"), style: .plain, target: self, action: Selector("filterProducts")) // action:#selector(Class.MethodName) for swift 3
-        //        self.navigationItem.rightBarButtonItem  = button1
+        
         self.navigationController?.navigationBar.isHidden = false
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.barTintColor = anotherGreyColor
@@ -99,11 +100,14 @@ class productListViewController: UIViewController, UICollectionViewDelegate , UI
     }
     
     func configure(){
+        
         self.filterTitleLbl.text = "Filter Options".localized
         self.filterTitleLbl.font = UIFont(name: "Cairo-SemiBold", size: 15)
+        
         self.speedRateBtn.setTitle("Speed Rate".localized, for: .normal)
         self.speedRateBtn.titleLabel?.font = UIFont(name: "Cairo-SemiBold", size: 13)
         self.speedRateBtn.setTitleColor(primaryColor, for: .normal)
+        
         self.optionalRequirementsBtn.setTitle("Optional Requirements".localized, for: .normal)
         self.optionalRequirementsBtn.titleLabel?.font = UIFont(name: "Cairo-SemiBold", size: 13)
         self.optionalRequirementsBtn.setTitleColor(UIColor.black, for: .normal)
@@ -117,7 +121,6 @@ class productListViewController: UIViewController, UICollectionViewDelegate , UI
         self.doneFilterBtn.setTitleColor(primaryColor, for: .normal)
         
         self.emptyStatetextView.text = "No product found. Please contact the call center".localized
-        
         self.emptyStatetextView.font = UIFont(name: "Cairo-Bold", size: 18)
         
         self.numberLbl.font = UIFont(name: "Cairo-Bold", size: 18)
@@ -129,14 +132,12 @@ class productListViewController: UIViewController, UICollectionViewDelegate , UI
         
         self.activityindicator.startAnimating()
         self.productVM.getProductList(url: self.pathToCall ?? "", apiParameters: [:], onSuccess: { (isSuccess) in
-            //
             if isSuccess{
                 self.activityindicator.stopAnimating()
                 if self.productVM.productsResponse.data.count != 0 {
                     self.productsTableView.isHidden = false
                     self.productsTableView.reloadData()
                     self.emptyStatetextView.isHidden = true
-                    
                     self.loadMoreProducts = true
                 }else{
                     self.productsTableView.isHidden = true
@@ -160,16 +161,12 @@ class productListViewController: UIViewController, UICollectionViewDelegate , UI
         
     }
     
-    var filterOpened = false
-    
     @objc func filterProducts(){
-        //print("clicked")
         if !self.filterOpened {
             self.filterOpened = true
             self.filterView.isHidden = false
             self.filterView.animation = "slideUp"
             self.filterView.animate()
-            
             Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(updateCounter), userInfo: nil, repeats: true)
         }
     }
@@ -207,8 +204,6 @@ class productListViewController: UIViewController, UICollectionViewDelegate , UI
     }
     
     //MARK:- Scroll View
-    var loadMoreProducts = false
-    
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         
         let scrollViewHeight = scrollView.frame.size.height
@@ -230,7 +225,6 @@ class productListViewController: UIViewController, UICollectionViewDelegate , UI
                 }
             }
         }else{
-            //self.loadMoreProducts = true
         }
     }
 }
@@ -293,10 +287,8 @@ extension productListViewController{
                 
                 cell.brandSample.sd_setImage(with: URL(string: productVM.productsResponse.data[indexPath.row].brand?.image ?? "") , placeholderImage: nil, completed: { (image, error, cacheType, url) -> Void in
                     if ((error) != nil) {
-                        // set the placeholder image here
                         cell.brandSample.image = UIImage(named: "brandSample")
                     } else {
-                        // success ... use the image
                     }
                 })
             }else{
@@ -307,84 +299,59 @@ extension productListViewController{
         }
         cell.imageViewContainter.layoutIfNeeded()
         cell.lblHeightConstraint.constant =  CGFloat(neededHeight)
-        //print(cell.lblHeightConstraint.constant)
         cell.productName.layoutIfNeeded()
         cell.productDesc.text = self.productVM.productsResponse.data[indexPath.row].created_at
         cell.productPrice.text =  "\(self.productVM.productsResponse.data[indexPath.row].unit_price ?? "") جنيه"
         cell.productImage.sd_setImage(with: URL(string: self.productVM.productsResponse.data[indexPath.row].image ?? "") , placeholderImage: nil, completed: { (image, error, cacheType, url) -> Void in
             if ((error) != nil) {
-                // set the placeholder image here
                 cell.productImage.image = UIImage(named: "goodTire")
             } else {
-                // success ... use the image
             }
         })
         cell.productPriceDesc.text = "Price for unit".localized
         cell.productDeliveryDesc.text = "Price delivery and spare part price is different from each city".localized
         cell.addToCart = {
-            //cell.addToCart
             cell.cartimg.isHidden = true
             var paramsDic : [String: Any] = [:]
-            //            paramsDic["product_code"] = String(self.productVM.productsResponse?.results[indexPath.row].id ?? -1)
             paramsDic["quantity"] = 1
-            //            paramsDic["cart"] = UserDefaults.standard.integer(forKey: "cartid")
             paramsDic["sparepart_id"] = (self.productVM.productsResponse.data[indexPath.row].id)
-            
             var fbDic : [String:String]=[:]
             fbDic["sparepart_id"] = "\(self.productVM.productsResponse.data[indexPath.row].id!)"
             fbDic["product_price"] = self.productVM.productsResponse.data[indexPath.row].unit_price
             fbDic["product_name"] = self.productVM.productsResponse.data[indexPath.row].product_name
-            
             let jsonDt = try? JSONSerialization.data(withJSONObject: paramsDic, options: [])
             let jsonString = String(data: jsonDt!, encoding: .utf8)!
+            
             print(jsonString)
-
             
             let isLogged = UserDefaults.standard.bool(forKey: "isLogged")
             
             if isLogged{
                 cell.activityind.startAnimating()
-
                 self.productVM.addToCart(apiParameters: paramsDic, onSuccess: { (isSuccess) in
-                    
                     cell.cartimg.image = UIImage(named: "cartSuccess")
-                    
                     cell.cartView.backgroundColor = UIColor(displayP3Red: 138/255, green: 209/255, blue: 97/255, alpha: 1.0)
-                    
                     cell.cartimg.isHidden = false
                     cell.activityind.stopAnimating()
-                    
                     self.logAddToCartEvent(contentData: fbDic["product_name"]!, contentId: fbDic["sparepart_id"]!, contentType: "product", currency: "EGP", price: Double("") ?? 0.0)
                     if let tabItems = self.tabBarController?.tabBar.items {
-                        // In this case we want to modify the badge number of the third tab:
                         let tabItem = tabItems[2]
                         tabItem.badgeValue = String((Int(tabItem.badgeValue ?? "0") ?? 0) + 1)
                     }
-                    
-                    //
-                    //AlertViewer().showAlertView(withMessage: "Added to Cart" , onController: self)
-                    
-                    
-                    
                 }) { (err) in
-                    //
                     cell.activityind.stopAnimating()
                     cell.cartimg.image = UIImage(named: "cart")
                     cell.cartView.backgroundColor = primaryColor
                     cell.cartimg.isHidden = false
                     AlertViewer().showAlertView(withMessage: err , onController: self)
                 }
-
             }else{
                 cell.cartimg.image = UIImage(named: "cart")
                 cell.cartView.backgroundColor = primaryColor
                 cell.cartimg.isHidden = false
-
                 self.performSegue(withIdentifier: "gotoLoginVC", sender: self)
             }
-
         }
-        
         if self.productVM.productsResponse.data[indexPath.row].is_in_cart == true ?? false{
             cell.cartimg.image = UIImage(named: "cartSuccess")
             cell.cartView.backgroundColor = UIColor(displayP3Red: 138/255, green: 209/255, blue: 97/255, alpha: 1.0)
@@ -402,13 +369,16 @@ extension productListViewController{
         return 240.0
     }
     
-    //    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-    //        if indexPath.row + 1 == self.productVM.productsResponse.data.count {
-    //            print("do something")
-    //        }
-    //
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.logViewContentEvent(contentType: "Product Content" , contentData: self.productVM.productsResponse.data[indexPath.row].product_name ?? "", contentId: "\(self.productVM.productsResponse.data[indexPath.row].id)", currency: "EGP", price: Double(self.productVM.productsResponse.data[indexPath.row].unit_price ?? "0.0") ?? 0.0)
+        
+        self.indexChoosed = indexPath.row
+        self.performSegue(withIdentifier: "gotoDetailProducts", sender: self)
+    }
     
+    //MARK:- Helper Method
     func logViewContentEvent(
+        
         contentType: String,
         contentData: String,
         contentId: String,
@@ -425,19 +395,9 @@ extension productListViewController{
         AppEvents.logEvent(.viewedContent, valueToSum: price, parameters: parameters)
     }
     
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.logViewContentEvent(contentType: "Product Content" , contentData: self.productVM.productsResponse.data[indexPath.row].product_name ?? "", contentId: "\(self.productVM.productsResponse.data[indexPath.row].id)", currency: "EGP", price: Double(self.productVM.productsResponse.data[indexPath.row].unit_price ?? "0.0") ?? 0.0)
-        
-        self.indexChoosed = indexPath.row
-        self.performSegue(withIdentifier: "gotoDetailProducts", sender: self)
-    }
-    
-    func getHeight(text:  NSString, width:CGFloat, font: UIFont) -> CGFloat
-    {
+    func getHeight(text:  NSString, width:CGFloat, font: UIFont) -> CGFloat {
         let rect = text.boundingRect(with: CGSize.init(width: width, height: CGFloat.greatestFiniteMagnitude), options: ([NSStringDrawingOptions.usesLineFragmentOrigin,NSStringDrawingOptions.usesFontLeading]), attributes: [NSAttributedString.Key.font:font], context: nil)
         return rect.size.height
     }
-    
     
 }

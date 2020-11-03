@@ -11,7 +11,8 @@ import Cosmos
 import NVActivityIndicatorView
 
 class productCellTableViewCell: UITableViewCell {
-
+    
+    //MARK:- Outlets
     @IBOutlet weak var brandSample: UIImageView!
     @IBOutlet weak var imageViewContainter: UIView!
     @IBOutlet weak var imageViewConstraint: NSLayoutConstraint!
@@ -25,49 +26,30 @@ class productCellTableViewCell: UITableViewCell {
     @IBOutlet weak var productPrice: UILabel!
     @IBOutlet weak var productPriceDesc: UILabel!
     @IBOutlet weak var productDeliveryDesc: UILabel!
-    
-    
-    var addToCart : (() -> Void)? = nil
-
-    
     @IBOutlet weak var activityind: NVActivityIndicatorView!
+    @IBOutlet weak var cartView: UIView!
     
+    //MARK:- Variables
+    var addToCart : (() -> Void)? = nil
+    
+    //MARK:- Methods
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        // Initialization code
-        
         self.cartView.layer.cornerRadius = 5.0
-        
-        
         self.productName.font = UIFont(name: "Cairo-Bold", size: 13)
-
-        
         self.productDesc.font = UIFont(name: "Cairo-SemiBold", size: 13)
-        
-        
         self.productPrice.font = UIFont(name: "Cairo-Bold", size: 16)
-
-        
         self.productPriceDesc.font = UIFont(name: "Cairo-SemiBold", size: 12)
-
-        
         self.productDeliveryDesc.font = UIFont(name: "Cairo-SemiBold", size: 11)
-
+        
     }
-
+    
+    //MARK:- Actions
     @IBAction func addToCartBtnClicked(_ sender: Any) {
         if let addToCartBtn = self.addToCart{
-                 addToCartBtn()
+            addToCartBtn()
         }
-    }
-    
-    @IBOutlet weak var cartView: UIView!
-    
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
     
 }

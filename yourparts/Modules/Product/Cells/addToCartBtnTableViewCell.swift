@@ -9,21 +9,18 @@
 import UIKit
 
 class addToCartBtnTableViewCell: UITableViewCell {
-
+    
+    //MARK:- Outlets
     @IBOutlet weak var addToCartBtn: UIButton!
+    
+    //MARK:- Methods
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
         self.addToCartBtn.layer.cornerRadius = 10.0
         self.addToCartBtn.setTitle("أضف الى سلة التسوق", for: .normal)
         self.addToCartBtn.titleLabel?.font = UIFont(name: "Cairo-SemiBold", size: 14 )
-
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+        
     }
     
 }

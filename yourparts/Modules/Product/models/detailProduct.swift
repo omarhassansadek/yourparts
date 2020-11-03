@@ -9,6 +9,7 @@
 import Foundation
 
 class detailProduct{
+    
     var name: String?
     var value: Any?
     
@@ -16,5 +17,6 @@ class detailProduct{
         self.name = dname
         self.value = dvalue
     }
+    
 }
 

@@ -9,18 +9,19 @@
 import UIKit
 
 class brandCollectionViewCell: UICollectionViewCell {
-
+    
+    //MARK:- Outlets
     @IBOutlet weak var brandimg: UIImageView!
     @IBOutlet weak var roundView: UIView!
     
+    //MARK:- Methods
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
         
         self.roundView.layer.cornerRadius = 10.0
-    
         self.brandimg.layer.cornerRadius = 10.0
         self.brandimg.clipsToBounds = true
+        
     }
-
+    
 }

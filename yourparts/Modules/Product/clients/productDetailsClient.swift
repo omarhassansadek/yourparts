@@ -11,7 +11,7 @@ import Alamofire
 import SwiftyJSON
 
 class productDetailsClient: ParentClient {
-
+    
     func productAddToCart(url: String, apiMethod: HTTPMethod, parametersOfCall: [String: Any]? , apiEncoding: ParameterEncoding , completionSuccess: @escaping (JSON) -> Void , completionFailure: @escaping (JSON) -> Void ){
         
         let cartHeaders: [String: String] = ["Authorization" : "JWT \(UserDefaults.standard.string(forKey: "authToken") ?? "")"]
@@ -26,5 +26,5 @@ class productDetailsClient: ParentClient {
         
     }
     
-
+    
 }

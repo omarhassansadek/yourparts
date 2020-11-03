@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 
 class brand{
+    
     var id: Int?
     var brand_name: String?
     var image: String?

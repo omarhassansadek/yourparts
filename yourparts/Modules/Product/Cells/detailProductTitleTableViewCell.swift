@@ -9,21 +9,17 @@
 import UIKit
 
 class detailProductTitleTableViewCell: UITableViewCell {
-
+    
+    //MARK:- Outlets
     @IBOutlet weak var topConstraint: NSLayoutConstraint!
     @IBOutlet weak var roundView: UIView!
+    
+    //MARK:- Methods
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
         self.roundView.layer.cornerRadius = 12.0
         
-   
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
     
 }
