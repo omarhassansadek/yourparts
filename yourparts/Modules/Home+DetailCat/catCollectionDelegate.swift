@@ -28,7 +28,7 @@ class catCollectionDelegate: NSObject ,UICollectionViewDataSource, UICollectionV
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cellCollection = collectionView.dequeueReusableCell(withReuseIdentifier: "catCell", for: indexPath) as! catGridCollectionViewCell
-        cellCollection.catimage.contentMode = .center
+        cellCollection.catimage.contentMode = .scaleAspectFill
         cellCollection.catimage.clipsToBounds = true
         cellCollection.catimage.sd_setImage(with: URL(string: self.targetController?.homeVm.homeCategoryResponse.data?[indexPath.row].image ?? "") , placeholderImage: nil, completed: { (image, error, cacheType, url) -> Void in
             if ((error) != nil) {
