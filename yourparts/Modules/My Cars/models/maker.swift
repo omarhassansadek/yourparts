@@ -17,4 +17,5 @@ class maker{
     var date_created: String?
     var updated_at: String?
     var name: String?
+    
 }

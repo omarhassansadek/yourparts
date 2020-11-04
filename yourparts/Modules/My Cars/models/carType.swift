@@ -9,9 +9,9 @@
 import Foundation
 
 class carType{
+    
     var id: Int?
     var name: String?
     var date_created: String?
-
-
+    
 }
