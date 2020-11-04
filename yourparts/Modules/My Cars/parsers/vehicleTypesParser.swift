@@ -9,29 +9,23 @@
 import Foundation
 import SwiftyJSON
 
-
 class vehicleTypesParser{
     
     func vehicleTypesParser( fromJSON: JSON , onSuccess: @escaping ([carType]) -> () ) {
         
         var typesArr:[carType] = []
-            
+        
         for oneType in fromJSON["results"].arrayValue {
-            
             let carTypeObj = carType()
-                     
             if let id = oneType["id"].int {
                 carTypeObj.id = id
             }
-                    
             if let name = oneType["name"].string {
                 carTypeObj.name = name
-             }
-                         
-             if let date_created = oneType["date_created"].string {
-               // carTypeObj.date_created = date_created
-             }
-                         
+            }
+            if let date_created = oneType["date_created"].string {
+            }
+            
             typesArr.append(carTypeObj)
         }
         

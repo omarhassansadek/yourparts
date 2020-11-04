@@ -8,11 +8,10 @@
 
 import Foundation
 
-
 class carYear{
+    
     var id: Int?
     var model: Int?
     var year: Int?
-
-
+    
 }

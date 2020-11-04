@@ -19,4 +19,5 @@ class vehicle{
     var model_name: String?
     var image: String?
     var isChecked: Bool?
+    
 }

@@ -16,4 +16,5 @@ class carModel{
     var date_created: String?
     var date_updated: String?
     var maker: maker?
+    
 }

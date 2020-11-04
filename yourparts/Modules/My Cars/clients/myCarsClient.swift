@@ -11,16 +11,16 @@ import Alamofire
 import SwiftyJSON
 
 class myCarsClient: ParentClient {
-
     
     func requestMyVehicle(url: String, apiMethod: HTTPMethod, parametersOfCall: [String: Any]? , apiEncoding: ParameterEncoding, headers: [String: String]? , completionSuccess: @escaping (JSON) -> Void , completionFailure: @escaping (JSON) -> Void ){
-
+        
         self.communicateWithApi(url: url, pagingUrl: nil, method: apiMethod, parameters: parametersOfCall, headers: headers, onSuccess: { (responseSuccess) in
-                //
-                completionSuccess(responseSuccess)
-            }) { (responseFailure) in
-                //
-                completionFailure(responseFailure)
-            }
+            
+            completionSuccess(responseSuccess)
+            
+        }) { (responseFailure) in
+            
+            completionFailure(responseFailure)
+        }
     }
 }
