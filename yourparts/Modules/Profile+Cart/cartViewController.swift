@@ -321,16 +321,22 @@ class cartViewController: UIViewController, UITableViewDelegate, UITableViewData
             self.payBtn.setTitle("".localized, for: .normal)
 
             self.actind.startAnimating()
+            
+            self.cartTableView.isUserInteractionEnabled = false
 
             // handle delete (by removing the data from your array and updating the tableview)
             self.cartVM.deleteFromCart(id: self.cartVM.cartArr[indexPath.row].id ?? -1, onSuccess: { (isSuccess) in
+                
+                self.cartTableView.isUserInteractionEnabled = true
+
                 if isSuccess{
                     self.cartVM.cartArr.remove(at: indexPath.row)
 
                     self.getCartData()
                 }
             }) { (errorMsg) in
-                //
+                self.cartTableView.isUserInteractionEnabled = true
+
                 //self.payBtn.setTitle("Continue to checkout".localized, for: .normal)
                 self.getCartData()
 

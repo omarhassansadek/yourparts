@@ -16,7 +16,7 @@ class settingsViewController: UIViewController, UITableViewDataSource, UITableVi
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.settingOptions.append("Change Password".localized)
+        //self.settingOptions.append("Change Password".localized)
         self.settingOptions.append("Privacy Policy".localized)
         self.settingOptions.append("About Application".localized)
         self.settingOptions.append("Logout".localized)
@@ -76,7 +76,7 @@ class settingsViewController: UIViewController, UITableViewDataSource, UITableVi
                 menucell.optionName.textColor = UIColor.black
             }
             
-            if indexPath.row == 4{
+            if indexPath.row == 3{
                 menucell.optionName.text = self.settingOptions[indexPath.row - 1]
 
             }else{
@@ -103,10 +103,10 @@ class settingsViewController: UIViewController, UITableViewDataSource, UITableVi
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         switch indexPath.row {
-            case 0:
-                self.performSegue(withIdentifier: "gotoChangePassword", sender: self)
+//            case 0:
+//                self.performSegue(withIdentifier: "gotoChangePassword", sender: self)
 
-            case 1,2:
+            case 0,1:
                 self.selectedIndex = indexPath.row
                 if indexPath.row == 1{
                     
@@ -114,10 +114,6 @@ class settingsViewController: UIViewController, UITableViewDataSource, UITableVi
                 self.performSegue(withIdentifier: "gotoPrivacyPolicy", sender: self)
             case settingOptions.count:
                 var alertCont = UIAlertController(title: "Yourparts", message: "Are you sure you want to logout?".localized, preferredStyle: .alert)
-                
-                alertCont.addAction(UIAlertAction(title: "Cancel".localized, style: .destructive, handler: { _ in
-                    alertCont.dismiss(animated: true, completion: nil)
-                }))
                 
                 alertCont.addAction(UIAlertAction(title: "Continue".localized, style: .default, handler: { _ in
                     //go to login
@@ -128,6 +124,12 @@ class settingsViewController: UIViewController, UITableViewDataSource, UITableVi
 
                     self.performSegue(withIdentifier: "gotoAuthModule", sender: self)
                 }))
+
+                
+                alertCont.addAction(UIAlertAction(title: "Cancel".localized, style: .destructive, handler: { _ in
+                    alertCont.dismiss(animated: true, completion: nil)
+                }))
+                
 
                 
                 self.present(alertCont, animated: true, completion: nil)
@@ -143,7 +145,7 @@ class settingsViewController: UIViewController, UITableViewDataSource, UITableVi
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "gotoPrivacyPolicy"{
             let destCont = segue.destination as! paymentOnlineViewController
-            if selectedIndex == 1{
+            if selectedIndex == 0{
                 destCont.urlToCall = "https://yourparts.com/terms"
             }else{
                 destCont.urlToCall = "https://yourparts.com/aboutus"

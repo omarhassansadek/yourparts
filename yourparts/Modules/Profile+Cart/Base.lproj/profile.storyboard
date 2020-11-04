@@ -379,7 +379,7 @@
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3eo-N4-3g2">
                                                                 <rect key="frame" x="15" y="0.0" width="295" height="40"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                <textInputTraits key="textInputTraits"/>
+                                                                <textInputTraits key="textInputTraits" keyboardType="numberPad" textContentType="tel"/>
                                                                 <connections>
                                                                     <action selector="changeInTfs:" destination="E5I-rZ-JBw" eventType="editingChanged" id="Lze-co-Nf9"/>
                                                                 </connections>
@@ -573,7 +573,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="BnS-XC-dUN"/>
+        <segue reference="SOQ-1f-caw"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="addressico" width="40" height="40"/>

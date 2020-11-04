@@ -18,7 +18,7 @@ var cyanColor = UIColor(displayP3Red: 0/255, green: 151/255, blue: 255/255, alph
 
 var primaryColor = UIColor(displayP3Red: 239/255, green: 61/255, blue: 85/255, alpha: 1.0)
 
-
+var SuccessPrimaryColor =  UIColor(displayP3Red: 138/255, green: 209/255, blue: 97/255, alpha: 1.0)
 
 extension UIView {
     func roundCorners(corners: UIRectCorner, radius: CGFloat) {

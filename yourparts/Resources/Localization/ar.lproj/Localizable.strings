@@ -6,11 +6,11 @@
  Copyright © 2020 yourparts. All rights reserved.
  */
 
-"Name" = "الأسم" ;
+"Name" = "الأسم كامل" ;
 
 "Email" = "البريد الاليكتروني" ;
 
-"Password" = "كلمة السر" ;
+"Password" = "كلمة المرور" ;
 
 "welcome" = "مرحبا";
 
@@ -156,13 +156,13 @@
 
 "Search with part name" = "إبحث بأسم القسم";
 
-"Create New Account" = "أنشاء حساب جديد";
+"Create New Account" = "اٍنشاء حساب جديد";
 
 "Welcome to Your Parts" = "أهلا بك في يوربارتس" ;
 
 "Sign up to explore a world of car parts" = "خطوات بسيطة و تتمع بعالم متكامل من قطع الغيار" ;
 
-"Sign in" = "تسجيل دخول";
+"Sign in" = "تسجيل الدخول";
 
 "Don't have an account? Sign up" = "ليس لديك حساب؟ اشترك " ;
 
@@ -172,7 +172,7 @@
 
 "Forget Password?" = "نسيت كلمة المرور ؟" ;
 
-"Add car to see parts for your car" = "اضف سيارة لتشاهد قطع غيارها";
+"Add car to see parts for your car" = "أضف سيارة لتشاهد قطع غياره";
 
 "Categories" = "الاقسام" ;
 
@@ -384,3 +384,6 @@
 "Dismiss" = "موافق" ;
 
 "Skip and sign in later" =  "التخطي و التسجيل لاحقا" ;
+
+
+"Please delete product from your cart" = "يمكنك تعديل عدد المنتج او مسحه من داخل عربة التسوق" ;

@@ -304,7 +304,7 @@ extension productListViewController{
         cell.productPrice.text =  "\(self.productVM.productsResponse.data[indexPath.row].unit_price ?? "") جنيه"
         cell.productImage.sd_setImage(with: URL(string: self.productVM.productsResponse.data[indexPath.row].image ?? "") , placeholderImage: nil, completed: { (image, error, cacheType, url) -> Void in
             if ((error) != nil) {
-                cell.productImage.image = UIImage(named: "goodTire")
+                cell.productImage.image = UIImage(named: "productPlaceholder")
             } else {
             }
         })
@@ -327,34 +327,43 @@ extension productListViewController{
             let isLogged = UserDefaults.standard.bool(forKey: "isLogged")
             
             if isLogged{
-                cell.activityind.startAnimating()
-                self.productVM.addToCart(apiParameters: paramsDic, onSuccess: { (isSuccess) in
-                    cell.cartimg.image = UIImage(named: "cartSuccess")
-                    cell.cartView.backgroundColor = UIColor(displayP3Red: 138/255, green: 209/255, blue: 97/255, alpha: 1.0)
-                    cell.cartimg.isHidden = false
-                    cell.activityind.stopAnimating()
-                    self.logAddToCartEvent(contentData: fbDic["product_name"]!, contentId: fbDic["sparepart_id"]!, contentType: "product", currency: "EGP", price: Double("") ?? 0.0)
-                    if let tabItems = self.tabBarController?.tabBar.items {
-                        let tabItem = tabItems[2]
-                        tabItem.badgeValue = String((Int(tabItem.badgeValue ?? "0") ?? 0) + 1)
+                if self.productVM.productsResponse.data[indexPath.row].is_in_cart == false || self.productVM.productsResponse.data[indexPath.row].is_in_cart == nil{
+                    cell.activityind.startAnimating()
+
+                    self.productVM.addToCart(apiParameters: paramsDic, onSuccess: { (isSuccess) in
+                        cell.cartimg.image = UIImage(named: "cartSuccess")
+                        self.productVM.productsResponse.data[indexPath.row].is_in_cart = true
+                        cell.cartView.backgroundColor = SuccessPrimaryColor
+                        cell.cartimg.isHidden = false
+                        cell.activityind.stopAnimating()
+                        self.logAddToCartEvent(contentData: fbDic["product_name"]!, contentId: fbDic["sparepart_id"]!, contentType: "product", currency: "EGP", price: Double("") ?? 0.0)
+                        if let tabItems = self.tabBarController?.tabBar.items {
+                            let tabItem = tabItems[2]
+                            tabItem.badgeValue = String((Int(tabItem.badgeValue ?? "0") ?? 0) + 1)
+                        }
+                    }) { (err) in
+                        cell.activityind.stopAnimating()
+                        cell.cartimg.image = UIImage(named: "cart")
+                        cell.cartView.backgroundColor = primaryColor
+                        cell.cartimg.isHidden = false
+                        AlertViewer().showAlertView(withMessage: err , onController: self)
                     }
-                }) { (err) in
-                    cell.activityind.stopAnimating()
-                    cell.cartimg.image = UIImage(named: "cart")
-                    cell.cartView.backgroundColor = primaryColor
-                    cell.cartimg.isHidden = false
-                    AlertViewer().showAlertView(withMessage: err , onController: self)
+                }else{
+                        AlertViewer().showAlertOutsideController(msg: "Please delete product from your cart")
+
                 }
+                
             }else{
                 cell.cartimg.image = UIImage(named: "cart")
                 cell.cartView.backgroundColor = primaryColor
                 cell.cartimg.isHidden = false
                 self.performSegue(withIdentifier: "gotoLoginVC", sender: self)
+
             }
         }
         if self.productVM.productsResponse.data[indexPath.row].is_in_cart == true ?? false{
             cell.cartimg.image = UIImage(named: "cartSuccess")
-            cell.cartView.backgroundColor = UIColor(displayP3Red: 138/255, green: 209/255, blue: 97/255, alpha: 1.0)
+            cell.cartView.backgroundColor = SuccessPrimaryColor
             cell.cartimg.isHidden = false
         }else{
             cell.activityind.stopAnimating()

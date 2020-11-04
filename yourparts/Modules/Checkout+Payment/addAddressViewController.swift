@@ -131,7 +131,7 @@ class addAddressViewController: UIViewController, UIPickerViewDelegate, UIPicker
 
             self.activityind.stopAnimating()
             
-            self.addAddressBtn.backgroundColor = UIColor(displayP3Red: 138/255, green: 209/255, blue: 97/255, alpha: 1.0)
+            self.addAddressBtn.backgroundColor = SuccessPrimaryColor
 
             self.addAddressBtn.setTitle("Saved Successfully".localized, for: .normal)
 

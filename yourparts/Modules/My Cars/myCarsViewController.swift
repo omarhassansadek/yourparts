@@ -122,6 +122,7 @@ class myCarsViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 //addCarCell.addCarLbl.text = vehicle_name
                 if self.myCarsVM.myCars[indexPath.row].vehicle == Int(vehicle_id) {
                     cell.carCheckbox.on = true
+                    self.myCarsVM.myCars[indexPath.row].isChecked = true
                 }else{
                     cell.carCheckbox.on = false
 
@@ -205,7 +206,13 @@ class myCarsViewController: UIViewController, UITableViewDelegate, UITableViewDa
                     self.myCarsVM.deleteMyVehicle(id: self.myCarsVM.myCars[indexPath.row].id ?? -1, onSuccess: { (isSuccess) in
                         //
                         if isSuccess{
-                            self.myCarsVM.myCars.remove(at: indexPath.row)
+                            if self.myCarsVM.myCars[indexPath.row].isChecked == true{
+                                UserDefaults.standard.set(false, forKey: "carChecked")
+                                UserDefaults.standard.removeObject(forKey: "vehicle")
+                                //vehicle
+                                self.myCarsVM.myCars.remove(at: indexPath.row)
+
+                            }
                             self.fetchCars()
                             
                         }
@@ -236,13 +243,14 @@ class myCarsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         self.myCarsVM.getMyVehicles(onSuccess: { (isSuccess) in
             //
             if self.myCarsVM.myCars.count != 0{
+                //cars loaded not empty
                 self.carsTableView.isHidden = false
                 self.myCarsPlaceholder.isHidden = true
                 self.addCarBtnView.isHidden = true
                 self.firstLoad = true
 
             }else{
-                
+                //remove from
                 self.carsTableView.isHidden = true
                 self.myCarsPlaceholder.isHidden = false
                 self.addCarBtnView.isHidden = false

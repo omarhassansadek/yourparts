@@ -147,6 +147,9 @@ class addCarViewController: UIViewController, UIPickerViewDelegate, UIPickerView
             .foregroundColor: UIColor.white,
             .font: UIFont(name: "TheMixArab", size: 14 )!
             ])
+        
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
+
         // Do any additional setup after loading the view.
     }
     
@@ -418,7 +421,7 @@ class addCarViewController: UIViewController, UIPickerViewDelegate, UIPickerView
             //
             self.activityind.stopAnimating()
             self.addNewCarBtn.setTitle("Add Car Successfully".localized, for: .normal)
-            self.addNewCarBtn.backgroundColor = UIColor(displayP3Red: 138/255, green: 209/255, blue: 97/255, alpha: 1.0)
+            self.addNewCarBtn.backgroundColor = SuccessPrimaryColor
             Timer.scheduledTimer(timeInterval: 1.5, target: self, selector: #selector(self.carAddedSuccess), userInfo: nil, repeats: false)
             //let carSelected = UserDefaults.standard.bool(forKey: "carChecked")
             
@@ -462,6 +465,12 @@ class addCarViewController: UIViewController, UIPickerViewDelegate, UIPickerView
       
     }
     
+    
+    @objc func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
+    }
+
     
     @objc func carAddedSuccess() {
         

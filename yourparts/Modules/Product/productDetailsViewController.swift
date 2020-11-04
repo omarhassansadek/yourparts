@@ -33,7 +33,11 @@ class productDetailsViewController: UIViewController, UITableViewDelegate, UITab
         self.addToCartBtn.layer.cornerRadius = 12.5
         self.addToCartBtn.setTitle("Add to Cart".localized, for: .normal)
         self.addToCartBtn.titleLabel?.font = UIFont(name: "Cairo-Bold", size: 12 )
-        
+        if self.product?.is_in_cart == true{
+            self.addToCartBtn.backgroundColor = SuccessPrimaryColor
+        }else{
+            self.addToCartBtn.backgroundColor = primaryColor
+        }
         self.favContainer.layer.cornerRadius = 12.5
         
         self.parseDicDetails(DicDetails: self.product?.specific_detail ?? [:])
@@ -82,7 +86,7 @@ class productDetailsViewController: UIViewController, UITableViewDelegate, UITab
             cell.productDeliveryDesc.text = "Price delivery and spare part price is different from each city".localized
             cell.productImage.sd_setImage(with: URL(string: self.product?.image ?? "") , placeholderImage: nil, completed: { (image, error, cacheType, url) -> Void in
                 if ((error) != nil) {
-                    cell.productImage.image = UIImage(named: "goodTire")
+                    cell.productImage.image = UIImage(named: "productPlaceholder")
                 } else {
                 }
             })
@@ -159,7 +163,7 @@ class productDetailsViewController: UIViewController, UITableViewDelegate, UITab
                         let tabItem = tabItems[2]
                         tabItem.badgeValue = String((Int(tabItem.badgeValue ?? "0") ?? 0) + 1)
                     }
-                    self.addToCartBtn.backgroundColor = UIColor(displayP3Red: 138/255, green: 209/255, blue: 97/255, alpha: 1.0)
+                    self.addToCartBtn.backgroundColor = SuccessPrimaryColor
                 }
             }) { (errMsg) in
                 AlertViewer().showAlertView(withMessage: errMsg , onController: self)

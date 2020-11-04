@@ -120,7 +120,7 @@ class detailCatViewController: UIViewController , UITableViewDelegate, UITableVi
             
             categoryCell.detailImg.sd_setImage(with: URL(string: self.detailCatVM.detailCategory?.detailCat[indexPath.row - 2].image ?? "") , placeholderImage: nil, completed: { (image, error, cacheType, url) -> Void in
                 if ((error) != nil) {
-                    categoryCell.detailImg.image = UIImage(named: "teelFramel")
+                    categoryCell.detailImg.image = UIImage(named: "catPlaceholder")
                 } else {
                 }
             })
